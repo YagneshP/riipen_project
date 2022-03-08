@@ -1,5 +1,5 @@
 import Image from "next/image";
-import '../styles/cart'
+// import '../styles/cart'
 
 const Cart = () => {
     return (
