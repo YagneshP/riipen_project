@@ -1,0 +1,29 @@
+.header{
+  display: flex;
+  justify-content: space-between;
+  font-size: $s-size;
+  padding: $l-size;
+}
+
+.nav{
+  display: flex;
+	justify-content: center;
+  align-items: center;
+	list-style-type: none;
+	padding-inline-start: 0;
+  text-transform: uppercase;
+  font-family: $header-font;
+
+  li {
+    margin: 0 15px;
+  }
+
+  a{
+    text-decoration: none;
+	  color: gray;
+  }
+}
+
+.sub-menu {
+  display: none;
+}
