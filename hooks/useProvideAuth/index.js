@@ -63,6 +63,7 @@ const useProvideAuth = () => {
     signIn,
     signingOut,
     loading,
+    signUp,
   };
 };
 
