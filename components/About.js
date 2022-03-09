@@ -1,6 +1,4 @@
 
-import Image from 'next/image';
-
 const About = () => {
   return (
 		<>
@@ -17,7 +15,7 @@ const About = () => {
 				</div>
 				<br/><br/>
 				<img className= "about-img" src= "https://via.placeholder.com/970x510.png"/>
-				<div className="vision_text">
+				<div className="vision-text">
 					<div className="col-lg-5">
 						<div className = "left">
 							<h3>OUR VISION</h3>
@@ -33,7 +31,7 @@ const About = () => {
 					</div>
 				</div>
 				{/* OUR TEAM  */}
-    		<section className="our_team" >
+    		<section className="our-team" >
       			<div className="container">
         			<div className="heading">
           			<h2>OUR TEAM</h2>
@@ -44,7 +42,7 @@ const About = () => {
           				<div>
 										<div className="avatar"> <img src="https://via.placeholder.com/268" alt="" /> 
 										</div>
-										<div className="team_names">
+										<div className="team-names">
                 			<h6>JOSEPH MARK</h6>
                 			<p>CEO & FOUNDER</p>
               			</div>
@@ -55,7 +53,7 @@ const About = () => {
               		<div>
               			<div className="avatar"> <img src="https://via.placeholder.com/268" alt="" /> 
 										</div>
-										<div className="team_names">
+										<div className="team-names">
                 			<h6>JOSEPH MARK</h6>
                 			<p>CEO & FOUNDER</p>
               			</div>
@@ -66,7 +64,7 @@ const About = () => {
               		<div>
               			<div className="avatar"> <img src="https://via.placeholder.com/268" alt="" /> 
 										</div>
-										<div class="team_names">
+										<div className="team-names">
                 			<h6>JOSEPH MARK</h6>
                 			<p>CEO & FOUNDER</p>
               			</div>
