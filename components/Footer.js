@@ -7,7 +7,6 @@ const Footer = () => {
   return (
     <footer>
       <div className="footer-columns">
-        {/* <!-- ABOUT Location --> */}
         <div className="footer-column footer-column-1">
           <Logo />
           <p>
@@ -22,7 +21,6 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* <!-- HELPFUL LINKS --> */}
         <div className="footer-column footer-column-2">
           <h6>Helpful Links</h6>
           <ul className="footer-links">
@@ -95,7 +93,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* <!-- Rights --> */}
       <div className="rights">
         <p>© 2022 All Rights Reserved.</p>
       </div>
