@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+// import {} from "firebase";
 import { formatAuthUser } from "../../utils/formatAuthUser";
+import app from "../../lib/firebase";
 const useProvideAuth = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const auth = getAuth();
+  const auth = getAuth(app);
 
   const authStateChanged = (authState) => {
     if (!authState) {
@@ -19,8 +21,8 @@ const useProvideAuth = () => {
     setLoading(false);
   };
 
-  const signUp = () =>
-    createUserWithEmailAndPassword(auth, email, password)
+  const signUp = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         console.log("signUp", userCredential);
@@ -32,8 +34,9 @@ const useProvideAuth = () => {
         const errorMessage = error.message;
         // ..
       });
+  };
 
-  const signIn = () =>
+  const signIn = (email, password) =>
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
@@ -55,7 +58,7 @@ const useProvideAuth = () => {
 
   useEffect(() => {
     // listen for Firebase state change
-    const unsubscribe = onAuthStateChanged(authStateChanged);
+    const unsubscribe = onAuthStateChanged(auth, authStateChanged);
     return () => unsubscribe();
   }, []);
   return {
