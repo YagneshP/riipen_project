@@ -1,6 +1,7 @@
 import Footer from './Footer';
 import Header from './Header';
 import Banner from './Header/Banner';
+import NewsletterForm from './NewsletterForm';
 
 const Layout = ({ children }) => {
   return ( 
@@ -8,6 +9,7 @@ const Layout = ({ children }) => {
       <Header />
       <Banner />
         { children }
+      <NewsletterForm />
       <Footer />
     </div>
    );
