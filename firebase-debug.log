@@ -1,0 +1,34 @@
+[debug] [2022-03-10T19:16:24.890Z] ----------------------------------------------------------------------
+[debug] [2022-03-10T19:16:24.890Z] Command:       /Users/yagneshparekh/.nvm/versions/node/v15.14.0/bin/node /Users/yagneshparekh/.nvm/versions/node/v15.14.0/bin/firebase emulators:start --only auth
+[debug] [2022-03-10T19:16:24.891Z] CLI Version:   10.2.2
+[debug] [2022-03-10T19:16:24.891Z] Platform:      darwin
+[debug] [2022-03-10T19:16:24.891Z] Node Version:  v15.14.0
+[debug] [2022-03-10T19:16:24.894Z] Time:          Thu Mar 10 2022 14:16:24 GMT-0500 (Eastern Standard Time)
+[debug] [2022-03-10T19:16:24.894Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-03-10T19:16:24.927Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-03-10T19:16:24.928Z] > authorizing via signed-in user (yagneshparekhcnc@gmail.com)
+[info] i  emulators: Starting emulators: auth {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: auth"}}
+[debug] [2022-03-10T19:16:24.949Z] [hub] writing locator at /var/folders/2m/n1gz08p96q35yl786wqbrxmw0000gn/T/hub-riipen-de475.json
+[debug] [2022-03-10T19:16:28.994Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2022-03-10T19:16:28.995Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2022-03-10T19:16:28.995Z] Starting Emulator UI with command {"binary":"node","args":["/Users/yagneshparekh/.cache/firebase/emulators/ui-v1.6.5/server.bundle.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"/Users/yagneshparekh/.cache/firebase/emulators/ui-v1.6.5/server.bundle.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2022-03-10T19:16:29.051Z] Web / API server started at localhost:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at localhost:4000\n"}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://localhost:4000                │
+└─────────────────────────────────────────────────────────────┘
+
+┌────────────────┬────────────────┬────────────────────────────┐
+│ Emulator       │ Host:Port      │ View in Emulator UI        │
+├────────────────┼────────────────┼────────────────────────────┤
+│ Authentication │ localhost:9099 │ http://localhost:4000/auth │
+└────────────────┴────────────────┴────────────────────────────┘
+  Emulator Hub running at localhost:4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
