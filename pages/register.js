@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/Auth";
 import { getAuth, connectAuthEmulator } from "firebase/auth";
-
+import { useRouter } from "next/router";
 import styles from "../styles/register.module.css";
 
 export default function Register() {
@@ -12,7 +12,7 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState(null);
   const { signUp } = useContext(AuthContext);
-  // const auth = getAuth(app);
+  const router = useRouter();
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
@@ -22,6 +22,7 @@ export default function Register() {
       if (password === rePassword) {
         const user = await signUp(email, password);
         console.log("User in register", user);
+        router.push("/"); // redirect user to home page [could be change depend on history location]
       } else {
         setError("Password do not match");
       }
