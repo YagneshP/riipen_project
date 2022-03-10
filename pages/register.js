@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/Auth";
-// import { useAuth } from "../hooks/useProvideAuth";
+import { getAuth, connectAuthEmulator } from "firebase/auth";
 
 import styles from "../styles/register.module.css";
 
@@ -12,31 +12,28 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState(null);
   const { signUp } = useContext(AuthContext);
-
-  const handleSubmit = (e) => {
+  // const auth = getAuth(app);
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
-    //check if passwords match. If they do, create user in Firebase
-    // and redirect to your logged in page.
-    if (password === rePassword) {
-      createUserWithEmailAndPassword(email, password)
-        .then((authUser) => {
-          console.log("Success. The user is created in Firebase");
-          router.push("/logged_in");
-        })
-        .catch((error) => {
-          // An error occurred. Set error message to be displayed to user
-          setError(error.message);
-        });
-    } else {
-      setError("Password do not match");
+    try {
+      //check if passwords match. If they do, create user in Firebase
+      // and redirect to your logged in page.
+      if (password === rePassword) {
+        const user = await signUp(email, password);
+        console.log("User in register", user);
+      } else {
+        setError("Password do not match");
+      }
+    } catch (e) {
+      console.log("erorr:", e);
     }
   };
 
   return (
     <div className={styles.Container}>
       <h6>REGISTER</h6>
-      <form>
+      <form onSubmit={handleSubmit}>
         <ul style={{ padding: 0 }}>
           <li className={styles.Form_list}>
             <label htmlFor='first-name'> *FIRST NAME </label>
