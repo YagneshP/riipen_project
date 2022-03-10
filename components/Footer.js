@@ -24,7 +24,7 @@ const Footer = () => {
 
         {/* <!-- HELPFUL LINKS --> */}
         <div className="footer-column footer-column-2">
-          <h6>HELPFUL LINKS</h6>
+          <h6>Helpful Links</h6>
           <ul className="footer-links">
             <li>
               <a href="#."> Products</a>
@@ -49,7 +49,7 @@ const Footer = () => {
 
         {/* <!-- SHOP --> */}
         <div className="footer-column footer-column-3">
-          <h6>SHOP</h6>
+          <h6>Shop</h6>
           <ul className="footer-links">
             <li>
               <a href="#."> About Us</a>
@@ -74,7 +74,7 @@ const Footer = () => {
 
         {/* <!-- MY ACCOUNT --> */}
         <div className="footer-column footer-column-4">
-          <h6>MY ACCOUNT</h6>
+          <h6>My Account</h6>
           <ul className="footer-links">
             <li>
               <a href="#."> Login</a>

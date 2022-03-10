@@ -15,10 +15,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  margin: 0 $m-size $m-size;
+  margin: $m-size;
 
   h6{
-    font-size: 1.6rem;
+    text-transform: uppercase;
+    font-size: $s-size;
     color: $white;
     margin: 0;
     letter-spacing: 1.5px;
