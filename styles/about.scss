@@ -13,18 +13,21 @@ $fontFamily:"Playfair Display', serif";
 	flex-direction: column;
 	justify-content: center;
   font-family: $fontFamily;
-	font-size: 15px;
+	font-size: 16px;
 	 h1{
  		text-align: center;
 	}
+	@media (max-width: 480px) {
+			font-size: 18px;
+		}
 }
 	
 .about-img{
   display: block;  
   margin-left: auto;  
   margin-right: auto; 
-	width:970px;
-	height: 510px; 
+	width:80%;
+	height: 50%; 
 }
 
     
@@ -33,7 +36,13 @@ $fontFamily:"Playfair Display', serif";
   width: 40%;
   height:auto;
   float: left;
-}     
+}   
+@media (max-width: 480px) {  
+	.left{
+		width: 100%;
+		height:auto;
+	}   
+}	
 
 .vision-text{
   margin-top: 60px;
@@ -42,12 +51,18 @@ $fontFamily:"Playfair Display', serif";
   justify-content: center;
   margin-top: 80px;
   font-family: $fontFamily;
-  font-size: 15px;
+  font-size: 16px;
+	@media (max-width: 480px) {
+		font-size: 18px;
+	}
 		h3 {
 			font-size: 20px;
 			text-align: left;
 			color: #2d3a4b;
 			letter-spacing: 2px;
+			@media (max-width: 480px) {
+				font-size: 22px;
+			}
 		}
 		h2 {
 			font-family: $fontFamily;
@@ -57,31 +72,48 @@ $fontFamily:"Playfair Display', serif";
 			margin-top: 30px;
 			color: #666666;
 			line-height: 45px;
+			@media (max-width: 480px) {
+				font-size: 27px;
+			}
 		}
+
 }
 
 .our-team{
 	padding-top: 80px;
 	padding-bottom: 80px;
 	font-size: 16px;
+	@media (max-width: 480px) {
+		font-size: 18px;
+	}
 		.heading{
 			text-align: center;
 			padding-bottom: 100px;
 		}
 		.avatar {
-			height: 268px;
-			width: 268px;
+			// height: 100%;
+			// width: 100%;
+			
 			position: relative;
 			overflow: hidden;
 			display: block;
 			border-radius: 50%;
 			margin-left: auto;  
 			margin-right: auto;  
+			@media (max-width: 480px) {
+			height:100px;
+			width:100px;
+			}
 		}
 		.column {
 			float: left;
-			width: 33.33%;
+			width: 33%;
+			
 			padding: 10px;
+			// @media (max-width: 480px) {
+			// 	width: 50%;
+				
+			// }
 		}
 	.team-names {
 		position: relative;
@@ -95,10 +127,15 @@ $fontFamily:"Playfair Display', serif";
 				color: #2d3a4b;
 				text-transform: uppercase;
 				margin-bottom: 5px;
+				@media (max-width: 480px) {
+					font-size: 20px;
+				}
 			}
 			p {
 				color: #666666;
-				font-size: 12px;
+				// font-size: 12px;
 			}
 	  }	
 	}	
+
+	
