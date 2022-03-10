@@ -1,14 +1,22 @@
 import { useState, useEffect } from "react";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-// import {} from "firebase";
-import { formatAuthUser } from "../../utils/formatAuthUser";
+import {
+  getAuth,
+  onAuthStateChanged,
+  signOut,
+  createUserWithEmailAndPassword,
+  connectAuthEmulator,
+} from "firebase/auth";
+
+import formatAuthUser from "../../utils/formatAuthUser";
 import app from "../../lib/firebase";
+import { createUser } from "../../lib/db";
 const useProvideAuth = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const auth = getAuth(app);
+  const auth = getAuth(app); // getting Auth service from firebase
+  connectAuthEmulator(auth, "http://localhost:9099"); // authSimulator runs locally
 
-  const authStateChanged = (authState) => {
+  const authStateChanged = async (authState) => {
     if (!authState) {
       setUser(null);
       setLoading(false);
@@ -17,26 +25,22 @@ const useProvideAuth = () => {
 
     setLoading(true);
     var formattedUser = formatAuthUser(authState);
+    createUser(formattedUser);
     setUser(formattedUser);
     setLoading(false);
   };
 
-  const signUp = (email, password) => {
-    return createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        console.log("signUp", userCredential);
-        // const user = userCredential.user;
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // ..
-      });
+  const signUp = async (email, password) => {
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    console.log("User", userCredential.user);
+    return userCredential.user;
   };
 
-  const signIn = (email, password) =>
+  const signIn = async (email, password) =>
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
@@ -50,7 +54,7 @@ const useProvideAuth = () => {
         const errorMessage = error.message;
       });
 
-  const signingOut = () => {
+  const signingOut = async () => {
     return signOut(auth)
       .then(() => authStateChanged)
       .catch((err) => console.log(err));
