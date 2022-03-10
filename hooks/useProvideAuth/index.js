@@ -25,7 +25,7 @@ const useProvideAuth = () => {
 
     setLoading(true);
     var formattedUser = formatAuthUser(authState);
-    createUser(formattedUser);
+    createUser(formattedUser.uid, formattedUser);
     setUser(formattedUser);
     setLoading(false);
   };
