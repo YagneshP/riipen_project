@@ -14,7 +14,7 @@ const useProvideAuth = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const auth = getAuth(app); // getting Auth service from firebase
-  connectAuthEmulator(auth, "http://localhost:9099"); // authSimulator runs locally
+  // connectAuthEmulator(auth, "http://localhost:9099"); // authSimulator runs locally
 
   const authStateChanged = async (authState) => {
     if (!authState) {
