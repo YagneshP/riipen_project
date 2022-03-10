@@ -1,84 +1,83 @@
-import Image from "next/image";
-// import '../styles/cart'
+import PlaceIcon from "@mui/icons-material/Place";
+import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import EmailIcon from "@mui/icons-material/Email";
 
 const Contact = () => {
   return (
     <div>
-      {/* Carousel */}
-
-      <section class="contact padding-top-100 padding-bottom-100">
-        <div class="container">
-          <div class="contact-form">
+      <section className="contact padding-top-100 padding-bottom-100">
+        <div className="container">
+          <div className="contact-form">
             <h5>PLEASE fill-up FEW details</h5>
-            <div class="row">
-              <div class="col-md-8">
-                <div id="contact_message" class="success-msg">
+            <div className="row">
+              <div className="col-md-8">
+                <div id="contact_message" className="success-msg">
                   {" "}
-                  <i class="fa fa-paper-plane-o"></i>Thank You. Your Message has
-                  been Submitted
+                  <i className="fa fa-paper-plane-o"></i>Thank You. Your Message
+                  has been Submitted
                 </div>
 
                 <form
                   role="form"
                   id="contact_form"
-                  class="contact-form"
+                  className="contact-form"
                   method="post"
                   onSubmit="return false"
                 >
-                  <ul class="row">
-                    <li class="col-sm-6">
+                  <ul className="row">
+                    <li className="col-sm-6">
                       <label>
                         full name *
                         <input
                           type="text"
-                          class="form-control"
+                          className="form-control"
                           name="name"
                           id="name"
                           placeholder=""
                         />
                       </label>
                     </li>
-                    <li class="col-sm-6">
+                    <li className="col-sm-6">
                       <label>
                         Email *
                         <input
                           type="text"
-                          class="form-control"
+                          className="form-control"
                           name="email"
                           id="email"
                           placeholder=""
                         />
                       </label>
                     </li>
-                    <li class="col-sm-6">
+                    <li className="col-sm-6">
                       <label>
                         Phone *
                         <input
                           type="text"
-                          class="form-control"
+                          className="form-control"
                           name="company"
                           id="company"
                           placeholder=""
                         />
                       </label>
                     </li>
-                    <li class="col-sm-6">
+                    <li className="col-sm-6">
                       <label>
                         SUBJECT
                         <input
                           type="text"
-                          class="form-control"
+                          className="form-control"
                           name="website"
                           id="website"
                           placeholder=""
                         />
                       </label>
                     </li>
-                    <li class="col-sm-12">
+                    <li className="col-sm-12">
                       <label>
                         Message
                         <textarea
-                          class="form-control"
+                          className="form-control"
                           name="message"
                           id="message"
                           rows="5"
@@ -86,11 +85,11 @@ const Contact = () => {
                         ></textarea>
                       </label>
                     </li>
-                    <li class="col-sm-12">
+                    <li className="col-sm-12">
                       <button
                         type="submit"
                         value="submit"
-                        class="btn"
+                        className="button-12"
                         id="btn_submit"
                         onClick="proceed();"
                       >
@@ -101,26 +100,23 @@ const Contact = () => {
                 </form>
               </div>
 
-              <div class="col-md-4">
-                <div class="contact-info">
+              <div className="col-md-4">
+                <div className="contact-info">
                   <h6>OUR ADDRESS</h6>
                   <ul>
                     <li>
-                      {" "}
-                      <i class="icon-map-pin"></i> Street No. 12, Newyork 12,
+                      <PlaceIcon /> Street No. 12, Newyork 12,
                       <br />
                       MD - 123, USA.
                     </li>
                     <li>
-                      {" "}
-                      <i class="icon-call-end"></i> 1.800.123.456789
+                      <LocalPhoneIcon /> 1.800.123.456789
                     </li>
                     <li>
-                      {" "}
-                      <i class="icon-envelope"></i>{" "}
+                      <EmailIcon />{" "}
                       <a href="mailto:someone@example.com" target="_top">
                         info@ecoshop.com
-                      </a>{" "}
+                      </a>
                     </li>
                     <li>
                       <p>
@@ -135,11 +131,7 @@ const Contact = () => {
           </div>
         </div>
       </section>
-
       {/* Google Map */}
-      {/* About */}
-      {/* NewsLetter */}
-      {/* Footer */}
     </div>
   );
 };
