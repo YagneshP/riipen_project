@@ -3,4 +3,14 @@
     display: flex;
     flex-direction: row;
   }
+
+  .news-letter{
+    form{
+      display: block;
+    }
+
+    input{
+      max-width: 560px;
+    }
+  }
 }
