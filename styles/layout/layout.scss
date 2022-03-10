@@ -1,0 +1,6 @@
+@media screen and (min-width: $mobile-breakpoint){
+  .footer-columns{
+    display: flex;
+    flex-direction: row;
+  }
+}
