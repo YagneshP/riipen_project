@@ -10,33 +10,41 @@ import {
 import formatAuthUser from "../../utils/formatAuthUser";
 import app from "../../lib/firebase";
 import { createUser } from "../../lib/db";
+import { useRouter } from "next/router";
+
 const useProvideAuth = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
   const auth = getAuth(app); // getting Auth service from firebase
   // connectAuthEmulator(auth, "http://localhost:9099"); // authSimulator runs locally
 
-  const authStateChanged = async (authState) => {
+  const authStateChanged = async (authState, firstName, lastName) => {
+    console.log("heeelllo");
     if (!authState) {
       setUser(null);
       setLoading(false);
+      // router.push("/register");
       return;
     }
 
     setLoading(true);
-    var formattedUser = formatAuthUser(authState);
-    createUser(formattedUser.uid, formattedUser);
+    console.log("AuthState", authState);
+    var formattedUser = formatAuthUser(authState, firstName, lastName);
+    console.log("formattedUser", formattedUser);
+    await createUser(formattedUser.uid, formattedUser);
     setUser(formattedUser);
     setLoading(false);
   };
 
-  const signUp = async (email, password) => {
+  const signUp = async (email, password, firstName, lastName) => {
     const userCredential = await createUserWithEmailAndPassword(
       auth,
       email,
       password
     );
     console.log("User", userCredential.user);
+    await authStateChanged(userCredential.user, firstName, lastName);
     return userCredential.user;
   };
 
@@ -56,7 +64,7 @@ const useProvideAuth = () => {
 
   const signingOut = async () => {
     return signOut(auth)
-      .then(() => authStateChanged)
+      .then(() => authStateChanged(false))
       .catch((err) => console.log(err));
   };
 
