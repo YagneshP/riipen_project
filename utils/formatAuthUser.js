@@ -1,8 +1,9 @@
-const formatAuthUser = (user) => {
+const formatAuthUser = (user, firstName, lastName) => {
+  const name = `${firstName} ${lastName}`;
   return {
     uid: user.uid,
     email: user.email,
-    name: user.displayName,
+    name: name,
     provider: user.providerData[0].providerId,
     photoUrl: user.photoURL,
   };
