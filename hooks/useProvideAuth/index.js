@@ -32,6 +32,7 @@ const useProvideAuth = () => {
     await createUser(formattedUser.uid, formattedUser);
     setUser(formattedUser);
     setLoading(false);
+    router.push("/logged_in");
   };
 
   const signUp = async (email, password, firstName, lastName) => {
@@ -43,33 +44,31 @@ const useProvideAuth = () => {
       );
       await authStateChanged(userCredential.user, firstName, lastName);
     } catch (error) {
-      console.log("Error : ", error);
+      console.log("Error while signUp: ", error);
       // const errorCode = error.code;
       // const errorMessage = error.message;
     }
   };
 
-  const signIn = async (email, password) =>
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        console.log("signIn", userCredential);
-
-        const user = userCredential.user;
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-      });
-
+  const signIn = async (email, password) => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      await authStateChanged(userCredential);
+    } catch (error) {
+      console.log("Error while signIn : ", error);
+    }
+  };
   const signingOut = async () => {
     return signOut(auth)
       .then(() => {
         authStateChanged(false);
         router.push("/");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log("Error while signout", err));
   };
 
   useEffect(() => {
