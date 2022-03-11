@@ -1,11 +1,6 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-
-import {
-  faUserCircle
-} from "@fortawesome/free-solid-svg-icons";
 
 const Nav = () => {
   return ( 
