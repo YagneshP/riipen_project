@@ -5,6 +5,7 @@ import {
   signOut,
   createUserWithEmailAndPassword,
   connectAuthEmulator,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 
 import formatAuthUser from "../../utils/formatAuthUser";
@@ -19,7 +20,7 @@ const useProvideAuth = () => {
   const auth = getAuth(app); // getting Auth service from firebase
   // connectAuthEmulator(auth, "http://localhost:9099"); // authSimulator runs locally
 
-  const authStateChanged = async (authUser, firstName, lastName) => {
+  const authStateChanged = async (authUser) => {
     console.log("heeelllo");
     if (!authUser) {
       setUser(null);
@@ -27,22 +28,23 @@ const useProvideAuth = () => {
       // router.push("/register");
       return;
     }
+    console.log("AuthUser", authUser);
     setLoading(true);
-    var formattedUser = formatAuthUser(authUser, firstName, lastName);
+    var formattedUser = formatAuthUser(authUser);
     await createUser(formattedUser.uid, formattedUser);
     setUser(formattedUser);
     setLoading(false);
     router.push("/logged_in");
   };
 
-  const signUp = async (email, password, firstName, lastName) => {
+  const signUp = async (email, password) => {
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
-      await authStateChanged(userCredential.user, firstName, lastName);
+      await authStateChanged(userCredential.user);
     } catch (error) {
       console.log("Error while signUp: ", error);
       // const errorCode = error.code;
