@@ -1,6 +1,6 @@
-import { async } from "@firebase/util";
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/Auth";
+import styles from "../styles/register.module.css";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -15,7 +15,7 @@ function Login() {
     }
   };
   return (
-    <div className='container'>
+    <div className={styles.Container}>
       <div className='shopping-cart'>
         <div className='cart-ship-info'>
           <div className='row'>
@@ -23,7 +23,7 @@ function Login() {
               <h6>LOGIN YOUR ACCOUNT</h6>
               <form onSubmit={handleSubmit}>
                 <ul className='row'>
-                  <li className='col-md-12'>
+                  <li className={styles.Form_list}>
                     <label htmlFor='email'>EMAIL</label>
                     <input
                       type='email'
@@ -34,7 +34,7 @@ function Login() {
                     />
                   </li>
 
-                  <li className='col-md-12'>
+                  <li className={styles.Form_list}>
                     <label htmlFor='password'>PASSWORD </label>
                     <input
                       type='password'
@@ -45,7 +45,7 @@ function Login() {
                     />
                   </li>
 
-                  <li className='col-md-4'>
+                  <li className={styles.Form_list}>
                     <button type='submit' className='btn'>
                       LOGIN
                     </button>
