@@ -1,6 +1,6 @@
 import Footer from './Footer';
-import Header from './Header';
-import Cart from './Cart';
+import Header from './Header/index';
+import Cart from './Cart/index';
 
 const Layout = ({ children }) => {
   return ( 

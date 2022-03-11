@@ -1,20 +1,20 @@
 import Image from "next/image";
 // import '../styles/cart'
+import CloseIcon from '@mui/icons-material/Close';
 
 const Cart = () => {
-    return (
-        <div>
-            <main>
-            <section className="padding-top-100 padding-bottom-100 pages-in chart-page">
-  
-            <div className="container"> 
+  return (
+    <div>
+      <main>
+      <section class="padding-top-100 padding-bottom-100 pages-in chart-page">
+      <div class="container"> 
         
         {/* <!-- Payments Steps --> */}
-        <div className="shopping-cart text-center">
-          <div className="cart-head">
-            <ul className="row">
+        <div class="shopping-cart text-center">
+          <div class="cart-head">
+            <ul class="row">
               {/* <!-- PRODUCTS --> */}
-              <li className="col-sm-2 text-left">
+              <li class="col-sm-2 text-left">
                 <h6>PRODUCTS</h6>
               </li>
               {/* <!-- NAME --> */}
@@ -38,17 +38,19 @@ const Cart = () => {
             </ul>
           </div>
           
+       
+          
           {/* <!-- Cart Details --> */}
           <ul class="row cart-details">
             <li class="col-sm-6">
               <div class="media"> 
                 {/* <!-- Media Image --> */}
-                <div class="media-left media-middle"> <a href="#." class="item-img"> <img class="media-object" src="images/cart-img-1.jpg" alt="" /> </a> </div>
+                <div class="media-left media-middle"> <a href="#." class="item-img"> <img class="media-object" src="../images/cart-img-3.jpg" alt="Hello" /> </a> </div>
                 
                 {/* <!-- Item Name --> */}
                 <div class="media-body">
                   <div class="position-center-center">
-                    <h5>wood chair</h5>
+                    <h5>wood SPOON</h5>
                     <p>Lorem ipsum dolor sit amet</p>
                   </div>
                 </div>
@@ -81,16 +83,14 @@ const Cart = () => {
             
             {/* <!-- REMOVE --> */}
             <li class="col-sm-1">
-              <div class="position-center-center"> <a href="#."><i class="icon-close"></i></a> </div>
+              <div class="position-center-center"> <a href="#."><CloseIcon fontSize="large" /></a> </div>
             </li>
           </ul>
-          
         </div>
       </div>
- </section>
-    
-    {/* <!--======= PAGES INNER =========--> */}
-    <section class="padding-top-100 padding-bottom-100 light-gray-bg shopping-cart small-cart">
+    </section>
+           {/* <!--======= PAGES INNER =========--> */}
+        <section class="padding-top-100 padding-bottom-100 light-gray-bg shopping-cart small-cart">
       <div class="container"> 
         
         {/* <!-- SHOPPING INFORMATION --> */}
@@ -109,7 +109,7 @@ const Cart = () => {
             
             {/* <!-- SUB TOTAL --> */}
             <div class="col-sm-5">
-              <h6>grand total</h6>
+              <h6>GRAND TOTAL</h6>
               <div class="grand-total">
                 <div class="order-detail">
                   <p>WOOD CHAIR <span>$598 </span></p>
@@ -126,8 +126,9 @@ const Cart = () => {
       </div>
     </section>
     
-            </main>
-        </div>
-    )
+
+      </main>
+    </div>
+  )
 }
 export default Cart;
