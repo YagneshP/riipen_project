@@ -1,8 +1,26 @@
 import PlaceIcon from "@mui/icons-material/Place";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import EmailIcon from "@mui/icons-material/Email";
+import { useEffect, useRef } from "react";
+import { Loader } from "@googlemaps/js-api-loader";
 
 const Contact = () => {
+  const googlemap = useRef(null);
+  useEffect(() => {
+    const loader = new Loader({
+      // Api key to be changed and billing to be enabled for this to work properly
+      apiKey: "AIzaSyDhr28hjrb6e8URKWKcFZdvr1UtS4nKLDI",
+      version: "weekly",
+    });
+    let map;
+    loader.load().then(() => {
+      map = new google.maps.Map(googlemap.current, {
+        center: { lat: 43.651890, lng: -79.381706 },
+        zoom: 8,
+      });
+    });
+  });
+
   return (
     <div>
       <section className="contact padding-top-100 padding-bottom-100">
@@ -131,7 +149,7 @@ const Contact = () => {
           </div>
         </div>
       </section>
-      {/* Google Map */}
+      <div id="map" ref={googlemap} />
     </div>
   );
 };
