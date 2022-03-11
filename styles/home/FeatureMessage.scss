@@ -1,0 +1,18 @@
+.feature-message {
+  padding: 10rem;
+  text-align: center;
+  
+  h2 {
+    font-family: $header-font;
+    font-size: $m-size;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: $dark-text;
+  }
+
+  p {
+    font-family: $body-font;
+    font-size: $s-size;
+    color: #666666;
+  }
+}
