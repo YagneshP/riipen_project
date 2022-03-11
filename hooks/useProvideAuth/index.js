@@ -19,19 +19,16 @@ const useProvideAuth = () => {
   const auth = getAuth(app); // getting Auth service from firebase
   // connectAuthEmulator(auth, "http://localhost:9099"); // authSimulator runs locally
 
-  const authStateChanged = async (authState, firstName, lastName) => {
+  const authStateChanged = async (authUser, firstName, lastName) => {
     console.log("heeelllo");
-    if (!authState) {
+    if (!authUser) {
       setUser(null);
       setLoading(false);
       // router.push("/register");
       return;
     }
-
     setLoading(true);
-    console.log("AuthState", authState);
-    var formattedUser = formatAuthUser(authState, firstName, lastName);
-    console.log("formattedUser", formattedUser);
+    var formattedUser = formatAuthUser(authUser, firstName, lastName);
     await createUser(formattedUser.uid, formattedUser);
     setUser(formattedUser);
     setLoading(false);
