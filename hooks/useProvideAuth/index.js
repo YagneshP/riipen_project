@@ -64,7 +64,10 @@ const useProvideAuth = () => {
 
   const signingOut = async () => {
     return signOut(auth)
-      .then(() => authStateChanged(false))
+      .then(() => {
+        authStateChanged(false);
+        router.push("/");
+      })
       .catch((err) => console.log(err));
   };
 
