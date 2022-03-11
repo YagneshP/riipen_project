@@ -35,14 +35,18 @@ const useProvideAuth = () => {
   };
 
   const signUp = async (email, password, firstName, lastName) => {
-    const userCredential = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    console.log("User", userCredential.user);
-    await authStateChanged(userCredential.user, firstName, lastName);
-    return userCredential.user;
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      await authStateChanged(userCredential.user, firstName, lastName);
+    } catch (error) {
+      console.log("Error : ", error);
+      // const errorCode = error.code;
+      // const errorMessage = error.message;
+    }
   };
 
   const signIn = async (email, password) =>
