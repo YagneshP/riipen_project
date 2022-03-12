@@ -10,3 +10,11 @@
   padding: 0 15px;
   width: 100%;
 }
+
+.SocialLink {
+  width: 100%;
+  border: 1px solid #2d3a4b;
+  padding: 15px 0;
+  text-align: center;
+  margin-bottom: 20px;
+}

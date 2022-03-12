@@ -71,19 +71,19 @@ function Login() {
               <h6>LOGIN WITH</h6>
 
               <ul className='login-with'>
-                <li>
+                <li className={styles.SocialLink}>
                   <a href='#.'>
                     <i className='fa fa-facebook'></i>FACEBOOK
                   </a>
                 </li>
 
-                <li>
+                <li className={styles.SocialLink}>
                   <a href='#.'>
                     <i className='fa fa-google'></i>GOOGLE
                   </a>
                 </li>
 
-                <li>
+                <li className={styles.SocialLink}>
                   <a href='#.'>
                     <i className='fa fa-twitter'></i>TWITTER
                   </a>
