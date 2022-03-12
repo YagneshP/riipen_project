@@ -1,4 +1,4 @@
-import "firebase/firestore";
+// import "firebase/firestore";
 import { getApps, initializeApp, getApp } from "firebase/app";
 
 const clientCredentials = {
