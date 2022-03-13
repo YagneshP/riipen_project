@@ -14,7 +14,8 @@ const About = () => {
 					</p>
 				</div>
 				<br/><br/>
-				<img className= "about-img" src= "https://via.placeholder.com/970x510.png"/>
+				<img className= "about-img" src= "https://images.unsplash.com/photo-1615634260167-c8cdede054de?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGVyZnVtZXN8ZW58MHx8MHx8&w=970&q=510"/>
+				{/* <img className= "about-img" src= "https://via.placeholder.com/970x510.png"/> */}
 				<div className="vision-text">
 					<div className="col-lg-5">
 						<div className = "left">

@@ -1,0 +1,31 @@
+.products-list {
+  display: flex; 
+  flex-wrap: wrap;
+  margin: auto;
+  justify-content:center;
+}
+
+.product-item {
+  display:flex;
+  flex-direction: column;
+  width: 20%;
+	// flex-basis: 100%;
+   padding: 25px;
+  // justify-content: space-between;
+
+	.product__img {
+		height: 50%;
+	}
+	.product__description{
+  text-align: center;
+  font: 1.5em sans-serif;  
+	}
+	@media (max-width: 480px) {
+		// width: 50%;
+		// height:100px;
+		// flex-basis: 50%;
+		}
+}	
+
+
+
