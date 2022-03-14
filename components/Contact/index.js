@@ -27,11 +27,25 @@ const Contact = () => {
   const [state, handleSubmit] = useForm("mpzblqyb");
 
   if (state.succeeded) {
-    <div id="contact_message" className="success-msg">
-      {" "}
-      <i className="fa fa-paper-plane-o"></i>Thank You. Your Message has been
-      Submitted
-    </div>;
+    return (
+      <div>
+        <section className="contact padding-top-100 padding-bottom-100">
+          <div className="container">
+            <div className="contact-form">
+              <h5> Thank You, Your Message has been Submitted!</h5> <br /> 
+                <h4>
+                Company Name <br /> 
+                Street No. 12, Newyork 12,<br /> 
+                MD - 123, USA. 
+                <br /> 1.800.123.456789 <br />
+                info@ecoshop.com
+                </h4>
+            </div>
+          </div>
+        </section>
+        <div id="map" ref={googlemap} />
+      </div>
+    );
   }
 
   return (
@@ -48,7 +62,103 @@ const Contact = () => {
                   className="contact-form"
                   onSubmit={handleSubmit}
                 >
-                  
+                  <ul className="row">
+                    <li className="col-sm-6">
+                      <label htmlFor="name">
+                        full name *
+                        <input
+                          type="text"
+                          className="form-control"
+                          name="name"
+                          id="name"
+                          placeholder=""
+                        />
+                        <ValidationError
+                          prefix="Name"
+                          field="name"
+                          errors={state.errors}
+                        />
+                      </label>
+                    </li>
+                    <li className="col-sm-6">
+                      <label htmlFor="email">
+                        Email *
+                        <input
+                          type="email"
+                          className="form-control"
+                          name="email"
+                          id="email"
+                          placeholder=""
+                        />
+                        <ValidationError
+                          prefix="Email"
+                          field="email"
+                          errors={state.errors}
+                        />
+                      </label>
+                    </li>
+                    <li className="col-sm-6">
+                      <label htmlFor="phone">
+                        Phone *
+                        <input
+                          type="number"
+                          className="form-control"
+                          name="phone number"
+                          id="company"
+                          placeholder=""
+                        />
+                        <ValidationError
+                          prefix="Phone"
+                          field="phone"
+                          errors={state.errors}
+                        />
+                      </label>
+                    </li>
+                    <li className="col-sm-6">
+                      <label htmlFor="subject">
+                        SUBJECT
+                        <input
+                          type="text"
+                          className="form-control"
+                          name="subject"
+                          id="website"
+                          placeholder=""
+                        />
+                        <ValidationError
+                          prefix="Subject"
+                          field="subject"
+                          errors={state.errors}
+                        />
+                      </label>
+                    </li>
+                    <li className="col-sm-12">
+                      <label>
+                        Message
+                        <textarea
+                          className="form-control"
+                          name="message"
+                          id="message"
+                          rows="5"
+                          placeholder=""
+                        ></textarea>
+                        <ValidationError
+                          prefix="Message"
+                          field="message"
+                          errors={state.errors}
+                        />
+                      </label>
+                    </li>
+                    <li className="col-sm-12">
+                      <button
+                        type="submit"
+                        disabled={state.submitting}
+                        className="button-12"
+                        id="btn_submit"
+                      >
+                        SEND MAIL
+                      </button>
+                    </li>
+                  </ul>
                 </form>
               </div>
 
