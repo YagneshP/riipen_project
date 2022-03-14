@@ -35,7 +35,22 @@ const Contact = () => {
   }
 
   return (
-    
+    <div>
+      <section className="contact padding-top-100 padding-bottom-100">
+        <div className="container">
+          <div className="contact-form">
+            <h5>PLEASE fill-up FEW details</h5>
+            <div className="row">
+              <div className="col-md-8">
+                <form
+                  role="form"
+                  id="contact_form"
+                  className="contact-form"
+                  onSubmit={handleSubmit}
+                >
+                  
+                </form>
+              </div>
 
               <div className="col-md-4">
                 <div className="contact-info">
