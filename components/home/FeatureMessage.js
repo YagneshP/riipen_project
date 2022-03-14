@@ -1,8 +1,8 @@
-const FeatureMessage = () => {
+const FeatureMessage = ({ title, description }) => {
   return ( 
     <div className="feature-message">
-      <h2>New Arrival</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula. Sed feugiat, tellus vel tristique posuere, diam</p>
+      <h2>{title}</h2>
+      <p className="feature-description">{description}</p>
     </div>
   );
 }
