@@ -26,7 +26,7 @@
 		const id = Number(pid) - 1;
   const res = await fetch(`http://localhost:3000/api/products/`);
   const product = await res.json();
-console.log("products",product[id]);
+	console.log("products",product[id]);
   return {
     props: {
       product,
@@ -36,17 +36,24 @@ console.log("products",product[id]);
 
 const Product = ({ product }) => {
 
-	const[reactData, setReactData] = useState([]);
-  useEffect(() => {
-    fetch('http://localhost:3000/api/products/')
-    .then(res => res.json())
-    .then(data => {
-      setReactData(data);
-    }).catch((e) => {console.log(e)});
-  }, []);
+	// const[reactData, setReactData] = useState([]);
+  // useEffect(() => {
+  //   fetch('http://localhost:3000/api/products/')
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     setReactData(data);
+  //   }).catch((e) => {console.log(e)});
+  // }, []);
 	return (
     <>
-		<h1> helllllooo.....{product.id}</h1>
+		{product.map((item) => (
+          <tr>
+            <td>{item.name}</td>
+            <td>{item.brand}</td>
+            <td>{item.id}</td>
+          </tr>
+        ))}
+		<h1> helllllooo.....</h1>
 		{/*         <h2>{data.id}</h2> */}
 		{/* <div className="container">
       <div className="image">
