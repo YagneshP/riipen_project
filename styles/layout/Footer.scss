@@ -1,3 +1,7 @@
+footer{
+  background-color: $dark1;
+}
+
 .footer-columns{
   display: flex;
   flex-direction: column;
@@ -8,6 +12,8 @@
   background-color: $dark1;
   color: $light-on-dark-text;
   font-family: $header-font;
+  max-width: $max-width;
+  margin: auto;
 }
 
 .footer-column{
