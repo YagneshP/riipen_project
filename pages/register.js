@@ -31,81 +31,82 @@ export default function Register() {
   };
 
   return (
-    <div className={styles.Container}>
-      <h6>REGISTER</h6>
-      <form onSubmit={handleSubmit}>
-        <ul style={{ padding: 0 }}>
-          <li className={styles.Form_list}>
-            <label htmlFor='first-name'> *FIRST NAME </label>
-            <input
-              type='text'
-              name='first-name'
-              value={firstName}
-              placeholder='John'
-              onChange={(e) => setFirstName(e.target.value)}
-              required
-            />
-          </li>
+    <div className='row'>
+      <div className='col-sm-12'>
+        <h6>REGISTER</h6>
+        <form onSubmit={handleSubmit}>
+          <ul className='row'>
+            <li className='col-md-6'>
+              <label htmlFor='first-name'> *FIRST NAME </label>
+              <input
+                type='text'
+                name='first-name'
+                value={firstName}
+                placeholder='John'
+                onChange={(e) => setFirstName(e.target.value)}
+                required
+              />
+            </li>
 
-          <li className={styles.Form_list}>
-            <label htmlFor='last-name'> *LAST NAME </label>
-            <input
-              type='text'
-              name='last-name'
-              value={lastName}
-              placeholder='Doe'
-              onChange={(e) => setLastName(e.target.value)}
-            />
-          </li>
+            <li className='col-md-6'>
+              <label htmlFor='last-name'> *LAST NAME </label>
+              <input
+                type='text'
+                name='last-name'
+                value={lastName}
+                placeholder='Doe'
+                onChange={(e) => setLastName(e.target.value)}
+              />
+            </li>
 
-          <li className={styles.Form_list}>
-            <label htmlFor='contry-state'> *EMAIL ADDRESS</label>
-            <input
-              type='email'
-              name='contry-state'
-              value={email}
-              placeholder='john@email.com'
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </li>
+            <li className='col-md-6'>
+              <label htmlFor='contry-state'> *EMAIL ADDRESS</label>
+              <input
+                type='email'
+                name='contry-state'
+                value={email}
+                placeholder='john@email.com'
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </li>
 
-          {/* <li className={styles.Form_list}>
+            {/* <li className="col-md-6">
             <label htmlFor='phone'> *PHONE </label>
             <input type='text' name='phone' value='' placeholder='' />
           </li> */}
-          <li className={styles.Form_list}>
-            <label htmlFor='password'>*PASSWORD</label>
-            <input
-              type='password'
-              name='password'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder=''
-            />
-          </li>
-          <li className={styles.Form_list}>
-            <label htmlFor='re-password'> *REPEAT PASSWORD</label>
-            <input
-              type='password'
-              name='re-password'
-              value={rePassword}
-              onChange={(e) => setRePassword(e.target.value)}
-              placeholder=''
-            />
-          </li>
-          {/* <li className={styles.Form_list}>
+            <li className='col-md-6'>
+              <label htmlFor='password'>*PASSWORD</label>
+              <input
+                type='password'
+                name='password'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder=''
+              />
+            </li>
+            <li className='col-md-6'>
+              <label htmlFor='re-password'> *REPEAT PASSWORD</label>
+              <input
+                type='password'
+                name='re-password'
+                value={rePassword}
+                onChange={(e) => setRePassword(e.target.value)}
+                placeholder=''
+              />
+            </li>
+            {/* <li className="col-md-6">
             <label htmlFor='address-1'>*ADDRESS </label>
 
             <input type='text' name='address-1' value='' placeholder='' />
           </li>
-          <li className={styles.Form_list}>
+          <li className="col-md-6">
             <label htmlFor='address-2'> *ADDRESS</label>
 
             <input type='text' name='address-2' value='' placeholder='' />
           </li> */}
 
-          {/* <li>
+            {/* <li>
             <label>
               {" "}
               COUNTRY
@@ -124,13 +125,14 @@ export default function Register() {
             </label>
           </li> */}
 
-          <li>
-            <button type='submit' className='btn'>
-              REGISTER NOW
-            </button>
-          </li>
-        </ul>
-      </form>
+            <li>
+              <button type='submit' className='btn'>
+                REGISTER NOW
+              </button>
+            </li>
+          </ul>
+        </form>
+      </div>
     </div>
   );
 }
