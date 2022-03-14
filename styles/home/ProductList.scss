@@ -1,0 +1,8 @@
+.new-arrival-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
+  grid-gap: 2rem;
+  place-items: center;
+  max-width: $max-width;
+  margin: auto;
+}
