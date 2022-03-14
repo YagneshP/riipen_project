@@ -17,7 +17,7 @@ const Nav = () => {
 					<li><a href="#">Women&apos;s Frangrances</a></li>
 				</ul>
       <li><a href="#">About Us</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="/contact">Contact</a></li>
       <li><a href="#"><PersonOutlineOutlinedIcon fontSize="large"/></a></li>
       <li><a href="#"><ShoppingCartOutlinedIcon fontSize="large"/></a></li>
       <li><a href="#"><SearchOutlinedIcon fontSize="large"/></a></li>
