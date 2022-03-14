@@ -42,12 +42,16 @@ const Cart = () => {
           
           {/* <!-- Cart Details --> */}
           <ul class="row cart-details">
-            <li class="col-sm-6">
+            <li class="col-sm-2 text-left">
               <div class="media"> 
                 {/* <!-- Media Image --> */}
                 <div class="media-left media-middle"> <a href="#." class="item-img"> <img class="media-object" src="../images/cart-img-3.jpg" alt="Hello" /> </a> </div>
-                
-                {/* <!-- Item Name --> */}
+                </div>
+                </li>
+
+                <li class="col-sm-4 text-left">              
+                <div class="media"> 
+                    {/* <!-- Item Name --> */}
                 <div class="media-body">
                   <div class="position-center-center">
                     <h5>wood SPOON</h5>
