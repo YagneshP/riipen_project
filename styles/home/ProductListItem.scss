@@ -1,0 +1,21 @@
+.new-arrival-product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  
+  a {
+    text-transform: uppercase;
+    color: $dark-text;
+    font-size: 1.8rem;
+    font-weight: 700;
+    font-family: $header-font;
+    letter-spacing: 2px;
+  }
+  
+  p {
+    font-family: $body-font;
+    color: #6F6F6F;
+    font-size: $s-size;
+  }
+}

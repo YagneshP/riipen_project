@@ -1,0 +1,42 @@
+.news-letter {
+  background-color: $dark2;
+  color: $light-on-dark-text;
+  font-family: $header-font;
+  text-align: center;
+  font-size: $s-size;
+  padding: $xxl-size 0;
+
+  h4 {
+    color: $white;
+    font-size: $m-size;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+  }
+
+  p {
+    font-family: $body-font;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  input {
+    height: $xl-size;
+    width: 80%;
+    margin: $l-size;
+    padding: $m-size;
+  }
+
+  Button {
+    border-color: $white;
+    color: $white;
+    padding: $s-size $m-size;
+    font-size: $s-size;
+    letter-spacing: 2px;
+  }
+}
+
