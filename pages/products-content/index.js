@@ -27,8 +27,9 @@ const ProductsContent = () => {
   // if (error) return <div>Failed to load data</div>;
   return (
     <>
-        <section className="products-list">
-					<h1> Frangrances</h1>
+        <section className="products">
+					<h1> Fragrances</h1>
+          <div className="products-list">
 					{/* {allItems} */}
           {items.map(item => (
             <ProductItem 
@@ -42,6 +43,7 @@ const ProductsContent = () => {
 							brand={item.brand} 
             />
           ))}
+          </div>
         </section>
     </>
   );
