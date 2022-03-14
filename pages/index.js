@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import FeatureMessage from "../components/home/FeatureMessage";
 import ProductCarousel from "../components/home/ProductCarousel";
 import ProductList from "../components/home/ProductList";
