@@ -1,19 +1,31 @@
+/* eslint-disable */
 import Link from 'next/link';
+import Image from "next/image";
+
 
 const ProductItem = ({ discount, productImage, id, brand, name, price, currentPrice }) => {
 
   return (
-    <div className="product-item">
+    <div className="new-arrival-product">
       <div className="product__image">
 
         <Link href={`/product/${id}`}>
           <a>
             <img src={productImage} alt="product" />
-            {discount && 
-              <span className="product__discount">{discount}%</span>
+					</a>
+						{/* <Image 
+							src={productImage}
+							alt="Logo"
+							width="270px"
+							height="352px"
+      			/> */}
+				</Link>
+
+            {discount &&
+              <p className="product__discount">{discount}%</p>
             }
-          </a>
-        </Link>
+          
+     
       </div>
       
       <div className="product__description">
@@ -22,7 +34,7 @@ const ProductItem = ({ discount, productImage, id, brand, name, price, currentPr
         <div className={"product__price " + (discount ? 'product__price--discount' : '')} >
           <h4>${ currentPrice }</h4>
 
-          {discount &&  
+          {discount &&
             <span>${ price }</span>
           }
         </div>

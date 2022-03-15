@@ -1,9 +1,11 @@
 .products {
-	.products-list{
-  display: flex; 
-  flex-wrap: wrap;
-  margin: auto;
-  justify-content:center;
+	.new-arrival-products {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
+		grid-gap: 2rem;
+		place-items: center;
+		max-width: $max-width;
+		margin: auto;
 	}
 	h1{
 		font-size: 25px;
@@ -25,28 +27,55 @@
   justify-content: center;
 
 	.product__img {
-		height: 50%;
+		height: 20%;
 	}
 	.product__description{
   text-align: center;
   font: 1.5em sans-serif;  
 	}
-	@media (max-width: 480px) {
-		// width: 50%;
-		// height:100px;
-		// flex-basis: 50%;
-		}
+
 }	
 
 
-.container{
-	display: flex;
-  align-items: center;
-  justify-content: left;
-	margin: 100px;
 
-	image{
-		width: 800px;
-		height:800px;
-	}
-}
+// .container {
+//   max-width: 380px;
+//   margin-left: auto;
+//   margin-right: auto;
+//   padding-left: 16px;
+//   padding-right: 16px;
+//   @include breakpoint(phone) {
+//     max-width: 650px;
+//     margin-left: auto;
+//     margin-right: auto;
+//   }
+//   @include breakpoint(tablet-lg) {
+//     max-width: 980px;
+//     margin-left: auto;
+//     margin-right: auto;
+//   }
+//   @include breakpoint(desktop-lg) {
+//     max-width: 1280px;
+//     margin-left: auto;
+//     margin-right: auto;
+//   }
+// }
+// .container{
+// 	display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+// 	margin: 100px;
+
+// .image{
+// 	float:left;
+// 	width: 700px;
+// 	height:710px;
+// 	}
+// 	.description{
+// 	float:right;
+// 	width: 700px;
+// 	height:710px;
+// 	}
+// }
+
+

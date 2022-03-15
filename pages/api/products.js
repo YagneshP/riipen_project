@@ -1,3 +1,4 @@
+/* eslint-disable */
 // fake data
 import products from '../../utils/data/products';
 

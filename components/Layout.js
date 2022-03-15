@@ -1,18 +1,25 @@
 import Footer from './Footer';
-import Header from './Header/index';
+import Header from './Header';
+import Banner from './Header/Banner';
+import NewsletterForm from './NewsletterForm';
+// import Header from './Header/index';
 import Cart from './Cart/index';
 // import Header from './Header';
-import Contact from './Contact'
+import Contact from './Contact';
 
 const Layout = ({ children }) => {
-  return ( 
+  return (
     <div className="content">
       <Header />
 
         { children }
       <Footer />
+      {/* <Banner /> */}
+      {/* <Cart /> */}
+      {/* { children } */}
+      {/* <NewsletterForm /> */}
+      {/* <Footer /> */}
     </div>
-   );
-}
- 
+  );
+};
 export default Layout;
