@@ -29,7 +29,7 @@ const Product = ({ product }) => {
                 <p>Designer :<span> ABC Art</span></p>
                 <p>Brand:<span> {product.brand}</span></p>
           </div>
-				<p className="product-short-des">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum finibus ligula a scelerisque gravida. Nullam laoreet tortor ac maximus alique met, consectetur adipiscing elit. Vestibulum finibus ligula a scelerisque gravida. Nullam</p>
+				<p className="product-des">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum finibus ligula a scelerisque gravida. Nullam laoreet tortor ac maximus alique met, consectetur adipiscing elit. Vestibulum finibus ligula a scelerisque gravida. Nullam</p>
 				<div > 
 						<h3>Quantity</h3>
 								<select className="quantity">
