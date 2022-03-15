@@ -5,19 +5,18 @@ import NewsletterForm from './NewsletterForm';
 // import Header from './Header/index';
 import Cart from './Cart/index';
 // import Header from './Header';
-import Contact from './Contact'
+import Contact from './Contact';
 
 const Layout = ({ children }) => {
-  return ( 
+  return (
     <div className="content">
       <Header />
       <Banner />
-      <Cart />
-        { children }
+      {/* <Cart /> */}
+      { children }
       <NewsletterForm />
       <Footer />
     </div>
-   );
-}
- 
+  );
+};
 export default Layout;

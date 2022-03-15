@@ -5,10 +5,8 @@
   padding: $l-size;
 }
 
-<<<<<<< HEAD
 ul.nav{
    //don't show nav list/links on mobile view. Show hamburger menu instead
-=======
 .nav{
   display: flex;
 	justify-content: center;
@@ -30,6 +28,6 @@ ul.nav{
 }
 
 .sub-menu {
->>>>>>> origin/cart
   display: none;
+}
 }
