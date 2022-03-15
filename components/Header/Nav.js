@@ -19,7 +19,7 @@ const Nav = () => {
       <li><a href="#">About Us</a></li>
       <li><a href="/contact">Contact</a></li>
       <li><a href="#"><PersonOutlineOutlinedIcon fontSize="large"/></a></li>
-      <li><a href="./components/Cart"><ShoppingCartOutlinedIcon fontSize="large"/></a></li>
+      <li><a href="/cart"><ShoppingCartOutlinedIcon fontSize="large"/></a></li>
       <li><a href="#"><SearchOutlinedIcon fontSize="large"/></a></li>
     </ul>
    );
