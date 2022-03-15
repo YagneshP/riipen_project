@@ -1,8 +1,19 @@
 import Image from "next/image";
 // import '../styles/cart'
 import CloseIcon from '@mui/icons-material/Close';
-
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 const Cart = () => {
+  console.log("Hello")
+	const [items, setItems] = useState([]);
+	const url = "http://localhost:3002/api/carts";
+	useEffect(() => {
+		axios.get(url)
+			.then((data) => {
+				console.log("data", data);
+				setItems(data.data);
+			});
+	}, []);
   return (
     <div>
       <main>

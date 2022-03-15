@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 export async function getServerSideProps({ query }) {
 	const pid = query.pid;
-	const res = await fetch(`http://localhost:3000/api/product/${pid}`);
+	const res = await fetch(`http://localhost:3002/api/product/${pid}`);
 	const product = await res.json();
 	return {
 	props: {

@@ -11,7 +11,7 @@ const ProductsContent = () => {
 
 console.log("Hello")
 	const [items, setItems] = useState([]);
-	const url = "http://localhost:3000/api/products";
+	const url = "http://localhost:3002/api/products";
 	useEffect(() => {
 		axios.get(url)
 			.then((data) => {
