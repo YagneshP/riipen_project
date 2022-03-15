@@ -11,7 +11,7 @@ const Contact = () => {
   useEffect(() => {
     const loader = new Loader({
       // Api key to be changed and billing to be enabled for this to work properly
-      apiKey: "AIzaSyDhr28hjrb6e8URKWKcFZdvr1UtS4nKLDI",
+      apiKey: "", //Api key needed
       version: "weekly",
     });
     let map;
@@ -24,7 +24,7 @@ const Contact = () => {
   });
 
   // Form spree setup
-  const [state, handleSubmit] = useForm("mpzblqyb");
+  const [state, handleSubmit] = useForm("");//Api key needed from form spree
 
   if (state.succeeded) {
     return (
