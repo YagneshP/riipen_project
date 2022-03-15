@@ -7,6 +7,6 @@ module.exports = nextConfig
 
 module.exports = {
   images: {
-    domains: ['via.placeholder.com', 'encrypted-tbn0.gstatic.com'],
+    domains: ['via.placeholder.com', 'encrypted-tbn0.gstatic.com', 'placeimg.com'],
   },
 }
