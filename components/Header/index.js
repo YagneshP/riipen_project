@@ -7,19 +7,20 @@ const Header = () => {
   const [isDesktop, setDesktop] = useState(false);
 
   useEffect(() => {
-    if (window.innerWidth > 767) {
+    if (window.innerWidth > 797) {
       setDesktop(true);
     } else {
       setDesktop(false);
     }
 
     const updateMedia = () => {
-      if (window.innerWidth > 767) {
+      if (window.innerWidth > 797) {
         setDesktop(true);
       } else {
         setDesktop(false);
       }
     };
+
     window.addEventListener("resize", updateMedia);
     return () => window.removeEventListener("resize", updateMedia);
   }, []);
