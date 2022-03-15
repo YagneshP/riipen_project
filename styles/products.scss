@@ -37,20 +37,45 @@
 }	
 
 
-.container{
-	display: flex;
-  align-items: center;
-  justify-content: space-between;
-	margin: 100px;
 
-.image{
-	float:left;
-		width: 700px;
-		height:710px;
-	}
-	.description{
-float:right;
-	}
-}
+// .container {
+//   max-width: 380px;
+//   margin-left: auto;
+//   margin-right: auto;
+//   padding-left: 16px;
+//   padding-right: 16px;
+//   @include breakpoint(phone) {
+//     max-width: 650px;
+//     margin-left: auto;
+//     margin-right: auto;
+//   }
+//   @include breakpoint(tablet-lg) {
+//     max-width: 980px;
+//     margin-left: auto;
+//     margin-right: auto;
+//   }
+//   @include breakpoint(desktop-lg) {
+//     max-width: 1280px;
+//     margin-left: auto;
+//     margin-right: auto;
+//   }
+// }
+// .container{
+// 	display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+// 	margin: 100px;
+
+// .image{
+// 	float:left;
+// 	width: 700px;
+// 	height:710px;
+// 	}
+// 	.description{
+// 	float:right;
+// 	width: 700px;
+// 	height:710px;
+// 	}
+// }
 
 

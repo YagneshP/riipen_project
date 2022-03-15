@@ -1,0 +1,129 @@
+.container{
+	display:flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: space-between;
+}
+
+.image{
+	width: 50%;
+	// padding: 20px;
+	position: relative;
+	float:left;
+}
+
+.details{
+	margin-left: 100px;
+	width: 50%;
+	float:right;
+}
+
+.details .product-name{
+	text-transform: uppercase;
+	// font-size: 30px;
+	font-size: 2.4rem;
+	font-weight: 700;
+	font-family: $header-font;
+	letter-spacing: 2px;
+	padding-bottom: 5px;
+}
+
+.details .product-brand{
+	text-transform: capitalize;
+	font-size: 30px;
+}
+
+.details .product-short-des{
+	font-family: 'Playfair Display', serif;
+	font-size: 18px;
+	line-height: 30px;
+	height: auto;
+	margin: 15px 0 30px;
+}
+
+.product-price{
+	font-weight: 700;
+	font-size: 2rem;
+	padding-bottom: 15px;
+}
+
+.details .item-owner {
+	margin: 20px 0;
+	border-top: 2px solid rgba(0,0,0,0.1);
+}
+.details .item-owner p {
+	font-size: 15px;
+	color: #2d3a4b;
+	border-bottom: 2px solid rgba(0,0,0,0.1);
+	// border-top: 2px solid rgba(0,0,0,0.1);
+	line-height: 36px;
+}
+.details .item-owner p span {
+	color: #ffe115;
+}
+
+.details .quantity {
+	padding-left: 35px; 
+	width: 120px;
+	border: 4px solid #999;
+	font-size: 18px;
+}
+.colors-shop{
+	display: flex;
+  position: fixed;
+  // bottom: 2em;
+  // right: 2em;
+  z-index: 3;
+	.color{
+		height: 20px;
+  width: 20px;
+  margin-left: 0.5em;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+  border: 2px solid #aaa;
+  cursor: pointer;
+	}
+.color1{
+	background:#958170;
+}
+.color2{
+	background:#c9a688;;
+}
+.color3{
+	background:#c9c288;
+}
+.color4{
+	background:#a7c988;
+}
+.color5{
+	background:#9ed66b;
+}
+.color6{
+	background:#6bd6b1;
+}
+.color7{
+	background:#82c2dc;
+}
+.color8{
+	background:#8295dc;
+}
+}
+
+.cart-btn{
+	border: 1px transparent;
+	color: #fff;
+	padding: 5px 30px;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 20px;
+	border-radius: 0px;
+	font-family: 'Montserrat', sans-serif;
+	line-height: 30px;
+	background: #010c1a;
+	letter-spacing: 1px;
+	position: relative;
+	z-index: 1;
+
+}
+
+
