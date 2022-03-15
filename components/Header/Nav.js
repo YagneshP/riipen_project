@@ -5,7 +5,7 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 const Nav = () => {
   return ( 
     <ul className='nav'>
-      <li><a href="#">Home</a></li>
+      <li><a href="/">Home</a></li>
       <li><a href="#">Store</a></li>
         <ul className="sub-menu">
 					<li><a href="#">Men&apos;s Frangrances</a></li>
