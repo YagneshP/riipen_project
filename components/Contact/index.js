@@ -11,7 +11,7 @@ const Contact = () => {
   useEffect(() => {
     const loader = new Loader({
       // Api key to be changed and billing to be enabled for this to work properly
-      apiKey: process.env.KEY1,
+      apiKey: process.env.NEXT_PUBLIC_GOOGLEMAPS_API,
       version: "weekly",
     });
     let map;
@@ -24,7 +24,7 @@ const Contact = () => {
   });
 
   // Form Spree Setup
-  const [state, handleSubmit] = useForm(`${process.env.NEXT_PUBLIC_KEY1}`);
+  const [state, handleSubmit] = useForm(`${process.env.NEXT_PUBLIC_FORMSPREE_API}`);
 
   if (state.succeeded) {
     return (
