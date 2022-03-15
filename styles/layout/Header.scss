@@ -5,7 +5,31 @@
   padding: $l-size;
 }
 
+<<<<<<< HEAD
 ul.nav{
    //don't show nav list/links on mobile view. Show hamburger menu instead
+=======
+.nav{
+  display: flex;
+	justify-content: center;
+  align-items: center;
+	list-style-type: none;
+	padding-inline-start: 0;
+  text-transform: uppercase;
+  font-family: $header-font;
+
+  li {
+    margin: 0 15px;
+  }
+
+  a{
+    text-decoration: none;
+	  color: gray;
+  }
+  
+}
+
+.sub-menu {
+>>>>>>> origin/cart
   display: none;
 }

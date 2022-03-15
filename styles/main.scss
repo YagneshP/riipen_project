@@ -1,5 +1,6 @@
 @import './variables';
 @import './layout/Header.scss';
+<<<<<<< HEAD
 @import './layout/Footer.scss';
 @import './layout/NewsletterForm.scss';
 @import './layout/layout.scss';
@@ -7,4 +8,9 @@
 @import './home/ProductList.scss';
 @import './home/ProductListItem.scss';
 @import './home/ProductCarousel.scss';
+=======
+@import './Cart/Cart.scss';
+@import 'bootstrap/dist/css/bootstrap.css';
+// @import './layout/layout.scss';
+>>>>>>> origin/cart
 @import './Contact/Contact.scss';
