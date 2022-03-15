@@ -1,12 +1,15 @@
 import Footer from './Footer';
 import Header from './Header';
-import Contact from './Contact'
+import Banner from './Header/Banner';
+import NewsletterForm from './NewsletterForm';
 
 const Layout = ({ children }) => {
   return ( 
     <div className="content">
       <Header />
+      <Banner />
         { children }
+      <NewsletterForm />
       <Footer />
     </div>
    );

@@ -1,0 +1,40 @@
+@media screen and (min-width: $mobile-breakpoint){
+  .footer-columns{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .news-letter{
+    form{
+      display: block;
+    }
+
+    input{
+      max-width: 560px;
+    }
+  }
+
+  ul.nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    padding-inline-start: 0;
+    text-transform: uppercase;
+    font-family: $header-font;
+  
+    li {
+      margin: 0 15px;
+    }
+  
+    a{
+      text-decoration: none;
+      color: gray;
+    }
+ 
+    .sub-menu {
+      display: none;
+    }
+  }
+
+}

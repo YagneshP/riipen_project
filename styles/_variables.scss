@@ -1,13 +1,14 @@
 // Fonts
 $header-font: 'Monteserrat', sans-serif;
-$body-font: 'Playfair', sans-serif;
-$font-family: "Source Sans Pro", sans-serif;
-$logo-font: 'Poppins', sans-serif;
+$body-font: 'Playfair Display', serif;
 
 // Colours
 $white: #fff;
-$black: #000;
+$dark-text: #2D3A4b;
 $green-black: #3F4D42;
+$dark1: #131920;
+$dark2: #171E27;
+$light-on-dark-text: #999;
 
 $s-size: 1.4rem;
 $m-size: 2.4rem;
@@ -17,3 +18,4 @@ $xxl-size: 8rem;
 
 //Breakpoints
 $mobile-breakpoint: 767px;
+$max-width: 1200px;
