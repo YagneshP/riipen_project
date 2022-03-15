@@ -11,7 +11,7 @@ const Contact = () => {
   useEffect(() => {
     const loader = new Loader({
       // Api key to be changed and billing to be enabled for this to work properly
-      apiKey: "AIzaSyDhr28hjrb6e8URKWKcFZdvr1UtS4nKLDI",
+      apiKey: process.env.KEY1,
       version: "weekly",
     });
     let map;
@@ -23,8 +23,8 @@ const Contact = () => {
     });
   });
 
-  // Form spree setup
-  const [state, handleSubmit] = useForm("mpzblqyb");
+  // Form Spree Setup
+  const [state, handleSubmit] = useForm(`${process.env.NEXT_PUBLIC_KEY1}`);
 
   if (state.succeeded) {
     return (
@@ -32,14 +32,15 @@ const Contact = () => {
         <section className="contact padding-top-100 padding-bottom-100">
           <div className="container">
             <div className="contact-form">
-              <h5> Thank You, Your Message has been Submitted!</h5> <br /> 
-                <h4>
-                Company Name <br /> 
-                Street No. 12, Newyork 12,<br /> 
-                MD - 123, USA. 
+              <h5> Thank You, Your Message has been Submitted!</h5> <br />
+              <h4>
+                Company Name <br />
+                Street No. 12, Newyork 12,
+                <br />
+                MD - 123, USA.
                 <br /> 1.800.123.456789 <br />
                 info@ecoshop.com
-                </h4>
+              </h4>
             </div>
           </div>
         </section>
