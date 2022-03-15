@@ -37,7 +37,7 @@ export default function Register() {
             <h6>REGISTER</h6>
             <form onSubmit={handleSubmit}>
               <ul className='row ul_row'>
-                <li className='col-md-6 mb-3'>
+                <li className='col-md-6 mb-3 mt-3'>
                   <label className='form-label' htmlFor='first-name'>
                     {" "}
                     *FIRST NAME{" "}
@@ -54,7 +54,7 @@ export default function Register() {
                   />
                 </li>
 
-                <li className='col-md-6 mb-3'>
+                <li className='col-md-6 mb-3 mt-3'>
                   <label className='form-label' htmlFor='last-name'>
                     {" "}
                     *LAST NAME{" "}
@@ -69,7 +69,7 @@ export default function Register() {
                   />
                 </li>
 
-                <li className='col-md-6 mb-3'>
+                <li className='col-md-6 mb-3 mt-3'>
                   <label className='form-label' htmlFor='contry-state'>
                     {" "}
                     *EMAIL ADDRESS
@@ -89,7 +89,7 @@ export default function Register() {
             <label className="form-label" htmlFor='phone'> *PHONE </label>
             <input type='text' name='phone' value='' placeholder='' />
           </li> */}
-                <li className='col-md-6 mb-3'>
+                <li className='col-md-6 mb-3 mt-3'>
                   <label className='form-label' htmlFor='password'>
                     *PASSWORD
                   </label>
@@ -102,7 +102,7 @@ export default function Register() {
                     placeholder=''
                   />
                 </li>
-                <li className='col-md-6 mb-3'>
+                <li className='col-md-6 mb-3 mt-3'>
                   <label className='form-label' htmlFor='re-password'>
                     {" "}
                     *REPEAT PASSWORD
@@ -146,7 +146,7 @@ export default function Register() {
             </label>
           </li> */}
 
-                <li>
+                <li className='mt-3'>
                   <button type='submit' className='btn mb-3'>
                     REGISTER NOW
                   </button>
