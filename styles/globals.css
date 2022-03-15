@@ -16,49 +16,4 @@ a {
   box-sizing: border-box;
 }
 
-input {
-  border: 1px solid #2d3a4b;
-  height: 44px;
-  width: 100%;
-  text-align: left;
-  padding: 0 10px;
-  font-size: 11px;
-  margin-top: 10px;
-}
-
-h6 {
-  color: #2d3a4b;
-  font-size: 20px;
-  letter-spacing: 3px;
-}
-h6::before {
-  width: 60px;
-  height: 2px;
-  background: #2d3a4b;
-  border: none;
-  content: "";
-  display: inline-block;
-  position: absolute;
-  margin-top: 30px;
-}
-ul {
-  list-style: none;
-}
-
-.btn {
-  border: none;
-  color: #fff;
-  display: inline-block;
-  padding: 5px 50px;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 18px;
-  border-radius: 0px;
-  font-family: "Montserrat", sans-serif;
-  line-height: 46px;
-  background: #2d3a4b;
-  letter-spacing: 1px;
-  /* position: relative;
-	z-index: 1; */
-}
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@400;700;900&display=swap");
