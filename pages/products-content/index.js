@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 // import useSwr from 'swr';
 import ProductItem from './ProductItem';
 import React, { useState, useEffect } from "react";
@@ -8,7 +10,6 @@ const ProductsContent = () => {
 	// const { data, error } = useSwr('/api/products', fetcher);
 
 	const [items, setItems] = useState([]);
-
 	const url = "http://localhost:3000/api/products";
 	useEffect(() => {
 		axios.get(url)
@@ -18,12 +19,11 @@ const ProductsContent = () => {
 			});
 	}, []);
 
-	console.log("itmes", items);
 	return (
 		<>
 			<section className="products">
 				<h1> Fragrances</h1>
-				<div className="products-list">
+				<div className="new-arrival-products">
 
 					{items.map(item => (
 						<ProductItem

@@ -11,11 +11,11 @@ const Layout = ({ children }) => {
   return (
     <div className="content">
       <Header />
-      <Banner />
+      {/* <Banner /> */}
       {/* <Cart /> */}
       { children }
-      <NewsletterForm />
-      <Footer />
+      {/* <NewsletterForm /> */}
+      {/* <Footer /> */}
     </div>
   );
 };
