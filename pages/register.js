@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../context/Auth";
 import { getAuth, connectAuthEmulator } from "firebase/auth";
 import { useRouter } from "next/router";
-import styles from "../styles/register.module.css";
 
 export default function Register() {
   const [firstName, setFirstName] = useState("");
@@ -50,6 +49,7 @@ export default function Register() {
                   placeholder='John'
                   onChange={(e) => setFirstName(e.target.value)}
                   required
+                  style={{ borderColor: "#2D3A4b" }}
                 />
               </li>
 
