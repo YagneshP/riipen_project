@@ -27,11 +27,28 @@
       font-size: 20px;
       border-color: $dark-text;
     }
-
     .form-label {
       font-size: $s-size;
       @media (min-width: $mobile-breakpoint) {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
+      }
+    }
+    .btn {
+      border: none;
+      color: #fff;
+      display: inline-block;
+      padding: 0px 30px;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 18px;
+      border-radius: 0px;
+      font-family: "Montserrat", sans-serif;
+      line-height: 46px;
+      background: #2d3a4b;
+      letter-spacing: 1px;
+      @media (min-width: $mobile-breakpoint) {
+        font-size: 18px;
+        padding: 5px 50px;
       }
     }
   }
@@ -40,20 +57,3 @@ section {
   padding-top: 100px;
   padding-bottom: 100px;
 }
-
-// .btn {
-//   border: none;
-//   color: #fff;
-//   display: inline-block;
-//   padding: 5px 50px;
-//   text-transform: uppercase;
-//   font-weight: bold;
-//   font-size: 18px;
-//   border-radius: 0px;
-//   font-family: "Montserrat", sans-serif;
-//   line-height: 46px;
-//   background: #2d3a4b;
-//   letter-spacing: 1px;
-//   /* position: relative;
-// 	z-index: 1; */
-// }
