@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/Auth";
-import styles from "../styles/register.module.css";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -15,42 +14,47 @@ function Login() {
     }
   };
   return (
-    <div className={styles.Container}>
-      <div className='shopping-cart'>
-        <div className='cart-ship-info'>
-          <div className='row'>
-            <div className='col-sm-7'>
-              <h6>LOGIN YOUR ACCOUNT</h6>
-              <form onSubmit={handleSubmit}>
-                <ul className='row'>
-                  <li className={styles.Form_list}>
-                    <label htmlFor='email'>EMAIL</label>
-                    <input
-                      type='email'
-                      name='email'
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder=''
-                    />
-                  </li>
+    <section>
+      <div className='container'>
+        <div className='row form_container'>
+          <div className='col-sm-7'>
+            <h6>LOGIN YOUR ACCOUNT</h6>
+            <form onSubmit={handleSubmit}>
+              <ul className='row ul_row'>
+                <li className='col-md-12 mb-3'>
+                  <label htmlFor='email' className='form-label'>
+                    EMAIL
+                  </label>
+                  <input
+                    type='email'
+                    name='email'
+                    value={email}
+                    className='form-control'
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder=''
+                  />
+                </li>
 
-                  <li className={styles.Form_list}>
-                    <label htmlFor='password'>PASSWORD </label>
-                    <input
-                      type='password'
-                      name='password'
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      placeholder=''
-                    />
-                  </li>
+                <li className='col-md-12 mb-3'>
+                  <label htmlFor='password' className='form-label'>
+                    PASSWORD{" "}
+                  </label>
+                  <input
+                    type='password'
+                    name='password'
+                    value={password}
+                    className='form-control'
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder=''
+                  />
+                </li>
 
-                  <li className={styles.Form_list}>
-                    <button type='submit' className='btn'>
-                      LOGIN
-                    </button>
-                  </li>
-                  {/* 
+                <li className='col-md-4'>
+                  <button type='submit' className='btn'>
+                    LOGIN
+                  </button>
+                </li>
+                {/* 
                   <li className ='col-md-4'>
                     <div className ='checkbox margin-0 margin-top-20'>
                       <input id='checkbox1' className ='styled' type='checkbox' />
@@ -63,37 +67,36 @@ function Login() {
                       <a href='#.'>Forget Password</a>
                     </div>
                   </li> */}
-                </ul>
-              </form>
-            </div>
-
-            <div className='col-sm-5'>
-              <h6>LOGIN WITH</h6>
-
-              <ul className='login-with'>
-                <li className={styles.SocialLink}>
-                  <a href='#.'>
-                    <i className='fa fa-facebook'></i>FACEBOOK
-                  </a>
-                </li>
-
-                <li className={styles.SocialLink}>
-                  <a href='#.'>
-                    <i className='fa fa-google'></i>GOOGLE
-                  </a>
-                </li>
-
-                <li className={styles.SocialLink}>
-                  <a href='#.'>
-                    <i className='fa fa-twitter'></i>TWITTER
-                  </a>
-                </li>
               </ul>
-            </div>
+            </form>
+          </div>
+
+          <div className='col-sm-5 social_links'>
+            <h6>LOGIN WITH</h6>
+
+            <ul className='login-with'>
+              <li>
+                <a href='#.'>
+                  <i className='fa fa-facebook'></i>FACEBOOK
+                </a>
+              </li>
+
+              <li>
+                <a href='#.'>
+                  <i className='fa fa-google'></i>GOOGLE
+                </a>
+              </li>
+
+              <li>
+                <a href='#.'>
+                  <i className='fa fa-twitter'></i>TWITTER
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

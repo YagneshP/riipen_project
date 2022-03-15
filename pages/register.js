@@ -31,7 +31,7 @@ export default function Register() {
 
   return (
     <section>
-      <div className='row register_container'>
+      <div className='row form_container'>
         <div className='col-sm-12'>
           <h6>REGISTER</h6>
           <form onSubmit={handleSubmit}>
