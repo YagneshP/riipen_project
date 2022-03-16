@@ -19,7 +19,8 @@ export default function Register() {
       //check if passwords match. If they do, create user in Firebase
       // and redirect to home page.
       if (password === rePassword) {
-        const user = await signUp(email, password);
+        const userInfo = { firstName, lastName, password, email };
+        await signUp(userInfo);
         router.push("/logged_in"); // redirect user to home page [could be change depend on history location]
       } else {
         setError("Password do not match");

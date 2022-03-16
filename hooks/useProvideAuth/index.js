@@ -6,11 +6,13 @@ import {
   createUserWithEmailAndPassword,
   connectAuthEmulator,
   signInWithEmailAndPassword,
+  updateProfile,
+  updateCurrentUser,
 } from "firebase/auth";
 
 import formatAuthUser from "../../utils/formatAuthUser";
 import app from "../../lib/firebase";
-import { createUser } from "../../lib/db";
+import { createUser, getUser } from "../../lib/db";
 import { useRouter } from "next/router";
 
 const useProvideAuth = () => {
@@ -21,30 +23,38 @@ const useProvideAuth = () => {
   // connectAuthEmulator(auth, "http://localhost:9099"); // authSimulator runs locally
 
   const authStateChanged = async (authUser) => {
-    console.log("heeelllo");
-    if (!authUser) {
+    if (authUser) {
+      setLoading(true);
+      console.log("AuthUser", authUser);
+      var formattedUser = formatAuthUser(authUser);
+      await createUser(formattedUser.uid, formattedUser);
+      console.log("formattedUser", formattedUser);
+      setUser(formattedUser);
+      setLoading(false);
+      return formattedUser;
+    } else {
       setUser(null);
       setLoading(false);
-      // router.push("/register");
       return;
     }
-    console.log("AuthUser", authUser);
-    setLoading(true);
-    var formattedUser = formatAuthUser(authUser);
-    await createUser(formattedUser.uid, formattedUser);
-    setUser(formattedUser);
-    setLoading(false);
-    router.push("/logged_in");
   };
 
-  const signUp = async (email, password) => {
+  const signUp = async (userInfo) => {
+    const { email, password, firstName, lastName } = userInfo;
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
-      await authStateChanged(userCredential.user);
+
+      //update userprofile
+      await updateProfile(auth.currentUser, {
+        displayName: `${firstName} ${lastName}`,
+      });
+
+      console.log("user", userCredential.user);
+      await authStateChanged(user);
     } catch (error) {
       console.log("Error while signUp: ", error);
       // const errorCode = error.code;
@@ -59,15 +69,20 @@ const useProvideAuth = () => {
         email,
         password
       );
-      await authStateChanged(userCredential);
+      console.log("userCredential", userCredential.user);
+      const user = auth.currentUser;
+      console.log("onlyUser", user);
+      console.log("provider", userCredential.user.providerData);
+      // await authStateChanged(userCredential);
     } catch (error) {
       console.log("Error while signIn : ", error);
     }
   };
   const signingOut = async () => {
     return signOut(auth)
-      .then(() => {
-        authStateChanged(false);
+      .then(async () => {
+        console.log("signout User", auth.currentUser);
+        await authStateChanged(false);
         router.push("/");
       })
       .catch((err) => console.log("Error while signout", err));

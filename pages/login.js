@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/Auth";
 
@@ -5,10 +6,12 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { signIn } = useContext(AuthContext);
+  const router = useRouter();
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await signIn(email, password);
+      router.push("/logged_in");
     } catch (error) {
       console.log("Error in signIn component");
     }
