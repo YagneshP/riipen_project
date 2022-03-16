@@ -30,13 +30,13 @@ const ProductCarousel = () => {
       image: "https://placeimg.com/360/360/any/grayscale"
     },
     {
-      id: 4,
+      id: 5,
       itemName: "Gucci",
       itemDesc: "Placeholder text. Item description goes here for new arrivals",
       image: "https://placeimg.com/360/360/any/grayscale"
     },
     {
-      id: 4,
+      id: 6,
       itemName: "Dior",
       itemDesc: "Placeholder text. Item description goes here for new arrivals",
       image: "https://placeimg.com/360/360/any/grayscale"
@@ -74,6 +74,7 @@ const ProductCarousel = () => {
     return (
       <div key={item.id} style={{ "margin": "1rem" }}>
         <ProductListItem
+          key={item.id}
           itemName={item.itemName}
           itemDesc={item.itemDesc}
           image={item.image}

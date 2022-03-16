@@ -17,10 +17,6 @@ footer{
 }
 
 .footer-column{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
   margin: $m-size;
 
   h6{
@@ -29,13 +25,26 @@ footer{
     color: $white;
     margin: 0;
     letter-spacing: 1.5px;
+    font-weight: 700;
+    padding-bottom: $s-size;
+  }
+
+  p {
+    padding-bottom: $s-size;
+  }
+
+  .logo {
+    margin-bottom: $s-size;
   }
 }
 
 .footer-links{
-  text-decoration: none;
   list-style-type: none;
   padding: 0;
+  a {
+    text-decoration: none;
+    color: $light-on-dark-text;
+  }
 
   li{
     padding-bottom: $s-size;

@@ -27,13 +27,13 @@ const ProductList = () => {
       image: "https://placeimg.com/360/360/any/grayscale"
     },
     {
-      id: 4,
+      id: 5,
       itemName: "Gucci",
       itemDesc: "Placeholder text. Item description goes here for new arrivals",
       image: "https://placeimg.com/360/360/any/grayscale"
     },
     {
-      id: 4,
+      id: 6,
       itemName: "Dior",
       itemDesc: "Placeholder text. Item description goes here for new arrivals",
       image: "https://placeimg.com/360/360/any/grayscale"
