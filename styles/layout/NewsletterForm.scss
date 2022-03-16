@@ -11,6 +11,9 @@
     font-size: $m-size;
     letter-spacing: 5px;
     text-transform: uppercase;
+    // had to add these styles after reboot.css file was added
+    font-weight: 700;
+    margin: 3.2rem;
   }
 
   p {

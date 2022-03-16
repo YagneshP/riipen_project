@@ -5,7 +5,13 @@
   padding: $l-size;
 }
 
-ul.nav{
-   //don't show nav list/links on mobile view. Show hamburger menu instead
-  display: none;
+.mobile-nav-list {
+  li {
+    padding-bottom: $m-size;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
 }
