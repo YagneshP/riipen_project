@@ -50,4 +50,4 @@ return(
           </ul>
           </>
 )};
-export default CartItem
+export default CartItem;

@@ -27,7 +27,7 @@ const Cart = () => {
     <div>
       <main>
         <section className="padding-top-100 padding-bottom-100 pages-in chart-page">
-          <div className="container">
+          <div className="main">
 
             {/* <!-- Payments Steps --> */}
             <div className="shopping-cart text-center">
@@ -74,7 +74,7 @@ const Cart = () => {
         </section>
         {/* <!--======= PAGES INNER =========--> */}
         <section className="padding-top-100 padding-bottom-100 light-gray-bg shopping-cart small-cart">
-          <div className="container">
+          <div className="main">
 
             {/* <!-- SHOPPING INFORMATION --> */}
             <div className="cart-ship-info margin-top-0">
