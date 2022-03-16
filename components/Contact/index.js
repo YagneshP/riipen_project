@@ -3,23 +3,51 @@ import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import EmailIcon from "@mui/icons-material/Email";
 import { useEffect, useRef } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
+import { useForm, ValidationError } from "@formspree/react";
 
 const Contact = () => {
+  //Google Map setup
   const googlemap = useRef(null);
   useEffect(() => {
     const loader = new Loader({
       // Api key to be changed and billing to be enabled for this to work properly
-      apiKey: "AIzaSyDhr28hjrb6e8URKWKcFZdvr1UtS4nKLDI",
+      apiKey: process.env.NEXT_PUBLIC_GOOGLEMAPS_API,
       version: "weekly",
     });
     let map;
     loader.load().then(() => {
       map = new google.maps.Map(googlemap.current, {
-        center: { lat: 43.651890, lng: -79.381706 },
+        center: { lat: 43.65189, lng: -79.381706 },
         zoom: 8,
       });
     });
   });
+
+  // Form Spree Setup
+  const [state, handleSubmit] = useForm(`${process.env.NEXT_PUBLIC_FORMSPREE_API}`);
+
+  if (state.succeeded) {
+    return (
+      <div>
+        <section className="contact padding-top-100 padding-bottom-100">
+          <div className="container">
+            <div className="contact-form">
+              <h5> Thank You, Your Message has been Submitted!</h5> <br />
+              <h4>
+                Company Name <br />
+                Street No. 12, Newyork 12,
+                <br />
+                MD - 123, USA.
+                <br /> 1.800.123.456789 <br />
+                info@ecoshop.com
+              </h4>
+            </div>
+          </div>
+        </section>
+        <div id="map" ref={googlemap} />
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -29,22 +57,15 @@ const Contact = () => {
             <h5>PLEASE fill-up FEW details</h5>
             <div className="row">
               <div className="col-md-8">
-                <div id="contact_message" className="success-msg">
-                  {" "}
-                  <i className="fa fa-paper-plane-o"></i>Thank You. Your Message
-                  has been Submitted
-                </div>
-
                 <form
                   role="form"
                   id="contact_form"
                   className="contact-form"
-                  method="post"
-                  onSubmit="return false"
+                  onSubmit={handleSubmit}
                 >
                   <ul className="row">
                     <li className="col-sm-6">
-                      <label>
+                      <label htmlFor="name">
                         full name *
                         <input
                           type="text"
@@ -53,41 +74,61 @@ const Contact = () => {
                           id="name"
                           placeholder=""
                         />
+                        <ValidationError
+                          prefix="Name"
+                          field="name"
+                          errors={state.errors}
+                        />
                       </label>
                     </li>
                     <li className="col-sm-6">
-                      <label>
+                      <label htmlFor="email">
                         Email *
                         <input
-                          type="text"
+                          type="email"
                           className="form-control"
                           name="email"
                           id="email"
                           placeholder=""
                         />
-                      </label>
-                    </li>
-                    <li className="col-sm-6">
-                      <label>
-                        Phone *
-                        <input
-                          type="text"
-                          className="form-control"
-                          name="company"
-                          id="company"
-                          placeholder=""
+                        <ValidationError
+                          prefix="Email"
+                          field="email"
+                          errors={state.errors}
                         />
                       </label>
                     </li>
                     <li className="col-sm-6">
-                      <label>
+                      <label htmlFor="phone">
+                        Phone *
+                        <input
+                          type="number"
+                          className="form-control"
+                          name="phone number"
+                          id="company"
+                          placeholder=""
+                        />
+                        <ValidationError
+                          prefix="Phone"
+                          field="phone"
+                          errors={state.errors}
+                        />
+                      </label>
+                    </li>
+                    <li className="col-sm-6">
+                      <label htmlFor="subject">
                         SUBJECT
                         <input
                           type="text"
                           className="form-control"
-                          name="website"
+                          name="subject"
                           id="website"
                           placeholder=""
+                        />
+                        <ValidationError
+                          prefix="Subject"
+                          field="subject"
+                          errors={state.errors}
                         />
                       </label>
                     </li>
@@ -101,15 +142,19 @@ const Contact = () => {
                           rows="5"
                           placeholder=""
                         ></textarea>
+                        <ValidationError
+                          prefix="Message"
+                          field="message"
+                          errors={state.errors}
+                        />
                       </label>
                     </li>
                     <li className="col-sm-12">
                       <button
                         type="submit"
-                        value="submit"
+                        disabled={state.submitting}
                         className="button-12"
                         id="btn_submit"
-                        onClick="proceed();"
                       >
                         SEND MAIL
                       </button>
