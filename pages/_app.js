@@ -1,17 +1,14 @@
-import "../styles/globals.css";
-import "../styles/main.scss";
-import Layout from "../components/Layout";
-import { AuthProvider } from "../context/Auth";
+import '../styles/globals.css';
+import '../styles/main.scss';
+import Layout from '../components/Layout';
 import 'bootstrap/dist/css/bootstrap.css';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <AuthProvider>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </AuthProvider>
-  );
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  )
 }
 
-export default MyApp;
+export default MyApp
