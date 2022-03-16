@@ -14,8 +14,8 @@ const Layout = ({ children }) => {
       {/* <Banner /> */}
       {/* <Cart /> */}
       { children }
-      {/* <NewsletterForm /> */}
-      {/* <Footer /> */}
+      <NewsletterForm />
+      <Footer />
     </div>
   );
 };

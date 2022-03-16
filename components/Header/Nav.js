@@ -6,12 +6,12 @@ const Nav = () => {
   return ( 
     <ul className='nav'>
       <li><a href="/">Home</a></li>
-      <li><a href="#">Store</a></li>
+      <li><a href="/products-content">Store</a></li>
         <ul className="sub-menu">
-					<li><a href="#">Men&apos;s Frangrances</a></li>
-					<li><a href="#">Women&apos;s Frangrances</a></li>
+					<li><a href="#">Men&apos;s Fragrances</a></li>
+					<li><a href="#">Women&apos;s Fragrances</a></li>
 				</ul>
-      <li><a href="#">About Us</a></li>
+      <li><a href="/about">About Us</a></li>
       <li><a href="/contact">Contact</a></li>
       <li><a href="#"><PersonOutlineOutlinedIcon fontSize="large"/></a></li>
       <li><a href="#"><ShoppingCartOutlinedIcon fontSize="large"/></a></li>
