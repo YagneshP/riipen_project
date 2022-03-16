@@ -12,7 +12,6 @@ const Layout = ({ children }) => {
     <div className="content">
       <Header />
       {/* <Banner /> */}
-      {/* <Cart /> */}
       { children }
       <NewsletterForm />
       <Footer />
