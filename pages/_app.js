@@ -8,11 +8,15 @@ import store from '../redux/store';
 
 function MyApp({ Component, pageProps }) {
   return (
+    <Provider store={store}>
+      <div className="wrapper">
     <AuthProvider>
       <Layout>
         <Component {...pageProps} />
       </Layout>
     </AuthProvider>
+    </div>
+    </Provider>
   );
 }
 

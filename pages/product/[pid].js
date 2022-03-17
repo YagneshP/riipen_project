@@ -12,7 +12,7 @@ import { getProducts } from '../api/products';
 
 export async function getServerSideProps({ query }) {
 	const pid = query.pid;
-	const res = await fetch(`http://localhost:3003/api/product/${pid}`);
+	const res = await fetch(`http://localhost:3000/api/product/${pid}`);
 	const product = await res.json();
 	return {
 	props: {
