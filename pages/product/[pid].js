@@ -46,7 +46,7 @@ const Product = ({ product }) => {
 	const dispatch = useDispatch();
 
 	const [quantity,setQuantity] = useState();
-  
+
 	// console.log(localStorage === window.localStorage);
 	// localStorage.setItem("quantity","quantity");
 	console.log("qty", quantity);
@@ -98,7 +98,7 @@ const Product = ({ product }) => {
 				</div>
 				<br/><br/>
 				<button className="cart-btn" onClick={() => {
-					product.quantity=quantity;
+					product.quantity=quantity == undefined ? "1" :quantity;
 					dispatch(addToCart(product))
 				}}>Add to cart</button>
 

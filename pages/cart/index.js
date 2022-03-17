@@ -7,21 +7,20 @@ import CartItem from "./CartItem";
 import GrandTotal from "./GrandTotal";
 // import Image from 'next/image';
 import { useSelector } from 'react-redux';
-
+import { Link } from "@mui/material";
+import { useRouter } from "next/router";
 
 const Cart = () => {
-  // console.log("Hello")
-  // const [items, setItems] = useState([]);
-  // const url = "http://localhost:3003/api/carts";
-  // useEffect(() => {
-  //   axios.get(url)
-  //     .then((data) => {
-  //       console.log("data", data);
-  //       setItems(data.data);
+  const router = useRouter()
+  const handleClick = (e) => {
+    e.preventDefault()
+    router.push("/products-content")
+  }
+ 
   console.log("Hello");
 
 const cart = useSelector((state) => state.cart);
-  // const dispatch = useDispatch();
+
 
   const getTotalPrice = () => {
     return cart.reduce(
@@ -31,10 +30,7 @@ const cart = useSelector((state) => state.cart);
   };
   console.log("gettotal",getTotalPrice());
   return (
-    // <div className="container1">
-    //   {cart.length === 0 ? (
-    //     <h1>Your Cart is Empty!</h1>
-    //   ) : (
+   
     <div>
       <main>
         <section className="padding-top-100 padding-bottom-100 pages-in chart-page">
@@ -68,6 +64,7 @@ const cart = useSelector((state) => state.cart);
                   <li className="col-sm-1"> </li>
                 </ul>
               </div>
+              {/* Print data  */}
               {cart.map(item => (
                 <CartItem
                   key={item.id}
@@ -100,7 +97,7 @@ const cart = useSelector((state) => state.cart);
                     <input type="text" placeholder="ENTER YOUR CODE IF YOU HAVE ONE" />
                     <button type="submit" className="btn btn-small btn-dark">APPLY CODE</button>
                   </form>
-                  <div className="coupn-btn"> <a href="./products-content" className="btn">continue shopping</a> <a href="#." className="btn">update cart</a> </div>
+                  <div className="coupn-btn"> <a onClick={handleClick} className="btn">continue shopping</a> <a href="#." className="btn">Checkout</a> </div>
                 </div>
                 <div className="col-sm-5">
                   <h6>GRAND TOTAL</h6>
