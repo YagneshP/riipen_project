@@ -31,3 +31,13 @@ ul.nav{
   display: none;
 }
 }
+.mobile-nav-list {
+  li {
+    padding-bottom: $m-size;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}

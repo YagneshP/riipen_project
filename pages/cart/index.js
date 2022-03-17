@@ -8,7 +8,7 @@ import GrandTotal from "./GrandTotal"
 const Cart = () => {
   console.log("Hello")
   const [items, setItems] = useState([]);
-  const url = "http://localhost:3002/api/carts";
+  const url = "http://localhost:3003/api/carts";
   useEffect(() => {
     axios.get(url)
       .then((data) => {
