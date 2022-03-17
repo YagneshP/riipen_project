@@ -9,6 +9,7 @@ const ProductsContent = () => {
 	// const fetcher = (url) => fetch(url).then((res) => res.json());
 	// const { data, error } = useSwr('/api/products', fetcher);
 
+console.log("Hello")
 	const [items, setItems] = useState([]);
 	const url = "http://localhost:3000/api/products";
 	useEffect(() => {

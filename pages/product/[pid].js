@@ -6,6 +6,9 @@ import { FiTwitter } from 'react-icons/fi';
 import { FiDribbble } from 'react-icons/fi';
 import { FiInstagram } from 'react-icons/fi';
 import { FiYoutube } from 'react-icons/fi';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../redux/cart.slice';
+import { getProducts } from '../api/products';
 
 export async function getServerSideProps({ query }) {
 	const pid = query.pid;
@@ -18,8 +21,33 @@ export async function getServerSideProps({ query }) {
 	}
 }
 
-const Product = ({ product }) => {
+// Pre-render the path of each product
+// export async function getStaticPaths() {
+//   const products = await getProducts();
+// 	console.log("prods",products);
+//   const paths = products.map((product) => ({
+//     params: { id: product.id }
+//   }));
 
+//   return { paths,fallback: true };
+// }
+
+// // Pre-render the page with data related to each product
+// export async function getStaticProps({ params }) {
+//   return {
+//     props: {
+//       product: await getProduct(params.id)
+//     }
+//   };
+// }
+
+const Product = ({ product }) => {
+	
+	const dispatch = useDispatch();
+	const [quantity,setQuantity] = useState();
+	// console.log(localStorage === window.localStorage);
+	// localStorage.setItem("quantity","quantity");
+	console.log("qty", quantity);
 	return (
     <>
 		<div className="container">
@@ -47,10 +75,10 @@ const Product = ({ product }) => {
 				<p className="product-des">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum finibus ligula a scelerisque gravida. Nullam laoreet tortor ac maximus alique met, consectetur adipiscing elit. Vestibulum finibus ligula a scelerisque gravida. Nullam</p>
 				<div> 
 						<h3>Quantity</h3>
-								<select className="quantity">
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
+								<select className="quantity" name="qty" onChange={(e) => setQuantity(e.target.value)}>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
 								</select>
 						<br /> 	<br />
 						<h3>Colors</h3>
@@ -67,7 +95,7 @@ const Product = ({ product }) => {
 
 				</div>
 				<br/><br/>
-				<button className="cart-btn" >Add to cart</button>
+				<button className="cart-btn" onClick={() => dispatch(addToCart(product))}>Add to cart</button>
 
 					<div className="inner-info">
 						<h3>DELIVERY INFORMATION</h3>
@@ -91,8 +119,4 @@ const Product = ({ product }) => {
 }
 
 export default Product
-
-
-
-
 

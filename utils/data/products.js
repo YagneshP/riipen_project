@@ -11,6 +11,7 @@ const products = [
     category: 'men',
     currentPrice: 89.99,
     sizes: ['xl', 'l'], 
+    quantity:2,
     // image: 'https://i.ebayimg.com/images/g/P5EAAOSwDttgo9-i/s-l640.jpg'
     image: 'https://cdn.shopify.com/s/files/1/2170/5343/products/DG-KING-100ML-EDT-MEN_270x352.png?v=1571610020'
 	},  
