@@ -1,4 +1,6 @@
 import CloseIcon from '@mui/icons-material/Close';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 // Importing actions from  cart.slice.js
 import {
   incrementQuantity,
@@ -7,7 +9,7 @@ import {
 } from '../../redux/cart.slice';
 import { useDispatch } from 'react-redux';
 
-const CartItem = ({ id, name, brand, price, quntity, image}) => {
+const CartItem = ({ id, name, brand, price, quantity, image}) => {
   const dispatch = useDispatch();
 return(
 <>
@@ -42,29 +44,31 @@ return(
               <div className="position-center-center">
                 <div className="quinty"> 
                   {/* <!-- QTY --> */}
-                  {quntity}
+                  <a onClick={() => dispatch(incrementQuantity(id))}>
+                  <AddIcon fontSize="large" />
+                </a>
+                  {quantity}
+                  <a onClick={() => dispatch(decrementQuantity(id))}>
+                  <RemoveIcon fontSize="large" />
+                </a>
                 </div>
               </div>
             </li>
             
             {/* <!-- TOTAL PRICE --> */}
             <li className="col-sm-2">
-              <div className="position-center-center"> <span className="price"><small>$</small>{price * quntity}</span> </div>
+              <div className="position-center-center"> <span className="price"><small>$</small>{price * quantity}</span> </div>
             </li>
             
             {/* <!-- REMOVE --> */}
             <li className="col-sm-1">
               {/* <div className="position-center-center">  */}
               <div className="buttons1">
-              <button onClick={() => dispatch(incrementQuantity(id))}>
-                  +
-                </button>
-                <button onClick={() => dispatch(decrementQuantity(id))}>
-                  -
-                </button>
-                <button onClick={() => dispatch(removeFromCart(id))}>
-                  x
-                </button>
+             
+               
+                <a onClick={() => dispatch(removeFromCart(id))}>
+                <CloseIcon fontSize="large" />
+                </a>
                 </div>
               {/* <a href="#."><CloseIcon fontSize="large" /></a> </div> */}
             </li>
