@@ -120,8 +120,8 @@ const Checkout = () => {
 
                       {/* <!-- PHONE --> */}
                       <li class="col-md-6">
-                        <button type="submit" class="btn">
-                          continue
+                        <button type="submit" class="button-chk">
+                          Continue
                         </button>
                       </li>
 
@@ -134,8 +134,7 @@ const Checkout = () => {
                             type="checkbox"
                           />
                           <label for="checkbox1">
-                            {" "}
-                            Ship to a different address{" "}
+                            Ship to a different address
                           </label>
                         </div>
                       </li>
@@ -252,7 +251,7 @@ const Checkout = () => {
 
                       {/* <!-- PHONE --> */}
                       <li class="col-md-6">
-                        <button type="submit" class="btn">
+                        <button type="submit" class="button-chk">
                           SUBMIT
                         </button>
                       </li>
@@ -350,10 +349,7 @@ const Checkout = () => {
                           </div>
                         </li>
                       </ul>
-                      <a
-                        href="#."
-                        class="btn  btn-dark pull-right margin-top-30"
-                      >
+                      <a href="#." class="button-order">
                         PLACE ORDER
                       </a>{" "}
                     </div>
