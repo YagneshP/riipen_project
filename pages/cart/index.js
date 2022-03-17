@@ -100,7 +100,7 @@ const cart = useSelector((state) => state.cart);
                     <input type="text" placeholder="ENTER YOUR CODE IF YOU HAVE ONE" />
                     <button type="submit" className="btn btn-small btn-dark">APPLY CODE</button>
                   </form>
-                  <div className="coupn-btn"> <a href="#." className="btn">continue shopping</a> <a href="#." className="btn">update cart</a> </div>
+                  <div className="coupn-btn"> <a href="./products-content" className="btn">continue shopping</a> <a href="#." className="btn">update cart</a> </div>
                 </div>
                 <div className="col-sm-5">
                   <h6>GRAND TOTAL</h6>

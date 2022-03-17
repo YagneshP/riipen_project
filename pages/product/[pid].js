@@ -97,7 +97,10 @@ const Product = ({ product }) => {
 
 				</div>
 				<br/><br/>
-				<button className="cart-btn" onClick={() => dispatch(addToCart(product))}>Add to cart</button>
+				<button className="cart-btn" onClick={() => {
+					product.quantity=quantity;
+					dispatch(addToCart(product))
+				}}>Add to cart</button>
 
 					<div className="inner-info">
 						<h3>DELIVERY INFORMATION</h3>
