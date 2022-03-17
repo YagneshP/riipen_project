@@ -281,34 +281,8 @@ const Checkout = () => {
                     </div>
                     <div class="pay-meth">
                       <ul>
-                        <li>
-                          <div class="radio">
-                            <input
-                              type="radio"
-                              name="radio1"
-                              id="radio1"
-                              value="option1"
-                              checked
-                            />
-                            <label for="radio1"> DIRECT BANK TRANSFER </label>
-                          </div>
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit. Nullam erat turpis, pellentesque non leo eget,
-                            pulvinar pretium arcu. Mauris porta elit non.
-                          </p>
-                        </li>
-                        <li>
-                          <div class="radio">
-                            <input
-                              type="radio"
-                              name="radio1"
-                              id="radio2"
-                              value="option2"
-                            />
-                            <label for="radio2"> CASH ON DELIVERY</label>
-                          </div>
-                        </li>
+                       
+
                         <li>
                           <div class="radio">
                             <input
@@ -317,7 +291,7 @@ const Checkout = () => {
                               id="radio3"
                               value="option3"
                             />
-                            <label for="radio3"> CHEQUE PAYMENT </label>
+                            <label for="radio3"> Credit/Debit </label>
                           </div>
                         </li>
                         <li>
