@@ -1,5 +1,14 @@
 import CloseIcon from '@mui/icons-material/Close';
+// Importing actions from  cart.slice.js
+import {
+  incrementQuantity,
+  decrementQuantity,
+  removeFromCart,
+} from '../../redux/cart.slice';
+import { useDispatch } from 'react-redux';
+
 const CartItem = ({ id, name, brand, price, quntity, image}) => {
+  const dispatch = useDispatch();
 return(
 <>
           {/* <!-- Cart Details --> */}
@@ -45,9 +54,23 @@ return(
             
             {/* <!-- REMOVE --> */}
             <li className="col-sm-1">
-              <div className="position-center-center"> <a href="#."><CloseIcon fontSize="large" /></a> </div>
+              {/* <div className="position-center-center">  */}
+              <div className="buttons1">
+              <button onClick={() => dispatch(incrementQuantity(id))}>
+                  +
+                </button>
+                <button onClick={() => dispatch(decrementQuantity(id))}>
+                  -
+                </button>
+                <button onClick={() => dispatch(removeFromCart(id))}>
+                  x
+                </button>
+                </div>
+              {/* <a href="#."><CloseIcon fontSize="large" /></a> </div> */}
             </li>
           </ul>
           </>
-)};
+);
+};
 export default CartItem;
+

@@ -24,7 +24,8 @@ const About = () => {
 						</div>
 					</div>
 
-					<div className="col-lg-7">
+					{/* <div className="col-lg-7"> */}
+					<div className="right">
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam volutpat dui at lacus aliquet, a consequat enim aliquet. Integer molestie sit amet sem et faucibus. Nunc ornare pharetra dui, vitae auctor orci fringilla eget. Pellentesque in placerat felis. Etiam mollis venenatis luctus.</p>
 						<p>
 							Morbi ac scelerisque mauris. Etiam sodales a nulla ornare viverra. Nunc at blandit neque, bibendum varius purus. Nam sit amet sapien vitae enim vehicula tincidunt. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc faucibus imperdiet vulputate.
@@ -33,7 +34,6 @@ const About = () => {
 				</div>
 				{/* OUR TEAM  */}
     		<section className="our-team" >
-      			<div className="container">
         			<div className="heading">
           			<h2>OUR TEAM</h2>
           			<h3>United by love & help to build great brands</h3> 
@@ -71,8 +71,6 @@ const About = () => {
               			</div>
             			</div>
 								</div>
-
-							</div>	
 							</div>
 				</section>		
        

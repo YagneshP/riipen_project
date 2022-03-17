@@ -3,27 +3,38 @@ import Image from "next/image";
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import CartItem from "./CartItem"
-import GrandTotal from "./GrandTotal"
-const Cart = () => {
-  console.log("Hello")
-  const [items, setItems] = useState([]);
-  const url = "http://localhost:3003/api/carts";
-  useEffect(() => {
-    axios.get(url)
-      .then((data) => {
-        console.log("data", data);
-        setItems(data.data);
+import CartItem from "./CartItem";
+import GrandTotal from "./GrandTotal";
+// import Image from 'next/image';
+import { useSelector } from 'react-redux';
 
-      });
-  }, []);
-  console.log("items", items)
-  let subTotal = 0;
- const total = items.map(item => {
-    let Total = item.price * item.quantity
-    subTotal = subTotal + Total;
-  });
+
+const Cart = () => {
+  // console.log("Hello")
+  // const [items, setItems] = useState([]);
+  // const url = "http://localhost:3003/api/carts";
+  // useEffect(() => {
+  //   axios.get(url)
+  //     .then((data) => {
+  //       console.log("data", data);
+  //       setItems(data.data);
+  console.log("Hello");
+
+const cart = useSelector((state) => state.cart);
+  // const dispatch = useDispatch();
+
+  const getTotalPrice = () => {
+    return cart.reduce(
+      (accumulator, item) => accumulator + item.quantity * item.price,
+      0
+    );
+  };
+  console.log("gettotal",getTotalPrice());
   return (
+    // <div className="container1">
+    //   {cart.length === 0 ? (
+    //     <h1>Your Cart is Empty!</h1>
+    //   ) : (
     <div>
       <main>
         <section className="padding-top-100 padding-bottom-100 pages-in chart-page">
@@ -57,7 +68,7 @@ const Cart = () => {
                   <li className="col-sm-1"> </li>
                 </ul>
               </div>
-              {items.map(item => (
+              {cart.map(item => (
                 <CartItem
                   key={item.id}
                   id={item.id}
@@ -65,10 +76,12 @@ const Cart = () => {
                   brand={item.brand}
                   price={item.price}
                   quntity={item.quantity}
-                  image={item.image}
+                  image={"https://via.placeholder.com/90x65.png"}
 
                 />
               ))}
+              
+              
             </div>
           </div>
         </section>
@@ -94,8 +107,7 @@ const Cart = () => {
                   <div className="grand-total">
                     <div className="order-detail"></div>
                    
-                    {  
-                    items.map(item => (
+                    {  cart.map(item => (
                       <GrandTotal
                         key={item.id}
                         id={item.id}
@@ -107,7 +119,7 @@ const Cart = () => {
                     ))}
 
                     {/* <!-- SUB TOTAL --> */}
-                    <p className="all-total">TOTAL COST <span> ${subTotal}</span></p>
+                    <p className="all-total">TOTAL COST <span> ${getTotalPrice()}</span></p>
                   </div>
                 </div>
               </div>
@@ -120,6 +132,7 @@ const Cart = () => {
 
     </main>
     </div >
+    
   )
 }
 export default Cart;
