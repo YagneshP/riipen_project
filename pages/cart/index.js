@@ -75,7 +75,7 @@ const cart = useSelector((state) => state.cart);
                   name={item.name}
                   brand={item.brand}
                   price={item.price}
-                  quntity={item.quantity}
+                  quantity={item.quantity}
                   image={"https://via.placeholder.com/90x65.png"}
 
                 />

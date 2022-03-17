@@ -44,7 +44,9 @@ export async function getServerSideProps({ query }) {
 const Product = ({ product }) => {
 	
 	const dispatch = useDispatch();
+
 	const [quantity,setQuantity] = useState();
+  
 	// console.log(localStorage === window.localStorage);
 	// localStorage.setItem("quantity","quantity");
 	console.log("qty", quantity);

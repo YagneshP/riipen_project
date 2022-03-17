@@ -7,7 +7,7 @@ import {
 } from '../../redux/cart.slice';
 import { useDispatch } from 'react-redux';
 
-const CartItem = ({ id, name, brand, price, quntity, image}) => {
+const CartItem = ({ id, name, brand, price, quantity, image}) => {
   const dispatch = useDispatch();
 return(
 <>
@@ -42,14 +42,14 @@ return(
               <div className="position-center-center">
                 <div className="quinty"> 
                   {/* <!-- QTY --> */}
-                  {quntity}
+                  {quantity}
                 </div>
               </div>
             </li>
             
             {/* <!-- TOTAL PRICE --> */}
             <li className="col-sm-2">
-              <div className="position-center-center"> <span className="price"><small>$</small>{price * quntity}</span> </div>
+              <div className="position-center-center"> <span className="price"><small>$</small>{price * quantity}</span> </div>
             </li>
             
             {/* <!-- REMOVE --> */}
