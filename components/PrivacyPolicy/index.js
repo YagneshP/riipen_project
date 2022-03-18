@@ -99,13 +99,13 @@ const PrivacyPolicy = () => {
                           <br />
                           <li>
                             <div className="bold">Consumer :</div>
-                            or the purpose of the CCPA (California Consumer
-                            Privacy Act), means a natural person who is a
-                            California resident. A resident, as defined in the
-                            law, includes (1) every individual who is in the USA
-                            for other than a temporary or transitory purpose,
-                            and (2) every individual who is domiciled in the USA
-                            who is outside the USA for a temporary or transitory
+                            or the purpose of the CCPA (Canada Consumer Privacy
+                            Act), means a natural person who is a Canada
+                            resident. A resident, as defined in the law,
+                            includes (1) every individual who is in the USA for
+                            other than a temporary or transitory purpose, and
+                            (2) every individual who is domiciled in the USA who
+                            is outside the USA for a temporary or transitory
                             purpose.
                           </li>
                           <br />
@@ -126,11 +126,11 @@ const PrivacyPolicy = () => {
                           <li>
                             <div className="bold">Do Not Track (DNT) :</div> is
                             a concept that has been promoted by CA regulatory
-                            authorities, in particular the U.S. Federal Trade
-                            Commission (FTC), for the Internet industry to
-                            develop and implement a mechanism for allowing
-                            internet users to control the tracking of their
-                            online activities across websites.
+                            authorities, in particular the Canada Federal Trade
+                            Commission , for the Internet industry to develop
+                            and implement a mechanism for allowing internet
+                            users to control the tracking of their online
+                            activities across websites.
                           </li>
                           <br />
                           <li>
@@ -151,7 +151,7 @@ const PrivacyPolicy = () => {
                           <br />
                           <li>
                             <div className="bold">Sale : </div> for the purpose
-                            of the CCPA (California Consumer Privacy Act), means
+                            of the CCPA (Canada Consumer Privacy Act), means
                             selling, renting, releasing, disclosing,
                             disseminating, making available, transferring , or
                             otherwise communicating orally, in writing, or by
@@ -175,7 +175,6 @@ const PrivacyPolicy = () => {
                           <br />
                           <li>
                             <li>
-                              
                               <div className="bold">Service Provider</div> means
                               any natural or legal person who processes the data
                               on behalf of the Company. It refers to third
@@ -205,7 +204,96 @@ const PrivacyPolicy = () => {
                           </li>
                           <br />
                         </ul>
+                        <div className="title">
+                          Collecting and Using Your Personal Data
+                        </div>
+                        <div className="title">Types of Data Collected</div>
+                        <div className="title">Personal Data</div>
                         <br />
+                        <li>
+                          <div className="bold">
+                            To provide and maintain our Service :
+                          </div>
+                          including to monitor the usage of our Service.
+                        </li>
+                        <br />
+                        <li>
+                          
+                          <div className="bold">
+                            To manage Your Account :
+                          </div>
+                          to manage Your registration as a user of the Service.
+                          The Personal Data You provide can give You access to
+                          different functionalities of the Service that are
+                          available to You as a registered user.
+                        </li>
+                        <br />
+                        <li>
+                          
+                          <div className="bold">
+                            For the performance of a contract:
+                          </div>
+                          the development, compliance and undertaking of the
+                          purchase contract for the products, items or services
+                          You have purchased or of any other contract with Us
+                          through the Service.
+                        </li>
+                        <br />
+                        <li>
+                          
+                          <div className="bold">To contact You:</div> To contact
+                          You by email, telephone calls, SMS, or other
+                          equivalent forms of electronic communication, such as
+                          a mobile application's push notifications regarding
+                          updates or informative communications related to the
+                          functionalities, products or contracted services,
+                          including the security updates, when necessary or
+                          reasonable for their implementation.
+                        </li>
+                        <br />
+                        <li>
+                          
+                          <div className="bold">
+                            To provide You with news :
+                          </div>
+                          special offers and general information about other
+                          goods, services and events which we offer that are
+                          similar to those that you have already purchased or
+                          enquired about unless You have opted not to receive
+                          such information.
+                        </li>
+                        <br />
+                        <li>
+                          
+                          <div className="bold">
+                            To manage Your requests :
+                          </div>
+                          To attend and manage Your requests to Us.
+                        </li>
+                        <br />
+                        <li>
+                          
+                          <div className="bold">
+                            For business transfers :
+                          </div>
+                          We may use Your information to evaluate or conduct a
+                          merger, divestiture, restructuring, reorganization,
+                          dissolution, or other sale or transfer of some or all
+                          of Our assets, whether as a going concern or as part
+                          of bankruptcy, liquidation, or similar proceeding, in
+                          which Personal Data held by Us about our Service users
+                          is among the assets transferred.
+                        </li>
+                        <br />
+                        <li>
+                          
+                          <div className="bold">For other purposes :</div> We
+                          may use Your information for other purposes, such as
+                          data analysis, identifying usage trends, determining
+                          the effectiveness of our promotional campaigns and to
+                          evaluate and improve our Service, products, services,
+                          marketing and your experience.
+                        </li>
                         <br />
                       </p>
                     </div>
