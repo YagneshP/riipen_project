@@ -75,7 +75,7 @@ const ShippingMethod = () => {
                         <div className="title">
                           Shipment to P.O. boxes or APO/FPO addresses
                         </div>
-                        <br />
+                        
                         Ecoshop delivers to addresses in the Canada, and
                         APO/FPO/DPO addresses.
                         <br />
@@ -83,7 +83,7 @@ const ShippingMethod = () => {
                         <div className="title">
                           Shipment confirmation & Order tracking
                         </div>
-                        <br />
+                        
                         Once your order has shipped, you will receive a Shipment
                         Confirmation Email with your tracking number (s). Within
                         24 hours, the tracking number will be active.
@@ -103,7 +103,7 @@ const ShippingMethod = () => {
                         <br />
                         <br />
                         <div className="title">Returns </div>
-                        <br />
+                        
                         We want you to be happy. If for any reason you are not
                         satisfied with your purchase from ecoshop and wish to
                         return it for a refund, we accept returns up to 14 days
@@ -111,7 +111,7 @@ const ShippingMethod = () => {
                         <br />
                         <br />
                         <div className="title">Contat us</div>
-                        <br />
+                        
                         If you have any questions about this Shipping Policy,
                         You can contact Us by submitting your question using out
                         form <a href="/contact">here</a>.
