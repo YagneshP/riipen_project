@@ -485,7 +485,24 @@ const PrivacyPolicy = () => {
                             <div className="bold"></div>
                           </li>
                         </ul>
-                        
+                        <div className="title">Modification</div>
+                        <br />
+                        This Privacy Policy may be amended from time to time in
+                        order to maintain compliance with the law and to reflect
+                        any changes to our data collection process. When we
+                        amend this Privacy Policy we will update the "Effective
+                        Date" at the top of this Privacy Policy. We recommend
+                        that our users periodically review our Privacy Policy to
+                        ensure that they are notified of any updates. If
+                        necessary, we may notify users by email of changes to
+                        this Privacy Policy.
+                        <br />
+                        <br />
+                        <div className="title">Complaints</div>
+                        <br />
+                        If you have any concerns about how we handle your
+                        personal data, please contact us using the contact
+                        information <a href="/contact">here</a>.
                       </p>
                     </div>
                   </div>
