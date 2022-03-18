@@ -76,6 +76,13 @@ const PrivacyPolicy = () => {
                           <br />
 
                           <li>
+                            <div className="bold">Data Controller :</div>
+                            for the purposes of the GDPR (General Data Protection Regulation), refers to the Company as the legal person which alone or jointly with others determines the purposes and means of the processing of Personal Data.
+
+
+                          </li>
+                          <br />
+                          <li>
                             <div className="bold">Business :</div>
                             for the purpose of the CCPA (Canada Consumer Privacy
                             Act), refers to the Company as the legal entity that
@@ -87,6 +94,26 @@ const PrivacyPolicy = () => {
                             means of the processing of consumers' personal
                             information, that does business in the State of
                             Canada.
+                          </li>
+                          <br />
+                          <li>
+                            <div className="bold">Consumer :</div>
+                            or the purpose of the CCPA (California Consumer
+                            Privacy Act), means a natural person who is a
+                            California resident. A resident, as defined in the
+                            law, includes (1) every individual who is in the USA
+                            for other than a temporary or transitory purpose,
+                            and (2) every individual who is domiciled in the USA
+                            who is outside the USA for a temporary or transitory
+                            purpose.
+                          </li>
+                          <br />
+                          <li>
+                            <div className="bold">Cookies :</div>
+                            are small files that are placed on Your computer,
+                            mobile device or any other device by a website,
+                            containing the details of Your browsing history on
+                            that website among its many uses.
                           </li>
                           <br />
                         </ul>
