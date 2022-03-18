@@ -1,3 +1,4 @@
+/* eslint-disable */
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
@@ -24,7 +25,7 @@ const Nav = () => {
       <li><Link href="/about">About Us</Link></li>
       <li><Link href="/contact">Contact</Link></li>
       <li><Link href="/account" passHref><PersonOutlineOutlinedIcon fontSize="large"/></Link></li>
-      <li><Link href="/cart" passHref><ShoppingCartOutlinedIcon fontSize="large"/></Link></li>
+      <li><Link href="/cart" passHref><ShoppingCartOutlinedIcon fontSize="large"/></Link>{getItemsCount() === 0 ? '' : getItemsCount() }</li>
       <li><Link href="#" passHref><SearchOutlinedIcon fontSize="large"/></Link></li>
     </ul>
    );

@@ -1,9 +1,7 @@
+/* eslint-disable */
 import Footer from './Footer';
 import Header from './Header/index';
 import NewsletterForm from './NewsletterForm';
-// import Cart from './Cart/index';
-// import Header from './Header';
-import Contact from './Contact';
 import Banner from './Header/Banner';
 
 const Layout = ({ children }) => {
