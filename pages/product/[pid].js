@@ -98,8 +98,9 @@ const Product = ({ product }) => {
 				</div>
 				<br/><br/>
 				<button className="cart-btn" onClick={() => {
-					product.quantity=quantity == undefined ? "1" :quantity;
-					dispatch(addToCart(product))
+					product.quantity=quantity == undefined ? 1 : Number(quantity);
+				  alert("item added to cart");
+          dispatch(addToCart(product))
 				}}>Add to cart</button>
 
 					<div className="inner-info">
