@@ -415,22 +415,77 @@ const PrivacyPolicy = () => {
                         <ul>
                           <li> - Comply with a legal obligation </li>
                           <li>
-                            
                             - Protect and defend the rights or property of the
                             Company
                           </li>
                           <li>
-                            
                             - Prevent or investigate possible wrongdoing in
                             connection with the Service
                           </li>
                           <li>
-                            
-                            - Protect the personal safety of Users of the Service
-                            or the public
+                            - Protect the personal safety of Users of the
+                            Service or the public
                           </li>
                           <li> - Protect against legal liability </li>
                         </ul>
+                        <br />
+                        <div className="title">
+                          Security of Your Personal Data
+                        </div>
+                        <br />
+                        The security of Your Personal Data is important to Us,
+                        but remember that no method of transmission over the
+                        Internet, or method of electronic storage is 100%
+                        secure. While We strive to use commercially acceptable
+                        means to protect Your Personal Data, We cannot guarantee
+                        its absolute security.
+                        <br />
+                        <br />
+                        <div className="title">
+                          Detailed Information on the Processing of Your
+                          Personal Data
+                        </div>
+                        <br />
+                        <ul className="column">
+                          <li>
+                            <div className="bold">Analytics</div>We may use
+                            third-party Service providers to monitor and analyze
+                            the use of our Service.
+                          </li>
+                          <br />
+                          <li>
+                            <div className="bold">Email Marketing</div>
+                            We may use Your Personal Data to contact You with
+                            newsletters, marketing or promotional materials and
+                            other information that may be of interest to You.
+                            You may opt-out of receiving any, or all, of these
+                            communications from Us by following the unsubscribe
+                            link or instructions provided in any email We send
+                            or by contacting Us.
+                          </li>
+                          <br />
+                          <li>
+                            <div className="bold">Payments</div>
+                            We may provide paid products and/or services within
+                            the Service. In that case, we may use third-party
+                            services for payment processing (e.g. payment
+                            processors). We will not store or collect Your
+                            payment card details. That information is provided
+                            directly to Our third-party payment processors whose
+                            use of Your personal information is governed by
+                            their Privacy Policy. These payment processors
+                            adhere to the standards set by PCI-DSS as managed by
+                            the PCI Security Standards Council, which is a joint
+                            effort of brands like Visa, Mastercard, American
+                            Express and Discover. PCI-DSS requirements help
+                            ensure the secure handling of payment information.
+                          </li>
+                          <br />
+                          <li>
+                            <div className="bold"></div>
+                          </li>
+                        </ul>
+                        
                       </p>
                     </div>
                   </div>
