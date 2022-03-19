@@ -25,22 +25,10 @@ const Footer = () => {
           <h6>Helpful Links</h6>
           <ul className="footer-links">
             <li>
-              <a href="#."> Products</a>
-            </li>
-            <li>
-              <a href="#."> Find a Store</a>
-            </li>
-            <li>
-              <a href="#."> Features</a>
+              <a href="/products-content"> Products</a>
             </li>
             <li>
               <a href="/privacypolicy"> Privacy Policy</a>
-            </li>
-            <li>
-              <a href="#."> Blog</a>
-            </li>
-            <li>
-              <a href="#."> Press Kit </a>
             </li>
           </ul>
         </div>
@@ -50,22 +38,13 @@ const Footer = () => {
           <h6>Shop</h6>
           <ul className="footer-links">
             <li>
-              <a href="#."> About Us</a>
-            </li>
-            <li>
-              <a href="#."> Career</a>
+              <a href="/about"> About Us</a>
             </li>
             <li>
               <a href="/shippingandreturns"> Shipping Methods</a>
             </li>
             <li>
-              <a href="#."> Contact</a>
-            </li>
-            <li>
-              <a href="#."> Support</a>
-            </li>
-            <li>
-              <a href="#."> Retailer</a>
+              <a href="/contact"> Contact</a>
             </li>
           </ul>
         </div>
@@ -78,16 +57,13 @@ const Footer = () => {
               <a href="#."> Login</a>
             </li>
             <li>
-              <a href="#."> My Account</a>
+              <a href="/account"> My Account</a>
             </li>
             <li>
-              <a href="#."> My Cart</a>
+              <a href="/cart"> My Cart</a>
             </li>
             <li>
-              <a href="#."> Wishlist</a>
-            </li>
-            <li>
-              <a href="#."> Checkout</a>
+              <a href="/checkout"> Checkout</a>
             </li>
           </ul>
         </div>
