@@ -1,18 +1,18 @@
-import Footer from './Footer';
-import Header from './Header';
-import Banner from './Header/Banner';
-import NewsletterForm from './NewsletterForm';
+import Footer from "./Footer";
+import Header from "./Header/index";
+import NewsletterForm from "./NewsletterForm";
+import Banner from "./Header/Banner";
 
 const Layout = ({ children }) => {
-  return ( 
+  return (
     <div className="content">
       <Header />
       <Banner />
-        { children }
+      {children}
       <NewsletterForm />
       <Footer />
     </div>
-   );
-}
- 
+  );
+};
+
 export default Layout;

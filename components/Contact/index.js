@@ -1,10 +1,10 @@
 import PlaceIcon from "@mui/icons-material/Place";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import EmailIcon from "@mui/icons-material/Email";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef} from "react";
 import { Loader } from "@googlemaps/js-api-loader";
 import { useForm, ValidationError } from "@formspree/react";
-
+// import { useForm } from 'react-hook-form';
 const Contact = () => {
   //Google Map setup
   const googlemap = useRef(null);
