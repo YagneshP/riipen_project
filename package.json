@@ -33,7 +33,8 @@
     "react-multi-carousel": "^2.8.0",
     "react-redux": "^7.2.6",
     "react-responsive-carousel": "^3.2.23",
-    "sass": "^1.49.9"
+    "sass": "^1.49.9",
+    "swr": "^1.2.2"
   },
   "devDependencies": {
     "eslint": "8.10.0",
