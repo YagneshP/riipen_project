@@ -13,7 +13,7 @@ export default function Search() {
   
   return (
     <div className="about">
-      <h1> Search</h1><p></p>
+      <h1 id="search"> Search</h1><p></p>
       <div style={{"width":"30%"}}>
         <TextField
           id="outlined-basic"

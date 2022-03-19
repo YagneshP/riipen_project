@@ -20,7 +20,7 @@ const List = (props) => {
 		else {
 			console.log("props",props.input);
 			console.log("brand",el.category);
-				return ( el.brand.toLowerCase().includes(props.input)||
+			return ( el.brand.toLowerCase().includes(props.input)||
 								el.name.toLowerCase().includes(props.input)||
 								el.category.toLowerCase()===props.input);
 		}
