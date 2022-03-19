@@ -2,7 +2,6 @@
 
 import useSwr from 'swr';
 import ProductItem from '../products-content/ProductItem';
-import { ListAltRounded } from '@mui/icons-material';
 
 const fetcher = url => fetch(url).then(res => res.json());
 

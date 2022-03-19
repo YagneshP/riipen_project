@@ -19,7 +19,7 @@ export default function Search() {
           id="outlined-basic"
           onChange={inputHandler}
           variant="outlined"
-          color="secondary" 
+          color="secondary"
           size="normal"
           focused
           fullWidth
