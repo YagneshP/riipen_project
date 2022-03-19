@@ -33,13 +33,7 @@
 	position: relative;
 	z-index: 1;
 }
-p {
-	font-weight: 400;
-	color: #6f6f6f;
-	line-height: 26px;
-	text-rendering: optimizeLegibility;
-}
-ul {
+.cart-details {
   display: table-row;
   padding-inline-start: 0;
   li {
@@ -47,7 +41,14 @@ ul {
     list-style: none;
     font-family:$body-font;
     font-size: $m-size;  
-  }   
+  }
+     
+  p {
+    font-weight: 400;
+    color: #6f6f6f;
+    line-height: 26px;
+    text-rendering: optimizeLegibility;
+  }
 }
 .main {
   padding-right: 75px;
