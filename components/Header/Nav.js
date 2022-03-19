@@ -26,7 +26,7 @@ const Nav = () => {
       <li><Link href="/contact">Contact</Link></li>
       <li><Link href="/account" passHref><PersonOutlineOutlinedIcon fontSize="large"/></Link></li>
       <li><Link href="/cart" passHref><ShoppingCartOutlinedIcon fontSize="large"/></Link>{getItemsCount() === 0 ? '' : getItemsCount() }</li>
-      <li><Link href="#" passHref><SearchOutlinedIcon fontSize="large"/></Link></li>
+      <li><Link href="/search" passHref><SearchOutlinedIcon fontSize="large"/></Link></li>
     </ul>
    );
 }
