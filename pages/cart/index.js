@@ -12,9 +12,13 @@ import { useRouter } from "next/router";
 
 const Cart = () => {
   const router = useRouter()
-  const handleClick = (e) => {
+  const handleContinueShopping = (e) => {
     e.preventDefault()
     router.push("/products-content")
+  }
+  const handleCheckout = (e) => {
+    e.preventDefault()
+    router.push("/checkout")
   }
  
   console.log("Hello");
@@ -97,7 +101,7 @@ const cart = useSelector((state) => state.cart);
                     <input type="text" placeholder="ENTER YOUR CODE IF YOU HAVE ONE" />
                     <button type="submit" className="btn btn-small btn-dark">APPLY CODE</button>
                   </form>
-                  <div className="coupn-btn"> <a onClick={handleClick} className="btn">continue shopping</a> <a href="#." className="btn">Checkout</a> </div>
+                  <div className="coupn-btn"> <a onClick={handleContinueShopping} className="btn">continue shopping</a> <a onClick={handleCheckout} className="btn">Checkout</a> </div>
                 </div>
                 <div className="col-sm-5">
                   <h6>GRAND TOTAL</h6>

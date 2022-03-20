@@ -39,16 +39,16 @@ p {
 	line-height: 26px;
 	text-rendering: optimizeLegibility;
 }
-ul {
-  display: table-row;
-  padding-inline-start: 0;
-  li {
-    display: table-cell;
-    list-style: none;
-    font-family:$body-font;
-    font-size: $m-size;  
-  }   
-}
+// ul {
+//   display: table-row;
+//   padding-inline-start: 0;
+//   li {
+//     display: table-cell;
+//     list-style: none;
+//     font-family:$body-font;
+//     font-size: $m-size;  
+//   }   
+// }
 .main {
   padding-right: 75px;
   padding-left: 75px;
