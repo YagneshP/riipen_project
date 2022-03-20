@@ -33,21 +33,21 @@ const ProductsContent = ({ products }) => {
   return (
     <>
       <section className='products'>
-        {/* <h1> Fragrances</h1>
+        <h1> Fragrances</h1>
         <div className='new-arrival-products'>
-          {items.map((item) => (
+          {products.map((product) => (
             <ProductItem
-              discount={item.discount}
-              key={item.id}
-              id={item.id}
-              price={item.price}
-              currentPrice={item.currentPrice}
-              productImage={item.image}
-              name={item.name}
-              brand={item.brand}
+              // discount={product.discount}
+              key={product.id}
+              id={product.id}
+              price={product.price.formatted_with_symbol}
+              // currentPrice={.currentPrice}
+              productImage={product.image.url}
+              name={product.name}
+              brand={product.name}
             />
           ))}
-        </div> */}
+        </div>
       </section>
     </>
   );
