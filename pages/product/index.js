@@ -4,25 +4,36 @@
 import ProductItem from "../products-content/ProductItem";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { commerce } from "../../lib/commerce";
 
-const ProductsContent = () => {
+export async function getStaticProps() {
+  const { data: products } = await commerce.products.list();
+  return {
+    props: {
+      products,
+    },
+  };
+}
+
+const ProductsContent = ({ products }) => {
+  console.log("Products", products);
   // const fetcher = (url) => fetch(url).then((res) => res.json());
   // const { data, error } = useSwr('/api/products', fetcher);
 
-  console.log("Hello");
-  const [items, setItems] = useState([]);
-  const url = "http://localhost:3000/api/products";
-  useEffect(() => {
-    axios.get(url).then((data) => {
-      console.log("data", data);
-      setItems(data.data);
-    });
-  }, []);
+  // console.log("Hello");
+  // const [items, setItems] = useState([]);
+  // const url = "http://localhost:3000/api/products";
+  // useEffect(() => {
+  //   axios.get(url).then((data) => {
+  //     console.log("data", data);
+  //     setItems(data.data);
+  //   });
+  // }, []);
 
   return (
     <>
       <section className='products'>
-        <h1> Fragrances</h1>
+        {/* <h1> Fragrances</h1>
         <div className='new-arrival-products'>
           {items.map((item) => (
             <ProductItem
@@ -36,7 +47,7 @@ const ProductsContent = () => {
               brand={item.brand}
             />
           ))}
-        </div>
+        </div> */}
       </section>
     </>
   );
