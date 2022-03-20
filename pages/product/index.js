@@ -41,7 +41,7 @@ const ProductsContent = ({ products }) => {
               key={product.id}
               id={product.id}
               price={product.price.formatted_with_symbol}
-              // currentPrice={.currentPrice}
+              currentPrice={product.price.formatted_with_symbol}
               productImage={product.image.url}
               name={product.name}
               brand={product.name}
