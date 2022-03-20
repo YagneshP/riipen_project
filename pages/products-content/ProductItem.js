@@ -10,11 +10,12 @@ const ProductItem = ({
   name,
   price,
   currentPrice,
+  permalink,
 }) => {
   return (
     <div className='new-arrival-product'>
       <div className='product__image'>
-        <Link href={`/product/${id}`}>
+        <Link href={`/product/${permalink}`}>
           <a>
             <img src={productImage} alt='product' width={200} height={200} />
           </a>

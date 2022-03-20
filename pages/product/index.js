@@ -16,7 +16,6 @@ export async function getStaticProps() {
 }
 
 const ProductsContent = ({ products }) => {
-  console.log("Products", products);
   // const fetcher = (url) => fetch(url).then((res) => res.json());
   // const { data, error } = useSwr('/api/products', fetcher);
 
@@ -40,6 +39,7 @@ const ProductsContent = ({ products }) => {
               // discount={product.discount}
               key={product.id}
               id={product.id}
+              permalink={product.permalink}
               price={product.price.formatted_with_symbol}
               currentPrice={product.price.formatted_with_symbol}
               productImage={product.image.url}
