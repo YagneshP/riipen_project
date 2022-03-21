@@ -1,12 +1,8 @@
-import CloseIcon from '@mui/icons-material/Close';
-const GrandTotal = ({ id, name, price,quntity}) => {
-return(
-<>
-{/* <!-- SUB TOTAL --> */}
-
-    <p>{name} <span>{price * quntity} </span></p>
-    
-    
-</>
-)};
-export default GrandTotal
+const GrandTotal = ({ name, line_total }) => {
+  return (
+    <p>
+      {name} <span>{line_total} </span>
+    </p>
+  );
+};
+export default GrandTotal;
