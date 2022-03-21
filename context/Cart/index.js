@@ -42,13 +42,13 @@ export const useCartActions = () => {
 
 // Cart Provider
 
-export default function CartProvider({ children }) {
-  const [cart, dispatch] = useReducer(cartReducer, cartInitialState);
+export function CartProvider({ children }) {
+  const [state, dispatch] = useReducer(cartReducer, cartInitialState);
 
   useEffect(() => {
     getCart();
   }, []);
-  const setCart = (cart) => dispatch({ type: "SET_CART", payload: cart });
+  const setCart = (payload) => dispatch({ type: "SET_CART", payload });
   const getCart = async () => {
     try {
       const cart = await commerce.cart.retrieve();
@@ -58,8 +58,10 @@ export default function CartProvider({ children }) {
     }
   };
   return (
-    <CartStateContext value={cart}>
-      <CartDispatchContext value={dispatch}>{children}</CartDispatchContext>
-    </CartStateContext>
+    <CartStateContext.Provider value={state}>
+      <CartDispatchContext.Provider value={{ setCart }}>
+        {children}
+      </CartDispatchContext.Provider>
+    </CartStateContext.Provider>
   );
 }

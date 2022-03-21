@@ -10,15 +10,15 @@ import { CartProvider } from "../context/Cart";
 function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
-      <CartProvider>
-        <div className='wrapper'>
-          <AuthProvider>
+      <div className='wrapper'>
+        <AuthProvider>
+          <CartProvider>
             <Layout>
               <Component {...pageProps} />
             </Layout>
-          </AuthProvider>
-        </div>
-      </CartProvider>
+          </CartProvider>
+        </AuthProvider>
+      </div>
     </Provider>
   );
 }
