@@ -1,11 +1,11 @@
 $fontFamily:"Playfair Display', serif";
 
 .about{
+	
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
   align-items: center;
-	margin-top: 50px;
 }
 
 .history{
@@ -83,6 +83,7 @@ $fontFamily:"Playfair Display', serif";
 
 }
 
+
 .our-team{
 	padding-top: 80px;
 	padding-bottom: 80px;
@@ -90,28 +91,32 @@ $fontFamily:"Playfair Display', serif";
 	@media (max-width: 480px) {
 		font-size: 18px;
 	}
-		.heading{
-			text-align: center;
-			padding-bottom: 100px;
-		}
-		.avatar {			
-			position: relative;
-			overflow: hidden;
-			display: block;
-			border-radius: 50%;
-			margin-left: auto;  
-			margin-right: auto;  
-			@media (max-width: 480px) {
+	.heading{
+		text-align: center;
+		padding-bottom: 100px;
+	}
+	.avatar {			
+		position: relative;
+		overflow: hidden;
+		display: block;
+		margin-left: auto;  
+		margin-right: auto;  
+		@media (max-width: 480px) {
 			height:100px;
 			width:100px;
-			}
 		}
-		.column {
-			float: left;
-			width: 33%;
-			padding: 10px;
+	}
 	
-		}
+	.our-team-images {
+		border-radius: 50%;
+	}
+
+	.column {
+		float: left;
+		width: 33%;
+		padding: 10px;
+
+	}
 	.team-names {
 		position: relative;
 		margin-top: 30px;

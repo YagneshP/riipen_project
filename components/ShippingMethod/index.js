@@ -1,6 +1,6 @@
 const ShippingMethod = () => {
   return (
-    <div>
+    <div id="shipping-method-page">
       <div id="wrap">
         <div id="content">
           <section className="history-block padding-top-100 padding-bottom-100">
