@@ -1,8 +1,3 @@
-import Image from "next/image";
-// import '../styles/cart'
-
-import React, { useState, useEffect, useContext } from "react";
-import axios from "axios";
 import CartItem from "./CartItem";
 import GrandTotal from "./GrandTotal";
 import { useRouter } from "next/router";
@@ -54,7 +49,6 @@ const Cart = () => {
                   key={item.id}
                   id={item.id}
                   name={item.name}
-                  // brand={item.brand}
                   line_total={item.line_total.formatted_with_symbol}
                   price={item.price.formatted_with_symbol}
                   quantity={item.quantity}

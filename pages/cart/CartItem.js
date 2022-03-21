@@ -2,15 +2,12 @@ import CloseIcon from "@mui/icons-material/Close";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { commerce } from "../../lib/commerce";
-import { useCart, useCartActions } from "../../context/Cart";
+import { useCartActions } from "../../context/Cart";
 
 const CartItem = ({ id, name, brand, price, quantity, image, line_total }) => {
   const { setCart } = useCartActions();
-  const state = useCart();
-  console.log("state", state);
   const removeItem = async () => {
     let response = await commerce.cart.remove(id);
-    console.log("res", response);
     setCart(response.cart);
     alert("Item removed");
   };

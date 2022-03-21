@@ -1,6 +1,3 @@
-/* eslint-disable */
-
-import Image from "next/image";
 import { useState } from "react";
 import { FiFacebook } from "react-icons/fi";
 import { FiTwitter } from "react-icons/fi";
