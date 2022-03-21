@@ -1,4 +1,5 @@
-import { createContext, useReducer, useContext } from "react";
+import { createContext, useReducer, useContext, useEffect } from "react";
+import { commerce } from "../../lib/commerce";
 
 const CartStateContext = createContext(null);
 const CartDispatchContext = createContext(null);
@@ -44,6 +45,18 @@ export const useCartActions = () => {
 export default CartProvider = ({ children }) => {
   const [cart, dispatch] = useReducer(cartReducer, cartInitialState);
 
+  useEffect(() => {
+    getCart();
+  }, []);
+  const setCart = (cart) => dispatch({ type: "SET_CART", payload: cart });
+  const getCart = async () => {
+    try {
+      const cart = await commerce.cart.retrieve();
+      setCart(cart);
+    } catch (erorr) {
+      console.log("Error while getting cart");
+    }
+  };
   return (
     <CartStateContext value={cart}>
       <CartDispatchContext value={dispatch}>{children}</CartDispatchContext>
