@@ -33,22 +33,25 @@
 	position: relative;
 	z-index: 1;
 }
-p {
-	font-weight: 400;
-	color: #6f6f6f;
-	line-height: 26px;
-	text-rendering: optimizeLegibility;
+
+.cart-details {
+  display: table-row;
+  padding-inline-start: 0;
+  li {
+    display: table-cell;
+    list-style: none;
+    font-family:$body-font;
+    font-size: $m-size;  
+  }
+     
+  p {
+    font-weight: 400;
+    color: #6f6f6f;
+    line-height: 26px;
+    text-rendering: optimizeLegibility;
+  }
 }
-// ul {
-//   display: table-row;
-//   padding-inline-start: 0;
-//   li {
-//     display: table-cell;
-//     list-style: none;
-//     font-family:$body-font;
-//     font-size: $m-size;  
-//   }   
-// }
+
 .main {
   padding-right: 75px;
   padding-left: 75px;
