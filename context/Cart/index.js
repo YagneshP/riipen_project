@@ -42,7 +42,7 @@ export const useCartActions = () => {
 
 // Cart Provider
 
-export default CartProvider = ({ children }) => {
+export default function CartProvider({ children }) {
   const [cart, dispatch] = useReducer(cartReducer, cartInitialState);
 
   useEffect(() => {
@@ -62,4 +62,4 @@ export default CartProvider = ({ children }) => {
       <CartDispatchContext value={dispatch}>{children}</CartDispatchContext>
     </CartStateContext>
   );
-};
+}
