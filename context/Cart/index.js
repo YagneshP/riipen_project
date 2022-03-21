@@ -3,15 +3,26 @@ import { createContext } from "react";
 const CartStateContext = createContext(null);
 const CartDispatchContext = createContext(null);
 
-// // cart reducer
+//cart intialState
 
-// const cartReducer (state, action) => {
-//  switch (action.type) {
-//    case SET_CART:
+const cartInitialState = {
+  total_items : 0,
+  total_unique_items : 0,
+  subtotal : {
 
-//      break;
+  },
+  line_items : []
+}
 
-//    default:
-//      break;
-//  }
-// }
+// cart reducer
+
+const cartReducer (state, action) => {
+ switch (action.type) {
+   case 'SET_CART':
+
+     break;
+
+   default:
+     break;
+ }
+}
