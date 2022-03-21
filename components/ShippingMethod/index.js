@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const ShippingMethod = () => {
   return (
     <div id="shipping-method-page">
@@ -92,7 +94,7 @@ const ShippingMethod = () => {
                         <div className="title">Customs, Duties and Taxes</div>
                         Ecoshop is not liable for any customs or taxes that may
                         be imposed on Your order. All fees imposed during or
-                        after shipping are the customer's responsibility
+                        after shipping are the customer&apos;s responsibility
                         (tariffs, taxes)
                         <br />
                         <br />
@@ -114,7 +116,7 @@ const ShippingMethod = () => {
                         
                         If you have any questions about this Shipping Policy,
                         You can contact Us by submitting your question using out
-                        form <a href="/contact">here</a>.
+                        form <Link href="/contact">here</Link>.
                       </p>
                     </div>
                   </div>

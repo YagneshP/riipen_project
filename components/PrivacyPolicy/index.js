@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const PrivacyPolicy = () => {
   return (
     <div id="privacy-policy-page">
@@ -53,12 +55,12 @@ const PrivacyPolicy = () => {
                             <div className="bold">Business :</div>
                             for the purpose of the CCPA (Canada Consumer Privacy
                             Act), refers to the Company as the legal entity that
-                            collects Consumers' personal information and
+                            collects Consumers&apos; personal information and
                             determines the purposes and means of the processing
-                            of Consumers' personal information, or on behalf of
+                            of Consumers&apos; personal information, or on behalf of
                             which such information is collected and that alone,
                             or jointly with others, determines the purposes and
-                            means of the processing of consumers' personal
+                            means of the processing of consumers&apos; personal
                             information, that does business in the State of
                             Canada.
                           </li>
@@ -87,12 +89,12 @@ const PrivacyPolicy = () => {
                             <div className="bold">Business :</div>
                             for the purpose of the CCPA (Canada Consumer Privacy
                             Act), refers to the Company as the legal entity that
-                            collects Consumers' personal information and
+                            collects Consumers&apos; personal information and
                             determines the purposes and means of the processing
-                            of Consumers' personal information, or on behalf of
+                            of Consumers&apos; personal information, or on behalf of
                             which such information is collected and that alone,
                             or jointly with others, determines the purposes and
-                            means of the processing of consumers' personal
+                            means of the processing of consumers&apos; personal
                             information, that does business in the State of
                             Canada.
                           </li>
@@ -240,7 +242,7 @@ const PrivacyPolicy = () => {
                             <div className="bold">To contact You:</div> To
                             contact You by email, telephone calls, SMS, or other
                             equivalent forms of electronic communication, such
-                            as a mobile application's push notifications
+                            as a mobile application&apos;s push notifications
                             regarding updates or informative communications
                             related to the functionalities, products or
                             contracted services, including the security updates,
@@ -367,7 +369,7 @@ const PrivacyPolicy = () => {
                         </div>
                         <br />
                         Your information, including Personal Data, is processed
-                        at the Company's operating offices and in any other
+                        at the Company&apos;s operating offices and in any other
                         places where the parties involved in the processing are
                         located. It means that this information may be
                         transferred to — and maintained on — computers located
@@ -490,8 +492,8 @@ const PrivacyPolicy = () => {
                         This Privacy Policy may be amended from time to time in
                         order to maintain compliance with the law and to reflect
                         any changes to our data collection process. When we
-                        amend this Privacy Policy we will update the "Effective
-                        Date" at the top of this Privacy Policy. We recommend
+                        amend this Privacy Policy we will update the &quot;Effective
+                        Date&quot; at the top of this Privacy Policy. We recommend
                         that our users periodically review our Privacy Policy to
                         ensure that they are notified of any updates. If
                         necessary, we may notify users by email of changes to
@@ -502,7 +504,7 @@ const PrivacyPolicy = () => {
                         <br />
                         If you have any concerns about how we handle your
                         personal data, please contact us using the contact
-                        information <a href="/contact">here</a>.
+                        information <Link href="/contact">here</Link>.
                       </p>
                     </div>
                   </div>
