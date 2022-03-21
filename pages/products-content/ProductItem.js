@@ -19,12 +19,6 @@ const ProductItem = ({
           <a>
             <Image src={productImage} alt='product' width={200} height={200} />
           </a>
-          {/* <Image 
-							src={productImage}
-							alt="Logo"
-							width="270px"
-							height="352px"
-      			/> */}
         </Link>
 
         {discount && <p className='product__discount'>{discount}%</p>}
