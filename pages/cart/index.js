@@ -5,34 +5,16 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import CartItem from "./CartItem";
 import GrandTotal from "./GrandTotal";
-// import Image from 'next/image';
-import { useSelector } from "react-redux";
-import { Link } from "@mui/material";
 import { useRouter } from "next/router";
 import { useCart } from "../../context/Cart";
 
 const Cart = () => {
   const router = useRouter();
-
   const { line_items, subtotal } = useCart();
-  console.log("cart", line_items);
-  console.log("subtootal", subtotal);
   const handleClick = (e) => {
     e.preventDefault();
     router.push("/products-content");
   };
-
-  // console.log("Hello");
-
-  // const cart = useSelector((state) => state.cart);
-
-  // const getTotalPrice = () => {
-  //   return cart.reduce(
-  //     (accumulator, item) => accumulator + item.quantity * item.price,
-  //     0
-  //   );
-  // };
-  // console.log("gettotal", getTotalPrice());
   return (
     <div>
       <main>
@@ -126,7 +108,7 @@ const Cart = () => {
 
                     {/* <!-- SUB TOTAL --> */}
                     <p className='all-total'>
-                      TOTAL COST <span> ${subtotal.formatted_with_symbol}</span>
+                      TOTAL COST <span> {subtotal.formatted_with_symbol}</span>
                     </p>
                   </div>
                 </div>
