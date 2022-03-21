@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useContext } from "react";
 
 const CartStateContext = createContext(null);
 const CartDispatchContext = createContext(null);
@@ -25,6 +25,18 @@ const cartReducer = (state, action) => {
     default:
       throw new Error(`Unknown action ${action.type}`);
   }
+};
+
+// useCart custom hook
+
+export const useCart = () => {
+  return useContext(CartStateContext);
+};
+
+// useCartActions custom hook
+
+export const useCartActions = () => {
+  return useContext(CartDispatchContext);
 };
 
 // Cart Provider
