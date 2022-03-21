@@ -18,7 +18,7 @@ const Contact = () => {
     loader.load().then(() => {
       map = new google.maps.Map(googlemap.current, {
         center: { lat: 43.65189, lng: -79.381706 },
-        zoom: 8,
+        zoom: 16,
       });
     });
   });
