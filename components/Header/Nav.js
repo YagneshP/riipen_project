@@ -14,6 +14,7 @@ const Nav = () => {
   const getItemsCount = () => {
     return cart.reduce((accumulator, item) => accumulator + item.quantity, 0);
   };
+console.log("getItemsCount",getItemsCount());
   return ( 
     <ul className='nav'>
       <li><Link href="/">Home</Link></li>
