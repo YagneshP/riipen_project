@@ -13,6 +13,7 @@ module.exports = {
       "encrypted-tbn0.gstatic.com",
       "placeimg.com",
       "cdn.chec.io",
+      "images.unsplash.com",
     ],
   },
 };

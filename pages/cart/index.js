@@ -81,7 +81,7 @@ const Cart = () => {
                     <a onClick={handleClick} className='btn'>
                       continue shopping
                     </a>{" "}
-                    <a href='#.' className='btn'>
+                    <a href='/checkout' className='btn'>
                       Checkout
                     </a>{" "}
                   </div>
