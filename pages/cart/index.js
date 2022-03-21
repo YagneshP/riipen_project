@@ -120,8 +120,7 @@ const Cart = () => {
                         key={item.id}
                         id={item.id}
                         name={item.name}
-                        price={item.price}
-                        quntity={item.quantity}
+                        line_total={item.line_total.formatted_with_symbol}
                       />
                     ))}
 
