@@ -1,5 +1,4 @@
-import Image from "next/image";
-// import '../styles/cart'
+/* eslint-disable */
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
@@ -17,10 +16,7 @@ const Cart = () => {
     router.push("/products-content")
   }
  
-  console.log("Hello");
-
 const cart = useSelector((state) => state.cart);
-
 
   const getTotalPrice = () => {
     return cart.reduce(
@@ -28,7 +24,7 @@ const cart = useSelector((state) => state.cart);
       0
     );
   };
-  console.log("gettotal",getTotalPrice());
+
   return (
    
     <div>
@@ -97,7 +93,7 @@ const cart = useSelector((state) => state.cart);
                     <input type="text" placeholder="ENTER YOUR CODE IF YOU HAVE ONE" />
                     <button type="submit" className="btn btn-small btn-dark">APPLY CODE</button>
                   </form>
-                  <div className="coupn-btn"> <a onClick={handleClick} className="btn">continue shopping</a> <a href="#." className="btn">Checkout</a> </div>
+                  <div className="coupn-btn"> <a onClick={handleClick} className="btn">continue shopping</a> <a href="/checkout" className="btn">Checkout</a> </div>
                 </div>
                 <div className="col-sm-5">
                   <h6>GRAND TOTAL</h6>
