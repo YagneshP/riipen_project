@@ -1,0 +1,30 @@
+.account-page {
+  display: flex;
+  justify-content: space-between;
+  flex: 2;
+  padding: $l-size;
+  
+  h1 {
+    margin: $l-size 20rem $l-size 0;
+  }
+}
+
+.account-details {
+  // margin-right: 20rem;
+
+  .personal-info {
+    margin-top: $l-size;
+  }
+}
+
+.account-page-form {
+  margin: $l-size;
+  flex: 1;
+}
+
+.account-profile-img {
+  border-radius: 50%;
+  // margin-left: $l-size;
+  margin: auto;
+  text-align: center;
+}
