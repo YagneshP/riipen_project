@@ -8,6 +8,7 @@ import { FiDribbble } from "react-icons/fi";
 import { FiInstagram } from "react-icons/fi";
 import { FiYoutube } from "react-icons/fi";
 import { useDispatch } from "react-redux";
+import { useCartActions } from "../../context/Cart";
 import { commerce } from "../../lib/commerce";
 import { addToCart } from "../../redux/cart.slice";
 import { getProducts } from "../api/products";
@@ -49,13 +50,16 @@ export async function getStaticProps({ params }) {
 }
 
 const Product = ({ product }) => {
-  const dispatch = useDispatch();
+  const [quantity, setQuantity] = useState(1);
 
-  const [quantity, setQuantity] = useState();
-
+  const { setCart } = useCartActions();
+  const addItemToCart = async () => {
+    const payload = await commerce.cart.add(product.id, quantity);
+    setCart(payload);
+  };
   // console.log(localStorage === window.localStorage);
   // localStorage.setItem("quantity","quantity");
-  console.log("qty", quantity);
+  // console.log("qty", quantity);
   return (
     <>
       <div className='container'>
@@ -138,11 +142,12 @@ const Product = ({ product }) => {
           <br />
           <button
             className='cart-btn'
-            onClick={() => {
-              product.quantity = quantity == undefined ? 1 : Number(quantity);
-              alert("item added to cart");
-              dispatch(addToCart(product));
-            }}
+            onClick={addItemToCart}
+            // onClick={() => {
+            //   product.quantity = quantity == undefined ? 1 : Number(quantity);
+            //   alert("item added to cart");
+            //   // dispatch(addToCart(product));
+            // }}
           >
             Add to cart
           </button>
