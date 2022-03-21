@@ -6,15 +6,17 @@ $fontFamily:"Playfair Display', serif";
 	flex-direction: column;
 	justify-content: center;
   align-items: center;
+	padding-top: $l-size;
 }
 
 .history{
-  display: flex;
+	display: flex;
 	width: 60%;
 	flex-direction: column;
 	justify-content: center;
   font-family: $fontFamily;
 	font-size: 16px;
+	padding: $xl-size 0;
 	 h1{
  		text-align: center;
 	}
@@ -106,7 +108,7 @@ $fontFamily:"Playfair Display', serif";
 			width:100px;
 		}
 	}
-	
+
 	.our-team-images {
 		border-radius: 50%;
 	}
