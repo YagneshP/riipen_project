@@ -9,9 +9,10 @@ const CartDispatchContext = createContext(null);
 const cartInitialState = {
   total_items: 0,
   total_unique_items: 0,
-  subtotal: {
-    formatted_with_symbol: "",
-  },
+  subtotal: {},
+  // subtotal: {
+  //   formatted_with_symbol: "",
+  // },
   line_items: [],
 };
 
