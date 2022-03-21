@@ -1,16 +1,33 @@
 import CloseIcon from "@mui/icons-material/Close";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-// Importing actions from  cart.slice.js
-import {
-  incrementQuantity,
-  decrementQuantity,
-  removeFromCart,
-} from "../../redux/cart.slice";
-import { useDispatch } from "react-redux";
+import { commerce } from "../../lib/commerce";
+import { useCart, useCartActions } from "../../context/Cart";
 
 const CartItem = ({ id, name, brand, price, quantity, image, line_total }) => {
-  const dispatch = useDispatch();
+  const { setCart } = useCartActions();
+  const state = useCart();
+  console.log("state", state);
+  const removeItem = async () => {
+    let response = await commerce.cart.remove(id);
+    console.log("res", response);
+    setCart(response.cart);
+    alert("Item removed");
+  };
+  const incrementQuantity = async () => {
+    let response = await commerce.cart.update(id, {
+      quantity: quantity + 1,
+    });
+    setCart(response.cart);
+  };
+  const decrementQuantity = async () => {
+    let response =
+      quantity > 1
+        ? await commerce.cart.update(id, { quantity: quantity - 1 })
+        : removeItem();
+    setCart(response.cart);
+  };
+
   return (
     <>
       {/* <!-- Cart Details --> */}
@@ -56,13 +73,13 @@ const CartItem = ({ id, name, brand, price, quantity, image, line_total }) => {
           <div className='position-center-center'>
             <div className='quinty'>
               {/* <!-- QTY --> */}
-              <a onClick={() => dispatch(incrementQuantity(id))}>
+              <button onClick={incrementQuantity}>
                 <AddIcon fontSize='large' />
-              </a>
+              </button>
               {quantity}
-              <a onClick={() => dispatch(decrementQuantity(id))}>
+              <button onClick={decrementQuantity}>
                 <RemoveIcon fontSize='large' />
-              </a>
+              </button>
             </div>
           </div>
         </li>
@@ -79,9 +96,9 @@ const CartItem = ({ id, name, brand, price, quantity, image, line_total }) => {
         <li className='col-sm-1'>
           {/* <div className="position-center-center">  */}
           <div className='buttons1'>
-            <a onClick={() => dispatch(removeFromCart(id))}>
+            <button onClick={removeItem}>
               <CloseIcon fontSize='large' />
-            </a>
+            </button>
           </div>
           {/* <a href="#."><CloseIcon fontSize="large" /></a> </div> */}
         </li>

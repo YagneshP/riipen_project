@@ -1,28 +1,14 @@
 /* eslint-disable */
 
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { FiFacebook } from "react-icons/fi";
 import { FiTwitter } from "react-icons/fi";
 import { FiDribbble } from "react-icons/fi";
 import { FiInstagram } from "react-icons/fi";
 import { FiYoutube } from "react-icons/fi";
-import { useDispatch } from "react-redux";
 import { useCartActions } from "../../context/Cart";
 import { commerce } from "../../lib/commerce";
-import { addToCart } from "../../redux/cart.slice";
-import { getProducts } from "../api/products";
-
-// export async function getServerSideProps({ query }) {
-// 	const pid = query.pid;
-// 	const res = await fetch(`http://localhost:3000/api/product/${pid}`);
-// 	const product = await res.json();
-// 	return {
-// 	props: {
-// 		product,
-// 	},
-// 	}
-// }
 
 // Pre-render the path of each product
 export async function getStaticPaths() {
@@ -57,9 +43,7 @@ const Product = ({ product }) => {
     const payload = await commerce.cart.add(product.id, quantity);
     setCart(payload);
   };
-  // console.log(localStorage === window.localStorage);
-  // localStorage.setItem("quantity","quantity");
-  // console.log("qty", quantity);
+
   return (
     <>
       <div className='container'>
@@ -71,16 +55,7 @@ const Product = ({ product }) => {
             height={200}
           />
         </div>
-        {/* <section className="product-details">
-			<div className="image-slider">
-        <div className="product-images">
-            <img src={"https://dummyimage.com/700x710/967396/0011ff"} className="active" alt=""/>
-            <img src={"https://dummyimage.com/150/967396/001321"} alt=""/>
-            <img src={"https://dummyimage.com/150/967396/011f00"} alt=""/>
-           
-        </div>
-    </div>
-		</section> */}
+
         <div className='details'>
           <h2 className='product-name'>{product.name}</h2>
           <p className='product-price'>{product.price.formatted_with_symbol}</p>
@@ -140,15 +115,7 @@ const Product = ({ product }) => {
           </div>
           <br />
           <br />
-          <button
-            className='cart-btn'
-            onClick={addItemToCart}
-            // onClick={() => {
-            //   product.quantity = quantity == undefined ? 1 : Number(quantity);
-            //   alert("item added to cart");
-            //   // dispatch(addToCart(product));
-            // }}
-          >
+          <button className='cart-btn' onClick={addItemToCart}>
             Add to cart
           </button>
 
