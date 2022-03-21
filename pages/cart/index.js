@@ -1,5 +1,4 @@
-import Image from "next/image";
-// import '../styles/cart'
+/* eslint-disable */
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
@@ -17,10 +16,7 @@ const Cart = () => {
     router.push("/products-content")
   }
  
-  console.log("Hello");
-
 const cart = useSelector((state) => state.cart);
-
 
   const getTotalPrice = () => {
     return cart.reduce(
@@ -28,7 +24,7 @@ const cart = useSelector((state) => state.cart);
       0
     );
   };
-  console.log("gettotal",getTotalPrice());
+
   return (
    
     <div>
