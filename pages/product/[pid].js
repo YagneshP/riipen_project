@@ -29,7 +29,7 @@ const Product = ({ product }) => {
 
 	return (
     <>
-		<div className="container">
+		<div className="container-products">
       <div className="image"> 
 			<img src={"https://dummyimage.com/700x710/967396/fff"} alt="product" />
            

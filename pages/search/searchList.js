@@ -18,8 +18,6 @@ const List = (props) => {
 		}
 		//return the item which contains the user input
 		else {
-			console.log("props",props.input);
-			console.log("brand",el.category);
 			return ( el.brand.toLowerCase().includes(props.input)||
 								el.name.toLowerCase().includes(props.input)||
 								el.category.toLowerCase()===props.input);
