@@ -1,139 +1,139 @@
 const Checkout = () => {
   return (
-    <div id="content">
+    <div id='content'>
       {/* <!--======= PAGES INNER =========--> */}
-      <section class="chart-page padding-top-100 padding-bottom-100">
-        <div class="container">
+      <section className='chart-page padding-top-100 padding-bottom-100'>
+        <div className='container'>
           {/* <!-- Payments Steps --> */}
-          <div class="shopping-cart">
+          <div className='shopping-cart'>
             {/* <!-- SHOPPING INFORMATION --> */}
-            <div class="cart-ship-info">
-              <div class="row">
+            <div className='cart-ship-info'>
+              <div className='row'>
                 {/* <!-- ESTIMATE SHIPPING & TAX --> */}
-                <div class="col-sm-7">
+                <div className='col-sm-7'>
                   <h6>BILLING DETAILS</h6>
                   <form>
-                    <ul class="row">
+                    <ul className='row'>
                       {/* <!-- Name --> */}
-                      <li class="col-md-6">
+                      <li className='col-md-6'>
                         <label>
                           {" "}
                           *FIRST NAME
                           <input
-                            type="text"
-                            name="first-name"
-                            value=""
-                            placeholder=""
+                            type='text'
+                            name='first-name'
+                            value=''
+                            placeholder=''
                           />
                         </label>
                       </li>
                       {/* <!-- LAST NAME --> */}
-                      <li class="col-md-6">
+                      <li className='col-md-6'>
                         <label>
                           {" "}
                           *LAST NAME
                           <input
-                            type="text"
-                            name="last-name"
-                            value=""
-                            placeholder=""
+                            type='text'
+                            name='last-name'
+                            value=''
+                            placeholder=''
                           />
                         </label>
                       </li>
-                      <li class="col-md-6">
+                      <li className='col-md-6'>
                         {/* <!-- COMPANY NAME --> */}
                         <label>
                           COMPANY NAME
                           <input
-                            type="text"
-                            name="company"
-                            value=""
-                            placeholder=""
+                            type='text'
+                            name='company'
+                            value=''
+                            placeholder=''
                           />
                         </label>
                       </li>
-                      <li class="col-md-6">
+                      <li className='col-md-6'>
                         {/* <!-- ADDRESS --> */}
                         <label>
                           *ADDRESS
                           <input
-                            type="text"
-                            name="address"
-                            value=""
-                            placeholder=""
+                            type='text'
+                            name='address'
+                            value=''
+                            placeholder=''
                           />
                         </label>
                       </li>
                       {/* <!-- TOWN/CITY --> */}
-                      <li class="col-md-6">
+                      <li className='col-md-6'>
                         <label>
                           *TOWN/CITY
                           <input
-                            type="text"
-                            name="town"
-                            value=""
-                            placeholder=""
+                            type='text'
+                            name='town'
+                            value=''
+                            placeholder=''
                           />
                         </label>
                       </li>
 
                       {/* <!-- COUNTRY --> */}
-                      <li class="col-md-6">
+                      <li className='col-md-6'>
                         <label>
                           {" "}
                           COUNTRY
                           <input
-                            type="text"
-                            name="contry-state"
-                            value=""
-                            placeholder=""
+                            type='text'
+                            name='contry-state'
+                            value=''
+                            placeholder=''
                           />
                         </label>
                       </li>
 
                       {/* <!-- EMAIL ADDRESS --> */}
-                      <li class="col-md-6">
+                      <li className='col-md-6'>
                         <label>
                           {" "}
                           *EMAIL ADDRESS
                           <input
-                            type="text"
-                            name="contry-state"
-                            value=""
-                            placeholder=""
+                            type='text'
+                            name='contry-state'
+                            value=''
+                            placeholder=''
                           />
                         </label>
                       </li>
                       {/* <!-- PHONE --> */}
-                      <li class="col-md-6">
+                      <li className='col-md-6'>
                         <label>
                           {" "}
                           *PHONE
                           <input
-                            type="text"
-                            name="postal-code"
-                            value=""
-                            placeholder=""
+                            type='text'
+                            name='postal-code'
+                            value=''
+                            placeholder=''
                           />
                         </label>
                       </li>
 
                       {/* <!-- PHONE --> */}
-                      <li class="col-md-6">
-                        <button type="submit" class="button-chk">
+                      <li className='col-md-6'>
+                        <button type='submit' className='button-chk'>
                           Continue
                         </button>
                       </li>
 
                       {/* <!-- CREATE AN ACCOUNT --> */}
-                      <li class="col-md-6">
-                        <div class="checkbox margin-0 margin-top-20">
+                      <li className='col-md-6'>
+                        <div className='checkbox margin-0 margin-top-20'>
                           <input
-                            id="checkbox1"
-                            class="styled"
-                            type="checkbox"
+                            id='checkbox1'
+                            className='styled'
+                            type='checkbox'
                           />
-                          <label for="checkbox1">
+                          <label for='checkbox1'>
                             Ship to a different address
                           </label>
                         </div>
@@ -142,116 +142,116 @@ const Checkout = () => {
                   </form>
 
                   {/* <!-- SHIPPING info --> */}
-                  <h6 class="margin-top-50">SHIPPING info</h6>
+                  <h6 className='margin-top-50'>SHIPPING info</h6>
                   <form>
-                    <ul class="row">
+                    <ul className='row'>
                       {/* <!-- Name --> */}
-                      <li class="col-md-6">
+                      <li className='col-md-6'>
                         <label>
                           {" "}
                           *FIRST NAME
                           <input
-                            type="text"
-                            name="first-name"
-                            value=""
-                            placeholder=""
+                            type='text'
+                            name='first-name'
+                            value=''
+                            placeholder=''
                           />
                         </label>
                       </li>
                       {/* <!-- LAST NAME --> */}
-                      <li class="col-md-6">
+                      <li className='col-md-6'>
                         <label>
                           {" "}
                           *LAST NAME
                           <input
-                            type="text"
-                            name="last-name"
-                            value=""
-                            placeholder=""
+                            type='text'
+                            name='last-name'
+                            value=''
+                            placeholder=''
                           />
                         </label>
                       </li>
-                      <li class="col-md-6">
+                      <li className='col-md-6'>
                         {/* <!-- COMPANY NAME --> */}
                         <label>
                           COMPANY NAME
                           <input
-                            type="text"
-                            name="company"
-                            value=""
-                            placeholder=""
+                            type='text'
+                            name='company'
+                            value=''
+                            placeholder=''
                           />
                         </label>
                       </li>
-                      <li class="col-md-6">
+                      <li className='col-md-6'>
                         {/* <!-- ADDRESS --> */}
                         <label>
                           *ADDRESS
                           <input
-                            type="text"
-                            name="address"
-                            value=""
-                            placeholder=""
+                            type='text'
+                            name='address'
+                            value=''
+                            placeholder=''
                           />
                         </label>
                       </li>
                       {/* <!-- TOWN/CITY --> */}
-                      <li class="col-md-6">
+                      <li className='col-md-6'>
                         <label>
                           *TOWN/CITY
                           <input
-                            type="text"
-                            name="town"
-                            value=""
-                            placeholder=""
+                            type='text'
+                            name='town'
+                            value=''
+                            placeholder=''
                           />
                         </label>
                       </li>
 
                       {/* <!-- COUNTRY --> */}
-                      <li class="col-md-6">
+                      <li className='col-md-6'>
                         <label>
                           {" "}
                           COUNTRY
                           <input
-                            type="text"
-                            name="contry-state"
-                            value=""
-                            placeholder=""
+                            type='text'
+                            name='contry-state'
+                            value=''
+                            placeholder=''
                           />
                         </label>
                       </li>
 
                       {/* <!-- EMAIL ADDRESS --> */}
-                      <li class="col-md-6">
+                      <li className='col-md-6'>
                         <label>
                           {" "}
                           *EMAIL ADDRESS
                           <input
-                            type="text"
-                            name="contry-state"
-                            value=""
-                            placeholder=""
+                            type='text'
+                            name='contry-state'
+                            value=''
+                            placeholder=''
                           />
                         </label>
                       </li>
                       {/* <!-- PHONE --> */}
-                      <li class="col-md-6">
+                      <li className='col-md-6'>
                         <label>
                           {" "}
                           *PHONE
                           <input
-                            type="text"
-                            name="postal-code"
-                            value=""
-                            placeholder=""
+                            type='text'
+                            name='postal-code'
+                            value=''
+                            placeholder=''
                           />
                         </label>
                       </li>
 
                       {/* <!-- PHONE --> */}
-                      <li class="col-md-6">
-                        <button type="submit" class="button-chk">
+                      <li className='col-md-6'>
+                        <button type='submit' className='button-chk'>
                           SUBMIT
                         </button>
                       </li>
@@ -260,10 +260,10 @@ const Checkout = () => {
                 </div>
 
                 {/* <!-- SUB TOTAL --> */}
-                <div class="col-sm-5">
+                <div className='col-sm-5'>
                   <h6>YOUR ORDER</h6>
-                  <div class="order-place">
-                    <div class="order-detail">
+                  <div className='order-place'>
+                    <div className='order-detail'>
                       <p>
                         WOOD CHAIR <span>$598 </span>
                       </p>
@@ -275,47 +275,45 @@ const Checkout = () => {
                       </p>
 
                       {/* <!-- SUB TOTAL --> */}
-                      <p class="all-total">
+                      <p className='all-total'>
                         TOTAL COST <span> $998</span>
                       </p>
                     </div>
-                    <div class="pay-meth">
+                    <div className='pay-meth'>
                       <ul>
-                       
-
                         <li>
-                          <div class="radio">
+                          <div className='radio'>
                             <input
-                              type="radio"
-                              name="radio1"
-                              id="radio3"
-                              value="option3"
+                              type='radio'
+                              name='radio1'
+                              id='radio3'
+                              value='option3'
                             />
-                            <label for="radio3"> Credit/Debit </label>
+                            <label for='radio3'> Credit/Debit </label>
                           </div>
                         </li>
                         <li>
-                          <div class="radio">
+                          <div className='radio'>
                             <input
-                              type="radio"
-                              name="radio1"
-                              id="radio4"
-                              value="option4"
+                              type='radio'
+                              name='radio1'
+                              id='radio4'
+                              value='option4'
                             />
-                            <label for="radio4"> PAYPAL </label>
+                            <label for='radio4'> PAYPAL </label>
                           </div>
                         </li>
                         <li>
-                          <div class="checkbox">
+                          <div className='checkbox'>
                             <input
-                              id="checkbox3-4"
-                              class="styled"
-                              type="checkbox"
+                              id='checkbox3-4'
+                              className='styled'
+                              type='checkbox'
                             />
-                            <label for="checkbox3-4">
+                            <label for='checkbox3-4'>
                               {" "}
                               I’VE READ AND ACCEPT THE{" "}
-                              <span class="color">
+                              <span className='color'>
                                 {" "}
                                 TERMS & CONDITIONS{" "}
                               </span>{" "}
@@ -323,7 +321,7 @@ const Checkout = () => {
                           </div>
                         </li>
                       </ul>
-                      <a href="#." class="button-order">
+                      <a href='#.' className='button-order'>
                         PLACE ORDER
                       </a>{" "}
                     </div>
