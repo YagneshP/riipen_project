@@ -18,7 +18,7 @@ const Cart = () => {
   }
   const handleCheckout = (e) => {
     e.preventDefault()
-    router.push("/checkout")
+    router.push("/checkout1")
   }
  
   console.log("Hello");
