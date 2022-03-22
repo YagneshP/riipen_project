@@ -37,19 +37,20 @@ const Product = ({ product }) => {
 
   const { setCart } = useCartActions();
   const addItemToCart = async () => {
+    alert("item added to cart");
     const payload = await commerce.cart.add(product.id, quantity);
     setCart(payload);
   };
 
   return (
     <>
-      <div className='container'>
+      <div className='container-products'>
         <div className='image'>
           <img
             src={product.image.url}
             alt={product.name}
-            width={200}
-            height={200}
+            // width={500}
+            // height={500}
           />
         </div>
 
@@ -64,12 +65,12 @@ const Product = ({ product }) => {
               Brand:<span> {product.name}</span>
             </p>
           </div>
-          <p className='product-des'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+          <div className='product-des'> {product.description}
+            {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
             finibus ligula a scelerisque gravida. Nullam laoreet tortor ac
             maximus alique met, consectetur adipiscing elit. Vestibulum finibus
-            ligula a scelerisque gravida. Nullam
-          </p>
+            ligula a scelerisque gravida. Nullam */}
+          </div>
           <div>
             <h3>Quantity</h3>
             <select

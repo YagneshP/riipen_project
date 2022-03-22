@@ -4,32 +4,32 @@ import { useRouter } from "next/router";
 import { useCart } from "../../context/Cart";
 
 const Cart = () => {
-  // const router = useRouter();
-  // const { line_items, subtotal } = useCart();
+  const router = useRouter();
+  const { line_items, subtotal } = useCart();
   // const handleClick = (e) => {
   //   e.preventDefault();
   //   router.push("/products-content");
-  const router = useRouter()
+  // const router = useRouter()
   const handleContinueShopping = (e) => {
-    e.preventDefault()
-    router.push("/products-content")
-  }
+    e.preventDefault();
+    router.push("/product");
+  };
   const handleCheckout = (e) => {
-    e.preventDefault()
-    router.push("/checkout")
-  }
+    e.preventDefault();
+    router.push("/checkout");
+  };
  
   console.log("Hello");
 
-const cart = useSelector((state) => state.cart);
+// const cart = useSelector((state) => state.cart);
 
 
-  const getTotalPrice = () => {
-    return cart.reduce(
-      (accumulator, item) => accumulator + item.quantity * item.price,
-      0
-    );
-  };
+  // const getTotalPrice = () => {
+  //   return cart.reduce(
+  //     (accumulator, item) => accumulator + item.quantity * item.price,
+  //     0
+  //   );
+  // };
   return (
     <div>
       <main>

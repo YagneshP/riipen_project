@@ -1,9 +1,18 @@
 import { React, useState } from "react";
 import TextField from "@mui/material/TextField";
 import List from "./searchList";
+import { commerce } from "../../lib/commerce";
 
-
-export default function Search() {
+export async function getStaticProps() {
+  const { data: products } = await commerce.products.list();
+  return {
+    props: {
+      products,
+    },
+  };
+}
+export default function Search(products) {
+  // console.log("products1", products);
  
   const [inputText, setInputText] = useState("");
   let inputHandler = (e) => {
@@ -26,7 +35,7 @@ export default function Search() {
           label="Search"
         />
       </div>
-      <List input={inputText}/>
+      <List input={inputText} products={products}/>
     </div>
   );
 }

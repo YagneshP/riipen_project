@@ -1,7 +1,6 @@
 $fontFamily:"Playfair Display', serif";
 
 .about{
-	
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -52,6 +51,11 @@ $fontFamily:"Playfair Display', serif";
 		height:auto;
 		float: right;
 	} 
+	@media screen and (max-width: 600px) {
+  .row {
+    flex-direction: column;
+  }
+}
 	@media (max-width: 480px) {  
 		.left{
 			width: 100%;
