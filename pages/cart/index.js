@@ -91,15 +91,15 @@ const cart = useSelector((state) => state.cart);
               <div className="row">
 
                 {/* <!-- DISCOUNT CODE --> */}
-                <div className="col-sm-7">
+                <div className="col-md-7">
                   <h6>DISCOUNT CODE</h6>
                   <form>
                     <input type="text" placeholder="ENTER YOUR CODE IF YOU HAVE ONE" />
                     <button type="submit" className="btn btn-small btn-dark">APPLY CODE</button>
                   </form>
-                  <div className="coupn-btn"> <a onClick={handleClick} className="btn">continue shopping</a> <a href="/checkout" className="btn">Checkout</a> </div>
+                  <div className="coupn-btn"> <a onClick={handleContinueShopping} className="btn shop_action">continue shopping</a> <a  onClick={handleCheckout}  className="btn shop_action">Checkout</a> </div>
                 </div>
-                <div className="col-sm-5">
+                <div className="col-md-5">
                   <h6>GRAND TOTAL</h6>
                   <div className="grand-total">
                     <div className="order-detail"></div>

@@ -9,14 +9,13 @@ console.log("Hello")
 
   const transformedItem = {
     price_data: {
-      currency: 'usd',
+      currency: 'cad',
       product_data: {
-        images: [item.image],
         name: item.name,
       },
       unit_amount: item.price * 100,
     },
-    description: item.description,
+
     quantity: item.quantity,
   };
 

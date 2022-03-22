@@ -64,9 +64,9 @@ return(
             {/* <!-- REMOVE --> */}
             <li className="col-sm-1">
               {/* <div className="position-center-center">  */}
-              <div className="buttons1">
+              
              
-               
+               <div className='remove'>
                 <a onClick={() => dispatch(removeFromCart(id))}>
                 <CloseIcon fontSize="large" />
                 </a>

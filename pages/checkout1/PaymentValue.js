@@ -11,11 +11,8 @@ const PaymentValue = () => {
 
   const [item, setItem] = useState({
     name: 'Apple AirPods',
-    description: 'Latest Apple AirPods.',
-    image:
-      'https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80',
-    quantity: 3,
     price: 999,
+    quantity: 2
   });
   const publishableKey = `${process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}`;
   const stripePromise = loadStripe(publishableKey);
@@ -38,20 +35,20 @@ const PaymentValue = () => {
   return (
       <>
        {status && status === 'success' && (
-          <div className='bg-green-100 text-green-700 p-2 rounded border mb-2 border-green-700'>
+          <div classNameName='bg-green-100 text-green-700 p-2 rounded border mb-2 border-green-700'>
             Payment Successful
           </div>
         )}
         {status && status === 'cancel' && (
-          <div className='bg-red-100 text-red-700 p-2 rounded border mb-2 border-red-700'>
+          <div classNameName='bg-red-100 text-red-700 p-2 rounded border mb-2 border-red-700'>
             Payment Unsuccessful
           </div>
         )}
  {/* <!-- SUB TOTAL --> */}
- <div class="col-sm-5">
+ <div className="col-sm-5">
  <h6>YOUR ORDER</h6>
- <div class="order-place">
-   <div class="order-detail">
+ <div className="order-place">
+   <div className="order-detail">
      <p>
        WOOD CHAIR <span>$598 </span>
      </p>
@@ -63,16 +60,16 @@ const PaymentValue = () => {
      </p>
 
      {/* <!-- SUB TOTAL --> */}
-     <p class="all-total">
+     <p className="all-total">
        TOTAL COST <span> $998</span>
      </p>
    </div>
-   <div class="pay-meth">
+   <div className="pay-meth">
      <ul>
       
 
        <li>
-         <div class="radio">
+         <div className="radio">
            <input
              type="radio"
              name="radio1"
@@ -83,7 +80,7 @@ const PaymentValue = () => {
          </div>
        </li>
        <li>
-         <div class="radio">
+         <div className="radio">
            <input
              type="radio"
              name="radio1"
@@ -94,16 +91,16 @@ const PaymentValue = () => {
          </div>
        </li>
        <li>
-         <div class="checkbox">
+         <div className="checkbox">
            <input
              id="checkbox3-4"
-             class="styled"
+             className="styled"
              type="checkbox"
            />
            <label for="checkbox3-4">
              {" "}
              I’VE READ AND ACCEPT THE{" "}
-             <span class="color">
+             <span className="color">
                {" "}
                TERMS & CONDITIONS{" "}
              </span>{" "}
@@ -111,7 +108,7 @@ const PaymentValue = () => {
          </div>
        </li>
      </ul>
-     <a  class="button-order"        
+     <a  className="button-order"        
          disabled={item.quantity === 0 || loading}
             onClick={createCheckOutSession}>
       {loading ? 'Processing...' : 'Buy'}
