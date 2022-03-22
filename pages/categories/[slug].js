@@ -10,6 +10,7 @@ export async function getStaticPaths() {
         slug: category.slug,
       },
     })),
+    fallback: false,
   };
 }
 
