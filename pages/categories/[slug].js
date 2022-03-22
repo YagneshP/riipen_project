@@ -1,6 +1,8 @@
 import React from "react";
 import { commerce } from "../../lib/commerce";
-import ProductsContent from "../products-content";
+import ProductsContent from "../../components/Product/ProductsList";
+import ProductItem from "../../components/Product/ProductItem";
+import ProductsList from "../../components/Product/ProductsList";
 
 export async function getStaticPaths() {
   const { data: categories } = await commerce.categories.list();
@@ -23,12 +25,21 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       products,
+      slug,
     },
   };
 }
 
-const CategoryPage = ({ products }) => {
-  return <ProductsContent {...products} />;
+const CategoryPage = ({ products, slug }) => {
+  console.log("Products", products);
+  return (
+    <section className='products'>
+      <h1>{`${slug}'s Fragnance`}</h1>
+      <div className='new-arrival-products'>
+        <ProductsList products={products} />
+      </div>
+    </section>
+  );
 };
 
 export default CategoryPage;
