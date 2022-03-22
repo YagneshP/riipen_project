@@ -21,57 +21,25 @@ export async function getServerSideProps({ query }) {
 	}
 }
 
-// Pre-render the path of each product
-// export async function getStaticPaths() {
-//   const products = await getProducts();
-// 	console.log("prods",products);
-//   const paths = products.map((product) => ({
-//     params: { id: product.id }
-//   }));
-
-//   return { paths,fallback: true };
-// }
-
-// // Pre-render the page with data related to each product
-// export async function getStaticProps({ params }) {
-//   return {
-//     props: {
-//       product: await getProduct(params.id)
-//     }
-//   };
-// }
 
 const Product = ({ product }) => {
 	
 	const dispatch = useDispatch();
-
 	const [quantity,setQuantity] = useState();
 
-	// console.log(localStorage === window.localStorage);
-	// localStorage.setItem("quantity","quantity");
-	console.log("qty", quantity);
 	return (
     <>
-		<div className="container">
+		<div className="container-products">
       <div className="image"> 
 			<img src={"https://dummyimage.com/700x710/967396/fff"} alt="product" />
            
 			</div> 
-			{/* <section className="product-details">
-			<div className="image-slider">
-        <div className="product-images">
-            <img src={"https://dummyimage.com/700x710/967396/0011ff"} className="active" alt=""/>
-            <img src={"https://dummyimage.com/150/967396/001321"} alt=""/>
-            <img src={"https://dummyimage.com/150/967396/011f00"} alt=""/>
-           
-        </div>
-    </div>
-		</section> */}
+		
 			<div className="details">
 				<h2 className="product-name">{product.name}</h2>
         <p className="product-price">${product.price}</p>
 					<div className="item-owner">
-                <p>Designer :<span> ABC Art</span></p>
+                {/* <p>Designer :<span> ABC Art</span></p> */}
                 <p>Brand:<span> {product.brand}</span></p>
           </div>
 				<p className="product-des">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum finibus ligula a scelerisque gravida. Nullam laoreet tortor ac maximus alique met, consectetur adipiscing elit. Vestibulum finibus ligula a scelerisque gravida. Nullam</p>
@@ -99,14 +67,16 @@ const Product = ({ product }) => {
 				<br/><br/>
 				<button className="cart-btn" onClick={() => {
 					product.quantity=quantity == undefined ? 1 : Number(quantity);
-				  alert("item added to cart");
-          dispatch(addToCart(product))
+
+					alert("item added to cart");
+					dispatch(addToCart(product))
+
 				}}>Add to cart</button>
 
 					<div className="inner-info">
 						<h3>DELIVERY INFORMATION</h3>
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum finibus ligula a scelerisque gravida. Nullam laoreet tortor ac maximus alique met, consectetur adipiscing elit. </p>
-						{/* <h4>SHIPPING & RETURNS</h4> */}
+						<h4>SHIPPING & RETURNS</h4>
 						<h4>SHARE THIS PRODUCT</h4>
 					 
 							<ul className="social_icons">

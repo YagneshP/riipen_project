@@ -1,3 +1,4 @@
+/* eslint-disable */
 import CloseIcon from '@mui/icons-material/Close';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -70,7 +71,7 @@ return(
                 <CloseIcon fontSize="large" />
                 </a>
                 </div>
-              {/* <a href="#."><CloseIcon fontSize="large" /></a> </div> */}
+             
             </li>
           </ul>
           </>
