@@ -3,6 +3,8 @@
   justify-content: space-between;
   flex: 2;
   padding: $l-size;
+  font-family: $header-font;
+  text-transform: uppercase;
   
   h1 {
     margin: $l-size 20rem $l-size 0;
@@ -27,4 +29,22 @@
   // margin-left: $l-size;
   margin: auto;
   text-align: center;
+}
+
+.account-page-links {
+  margin: $l-size 0;
+  
+  li {
+    cursor: pointer;
+    margin-bottom: $l-size;
+    font-size: 1.2rem;
+    // background: hsl(0, 0%, 83%);
+    padding: $s-size $s-size $s-size 1rem;
+    letter-spacing: 2.5;
+  }
+  
+  .active {
+    background: linear-gradient(to right, rgb(211, 211, 211, 0.2) 50%, white 90%);;
+  }
+  
 }
