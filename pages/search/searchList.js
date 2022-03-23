@@ -1,29 +1,21 @@
 /* eslint-disable */
 
-import useSwr from "swr";
 import ProductItem from "../../components/Product/ProductItem";
-// import ProductItem from '../products-content/ProductItem';
-
-const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const List = (props) => {
-  const { data, error } = useSwr("/api/products", fetcher);
-
-  if (error) return "An error has occurred.";
-  if (!data) return "Loading...";
-
-  const filteredData = data.filter((el) => {
+  const { products } = props.products;
+  const filteredData = products.filter((el) => {
     //if no input the return the original
     if (props.input === "") {
-      return el;
+      return el.id;
     }
     //return the item which contains the user input
     else {
-      return (
-        el.brand.toLowerCase().includes(props.input) ||
-        el.name.toLowerCase().includes(props.input) ||
-        el.category.toLowerCase() === props.input
-      );
+      return el.name.toLowerCase().includes(props.input);
+      //other search options
+      // return ( el.brand.toLowerCase().includes(props.input)||
+      // 					el.name.toLowerCase().includes(props.input)||
+      // 					el.category.toLowerCase()===props.input);
     }
   });
 
@@ -32,16 +24,16 @@ const List = (props) => {
       <section className='products'>
         <h1> Fragrances</h1>
         <div className='new-arrival-products'>
-          {filteredData.map((item) => (
+          {filteredData.map((product) => (
             <ProductItem
-              discount={item.discount}
-              key={item.id}
-              id={item.id}
-              price={item.price}
-              currentPrice={item.currentPrice}
-              productImage={item.image}
-              name={item.name}
-              brand={item.brand}
+              key={product.id}
+              id={product.id}
+              permalink={product.permalink}
+              price={product.price.formatted_with_symbol}
+              currentPrice={product.price.formatted_with_symbol}
+              image={product.image.url}
+              name={product.name}
+              brand={product.name}
             />
           ))}
         </div>

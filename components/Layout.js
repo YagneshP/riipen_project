@@ -1,7 +1,8 @@
-import Footer from "./Footer";
-import Header from "./Header/index";
-import NewsletterForm from "./NewsletterForm";
-import Banner from "./Header/Banner";
+/* eslint-disable */
+import Footer from './Footer';
+import Header from './Header/index';
+import NewsletterForm from './NewsletterForm';
+import Banner from './Header/Banner';
 
 const Layout = ({ children }) => {
   return (
