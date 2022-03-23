@@ -65,7 +65,7 @@ const Cart = () => {
             <div className='cart-ship-info margin-top-0'>
               <div className='row'>
                 {/* <!-- DISCOUNT CODE --> */}
-                <div className='col-sm-7'>
+                <div className='col-md-7'>
                   <h6>DISCOUNT CODE</h6>
                   <form>
                     <input
@@ -78,15 +78,15 @@ const Cart = () => {
                   </form>
                   <div className='coupn-btn'>
                     {" "}
-                    <a onClick={handleClick} className='btn'>
+                    <a onClick={handleClick} className='btn shop_action'>
                       continue shopping
                     </a>{" "}
                     <Link href='/checkout'>
-                      <a className='btn'>Checkout</a>
+                      <a className='btn shop_action'>Checkout</a>
                     </Link>
                   </div>
                 </div>
-                <div className='col-sm-5'>
+                <div className='col-md-5'>
                   <h6>GRAND TOTAL</h6>
                   <div className='grand-total'>
                     <div className='order-detail'></div>
