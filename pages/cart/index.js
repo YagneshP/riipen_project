@@ -2,7 +2,7 @@ import CartItem from "./CartItem";
 import GrandTotal from "./GrandTotal";
 import { useRouter } from "next/router";
 import { useCart } from "../../context/Cart";
-
+import Link from "next/link";
 const Cart = () => {
   const router = useRouter();
   const { line_items, subtotal } = useCart();
@@ -81,9 +81,9 @@ const Cart = () => {
                     <a onClick={handleClick} className='btn'>
                       continue shopping
                     </a>{" "}
-                    <a href='/checkout' className='btn'>
-                      Checkout
-                    </a>{" "}
+                    <Link href='/checkout'>
+                      <a className='btn'>Checkout</a>
+                    </Link>
                   </div>
                 </div>
                 <div className='col-sm-5'>
