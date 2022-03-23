@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import Form from "../../components/account/Form";
+import OrderHistory from "../../components/account/OrderHistory";
 
 const Account = () => {
   const [display, setDisplay] = useState("personalInfo");
@@ -42,7 +43,7 @@ const Account = () => {
         {display === "personalInfo" ? (
           <Form user={mockUserData} />
         ) : (
-          "Order History"
+          <OrderHistory />
         )}
       </div>
     </div>
