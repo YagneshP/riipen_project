@@ -1,4 +1,11 @@
 @import './OrderHistory.scss';
+
+@media screen and (max-width: 1100px){
+  .account-page {
+    flex-direction: column;
+  }
+}
+
 .account-page {
   display: flex;
   justify-content: space-between;
