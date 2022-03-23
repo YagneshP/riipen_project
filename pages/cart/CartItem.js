@@ -3,6 +3,7 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { commerce } from "../../lib/commerce";
 import { useCartActions } from "../../context/Cart";
+import Image from "next/image";
 
 const CartItem = ({ id, name, brand, price, quantity, image, line_total }) => {
   const { setCart } = useCartActions();
@@ -33,11 +34,15 @@ const CartItem = ({ id, name, brand, price, quantity, image, line_total }) => {
           <div className='media'>
             {/* <!-- Media Image --> */}
             <div className='media-left media-middle'>
-              {" "}
               <a href='#.' className='item-img'>
-                {" "}
-                <img className='media-object' src={image} alt='Hello' />{" "}
-              </a>{" "}
+                <Image
+                  className='media-object'
+                  src={image}
+                  alt='Hello'
+                  width={200}
+                  height={200}
+                />
+              </a>
             </div>
           </div>
         </li>
