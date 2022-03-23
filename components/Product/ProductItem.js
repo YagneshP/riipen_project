@@ -16,8 +16,8 @@ const ProductItem = ({
       <div className='product-image'>
         <Link href={`/product/${permalink}`}>
           <a>
-            <Image src={image.url} alt='product' width={200} height={200} />
-            {/* <img src={image.url} alt='product' width={200} height={200} /> */}
+            {/* <Image src={image.url} alt='product' width={200} height={200} /> */}
+            <img src={image.url} alt='product' width={200} height={200} />
           </a>
         </Link>
       </div>
