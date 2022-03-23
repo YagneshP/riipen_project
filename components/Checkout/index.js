@@ -53,14 +53,14 @@ const Checkout = () => {
                       <li className="col-md-6">
                         <label>
                           COUNTRY
-                          <input type="text" name="contry-state" />
+                          <input type="text" name="country-state" />
                         </label>
                       </li>
                       {/* EMAIL ADDRESS */}
                       <li className="col-md-6">
                         <label>
                           *EMAIL ADDRESS
-                          <input type="text" name="contry-state" />
+                          <input type="text" name="country-state" />
                         </label>
                       </li>
                       {/* PHONE */}
@@ -134,14 +134,14 @@ const Checkout = () => {
                       <li className="col-md-6">
                         <label>
                           COUNTRY
-                          <input type="text" name="contry-state" />
+                          <input type="text" name="country-state" />
                         </label>
                       </li>
                       {/* EMAIL ADDRESS */}
                       <li className="col-md-6">
                         <label>
                           *EMAIL ADDRESS
-                          <input type="text" name="contry-state" />
+                          <input type="text" name="country-state" />
                         </label>
                       </li>
                       {/* PHONE */}
