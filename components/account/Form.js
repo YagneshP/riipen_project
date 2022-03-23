@@ -1,14 +1,68 @@
+import { useState } from "react";
 import PlaceIcon from "@mui/icons-material/Place";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import EmailIcon from "@mui/icons-material/Email";
 import { useEffect, useRef } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
 import { useForm, ValidationError } from "@formspree/react";
+import axios from "axios";
+import Button from "./Button";
 
-const Form = () => {
-  const [state, handleSubmit] = useForm(
-    `${process.env.NEXT_PUBLIC_FORMSPREE_API}`
-  );
+const Form = ({ user }) => {
+  const [editMode, setIsEditMode] = useState(false);
+  const [firstName, setFirstName] = useState(user.firstName);
+  const [lastName, setLastName] = useState(user.lastName);
+  const [phoneNum, setPhoneNum] = useState(`${user.phoneNum}`);
+  const [email, setEmail] = useState(user.email);
+  const [streetAddress, setStreetAddress] = useState(user.streetAddress);
+  const [unitNum, setUnitNum] = useState(user.unitNum);
+  const [city, setCity] = useState(user.city);
+  const [provinceState, setProvinceState] = useState(user.provinceState);
+  const [zip, setZip] = useState(user.zip);
+  const [country, setCountry] = useState(user.country);
+
+  const url = "";
+
+  const onToggle = () => {
+    setIsEditMode(!editMode);
+  }
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    // return axios({
+    //   method: "POST",
+    //   url: url,
+    //   data: {
+    //     firstName,
+    //     lastName,
+    //     phoneNum,
+    //     email,
+    //     streetAddress,
+    //     unitNum,
+    //     city,
+    //     provinceState,
+    //     zip,
+    //     country
+    //   },
+    //   headers: {
+    //     Accept: "application/json",
+    //     "Content-Type": "application/json",
+    //     "Access-Control-Allow-Credentials": true,
+    //   },
+    //   withCredentials: true,
+    // })
+    //   .then((res) => {
+    //     if (res.data.success) {
+    //       console.log("success");
+    //       setIsEditMode(false);
+    //     }
+    //     onToggle();
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.message);
+    //   });
+  };
 
   return (
     <div className="account-form">
@@ -16,58 +70,51 @@ const Form = () => {
         role="form"
         id="contact_form"
         className="contact-form"
-        onSubmit={handleSubmit}
+        onSubmit={onSubmit}
       >
         <ul className="row">
           <li className="col-sm-6">
             <label htmlFor="name">
               First Name
               <input
+                disabled={editMode ? false : true}
                 type="text"
                 className="form-control"
                 name="name"
-                id="name"
-                placeholder="John"
-                disabled
-              />
-              <ValidationError
-                prefix="Name"
-                field="name"
-                errors={state.errors}
+                required
+                placeholder="Enter First Name"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
               />
             </label>
           </li>
           <li className="col-sm-6">
-            <label htmlFor="email">
+            <label htmlFor="last-name">
               Last Name
               <input
-                type="email"
+                disabled={editMode ? false : true}
+                type="text"
                 className="form-control"
-                name="email"
-                id="email"
-                placeholder="Doe"
-              />
-              <ValidationError
-                prefix="Email"
-                field="email"
-                errors={state.errors}
+                name="last-name"
+                required
+                placeholder="Enter Last Name"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
               />
             </label>
           </li>
           <li className="col-sm-6">
             <label htmlFor="phone">
-              Phone *
+              Phone
               <input
-                type="number"
+                disabled={editMode ? false : true}
+                type="text"
                 className="form-control"
-                name="phone number"
-                id="company"
+                name="phone"
+                required
                 placeholder="416-555-5555"
-              />
-              <ValidationError
-                prefix="Phone"
-                field="phone"
-                errors={state.errors}
+                value={phoneNum}
+                onChange={(e) => setPhoneNum(e.target.value)}
               />
             </label>
           </li>
@@ -75,141 +122,114 @@ const Form = () => {
             <label htmlFor="subject">
               Email Address
               <input
+                disabled={editMode ? false : true}
                 type="text"
                 className="form-control"
                 name="subject"
-                id="website"
-                placeholder="johndoe@gmail.com"
-              />
-              <ValidationError
-                prefix="Subject"
-                field="subject"
-                errors={state.errors}
+                required
+                placeholder="Enter Your Email Address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </label>
           </li>
           <li className="col-sm-6">
-            <label htmlFor="phone">
+            <label htmlFor="street-address">
               Street Address
               <input
-                type="number"
+                disabled={editMode ? false : true}
+                type="text"
                 className="form-control"
-                name="phone number"
-                id="company"
-                placeholder=""
-              />
-              <ValidationError
-                prefix="Phone"
-                field="phone"
-                errors={state.errors}
+                name="street-address"
+                required
+                placeholder="Enter Your Street Address"
+                value={streetAddress}
+                onChange={(e) => setStreetAddress(e.target.value)}
               />
             </label>
           </li>
           <li className="col-sm-6">
-            <label htmlFor="subject">
+            <label htmlFor="unit-num">
               Unit #
               <input
+                disabled={editMode ? false : true}
                 type="text"
                 className="form-control"
-                name="subject"
-                id="website"
-                placeholder=""
-              />
-              <ValidationError
-                prefix="Subject"
-                field="subject"
-                errors={state.errors}
+                name="unit-num"
+                required
+                placeholder="Unit or Apt #"
+                value={unitNum}
+                onChange={(e) => setUnitNum(e.target.value)}
               />
             </label>
           </li>
           <li className="col-sm-6">
-            <label htmlFor="phone">
+            <label htmlFor="city">
               City
               <input
-                type="number"
+                disabled={editMode ? false : true}
+                type="text"
                 className="form-control"
-                name="phone number"
-                id="company"
+                name="city"
+                required
                 placeholder="Toronto"
-              />
-              <ValidationError
-                prefix="Phone"
-                field="phone"
-                errors={state.errors}
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
               />
             </label>
           </li>
           <li className="col-sm-6">
-            <label htmlFor="subject">
+            <label htmlFor="state">
               Province/State
               <input
+                disabled={editMode ? false : true}
                 type="text"
                 className="form-control"
-                name="subject"
-                id="website"
+                name="state"
+                required
                 placeholder="ON"
-              />
-              <ValidationError
-                prefix="Subject"
-                field="subject"
-                errors={state.errors}
+                value={provinceState}
+                onChange={(e) => setProvinceState(e.target.value)}
               />
             </label>
           </li>
           <li className="col-sm-6">
-            <label htmlFor="phone">
+            <label htmlFor="zipcode">
               Postal/ZIP Code
               <input
-                type="number"
+                disabled={editMode ? false : true}
+                type="text"
                 className="form-control"
-                name="phone number"
-                id="company"
+                name="zipcode"
                 placeholder="A1A 1A1"
-              />
-              <ValidationError
-                prefix="Phone"
-                field="phone"
-                errors={state.errors}
+                required
+                value={zip}
+                onChange={(e) => setZip(e.target.value)}
               />
             </label>
           </li>
           <li className="col-sm-6">
-            <label htmlFor="subject">
+            <label htmlFor="country">
               Country
               <input
+                disabled={editMode ? false : true}
                 type="text"
                 className="form-control"
-                name="subject"
-                id="website"
+                name="country"
                 placeholder="Canada"
-              />
-              <ValidationError
-                prefix="Subject"
-                field="subject"
-                errors={state.errors}
+                required
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
               />
             </label>
           </li>
 
-          <li className="col-sm-1">
-            <button
-              type="submit"
-              disabled={state.submitting}
-              className="button-12"
-              id="btn_submit"
-            >
-              Edit
-            </button>
-          </li>
           <li className="col-sm-3">
-            <button
-              type="submit"
-              disabled={state.submitting}
-              className="button-12"
-              id="btn_submit"
-            >
-              Save
-            </button>
+            {editMode ? (
+              <Button text="Save" type="submit" />
+            ) : (
+              <Button text="Edit" type=" " onToggle={onToggle}/>
+            )}
           </li>
         </ul>
       </form>
