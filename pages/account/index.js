@@ -1,27 +1,52 @@
 import Image from "next/image";
+import { useState } from "react";
 import Form from "../../components/account/Form";
 
 const Account = () => {
-  return ( 
+  const [display, setDisplay] = useState("personalInfo");
+
+  const mockUserData = {
+    firstName: "John",
+    lastName: "Doe",
+    phoneNum: 4165555555,
+    email: "johndoe@gmail.com",
+    streetAddress: "1 River St.",
+    unitNum: "43B",
+    city: "Toronto",
+    provinceState: "ON",
+    zip: "A1A 1A1",
+    country: "Canada",
+  };
+
+  const selectInfo = display === "personalInfo" ? "active" : "";
+  const selectHistory = display === "orderHistory" ? "active" : "";
+
+  return (
     <div className="account-page">
       <div className="account-details">
         <h1>Account Details</h1>
-        <Image
-          className="account-profile-img"
-          src="https://via.placeholder.com/250x250.png"
-          alt="Profile"
-          width="250px"
-          height="250px"
-        />
-        <div className="personal-info">
-
-        </div>
+        <ul className="account-page-links">
+          <li className={selectInfo} onClick={() => setDisplay("personalInfo")}>
+            Personal Information
+          </li>
+          <li
+            className={selectHistory}
+            onClick={() => setDisplay("orderHistory")}
+          >
+            Order History
+          </li>
+        </ul>
+        <div className="personal-info"></div>
       </div>
       <div className="account-page-form">
-        <Form />
+        {display === "personalInfo" ? (
+          <Form user={mockUserData} />
+        ) : (
+          "Order History"
+        )}
       </div>
     </div>
-   );
-}
- 
+  );
+};
+
 export default Account;
