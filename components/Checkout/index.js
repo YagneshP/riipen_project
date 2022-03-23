@@ -1,4 +1,5 @@
 const Checkout = () => {
+  
   return (
     <div id="content">
       <section className="chart-page padding-top-100 padding-bottom-100">

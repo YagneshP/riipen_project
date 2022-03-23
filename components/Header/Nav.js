@@ -19,7 +19,7 @@ const Nav = () => {
         <Link href="/">Home</Link>
       </li>
       <li>
-        <Link href="/products-content">Store</Link>
+        <Link href="/product">Store</Link>
       </li>
       <ul className="sub-menu">
         <li>
