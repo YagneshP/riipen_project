@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start"
+   
   },
   "dependencies": {
     "@chec/commerce.js": "^2.8.0",
