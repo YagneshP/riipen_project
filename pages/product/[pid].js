@@ -50,8 +50,8 @@ const Product = ({ product }) => {
           <Image
             src={product.image.url}
             alt={product.name}
-            // width={500}
-            // height={500}
+            width={400}
+            height={400}
           />
         </div>
 

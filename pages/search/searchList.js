@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import ProductItem from '../products-content/ProductItem';
+import ProductItem from '../../components/Product/ProductItem';
 
 const List = (props) => {
 	

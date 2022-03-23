@@ -74,7 +74,7 @@ const About = () => {
 							<div className="avatar">
 								{" "}
 								<Image
-									className="our-team-images"
+									className="our-team-s"
 									src="https://via.placeholder.com/268"
 									alt="Team Member"
 									width="268px"
