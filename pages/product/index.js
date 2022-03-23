@@ -1,4 +1,5 @@
-import ProductItem from "../products-content/ProductItem";
+import ProductItem from "../../components/Product/ProductItem";
+import ProductsList from "../../components/Product/ProductsList";
 import { commerce } from "../../lib/commerce";
 
 export async function getStaticProps() {
@@ -16,18 +17,7 @@ const ProductsContent = ({ products }) => {
       <section className='products'>
         <h1> Fragrances</h1>
         <div className='new-arrival-products'>
-          {products.map((product) => (
-            <ProductItem
-              key={product.id}
-              id={product.id}
-              permalink={product.permalink}
-              price={product.price.formatted_with_symbol}
-              currentPrice={product.price.formatted_with_symbol}
-              productImage={product.image.url}
-              name={product.name}
-              brand={product.name}
-            />
-          ))}
+          <ProductsList products={products} />
         </div>
       </section>
     </>

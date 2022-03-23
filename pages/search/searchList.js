@@ -44,4 +44,4 @@ const List = (props) => {
 	);
 };
 
-export default List
+export default List;

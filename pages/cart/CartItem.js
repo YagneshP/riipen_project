@@ -3,6 +3,7 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { commerce } from "../../lib/commerce";
 import { useCartActions } from "../../context/Cart";
+import Image from "next/image";
 
 const CartItem = ({ id, name, brand, price, quantity, image, line_total }) => {
   const { setCart } = useCartActions();
@@ -33,11 +34,15 @@ const CartItem = ({ id, name, brand, price, quantity, image, line_total }) => {
           <div className='media'>
             {/* <!-- Media Image --> */}
             <div className='media-left media-middle'>
-              {" "}
               <a href='#.' className='item-img'>
-                {" "}
-                <img className='media-object' src={image} alt='Hello' />{" "}
-              </a>{" "}
+                <Image
+                  className='media-object'
+                  src={image}
+                  alt='Hello'
+                  width={200}
+                  height={200}
+                />
+              </a>
             </div>
           </div>
         </li>
@@ -70,11 +75,11 @@ const CartItem = ({ id, name, brand, price, quantity, image, line_total }) => {
           <div className='position-center-center'>
             <div className='quinty'>
               {/* <!-- QTY --> */}
-              <button onClick={incrementQuantity}>
+              <button onClick={incrementQuantity} className='btn btn-primary'>
                 <AddIcon fontSize='large' />
               </button>
               {quantity}
-              <button onClick={decrementQuantity}>
+              <button onClick={decrementQuantity} className='btn btn-primary'>
                 <RemoveIcon fontSize='large' />
               </button>
             </div>
@@ -93,7 +98,7 @@ const CartItem = ({ id, name, brand, price, quantity, image, line_total }) => {
         <li className='col-sm-1'>
           {/* <div className="position-center-center">  */}
           <div className='buttons1'>
-            <button onClick={removeItem}>
+            <button onClick={removeItem} className='btn btn-danger'>
               <CloseIcon fontSize='large' />
             </button>
           </div>

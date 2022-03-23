@@ -3,20 +3,22 @@ import Image from "next/image";
 
 const ProductItem = ({
   discount,
-  productImage,
+  // productImage,
   id,
   brand,
   name,
   price,
   currentPrice,
   permalink,
+  image,
 }) => {
+  console.log();
   return (
     <div className='product-item'>
       <div className='product-image'>
         <Link href={`/product/${permalink}`}>
           <a>
-            <Image src={productImage} alt='product' width={270} height={352} />
+            <Image src={image.url} alt='product' width={200} height={200} />
           </a>
         </Link>
       </div>

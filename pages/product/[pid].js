@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useState } from "react";
 import { FiFacebook } from "react-icons/fi";
 import { FiTwitter } from "react-icons/fi";
@@ -46,7 +47,7 @@ const Product = ({ product }) => {
     <>
       <div className='container-products'>
         <div className='image'>
-          <img
+          <Image
             src={product.image.url}
             alt={product.name}
             // width={500}
