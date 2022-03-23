@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../context/Auth";
 
-function logged_in() {
+function Logged_in() {
   const { signingOut } = useContext(AuthContext);
   return (
     <div>
@@ -12,4 +12,4 @@ function logged_in() {
   );
 }
 
-export default logged_in;
+export default Logged_in;
