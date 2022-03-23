@@ -1,0 +1,21 @@
+.order-history-table {
+  font-size: 1.2rem;
+  width: 100%;
+  font-family: $header-font;
+  
+  th, tr, td {
+    border: 1px solid black;
+    padding: 1rem 0.5rem;
+    text-align: center;
+  }
+
+  .order-num-col {
+    width: 20%;
+  }
+  .order-items-col {
+    width: 60%;
+  }
+  .order-total-col {
+    width: 20%;
+  }
+}
