@@ -12,33 +12,23 @@ const ProductItem = ({
   permalink,
   image,
 }) => {
-  console.log();
+  console.log("price",price);
   return (
-    <div className='new-arrival-product'>
-      <div className='product__image'>
+    <div className='product-item'>
+      <div className='product-image'>
         <Link href={`/product/${permalink}`}>
           <a>
-            <Image src={image.url} alt='product' width={200} height={200} />
+            {/* <Image src={image.url} alt='product' width={200} height={200} /> */}
+            <img src={image.url} alt='product' width={200} height={200} />
           </a>
         </Link>
-
-        {discount && <p className='product__discount'>{discount}%</p>}
       </div>
 
-      <div className='product__description'>
-        <h3>{brand}</h3>
-        <h4>{name}</h4>
-        <div
-          className={
-            "product__price " + (discount ? "product__price--discount" : "")
-          }
-        >
-          <h4>{currentPrice}</h4>
-
-          {discount && <span>${price}</span>}
-        </div>
-      </div>
+      <span className="brand">{brand}</span>
+      <p>{name}</p>
+      <span>{price.formatted_with_code}</span>
     </div>
+  
   );
 };
 
