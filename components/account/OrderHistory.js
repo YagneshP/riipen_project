@@ -8,27 +8,33 @@ const OrderHistory = () => {
           <th className="order-total-col">Total</th>
         </tr>
       </thead>
-      <tr>
-        <td><a href="">14</a></td>
-        <td>
-          <ul>
-            <li>D&G</li>
-            <li>YSL</li>
-          </ul>
-        </td>
-        <td>$280</td>
-      </tr>
-      <tr>
-        <td><a href="">17</a></td>
-        <td>
-          <ul>
-            <li>Gucci</li>
-            <li>Chanel</li>
-            <li>Armani</li>
-          </ul>
-        </td>
-        <td>$280</td>
-      </tr>
+      <tbody>
+        <tr>
+          <td>
+            <a href="">14</a>
+          </td>
+          <td>
+            <ul>
+              <li>D&G</li>
+              <li>YSL</li>
+            </ul>
+          </td>
+          <td>$280</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="">17</a>
+          </td>
+          <td>
+            <ul>
+              <li>Gucci</li>
+              <li>Chanel</li>
+              <li>Armani</li>
+            </ul>
+          </td>
+          <td>$280</td>
+        </tr>
+      </tbody>
     </table>
   );
 };
