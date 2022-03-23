@@ -300,8 +300,20 @@
     padding: 0 15px;
     color: #2d3a4b;
     margin-bottom: 0px;
-    font-size: 12px;
+    font-weight: bold;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    button {
+      border-radius: 5px;
+      background: none;
+      margin: 0 5px;
+      color: #f7f7f7;
+      background-color: #2d3a4b;
+    }
   }
+
   .remove {
     position: relative;
     padding: 0 15px;
