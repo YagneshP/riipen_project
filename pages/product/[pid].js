@@ -39,7 +39,7 @@ const Product = ({ product }) => {
   const { setCart } = useCartActions();
   const addItemToCart = async () => {
     alert("item added to cart");
-    const payload = await commerce.cart.add(product.id, quantity);
+    const { cart: payload } = await commerce.cart.add(product.id, quantity);
     setCart(payload);
   };
 
@@ -66,7 +66,9 @@ const Product = ({ product }) => {
               Brand:<span> {product.name}</span>
             </p>
           </div>
-          <div className='product-des'> {product.description}
+          <div className='product-des'>
+            {" "}
+            {product.description}
             {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
             finibus ligula a scelerisque gravida. Nullam laoreet tortor ac
             maximus alique met, consectetur adipiscing elit. Vestibulum finibus
@@ -113,7 +115,6 @@ const Product = ({ product }) => {
             </ul>
           </div>
 
-      
           <br />
           <br />
           <button className='cart-btn' onClick={addItemToCart}>

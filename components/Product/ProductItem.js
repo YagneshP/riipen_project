@@ -3,7 +3,6 @@ import Image from "next/image";
 
 const ProductItem = ({
   discount,
-  // productImage,
   id,
   brand,
   name,
@@ -12,7 +11,6 @@ const ProductItem = ({
   permalink,
   image,
 }) => {
-  console.log("price",price);
   return (
     <div className='product-item'>
       <div className='product-image'>
@@ -24,11 +22,10 @@ const ProductItem = ({
         </Link>
       </div>
 
-      <span className="brand">{brand}</span>
+      <span className='brand'>{brand}</span>
       <p>{name}</p>
       <span>{price.formatted_with_code}</span>
     </div>
-  
   );
 };
 
