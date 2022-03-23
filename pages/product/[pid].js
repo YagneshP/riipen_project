@@ -111,6 +111,8 @@ const Product = ({ product }) => {
               </li>
             </ul>
           </div>
+
+      
           <br />
           <br />
           <button className='cart-btn' onClick={addItemToCart}>

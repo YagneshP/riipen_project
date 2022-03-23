@@ -6,30 +6,10 @@ import { useCart } from "../../context/Cart";
 const Cart = () => {
   const router = useRouter();
   const { line_items, subtotal } = useCart();
-  // const handleClick = (e) => {
-  //   e.preventDefault();
-  //   router.push("/products-content");
-  // const router = useRouter()
-  const handleContinueShopping = (e) => {
+  const handleClick = (e) => {
     e.preventDefault();
-    router.push("/product");
+    router.push("/products-content");
   };
-  const handleCheckout = (e) => {
-    e.preventDefault();
-    router.push("/checkout");
-  };
- 
-  console.log("Hello");
-
-// const cart = useSelector((state) => state.cart);
-
-
-  // const getTotalPrice = () => {
-  //   return cart.reduce(
-  //     (accumulator, item) => accumulator + item.quantity * item.price,
-  //     0
-  //   );
-  // };
   return (
     <div>
       <main>
@@ -96,7 +76,7 @@ const Cart = () => {
                       APPLY CODE
                     </button>
                   </form>
-                  {/* <div className='coupn-btn'>
+                  <div className='coupn-btn'>
                     {" "}
                     <a onClick={handleClick} className='btn'>
                       continue shopping
@@ -104,8 +84,7 @@ const Cart = () => {
                     <a href='/checkout' className='btn'>
                       Checkout
                     </a>{" "}
-                  </div> */}
-                  <div className="coupn-btn"> <a onClick={handleContinueShopping} className="btn">continue shopping</a> <a onClick={handleCheckout} className="btn">Checkout</a> </div>
+                  </div>
                 </div>
                 <div className='col-sm-5'>
                   <h6>GRAND TOTAL</h6>
@@ -136,3 +115,10 @@ const Cart = () => {
   );
 };
 export default Cart;
+
+
+
+
+
+
+

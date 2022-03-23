@@ -39,7 +39,7 @@ const About = () => {
 			<div className="vision-text">
 				<div className="col-lg-5">
 					<div className="left">
-						<h3>OUR VISION</h3>
+						<h5>OUR VISION</h5>
 						<h2>We craft awesome stuff with great experiences </h2>
 					</div>
 				</div>
@@ -64,7 +64,7 @@ const About = () => {
 			</div>
 			{/* OUR TEAM  */}
 			<section className="our-team">
-				<div className="heading">
+				<div className="heading text-center">
 					<h2>OUR TEAM</h2>
 					<h3>United by love & help to build great brands</h3>
 				</div>
