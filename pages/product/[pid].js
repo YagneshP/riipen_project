@@ -39,6 +39,7 @@ const Product = ({ product }) => {
   const { setCart } = useCartActions();
   const addItemToCart = async () => {
     alert("item added to cart");
+    console.log("qty", quantity);
     const { cart: payload } = await commerce.cart.add(product.id, quantity);
     setCart(payload);
   };

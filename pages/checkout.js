@@ -1,4 +1,4 @@
-import Checkout from "../components/Checkout";
+import Checkout from "../components/Checkout/index1";
 
 const Layout = () => {
   return (

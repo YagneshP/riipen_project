@@ -18,18 +18,14 @@ const CartItem = ({ id, name, brand, price, quantity, image, line_total }) => {
     });
     setCart(response.cart);
   };
+
   const decrementQuantity = async () => {
-    let response = await commerce.cart.update(id, { quantity: quantity - 1 });
-    
+    let response =
+      quantity > 1
+        ? await commerce.cart.update(id, { quantity: quantity - 1 })
+        : removeItem();
     setCart(response.cart);
   };
-  // const decrementQuantity = async () => {
-  //   let response =
-  //     quantity > 1
-  //       ? await commerce.cart.update(id, { quantity: quantity - 1 })
-  //       : removeItem();
-  //   setCart(response.cart);
-  // };
 
   return (
     <>

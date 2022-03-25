@@ -1,17 +1,17 @@
 // import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { Router } from 'next/router';
 import { useContext, useEffect,useState } from "react";
 // import { useCartActions } from "../context/Cart";
-import { useCart } from "../../context/Cart";
+import { useCart } from "../context/Cart";
 // import { CartStateContext } from '../context/Cart';
-import { commerce } from "../../lib/commerce";
-
-import GrandTotal from "../../pages/cart/GrandTotal";
+import { commerce } from "../lib/commerce";
+import {GrandTotal} from './cart/GrandTotal';
 //  const { setCart } = useCartActions();
-import Commerce from '@chec/commerce.js';
+// import Commerce from '@chec/commerce.js';
 
 // const commerce = new Commerce('pk_test_41232e4fdaec2a10e57e771251a71f8d758f37750ae7d');
-export default function Checkout() {
+export default function Checkout1() {
 	const [token, setToken] = useState();
 	const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -42,18 +42,33 @@ export default function Checkout() {
 					firstname: firstName,
 					lastname: lastName,
 				},
+        shipping: {
+          name: 'shippingName',
+          street: 'shippingStreet',
+          town_city: 'shippingCity',
+          county_state: 'shippingStateProvince',
+          postal_zip_code: 'shippingPostalZipCode',
+          country: 'shippingCountry',
+        },
+        payment: {
+          gateway: 'stripe',
+          card: {
+            token: 'irh98298g49'
+          }
+        },
 			}
 			console.log("orderData", orderData);
 			console.log("token id", token.id);
-			
-			// localStorage.setItem('order_receipt', JSON.stringify(orderData));
-		// 	const commerce1 = new Commerce('pk_test_41232e4fdaec2a10e57e771251a71f8d758f37750ae7d');
+      // localStorage.setItem('order_receipt', orderData));
+			localStorage.setItem('order_receipt', JSON.stringify(orderData));
+      // Router.push('/confirmation');
+			// const commerce = new Commerce('pk_test_41232e4fdaec2a10e57e771251a71f8d758f37750ae7d');
 		// try {
-    //   const order = await commerce1.checkout.capture(
-    //     token.id,
-    //     orderData
-    //   );
-		// 	console.log("order", order);
+      const order = await commerce.checkout.capture(
+        token.id,
+        orderData
+      );
+			console.log("order", order);
 		// 	localStorage.setItem('order_receipt', JSON.stringify(order));
 		// 	console.log("orderData", orderData);
 		// 	Router.push('/confirmation');
@@ -113,7 +128,7 @@ export default function Checkout() {
                           <input
                             type='text'
                             name='company'
-                            // value=''
+                            value=''
                             placeholder=''
                           />
                         </label>
@@ -125,7 +140,7 @@ export default function Checkout() {
                           <input
                             type='text'
                             name='address'
-                            // value=''
+                            value=''
                             placeholder=''
                           />
                         </label>
@@ -137,7 +152,7 @@ export default function Checkout() {
                           <input
                             type='text'
                             name='town'
-                            // value=''
+                            value=''
                             placeholder=''
                           />
                         </label>
@@ -151,7 +166,7 @@ export default function Checkout() {
                           <input
                             type='text'
                             name='contry-state'
-                            // value=''
+                            value=''
                             placeholder=''
                           />
                         </label>
@@ -165,7 +180,7 @@ export default function Checkout() {
                           <input
                             type='text'
                             name='contry-state'
-                            // value=''
+                            value=''
                             placeholder=''
                           />
                         </label>
@@ -178,7 +193,7 @@ export default function Checkout() {
                           <input
                             type='text'
                             name='postal-code'
-                            // value=''
+                            value=''
                             placeholder=''
                           />
                         </label>
@@ -219,7 +234,7 @@ export default function Checkout() {
                           <input
                             type='text'
                             name='first-name'
-                            // value=''
+                            value=''
                             placeholder=''
                           />
                         </label>
@@ -232,7 +247,7 @@ export default function Checkout() {
                           <input
                             type='text'
                             name='last-name'
-                            // value=''
+                            value=''
                             placeholder=''
                           />
                         </label>
@@ -244,7 +259,7 @@ export default function Checkout() {
                           <input
                             type='text'
                             name='company'
-                            // value=''
+                            value=''
                             placeholder=''
                           />
                         </label>
@@ -256,7 +271,7 @@ export default function Checkout() {
                           <input
                             type='text'
                             name='address'
-                            // value=''
+                            value=''
                             placeholder=''
                           />
                         </label>
@@ -268,7 +283,7 @@ export default function Checkout() {
                           <input
                             type='text'
                             name='town'
-                            // value=''
+                            value=''
                             placeholder=''
                           />
                         </label>
@@ -282,7 +297,7 @@ export default function Checkout() {
                           <input
                             type='text'
                             name='contry-state'
-                            // value=''
+                            value=''
                             placeholder=''
                           />
                         </label>
@@ -296,7 +311,7 @@ export default function Checkout() {
                           <input
                             type='text'
                             name='contry-state'
-                            // value=''
+                            value=''
                             placeholder=''
                           />
                         </label>
@@ -309,7 +324,7 @@ export default function Checkout() {
                           <input
                             type='text'
                             name='postal-code'
-                            // value=''
+                            value=''
                             placeholder=''
                           />
                         </label>
@@ -330,14 +345,14 @@ export default function Checkout() {
                   <h6>YOUR ORDER</h6>
                   <div className='order-place'>
                     <div className='order-detail'>
-                    {line_items.map((item) => (
+                    {/* {line_items.map((item) => (
                       <GrandTotal
                         key={item.id}
                         id={item.id}
                         name={item.name}
                         line_total={item.line_total.formatted_with_symbol}
                       />
-                    ))}
+                    ))} */}
                       
                       <p className='all-total'>
                       {/* TOTAL COST <span> {subtotal.formatted_with_symbol}</span> */}
