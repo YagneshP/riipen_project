@@ -1,4 +1,186 @@
 
+<<<<<<< HEAD:styles/product-details.scss
+
+.container-products{
+	display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    align-items: center;
+	// margin-left: 100px;
+  .image{
+    margin-left: 80px;
+    width: 45%;
+    position: relative;
+    float:left;
+    img{
+      height:80%;
+      width:80%;
+    }
+  }
+  .details {
+    width: 45%;
+    .product-name {
+      text-transform: uppercase;
+      font-size: 2.4rem;
+      font-weight: 700;
+      font-family: $header-font;
+      letter-spacing: 2px;
+      padding-bottom: 5px;
+    }
+    .product-brand {
+      text-transform: uppercase;
+      font-size: 30px;
+    }
+    .product-des {
+      font-family: ‘Playfair Display’, serif;
+      font-size: 18px;
+      line-height: 30px;
+      height: auto;
+      margin: 15px 0 30px;
+    }
+    .product-price {
+      font-weight: 700;
+      font-size: 2rem;
+      padding-bottom: 15px;
+    }
+    .item-owner {
+      margin: 20px 0;
+      border-top: 2px solid rgba(0,0,0,0.1);
+      p {
+        font-size: 15px;
+        color: #2D3A4B;
+        border-bottom: 2px solid rgba(0,0,0,0.1);
+        line-height: 36px;
+        span {
+        color: #FFE115;
+        }
+      }
+    }
+    .quantity {
+      padding-left: 35px;
+      width: 120px;
+      border: 4px solid #999;
+      font-size: 18px;
+    }
+    .colors-shop {
+      display: flex;
+      position: relative;
+      z-index: 3;
+      .color {
+        height: 20px;
+        width: 20px;
+        margin-left: 0.5em;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+        border: 2px solid #aaa;
+        cursor: pointer;
+      }
+      .color1{
+        background:#958170;
+      }
+      .color2{
+        background:#c9a688;;
+      }
+      .color3{
+        background:#c9c288;
+      }
+      .color4{
+        background:#a7c988;
+      }
+      .color5{
+        background:#9ed66b;
+      }
+      .color6{
+        background:#6bd6b1;
+      }
+      .color7{
+        background:#82c2dc;
+      }
+      .color8{
+        background:#8295dc;
+      }
+    }
+    .cart-btn{
+      border: 1px transparent;
+      color: #fff;
+      padding: 5px 30px;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 20px;
+      border-radius: 0px;
+      font-family: ‘Montserrat’, sans-serif;
+      line-height: 30px;
+      background: #010C1A;
+      letter-spacing: 1px;
+      position: relative;
+      z-index: 1;
+    }
+    .inner-info {
+      font-family: ‘Playfair Display’, serif;
+      font-size: 18px;
+      margin-top: 25px;
+      margin-bottom: 10px;
+      h3 {
+        border-bottom: 2px solid rgba(0,0,0,0.1);
+        margin: 15px 0 20px 0;
+        font-size: 20px;
+        line-height: 35px;
+      }
+      h4 {
+        border-top: 2px solid rgba(0,0,0,0.1);
+        border-bottom: 2px solid rgba(0,0,0,0.1);
+        margin: 15px 0 20px 0;
+        font-size: 20px;
+        line-height: 30px;
+      }
+      .social_icons li {
+      display: inline-block;
+      a {
+          font-size: 16px;
+          margin: 0 5px;
+          color: #2D3A4B;
+        }
+      }
+    }
+  }
+  // @media screen and (max-width: 600px) {
+  //  .container-products {
+  //    flex-direction: column;
+  //    justify-content: center;
+  //    align-items: center;
+  //  }
+  //  .image{
+  //    float: none;
+  //    width:auto;
+  //    img{
+  //      height:50%;
+  //      width:50%;
+  //    }
+  //  }
+  // }
+  @media (max-width: 480px) {
+    display: flex;
+    flex-direction: column;
+    // margin-left:20px;
+    // margin-right:0;
+    // width:100%;
+    .image{
+      float:none;
+       width: 100%;
+       img{
+        height:200px;
+        width:200px;
+      }
+    }
+    .details{
+      margin-top:50px;
+      width: 100%;
+      height:auto;
+    }
+  }
+=======
 
 .container-products{
 	display:flex;
@@ -175,4 +357,5 @@
 		} 
 	}	
 
+>>>>>>> main:styles/revised_styles/product-details.scss
 }
