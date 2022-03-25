@@ -1,16 +1,24 @@
 import { Payment } from "@mui/icons-material";
 import { useState } from 'react';
+import { useCart } from "../../context/Cart";
 import { loadStripe } from '@stripe/stripe-js';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 const PaymentValue = () => {
   const router = useRouter();
   const { status } = router.query;
-
+  const { line_items, subtotal } = useCart();
+  console.log(line_items);
+  console.log(subtotal);
   const [loading, setLoading] = useState(false);
 
   const [item, setItem] = useState({
     name: 'Apple AirPods',
+    price: 999,
+    quantity: 2
+  },
+  {
+    name: 'Apple',
     price: 999,
     quantity: 2
   });
@@ -49,8 +57,9 @@ const PaymentValue = () => {
  <h6>YOUR ORDER</h6>
  <div className="order-place">
    <div className="order-detail">
+ 
      <p>
-       WOOD CHAIR <span>$598 </span>
+       {/* {name} <span>{line_total} </span> */}
      </p>
      <p>
        STOOL <span>$199 </span>
@@ -109,7 +118,7 @@ const PaymentValue = () => {
        </li>
      </ul>
      <a  className="button-order"        
-         disabled={item.quantity === 0 || loading}
+         disabled={ loading}
             onClick={createCheckOutSession}>
       {loading ? 'Processing...' : 'Buy'}
      </a>{" "}

@@ -76,11 +76,11 @@ const CartItem = ({ id, name, brand, price, quantity, image, line_total }) => {
             <div className='quinty'>
               {/* <!-- QTY --> */}
               <button onClick={incrementQuantity} className='btn btn-primary'>
-                <AddIcon fontSize='large' />
+                <AddIcon fontSize='mediam' />
               </button>
               {quantity}
               <button onClick={decrementQuantity} className='btn btn-primary'>
-                <RemoveIcon fontSize='large' />
+                <RemoveIcon fontSize='mediam' />
               </button>
             </div>
           </div>
@@ -99,7 +99,7 @@ const CartItem = ({ id, name, brand, price, quantity, image, line_total }) => {
           {/* <div className="position-center-center">  */}
           <div className='remove'>
             <button onClick={removeItem} className='btn btn-danger'>
-              <CloseIcon fontSize='large' />
+              <CloseIcon fontSize='mediam' />
             </button>
           </div>
           {/* <a href="#."><CloseIcon fontSize="large" /></a> </div> */}

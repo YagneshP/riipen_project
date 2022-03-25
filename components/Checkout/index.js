@@ -1,5 +1,5 @@
 const Checkout = () => {
-  
+
   return (
     <div id='content'>
       {/* <!--======= PAGES INNER =========--> */}
