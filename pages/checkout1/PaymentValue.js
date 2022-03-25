@@ -11,17 +11,6 @@ const PaymentValue = () => {
   console.log(line_items);
   console.log(subtotal);
   const [loading, setLoading] = useState(false);
-
-  const [item, setItem] = useState({
-    name: 'Apple AirPods',
-    price: 999,
-    quantity: 2
-  },
-  {
-    name: 'Apple',
-    price: 999,
-    quantity: 2
-  });
   const publishableKey = `${process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}`;
   const stripePromise = loadStripe(publishableKey);
   const createCheckOutSession = async () => {
@@ -29,7 +18,8 @@ const PaymentValue = () => {
     const stripe = await stripePromise;
    
     const checkoutSession = await axios.post('../api/create-stripe-session', {
-    item:item,
+    // items:line_items, 
+    subtotal:subtotal
     });
   
     const result = await stripe.redirectToCheckout({

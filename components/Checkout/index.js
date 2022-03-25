@@ -1,5 +1,14 @@
+import Commerce from '@chec/commerce.js';
 const Checkout = () => {
 
+  const commerce = new Commerce('{your_public_key}');
+  
+  commerce.checkout.generateToken('white-shirt', { type: 'permalink' })
+    .then((checkout) => console.log(checkout.id))
+  
+  // Gets a new checkout token from a specific identifier type
+  commerce.checkout.generateTokenFrom('permalink', 'white-shirt')
+    .then((checkout) => console.log(checkout.id))
   return (
     <div id='content'>
       {/* <!--======= PAGES INNER =========--> */}
