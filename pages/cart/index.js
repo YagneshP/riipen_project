@@ -89,7 +89,6 @@ const Cart = () => {
                       APPLY CODE
                     </button>
                   </form>
-               
                   <div className='coupn-btn'>
                     {" "}
                     <a onClick={handleContinueShopping} className='btn shop_action'>
@@ -132,3 +131,10 @@ const Cart = () => {
   );
 };
 export default Cart;
+
+
+
+
+
+
+

@@ -55,7 +55,7 @@ const MobileMenu = () => {
     <Menu right styles={styles} >
       <ul className="mobile-nav-list">
         <li><Link href="/">Home</Link></li>
-        <li><Link href="/products-content">Store</Link></li>
+        <li><Link href="/product">Store</Link></li>
           {/* <ul className="sub-menu">
             <li><Link href="#">Men&apos;s Frangrances</Link></li>
             <li><Link href="#">Women&apos;s Frangrances</Link></li>
@@ -64,7 +64,7 @@ const MobileMenu = () => {
         <li><Link href="/contact">Contact</Link></li>
         <li><Link href="/account" passHref><PersonOutlineOutlinedIcon fontSize="large"/></Link></li>
         <li><Link href="/cart" passHref><ShoppingCartOutlinedIcon fontSize="large"/></Link></li>
-        <li><Link href="#" passHref><SearchOutlinedIcon fontSize="large"/></Link></li>
+        <li><Link href="/search#search" passHref><SearchOutlinedIcon fontSize="large"/></Link></li>
       </ul>
     </Menu>
    );
