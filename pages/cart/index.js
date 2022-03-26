@@ -8,21 +8,13 @@ const Cart = () => {
   const { line_items, subtotal } = useCart();
   const handleContinueShopping = (e) => {
     e.preventDefault()
-    router.push("/products-content")
+    router.push("/product")
   }
   const handleCheckout = (e) => {
     e.preventDefault()
-    router.push("/checkout1")
+    router.push("/checkout")
   }
- 
-// const cart = useSelector((state) => state.cart);
 
-  // const getTotalPrice = () => {
-  //   return cart.reduce(
-  //     (accumulator, item) => accumulator + item.quantity * item.price,
-  //     0
-  //   );
-  // };
   return (
     <div>
       <main>

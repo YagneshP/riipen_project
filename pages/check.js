@@ -13,9 +13,11 @@ import {GrandTotal} from './cart/GrandTotal';
 // const commerce = new Commerce('pk_test_41232e4fdaec2a10e57e771251a71f8d758f37750ae7d');
 export default function Checkout1() {
 	const [token, setToken] = useState();
+  const [order,setOrder] = useState({});
 	const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
 	 const { line_items, subtotal } = useCart();
+   console.log("line",line_items);
 	const cartId= commerce.cart.id();
 	console.log("cartid",commerce.cart.id());
 	
@@ -41,40 +43,63 @@ export default function Checkout1() {
 				customer: {
 					firstname: firstName,
 					lastname: lastName,
+          email: 'john.doe@example.com'
 				},
         shipping: {
-          name: 'shippingName',
-          street: 'shippingStreet',
-          town_city: 'shippingCity',
-          county_state: 'shippingStateProvince',
-          postal_zip_code: 'shippingPostalZipCode',
-          country: 'shippingCountry',
+          name: 'John Doe',
+          street: '123 Fake St',
+          town_city: 'San Francisco',
+          county_state: 'US-CA',
+          postal_zip_code: '94103',
+          country: 'US'
+        },
+        fulfillment: {
+          shipping_method: 'ship_7RyWOwmK5nEa2V'
+        },
+        billing: {
+          name: 'John Doe',
+          street: '234 Fake St',
+          town_city: 'San Francisco',
+          county_state: 'US-CA',
+          postal_zip_code: '94103',
+          country: 'US'
         },
         payment: {
-          gateway: 'stripe',
+          gateway: 'test_gateway',
           card: {
-            token: 'irh98298g49'
-          }
+            number:  4242424242424242,
+            expiry_month: 12,
+            expiry_year: 34,
+            cvc: 123,
+            postal_zip_code: 'L6X 0S1',
+          },
         },
-			}
+      //   payment: {
+      //     gateway: 'stripe',
+      //     stripe: {
+      //       payment_method_id: paymentMethodResponse.paymentMethod.id,
+      //     },
+			// }
+      }
+    
 			console.log("orderData", orderData);
 			console.log("token id", token.id);
-      // localStorage.setItem('order_receipt', orderData));
-			localStorage.setItem('order_receipt', JSON.stringify(orderData));
-      // Router.push('/confirmation');
-			// const commerce = new Commerce('pk_test_41232e4fdaec2a10e57e771251a71f8d758f37750ae7d');
-		// try {
-      const order = await commerce.checkout.capture(
-        token.id,
-        orderData
-      );
-			console.log("order", order);
-		// 	localStorage.setItem('order_receipt', JSON.stringify(order));
-		// 	console.log("orderData", orderData);
-		// 	Router.push('/confirmation');
-		// } catch (err) {
-		// 	console.log("errors",err);
-		// }
+      
+      try {
+        const orderPlaced = await commerce.checkout.capture(
+          token.id,
+          orderData
+        );
+        setOrder(orderPlaced);
+        console.log("order",order);
+        console.log("orderPlaced",orderPlaced);
+        // dispatch({ type: ORDER_SET, payload: order });
+        // localStorage.setItem('order_receipt', JSON.stringify(order));
+        // await refreshCart();
+        // Router.push('/confirmation');
+      } catch (err) {
+        console.log("error");
+      }
   };
 
 
@@ -345,7 +370,7 @@ export default function Checkout1() {
                   <h6>YOUR ORDER</h6>
                   <div className='order-place'>
                     <div className='order-detail'>
-                    {/* {line_items.map((item) => (
+                    {/* {order.line_items.map((item) => (
                       <GrandTotal
                         key={item.id}
                         id={item.id}

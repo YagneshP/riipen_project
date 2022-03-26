@@ -1,67 +1,106 @@
 // import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Router from "next/router";
+// import { Router } from 'next/router';
+import axios from 'axios';
 import { useContext, useEffect,useState } from "react";
-// import { useCartActions } from "../context/Cart";
 import { useCart } from "../../context/Cart";
-// import { CartStateContext } from '../context/Cart';
 import { commerce } from "../../lib/commerce";
+import {GrandTotal} from '../../pages/cart/GrandTotal';
+import {PaymentValue} from '../../pages/stripe/PaymentValue';
 
-import GrandTotal from "../../pages/cart/GrandTotal";
-//  const { setCart } = useCartActions();
-import Commerce from '@chec/commerce.js';
-
-// const commerce = new Commerce('pk_test_41232e4fdaec2a10e57e771251a71f8d758f37750ae7d');
 export default function Checkout() {
-	const [token, setToken] = useState();
-	const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-	 const { line_items, subtotal } = useCart();
-	const cartId= commerce.cart.id();
-	console.log("cartid",commerce.cart.id());
-	
-	useEffect(() => {
-      generateCheckoutToken();
-   
-  }, []);
+	// const [token, setToken] = useState();
+	const { line_items, subtotal } = useCart();
 
-	const generateCheckoutToken = async () => {
-    if (cartId) {
-      const token = await commerce.checkout.generateToken(cartId, {
-        type: 'cart',
-      });
-			console.log("token",token);
-      setToken(token);
-    } else {
-      Router.push('/cart');
-    }
+	//Billing Form data
+	const [bfirstName, setbFirstName] = useState('');
+  const [blastName, setbLastName] = useState();
+	const [ bcompany, setbCompany] = useState('');
+	const [ addressb, setAddressb] = useState('');
+	const [ bcity, setbCity] = useState('');
+	const [ bcountry, setbCountry] = useState('');
+	const [ bemail, setbEmail] = useState('');
+	const [ bphone, setbPhone] = useState('');
+	const [ bpostal, setbPostal] = useState('');
+
+//Shipping Form data
+	const [sfirstName, setsFirstName] = useState(bfirstName);
+	const [slastName, setsLastName] = useState();
+	const [ scompany, setsCompany] = useState('');
+	const [ saddress, setsAddress] = useState('');
+	const [ scity, setsCity] = useState('');
+	const [ scountry, setsCountry] = useState('');
+	const [ semail, setsEmail] = useState('');
+	const [ sphone, setsPhone] = useState('');
+	const [ spostal, setsPostal] = useState('');
+
+
+	const handleBilling = async()=>{
+		console.log("hi");
+		const billingData = {
+      first: bfirstName,
+      last: blastName,
+			company: bcompany,
+			address: addressb,
+			city: bcity,
+			country: bcountry,
+			postal: bpostal,
+			phone: bphone
+    };
+		console.log("billing data",billingData.first);
+    const JSONdata = JSON.stringify(billingData);
+		console.log("billing",JSONdata);
+		
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSONdata,
+    };
+
+    // Send the form data to our forms API  and get a response.
+    const response = await fetch('/api/checkoutForm', options);
+
+    const result = await response.json();
+    alert(`name: ${result.data.first}`);
 	}
-		const handleCaptureCheckout = async () => {
-			const orderData = {
-				line_items: token.live.line_items,
-				customer: {
-					firstname: firstName,
-					lastname: lastName,
-				},
-			}
-			console.log("orderData", orderData);
-			console.log("token id", token.id);
-			
-			// localStorage.setItem('order_receipt', JSON.stringify(orderData));
-		// 	const commerce1 = new Commerce('pk_test_41232e4fdaec2a10e57e771251a71f8d758f37750ae7d');
-		// try {
-    //   const order = await commerce1.checkout.capture(
-    //     token.id,
-    //     orderData
-    //   );
-		// 	console.log("order", order);
-		// 	localStorage.setItem('order_receipt', JSON.stringify(order));
-		// 	console.log("orderData", orderData);
-		// 	Router.push('/confirmation');
-		// } catch (err) {
-		// 	console.log("errors",err);
-		// }
-  };
+	
+	const handleShipping = async()=>{
+		const shippingData = {
+      first: sfirstName,
+      last: slastName,
+			company: scompany,
+			address: saddress,
+			city: scity,
+			country: scountry,
+			postal: spostal,
+			phone: sphone
+    };
 
+    const JSONdata = JSON.stringify(shippingData);
+		console.log("shipping",JSONdata);
+		
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSONdata,
+    };
+
+    // Send the form data to our forms API  and get a response.
+    const response = await fetch('/api/checkoutForm', options);
+
+    const result = await response.json();
+    alert(`name: ${result.data.first}`);
+
+
+	}
+	const placeOrder = () => {
+		Router.push('/stripe');
+	}
 
 	return (
     <div id='content'>
@@ -86,8 +125,8 @@ export default function Checkout() {
                           <input
                             type='text'
                             name='first-name'
-                            value={firstName}
-                            onChange={(e) => setFirstName(e.target.value)}
+                            value={bfirstName}
+                            onChange={(e) => setbFirstName(e.target.value)}
                             placeholder=''
                           />
                         </label>
@@ -100,8 +139,8 @@ export default function Checkout() {
                           <input
                             type='text'
                             name='last-name'
-                            value={lastName}
-                            onChange={(e) => setLastName(e.target.value)}
+                            value={blastName}
+                            onChange={(e) => setbLastName(e.target.value)}
                             placeholder=''
                           />
                         </label>
@@ -113,7 +152,8 @@ export default function Checkout() {
                           <input
                             type='text'
                             name='company'
-                            // value=''
+                            value={bcompany}
+                            onChange={(e) => setbCompany(e.target.value)}
                             placeholder=''
                           />
                         </label>
@@ -125,7 +165,8 @@ export default function Checkout() {
                           <input
                             type='text'
                             name='address'
-                            // value=''
+                            value={addressb}
+                            onChange={(e) => setAddressb(e.target.value)}
                             placeholder=''
                           />
                         </label>
@@ -137,8 +178,8 @@ export default function Checkout() {
                           <input
                             type='text'
                             name='town'
-                            // value=''
-                            placeholder=''
+                            value={bcity}
+                            onChange={(e) => setbCity(e.target.value)}
                           />
                         </label>
                       </li>
@@ -151,8 +192,8 @@ export default function Checkout() {
                           <input
                             type='text'
                             name='contry-state'
-                            // value=''
-                            placeholder=''
+                            value={bcountry}
+                            onChange={(e) => setbCountry(e.target.value)}
                           />
                         </label>
                       </li>
@@ -165,8 +206,8 @@ export default function Checkout() {
                           <input
                             type='text'
                             name='contry-state'
-                            // value=''
-                            placeholder=''
+                            value={bemail}
+                            onChange={(e) => setbEmail(e.target.value)}
                           />
                         </label>
                       </li>
@@ -174,19 +215,31 @@ export default function Checkout() {
                       <li className='col-md-6'>
                         <label>
                           {" "}
-                          *PHONE
+                          *POSTAL CODE
                           <input
                             type='text'
                             name='postal-code'
-                            // value=''
-                            placeholder=''
+                            value={bpostal}
+                            onChange={(e) => setbPostal(e.target.value)}
+                          />
+                        </label>
+                      </li>
+											<li className='col-md-6'>
+                        <label>
+                          {" "}
+                          *PHONE
+                          <input
+                            type='text'
+                            name='phone'
+                            value={bphone}
+                            onChange={(e) => setbPhone(e.target.value)}
                           />
                         </label>
                       </li>
 
-                      {/* <!-- PHONE --> */}
+                
                       <li className='col-md-6'>
-                        <button type='submit' className='button-chk'>
+                        <button type='submit' className='button-chk' onClick={handleBilling}>
                           Continue
                         </button>
                       </li>
@@ -219,8 +272,8 @@ export default function Checkout() {
                           <input
                             type='text'
                             name='first-name'
-                            // value=''
-                            placeholder=''
+                            value={sfirstName}
+                            onChange={(e) => setsFirstName(e.target.value)}
                           />
                         </label>
                       </li>
@@ -232,8 +285,8 @@ export default function Checkout() {
                           <input
                             type='text'
                             name='last-name'
-                            // value=''
-                            placeholder=''
+                            value={slastName}
+                            onChange={(e) => setsLastName(e.target.value)}
                           />
                         </label>
                       </li>
@@ -244,8 +297,8 @@ export default function Checkout() {
                           <input
                             type='text'
                             name='company'
-                            // value=''
-                            placeholder=''
+                            value={scompany}
+                            onChange={(e) => setsCompany(e.target.value)}
                           />
                         </label>
                       </li>
@@ -256,8 +309,8 @@ export default function Checkout() {
                           <input
                             type='text'
                             name='address'
-                            // value=''
-                            placeholder=''
+                            value={saddress}
+                            onChange={(e) => setsAddress(e.target.value)}
                           />
                         </label>
                       </li>
@@ -268,8 +321,8 @@ export default function Checkout() {
                           <input
                             type='text'
                             name='town'
-                            // value=''
-                            placeholder=''
+                            value={scity}
+                            onChange={(e) => setsCity(e.target.value)}
                           />
                         </label>
                       </li>
@@ -282,8 +335,8 @@ export default function Checkout() {
                           <input
                             type='text'
                             name='contry-state'
-                            // value=''
-                            placeholder=''
+                            value={scountry}
+                            onChange={(e) => setsCountry(e.target.value)}
                           />
                         </label>
                       </li>
@@ -296,8 +349,20 @@ export default function Checkout() {
                           <input
                             type='text'
                             name='contry-state'
-                            // value=''
-                            placeholder=''
+                            value={semail}
+                            onChange={(e) => setsEmail(e.target.value)}
+                          />
+                        </label>
+                      </li>
+											<li className='col-md-6'>
+                        <label>
+                          {" "}
+                          *POSTAL CODE
+                          <input
+                            type='text'
+                            name='phone'
+                            value={spostal}
+                            onChange={(e) => setsPostal(e.target.value)}
                           />
                         </label>
                       </li>
@@ -308,16 +373,16 @@ export default function Checkout() {
                           *PHONE
                           <input
                             type='text'
-                            name='postal-code'
-                            // value=''
-                            placeholder=''
+                            name='phone'
+                            value={sphone}
+                            onChange={(e) => setsPhone(e.target.value)}
                           />
                         </label>
                       </li>
 
                       {/* <!-- PHONE --> */}
                       <li className='col-md-6'>
-                        <button type='submit' className='button-chk'>
+                        <button type='submit' className='button-chk' onClick={handleShipping}>
                           SUBMIT
                         </button>
                       </li>
@@ -330,17 +395,17 @@ export default function Checkout() {
                   <h6>YOUR ORDER</h6>
                   <div className='order-place'>
                     <div className='order-detail'>
-                    {line_items.map((item) => (
+                    {/* {line_items.map((item) => (
                       <GrandTotal
                         key={item.id}
                         id={item.id}
                         name={item.name}
                         line_total={item.line_total.formatted_with_symbol}
                       />
-                    ))}
+										))} */}
                       
                       <p className='all-total'>
-                      {/* TOTAL COST <span> {subtotal.formatted_with_symbol}</span> */}
+                      TOTAL COST <span> {subtotal.formatted_with_symbol}</span>
                     </p>
 
                     </div>
@@ -387,7 +452,8 @@ export default function Checkout() {
                         </li>
                       </ul>
                     
-                      <a className='button-order' onClick={handleCaptureCheckout}>
+                      <a className='button-order' onClick={placeOrder}> 
+											 {/* onClick={handleCaptureCheckout}> */}
                         PLACE ORDER
                       </a>{" "}
                       {/* </Link> */}
