@@ -1,5 +1,27 @@
+// import { useCart } from "../context/Cart";
+import getStripe from "../../lib/stripe";
+import { useCart } from "../../context/Cart";
+
 const Checkout = () => {
-  
+  const cart = useCart();
+  const handleClick = async () => {
+    const session = await fetch("/api/checkout_session", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(cart),
+    })
+      .then((res) => res.json())
+      .catch((err) => console.log("err", err));
+    const stripe = await getStripe();
+    // console.log("session", session);
+    const { error } = await stripe.redirectToCheckout({
+      // Make the id field from the Checkout Session creation API response
+      // available to this file, so you can provide it as parameter here
+      // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
+      sessionId: session.id,
+    });
+    console.warn(error.message);
+  };
   return (
     <div id='content'>
       {/* <!--======= PAGES INNER =========--> */}
@@ -322,9 +344,13 @@ const Checkout = () => {
                           </div>
                         </li>
                       </ul>
-                      <a href='#.' className='button-order'>
+                      <button className='button-order' onClick={handleClick}>
                         PLACE ORDER
-                      </a>{" "}
+                      </button>
+                      {/* <a href='#.' className='button-order'>
+                        PLACE ORDER
+
+                      </a>{" "} */}
                     </div>
                   </div>
                 </div>
