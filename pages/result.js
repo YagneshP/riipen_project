@@ -1,15 +1,39 @@
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import useSWR from "swr";
+import { useCart } from "../context/Cart";
+import { commerce } from "../lib/commerce";
+
 function Result() {
   const router = useRouter();
-  const { session_id } = router.query;
+  const { session_id, token_id } = router.query;
   // Fetch CheckoutSession from static page via
   // https://nextjs.org/docs/basic-features/data-fetching#static-generation
   const { data, error } = useSWR(
     router.query.session_id ? `/api/checkout_session/${session_id}` : null,
     (url) => fetch(url).then((res) => res.json())
   );
+  if (data) {
+    commerce.checkout
+      .capture(token_id, {
+        // ...orderDetails,
+        customer: {
+          email: "hello@chec.io",
+        },
+        // ...data,
+        // Include Stripe payment method ID:
+        payment: {
+          gateway: "stripe",
+          stripe: {
+            payment_method_id: data?.payment_method,
+          },
+        },
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.log("Error at capture order", error));
+  }
 
+  // console.log("order", order);
   if (error) return <div>failed to load</div>;
 
   return (
