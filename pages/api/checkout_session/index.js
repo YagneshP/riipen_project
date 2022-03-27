@@ -1,4 +1,5 @@
 import Stripe from "stripe";
+import { commerce } from "../../../lib/commerce";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -10,7 +11,7 @@ export default async function handler(req, res) {
       product_data: {
         name: item.name,
       },
-      unit_amount: item.price.raw * 100,
+      unit_amount: item.line_total.raw * 100,
     },
 
     quantity: item.quantity,
@@ -25,12 +26,10 @@ export default async function handler(req, res) {
           // line items should coming from cart
           ...formattedItems,
         ],
-        success_url: `${req.headers.origin}/result?session_id={CHECKOUT_SESSION_ID}`,
+        success_url: `${req.headers.origin}/result?session_id={CHECKOUT_SESSION_ID}&token_id=${req.body.id}`,
         cancel_url: `${req.headers.origin}/checkout`,
       };
       const checkoutSession = await stripe.checkout.sessions.create(params);
-
-      console.log("session", checkoutSession);
 
       res.status(200).json(checkoutSession);
     } catch (err) {
