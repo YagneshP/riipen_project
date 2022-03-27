@@ -1,6 +1,6 @@
 import Stripe from "stripe";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-
+import { commerce } from "../../../lib/commerce";
 export default async function handler(req, res) {
   const id = req.query.id;
   try {
@@ -10,6 +10,7 @@ export default async function handler(req, res) {
     const checkout_session = await stripe.checkout.sessions.retrieve(id, {
       expand: ["payment_intent"],
     });
+    //
 
     res.status(200).json(checkout_session);
   } catch (err) {
