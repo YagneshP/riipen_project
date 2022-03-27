@@ -1,60 +1,94 @@
-import Stripe from 'stripe';
-import { useElements } from '@stripe/stripe-js';
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-// var stripe = new Stripe('pk_test_51KEYwHLZ4N0M8BbtkQ6tNuy0DdmYDyXNR2mqFrpFnwpSPdNEcfY6FD8FNL8aWvSJ8iJHb4G5W8IeacEzzApAcY2Q00Q54F5nLy');
-console.log("Stripe data",stripe)
-var elements = stripe.elements();
+import { Router } from 'next/router';
+import { useContext, useEffect, useState } from "react";
+import { useCart } from "../context/Cart";
+import { commerce } from "../lib/commerce";
+const captureOrder = async () => {
+  const [token, setToken] = useState();
+  const [order, setOrder] = useState({});
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const { line_items, subtotal } = useCart();
+  console.log("line", line_items);
+  const cartId = commerce.cart.id();
+  console.log("cartid", commerce.cart.id());
 
-// var elements = stripe.elements();
-// var Stripe = stripe('pk_test_51KEYwHLZ4N0M8BbtkQ6tNuy0DdmYDyXNR2mqFrpFnwpSPdNEcfY6FD8FNL8aWvSJ8iJHb4G5W8IeacEzzApAcY2Q00Q54F5nLy');
-// var elements = stripe.elements({
-//   clientSecret: `${process.env.STRIPE_SECRET_KEY}`,
-// });
-// console.log("---------elements", elements)
+  useEffect(() => {
+    generateCheckoutToken();
 
-// When mounting the Stripe elements form to your page, you should have a line like this which provides a card element
-// const card = elements.create('card')
+  }, []);
 
-// ... Integrate Elements onto your page, and other fields required for capturing a checkout with Commerce.js.
-
-// Create a function that can be called when a "complete order" button is clicked
-async function captureOrder() {
-  // This process includes a few API calls, so now is a good time to show a loading indicator
-
-  // Create a payment method using the card element on the page
-  const paymentMethodResponse = await stripe.createPaymentMethod({ type: 'card', card });
-
-  if (paymentMethodResponse.error) {
-    // There was some issue with the information that the customer entered into the payment details form.
-    alert(paymentMethodResponse.error.message);
-    return;
+  const generateCheckoutToken = async () => {
+    if (cartId) {
+      const token = await commerce.checkout.generateToken(cartId, {
+        type: 'cart',
+      });
+      console.log("token", token);
+      setToken(token);
+    } else {
+      Router.push('/cart');
+    }
   }
-
-  try {
-    // Use a checkout token ID generated that was generated earlier, and any order details that may have been collected
-    // on this page. Note that Commerce.js checkout tokens may already have all the information saved against them to
-    // capture an order, so this extra detail may be optional.
-    const order = await commerce.checkout.capture(checkoutTokenId, {
-      ...orderDetails,
-      // Include Stripe payment method ID:
-      payment: {
-        gateway: 'stripe',
-        stripe: {
-          payment_method_id: paymentMethodResponse.paymentMethod.id,
-        },
+  // const { line_items, subtotal } = useCart();
+  const orderData = {
+    line_items: token.live.line_items,
+    customer: {
+      firstname: firstName,
+      lastname: lastName,
+      email: 'john.doe@example.com'
+    },
+    shipping: {
+      name: 'John Doe',
+      street: '123 Fake St',
+      town_city: 'San Francisco',
+      county_state: 'US-CA',
+      postal_zip_code: '94103',
+      country: 'US'
+    },
+    fulfillment: {
+      shipping_method: 'ship_7RyWOwmK5nEa2V'
+    },
+    billing: {
+      name: 'John Doe',
+      street: '234 Fake St',
+      town_city: 'San Francisco',
+      county_state: 'US-CA',
+      postal_zip_code: '94103',
+      country: 'US'
+    },
+    payment: {
+      gateway: 'test_gateway',
+      card: {
+        number:  4242424242424242,
+        expiry_month: 12,
+        expiry_year: 34,
+        cvc: 123,
+        postal_zip_code: 'L6X 0S1',
       },
-    })
-
-    // If we get here, the order has been successfully captured and the order detail is part of the `order` variable
-    console.log(order);
-    return;
-  } catch (response) {
-    // There was an issue with capturing the order with Commerce.js
-    console.log(response);
-    alert(response.message);
-    return;
-  } finally {
-    // Any loading state can be removed here.
+    },
+  //   payment: {
+  //     gateway: 'stripe',
+  //     stripe: {
+  //       payment_method_id: paymentMethodResponse.paymentMethod.id,
+  //     },
+  // }
+  }
+  console.log("orderData", orderData);
+  console.log("token id", token.id);
+  
+  try {
+    const orderPlaced = await commerce.checkout.capture(
+      token.id,
+      orderData
+    );
+    setOrder(orderPlaced);
+    console.log("order",order);
+    console.log("orderPlaced",orderPlaced);
+    // dispatch({ type: ORDER_SET, payload: order });
+    // localStorage.setItem('order_receipt', JSON.stringify(order));
+    // await refreshCart();
+    // Router.push('/confirmation');
+  } catch (err) {
+    console.log("error");
   }
 }
-export default captureOrder;
+ export default captureOrder;
