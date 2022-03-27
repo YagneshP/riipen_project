@@ -6,10 +6,8 @@ function Result() {
   // Fetch CheckoutSession from static page via
   // https://nextjs.org/docs/basic-features/data-fetching#static-generation
   const { data, error } = useSWR(
-    router.query.session_id
-      ? `/api/checkout_sessions/${router.query.session_id}`
-      : null,
-    (url) => fetch(url).then((res) => res.json)
+    router.query.session_id ? `/api/checkout_session/${session_id}` : null,
+    (url) => fetch(url).then((res) => res.json())
   );
 
   if (error) return <div>failed to load</div>;
