@@ -1,25 +1,44 @@
 // import { useCart } from "../context/Cart";
 import getStripe from "../../lib/stripe";
 import { useCart } from "../../context/Cart";
+import { commerce } from "../../lib/commerce";
 
 const Checkout = () => {
   const cart = useCart();
   const handleClick = async () => {
+    const checkoutTokenId = await commerce.checkout.generateToken(cart.id, {
+      type: "cart",
+    });
+    console.log("checkoutTokenId ", checkoutTokenId);
     const session = await fetch("/api/checkout_session", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify(cart),
+      body: JSON.stringify(checkoutTokenId),
     })
       .then((res) => res.json())
       .catch((err) => console.log("err", err));
+    console.log("payment", session.payment_method);
     const stripe = await getStripe();
+
     // console.log("session", session);
-    const { error } = await stripe.redirectToCheckout({
+    const response = await stripe.redirectToCheckout({
       // Make the id field from the Checkout Session creation API response
       // available to this file, so you can provide it as parameter here
       // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
       sessionId: session.id,
     });
+    console.log("response", response);
+    // const order = await commerce.checkout.capture(checkoutTokenId, {
+    //   ...orderDetails,
+    //   // Include Stripe payment method ID:
+    //   payment: {
+    //     gateway: "stripe",
+    //     stripe: {
+    //       payment_method_id: paymentMethodResponse.paymentMethod.id,
+    //     },
+    //   },
+    // });
+    // console.log("order", order);
     console.warn(error.message);
   };
   return (
