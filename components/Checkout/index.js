@@ -17,24 +17,23 @@ const Checkout = () => {
     })
       .then((res) => res.json())
       .catch((err) => console.log("err", err));
-    console.log("payment", session.payment_method);
     const stripe = await getStripe();
 
     // console.log("session", session);
-    const response = await stripe.redirectToCheckout({
+    const { error } = await stripe.redirectToCheckout({
       // Make the id field from the Checkout Session creation API response
       // available to this file, so you can provide it as parameter here
       // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
       sessionId: session.id,
     });
-    console.log("response", response);
-    // const order = await commerce.checkout.capture(checkoutTokenId, {
-    //   ...orderDetails,
+    console.log("response", session);
+    // const order = await commerce.checkout.capture(checkoutTokenId.id, {
+    //   ...session,
     //   // Include Stripe payment method ID:
     //   payment: {
     //     gateway: "stripe",
     //     stripe: {
-    //       payment_method_id: paymentMethodResponse.paymentMethod.id,
+    //       payment_method_id: session?.payment_intent?.id,
     //     },
     //   },
     // });
