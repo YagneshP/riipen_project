@@ -1,4 +1,9 @@
+import { useForm } from "react-hook-form";
+
 const Checkout = () => {
+  const { register, handleSubmit } = useForm();
+  const onSubmit = (data) => console.log(data);
+
   return (
     <div id="content">
       <section className="chart-page padding-top-100 padding-bottom-100">
@@ -8,54 +13,78 @@ const Checkout = () => {
               <div className="row">
                 <div className="col-sm-7">
                   <h6>BILLING DETAILS</h6>
-                  <form>
+                  <form onSubmit={handleSubmit(onSubmit)}>
                     <ul className="row">
                       <li className="col-md-6">
                         <label>
                           *FIRST NAME
-                          <input type="text" name="first-name" />
+                          <input
+                            type="text"
+                            {...register("firstName", { required: true })}
+                          />
                         </label>
                       </li>
                       <li className="col-md-6">
                         <label>
                           *LAST NAME
-                          <input type="text" name="last-name" />
-                        </label>
-                      </li>
-                      <li className="col-md-6">
-                        <label>
-                          COMPANY NAME
-                          <input type="text" name="company" />
+                          <input
+                            type="text"
+                            {...register("lastName", { required: true })}
+                          />
                         </label>
                       </li>
                       <li className="col-md-6">
                         <label>
                           *ADDRESS
-                          <input type="text" name="address" />
+                          <input
+                            type="text"
+                            {...register("address", { required: true })}
+                          />
                         </label>
                       </li>
                       <li className="col-md-6">
                         <label>
-                          *TOWN/CITY
-                          <input type="text" name="town" />
+                          *POSTAL CODE
+                          <input
+                            type="text"
+                            {...register("postcode", { required: true })}
+                          />
+                        </label>
+                      </li>
+                      <li className="col-md-6">
+                        <label>
+                          *CITY
+                          <input
+                            type="text"
+                            {...register("city", { required: true })}
+                          />
                         </label>
                       </li>
                       <li className="col-md-6">
                         <label>
                           COUNTRY
-                          <input type="text" name="country-state" />
+                          <input
+                            type="text"
+                            {...register("country", { required: true })}
+                          />
                         </label>
                       </li>
                       <li className="col-md-6">
                         <label>
                           *EMAIL ADDRESS
-                          <input type="text" name="country-state" />
+                          <input
+                            type="text"
+                            {...register("email", { required: true })}
+                          />
                         </label>
                       </li>
                       <li className="col-md-6">
                         <label>
                           *PHONE
-                          <input type="text" name="postal-code" />
+                          <input
+                            type="text"
+                            {...register("phone", { required: true })}
+                          />
                         </label>
                       </li>
                       <li className="col-md-6">
@@ -78,54 +107,78 @@ const Checkout = () => {
                     </ul>
                   </form>
                   <h6 className="margin-top-50">SHIPPING info</h6>
-                  <form>
+                  <form onSubmit={handleSubmit(onSubmit)}>
                     <ul className="row">
                       <li className="col-md-6">
                         <label>
                           *FIRST NAME
-                          <input type="text" name="first-name" />
+                          <input
+                            type="text"
+                            {...register("bill-firstName", { required: true })}
+                          />
                         </label>
                       </li>
                       <li className="col-md-6">
                         <label>
                           *LAST NAME
-                          <input type="text" name="last-name" />
-                        </label>
-                      </li>
-                      <li className="col-md-6">
-                        <label>
-                          COMPANY NAME
-                          <input type="text" name="company" />
+                          <input
+                            type="text"
+                            {...register("bill-lastName", { required: true })}
+                          />
                         </label>
                       </li>
                       <li className="col-md-6">
                         <label>
                           *ADDRESS
-                          <input type="text" name="address" />
+                          <input
+                            type="text"
+                            {...register("bill-address", { required: true })}
+                          />
                         </label>
                       </li>
                       <li className="col-md-6">
                         <label>
-                          *TOWN/CITY
-                          <input type="text" name="town" />
+                          *POSTAL CODE
+                          <input
+                            type="text"
+                            {...register("bill-postcode", { required: true })}
+                          />
+                        </label>
+                      </li>
+                      <li className="col-md-6">
+                        <label>
+                          *CITY
+                          <input
+                            type="text"
+                            {...register("bill-city", { required: true })}
+                          />
                         </label>
                       </li>
                       <li className="col-md-6">
                         <label>
                           COUNTRY
-                          <input type="text" name="country-state" />
+                          <input
+                            type="text"
+                            {...register("bill-country", { required: true })}
+                          />
                         </label>
                       </li>
                       <li className="col-md-6">
                         <label>
                           *EMAIL ADDRESS
-                          <input type="text" name="country-state" />
+                          <input
+                            type="text"
+                            {...register("bill-email", { required: true })}
+                          />
                         </label>
                       </li>
                       <li className="col-md-6">
                         <label>
                           *PHONE
-                          <input type="text" name="postal-code" />
+                          <input
+                            type="text"
+                            {...register("bill-phone", { required: true })}
+                          />
                         </label>
                       </li>
                       <li className="col-md-6">
