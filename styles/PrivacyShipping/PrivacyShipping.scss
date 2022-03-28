@@ -1,7 +1,7 @@
-#shipping-method-page {
+#privacy-shipping {
 	* {
-		margin: 0;
-		padding: 0;
+		margin: 10;
+		padding: 20;
 	}
 	body {
 		background: #fff;
@@ -173,31 +173,7 @@
 			line-height: 45px;
 		}
 	}
-	.small-about {
-		border-top: 1px solid #d1d5db;
-		.social_icons {
-			text-align: center;
-			li {
-				display: inline-block;
-				a {
-					font-size: 16px;
-					margin: 0 5px;
-					color: #2d3a4b;
-					&:hover {
-						color: #ffe333;
-					}
-				}
-			}
-		}
-		p {
-			font-family: "Playfair Display", serif;
-			color: #4d4d4d;
-			font-size: 14px;
-			line-height: 20px;
-			max-width: 900px;
-			margin: 0 auto;
-		}
-	}
+	
 	main {
 		position: relative;
 		z-index: 99;
@@ -227,3 +203,4 @@
 		font-weight: bold;
 	}
 }
+

@@ -1,37 +1,5 @@
 .chart-page {
 	text-transform: uppercase;
-	.payment_steps {
-		margin: 30px 0;
-		text-align: center;
-		i {
-			font-size: 24px;
-			border: 1px solid #ebebeb;
-			height: 73px;
-			width: 73px;
-			border-radius: 50%;
-			line-height: 71px;
-			position: relative;
-			color: #b8b8b8;
-			margin-bottom: 20px;
-		}
-		h6 {
-			&:before {
-				content: "";
-				background: #ebebeb;
-				height: 18px;
-				width: 2px;
-				position: absolute;
-				top: 85px;
-				left: 0;
-				right: 0;
-				margin: 0 auto;
-			}
-			font-size: 12px;
-			margin: 20px 0;
-			font-weight: 400;
-			color: #272727;
-		}
-	}
 	.shopping-cart {
 		position: relative;
 		overflow: hidden;
@@ -45,7 +13,7 @@
 	}
 	li {
 		position: relative;
-		font-family: Montserrat, sans-serif;
+		font-family: Montserrat,sans-serif;
 		font-size: 12px;
 		color: #af5875;
 		input {
@@ -53,7 +21,7 @@
 			width: 100%;
 			border: 1px solid #ebebeb;
 			width: 60px;
-			font-family: Montserrat, sans-serif;
+			font-family: Montserrat,sans-serif;
 			height: 44px;
 			float: left;
 			width: 100%;
@@ -110,11 +78,11 @@
 			font-weight: 400;
 			text-align: left;
 			margin-top: 10px;
-			-webkit-transition: all 0.4s ease-in-out;
-			-moz-transition: all 0.4s ease-in-out;
-			-o-transition: all 0.4s ease-in-out;
-			-ms-transition: all 0.4s ease-in-out;
-			transition: all 0.4s ease-in-out;
+			-webkit-transition: all .4s ease-in-out;
+			-moz-transition: all .4s ease-in-out;
+			-o-transition: all .4s ease-in-out;
+			-ms-transition: all .4s ease-in-out;
+			transition: all .4s ease-in-out;
 		}
 		label {
 			font-size: 10px;
@@ -137,20 +105,21 @@
 		}
 	}
 	.order-place {
-		input {
-			margin: 0;
-			height: auto !important;
-		}
 		border: 3px solid #ffe115;
 		padding: 30px;
 		display: inline-block;
 		width: 100%;
+		input {
+			margin: 0;
+			height: auto !important;
+		}
 		h5 {
 			font-weight: 700;
 			color: #af5875;
 			margin: 0;
 		}
 		.order-detail {
+			margin-bottom: 30px;
 			p {
 				font-weight: 400;
 				color: #2d3a4b;
@@ -162,7 +131,6 @@
 					float: right;
 				}
 			}
-			margin-bottom: 30px;
 		}
 		.pay-meth {
 			p {
@@ -211,7 +179,7 @@
 	font-weight: 700;
 	padding: 10px 15px;
 	text-align: center;
-	transition: 0.2s;
+	transition: .2s;
 	width: 100%;
 	box-sizing: border-box;
 	border: 0;
@@ -223,16 +191,16 @@
 		&:focus {
 			outline: 0;
 			background: #ffe115;
-			box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2), 0 3px 8px 0 rgba(0, 0, 0, 0.15);
+			box-shadow: 0 0 0 2px rgba(0,0,0,.2),0 3px 8px 0 rgba(0,0,0,.15);
 		}
 		&:hover {
 			outline: 0;
 			background: #ffe115;
-			box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2), 0 3px 8px 0 rgba(0, 0, 0, 0.15);
+			box-shadow: 0 0 0 2px rgba(0,0,0,.2),0 3px 8px 0 rgba(0,0,0,.15);
 		}
 	}
 	&:disabled {
-		filter: saturate(0.2) opacity(0.5);
+		filter: saturate(.2) opacity(.5);
 		cursor: not-allowed;
 	}
 }
@@ -244,7 +212,7 @@
 	color: #fff;
 	cursor: pointer;
 	display: inline-block;
-	font-family: "Farfetch Basis", "Helvetica Neue", Arial, sans-serif;
+	font-family: "Farfetch Basis","Helvetica Neue",Arial,sans-serif;
 	font-size: 16px;
 	font-weight: 700;
 	line-height: 1.5;
@@ -263,9 +231,9 @@
 	touch-action: manipulation;
 	width: 100%;
 	&:focus {
-		opacity: 0.75;
+		opacity: .75;
 	}
 	&:hover {
-		opacity: 0.75;
+		opacity: .75;
 	}
 }
