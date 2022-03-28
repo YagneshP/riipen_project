@@ -1,6 +1,6 @@
 import { Payment } from "@mui/icons-material";
 import PaymentValue from "./PaymentValue";
-const Checkout1 = () => {
+const Stripe = () => {
   
     return (
       // <div id="content">
@@ -271,5 +271,5 @@ const Checkout1 = () => {
       // </div>
     );
   };
-  export default Checkout1;
+  export default Stripe;
   

@@ -91,7 +91,6 @@ export default function Checkout1() {
           orderData
         );
         setOrder(orderPlaced);
-        console.log("order",order);
         console.log("orderPlaced",orderPlaced);
         // dispatch({ type: ORDER_SET, payload: order });
         // localStorage.setItem('order_receipt', JSON.stringify(order));

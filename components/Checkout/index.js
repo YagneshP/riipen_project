@@ -1,16 +1,16 @@
-// import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
+
 import Router from "next/router";
-// import { Router } from 'next/router';
-import axios from 'axios';
-import { useContext, useEffect,useState } from "react";
+import { useEffect,useState } from "react";
 import { useCart } from "../../context/Cart";
 import { commerce } from "../../lib/commerce";
 import {GrandTotal} from '../../pages/cart/GrandTotal';
 import {PaymentValue} from '../../pages/stripe/PaymentValue';
+import { MenuItem, Select } from '@material-ui/core';
+
 
 export default function Checkout() {
-	// const [token, setToken] = useState();
+	const [token, setToken] = useState();
+  const [order, setOrder] = useState();
 	const { line_items, subtotal } = useCart();
 	console.log("line",line_items);
   const cartId= commerce.cart.id();
@@ -22,6 +22,7 @@ export default function Checkout() {
 	const [ addressb, setAddressb] = useState('');
 	const [ bcity, setbCity] = useState('');
 	const [ bcountry, setbCountry] = useState('');
+  const [bprovince, setbProvince] = useState('');
 	const [ bemail, setbEmail] = useState('');
 	const [ bphone, setbPhone] = useState('');
 	const [ bpostal, setbPostal] = useState('');
@@ -31,13 +32,17 @@ export default function Checkout() {
 	const [slastName, setsLastName] = useState();
 	const [ saddress, setsAddress] = useState('');
 	const [ scity, setsCity] = useState('');
-	const [ scountry, setsCountry] = useState('');
+  const [scountry, setsCountry] = useState('');
+  const [shippingOption, setShippingOption] = useState({});
+	const [sprovince, setsProvince] = useState('');
 	const [ semail, setsEmail] = useState('');
 	const [ sphone, setsPhone] = useState('');
 	const [ spostal, setsPostal] = useState('');
 
-  const [token, setToken] = useState();
-  const [order,setOrder] = useState({});
+  // Shipping and fulfillment data
+  const [shippingCountries, setShippingCountries] = useState({});
+  const [shippingSubdivisions, setShippingSubdivisions] = useState({});
+  
    
 	useEffect(() => {
       generateCheckoutToken();
@@ -51,11 +56,12 @@ export default function Checkout() {
       });
 			console.log("token",token);
       setToken(token);
+      fetchShippingCountries(token.id);
     } else {
       Router.push('/cart');
     }
 	}
-
+  console.log("ttoookkkeeen", token);
 		const handleCaptureCheckout = async () => {
 			const orderData = {
 				line_items: token.live.line_items,
@@ -65,10 +71,10 @@ export default function Checkout() {
           email: bemail
 				},
         shipping: {
-          name: `${sfirstName} + ${slastName}`,
+          name: `${sfirstName} ${slastName}`,
           street: saddress,
           town_city: scity,
-          // county_state: 'US-CA',
+          county_state: sprovince,
           postal_zip_code: spostal,
           country: scountry
         },
@@ -76,10 +82,10 @@ export default function Checkout() {
           shipping_method: 'ship_7RyWOwmK5nEa2V'
         },
         billing: {
-          name: `${bfirstName} + ${blastName}`,
+          name: `${bfirstName} ${blastName}`,
           street: addressb,
           town_city: bcity,
-          // county_state: 'US-CA',
+          county_state: bprovince,
           postal_zip_code: bpostal,
           country:bcountry
         },
@@ -110,9 +116,7 @@ export default function Checkout() {
           orderData
         );
         setOrder(orderPlaced);
-        console.log("order",order);
         console.log("orderPlaced",orderPlaced);
-        // dispatch({ type: ORDER_SET, payload: order });
         // localStorage.setItem('order_receipt', JSON.stringify(order));
         // await refreshCart();
         Router.push('/confirmation');
@@ -121,6 +125,32 @@ export default function Checkout() {
       }
   };
 
+  const handleShippingCountryChange = (e) => {
+    const currentValue = e.target.value;
+    setsCountry(e.target.value);
+    setbCountry(e.target.value);
+    fetchSubdivisions(currentValue);
+  };
+
+  const fetchShippingCountries = async () => {
+    const countries = await commerce.services.localeListCountries(
+    );
+    setShippingCountries(countries.countries);
+  };
+
+  
+  const fetchSubdivisions = async (countryCode) => {
+    const subdivisions = await commerce.services.localeListSubdivisions(
+      countryCode
+    );
+    console.log("subdivisions",subdivisions.subdivisions )
+    setShippingSubdivisions(subdivisions.subdivisions);
+  };
+  const handleSubdivisionChange = (e) => {
+    const currentValue = e.target.value;
+    setsProvince(currentValue);
+    setbProvince(currentValue);
+  };
 
 	return (
     <div id='content'>
@@ -197,12 +227,43 @@ export default function Checkout() {
                         <label>
                           {" "}
                           COUNTRY
-                          <input
+                          <Select
                             type='text'
                             name='contry-state'
-                            value={bcountry||''}
-                            onChange={(e) => setbCountry(e.target.value)}
-                          />
+                            id="bcountry"
+                            fullWidth
+                            value={bcountry}
+                            onChange={handleShippingCountryChange}
+                    
+                          > 
+                          
+                            {Object.keys(shippingCountries).map((index) => (
+                              <MenuItem value={index} key={index}>
+                                {shippingCountries[index]}
+                              </MenuItem>
+                            ))}
+                            </Select>
+                        </label>
+                      </li>
+
+                      <li className='col-md-6'>
+                        <label>
+                          *STATE/PROVINCE
+                          <Select
+                            id="bProvince"
+                            label="State/Province"
+                            fullWidth
+                            onChange={handleSubdivisionChange}
+                            value={bprovince}
+                            required
+                        
+                          >
+                            {Object.keys(shippingSubdivisions).map((index) => (
+                              <MenuItem value={index} key={index}>
+                                {shippingSubdivisions[index]}
+                              </MenuItem>
+                            ))}
+                          </Select>
                         </label>
                       </li>
 
@@ -244,7 +305,6 @@ export default function Checkout() {
                           />
                         </label>
                       </li>
-
                 
                       {/* <li className='col-md-6'>
                         <button type='submit' className='button-chk' onClick={handleBilling}>
@@ -252,7 +312,7 @@ export default function Checkout() {
                         </button>
                       </li> */}
 
-                      {/* <!-- CREATE AN ACCOUNT --> */}
+                      {/* <!-- BILLING SAME AS SHIPPING --> */}
                       <li className='col-md-6'>
                         <div className='checkbox margin-0 margin-top-20'>
                           <input
@@ -329,14 +389,45 @@ export default function Checkout() {
                         <label>
                           {" "}
                           COUNTRY
-                          <input
+                          <Select
                             type='text'
                             name='contry-state'
-                            value={scountry||''}
-                            onChange={(e) => setsCountry(e.target.value)}
-                          />
+                            id="scountry"
+                            value={scountry}
+                            onChange={handleShippingCountryChange}
+                          > 
+                          
+                            {Object.keys(shippingCountries).map((index) => (
+                              <MenuItem value={index} key={index}>
+                                {shippingCountries[index]}
+                              </MenuItem>
+                            ))}
+                            </Select>
                         </label>
                       </li>
+                    
+                    {/* <!-- STATE/PROVINCE--> */}
+                    <li className='col-md-6'>
+                        <label>
+                          *STATE/PROVINCE
+                          <Select
+                            id="sProvince"
+                            label="State/Province"
+                            fullWidth
+                            onChange={handleSubdivisionChange}
+                            value={sprovince}
+                            required
+                        
+                          >
+                            {Object.keys(shippingSubdivisions).map((index) => (
+                              <MenuItem value={index} key={index}>
+                                {shippingSubdivisions[index]}
+                              </MenuItem>
+                            ))}
+                          </Select>
+                        </label>
+                      </li>
+
 
                       {/* <!-- EMAIL ADDRESS --> */}
                       <li className='col-md-6'>
@@ -377,6 +468,7 @@ export default function Checkout() {
                         </label>
                       </li>
 
+                      
                       
                       {/* <li className='col-md-6'>
                         <button type='submit' className='button-chk' onClick={handleShipping}>
