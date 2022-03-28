@@ -14,6 +14,7 @@ function Result() {
     (url) => fetch(url).then((res) => res.json())
   );
   if (data) {
+    console.log("pay", data.payment_method);
     commerce.checkout
       .capture(token_id, {
         // ...orderDetails,
@@ -25,12 +26,14 @@ function Result() {
         payment: {
           gateway: "stripe",
           stripe: {
-            payment_method_id: data?.payment_method,
+            payment_method_id: data.payment_method,
+            customer_id: "cus_4QEipX9Dj5Om1P",
+            payment_intent_id: "pi_1DlITH2eZvKYlo2CuM28qGnc",
           },
         },
       })
       .then((res) => console.log(res))
-      .catch((err) => console.log("Error at capture order", error));
+      .catch((err) => console.log("Error at capture order", err));
   }
 
   // console.log("order", order);
