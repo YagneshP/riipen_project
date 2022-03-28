@@ -14,21 +14,23 @@ function Result() {
     (url) => fetch(url).then((res) => res.json())
   );
   if (data) {
-    console.log("pay", data.payment_method);
+    console.log("pay", data);
     commerce.checkout
       .capture(token_id, {
         // ...orderDetails,
-        customer: {
-          email: "hello@chec.io",
-        },
         // ...data,
         // Include Stripe payment method ID:
         payment: {
           gateway: "stripe",
+          // card: {
+          //   number: "4242 4242 4242 4242",
+          //   token: "tok_1IJ5Nn2eZvKYlo2CqceJkfue",
+          //   nonce: 293074902374234,
+          // },
           stripe: {
-            payment_method_id: data.payment_method,
-            customer_id: "cus_4QEipX9Dj5Om1P",
-            payment_intent_id: "pi_1DlITH2eZvKYlo2CuM28qGnc",
+            payment_method_id: data.payment_intent.payment_method,
+            // customer_id: "cus_4QEipX9Dj5Om1P",
+            payment_intent_id: data.payment_intent.id,
           },
         },
       })
