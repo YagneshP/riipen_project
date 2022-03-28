@@ -14,7 +14,7 @@ console.log("subtotal", subtotal);
     product_data: {
       name: "Neema"
     },
-      unit_amount: subtotal.raw * 100,
+      unit_amount: subtotal.formatted * 100,
    
     },
 
@@ -27,13 +27,16 @@ console.log(transformedItem);
     line_items: [transformedItem],
     // amount: subtotal,
     mode: 'payment',
-    success_url: successredirectURL + '?status=success',
+    success_url: successredirectURL + '?status=success?session_id={CHECKOUT_SESSION_ID}',
     cancel_url: redirectURL + '?status=cancel',
    
   });
   // res.send({
   //   clientSecret: paymentIntent.client_secret,
   // });
+  // const card = elements.create('card')
+  console.log(session.payment_method_types);
+  console.log(session.id)
   res.json({ id:session.id });
 
 }
