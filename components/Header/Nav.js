@@ -16,36 +16,6 @@ const Nav = () => {
   };
   console.log("getItemsCount", getItemsCount());
 
-  // framer-motion sub-menu state/config
-  const [isHover, toggleHover] = useState(false);
-  const toggleHoverMenu = () => {
-    toggleHover(!isHover);
-  };
-  const [isMouse, toggleMouse] = useState(false);
-  const toggleMouseMenu = () => {
-    toggleMouse(!isMouse);
-  };
-  const subMenuAnimate = {
-    enter: {
-      opacity: 1,
-      rotateX: 0,
-      transition: {
-        duration: 0.5,
-      },
-      display: "block",
-    },
-    exit: {
-      opacity: 0,
-      rotateX: -15,
-      transition: {
-        duration: 0.5,
-        delay: 0.3,
-      },
-      transitionEnd: {
-        display: "none",
-      },
-    },
-  };
 
   return (
     <ul className="nav">
@@ -57,22 +27,23 @@ const Nav = () => {
         onHoverStart={toggleHoverMenu}
         onHoverEnd={toggleHoverMenu}
       >
-        <li>
-          <Link href="/product">Store</Link>
-        </li>
+        <Link href="/product">Store</Link>
         <motion.div
           className="sub-menu"
           initial="exit"
           animate={isHover ? "enter" : "exit"}
           variants={subMenuAnimate}
         >
-          <div className="sub-menu-background" />
           <ul className="sub-menu-container">
             <li>
-              <Link href="#" className="sub-menu-item">Men&apos;s Frangrances</Link>
+              <Link href="/product" className="sub-menu-item">
+                Men&apos;s Frangrances
+              </Link>
             </li>
             <li>
-              <Link href="#" className="sub-menu-item">Women&apos;s Frangrances</Link>
+              <Link href="#" className="sub-menu-item">
+                Women&apos;s Frangrances
+              </Link>
             </li>
           </ul>
         </motion.div>
