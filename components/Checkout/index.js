@@ -5,8 +5,8 @@ const Checkout = () => {
   const onSubmit = (data) => console.log(data);
 
   return (
-    <div id="content">
-      <section className="chart-page padding-top-100 padding-bottom-100">
+    <div>
+      <section >
         <div className="container">
           <div className="shopping-cart">
             <div className="cart-ship-info">
