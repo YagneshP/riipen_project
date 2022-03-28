@@ -15,7 +15,7 @@ const PrivacyPolicy = () => {
                     </div>
                     <br />
 
-                    <div className="col-lg-7">
+                    <div className="container-fluid">
                       <p>
                         Our Privacy Policy was last updated on March 2022. This
                         Privacy Policy describes Our policies and procedures on

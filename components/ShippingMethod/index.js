@@ -15,7 +15,7 @@ const ShippingMethod = () => {
                     </div>
                     <br />
 
-                    <div className="col-lg-7">
+                    <div className="container-fluid">
                       <p>
                         {" "}
                         <div className="title"> Shipping </div>
