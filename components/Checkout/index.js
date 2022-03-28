@@ -2,14 +2,61 @@
 import getStripe from "../../lib/stripe";
 import { useCart } from "../../context/Cart";
 import { commerce } from "../../lib/commerce";
-
+import { useContext, useEffect,useState } from "react";
+import StripeContainer from "../PaymentCheckout/StripeContainer";
 const Checkout = () => {
   const cart = useCart();
+  const { line_items, subtotal } = useCart();
+	console.log("line",line_items);
+  const cartId= commerce.cart.id();
+	console.log("cartid",commerce.cart.id());
+
+	//Billing Form data
+	const [bfirstName, setbFirstName] = useState('');
+  const [blastName, setbLastName] = useState();
+	const [ addressb, setAddressb] = useState('');
+	const [ bcity, setbCity] = useState('');
+	const [ bcountry, setbCountry] = useState('');
+	const [ bemail, setbEmail] = useState('');
+	const [ bphone, setbPhone] = useState('');
+	const [ bpostal, setbPostal] = useState('');
+
+//Shipping Form data
+	const [sfirstName, setsFirstName] = useState('');
+	const [slastName, setsLastName] = useState();
+	const [ saddress, setsAddress] = useState('');
+	const [ scity, setsCity] = useState('');
+	const [ scountry, setsCountry] = useState('');
+	const [ semail, setsEmail] = useState('');
+	const [ sphone, setsPhone] = useState('');
+	const [ spostal, setsPostal] = useState('');
+
+  const [token, setToken] = useState();
+  const [order,setOrder] = useState({});
+  
+  useEffect(() => {
+    generateCheckoutToken();
+
+}, []);
+
+const generateCheckoutToken = async () => {
+    if (cartId) {
+        const token = await commerce.checkout.generateToken(cartId, {
+            type: 'cart',
+        });
+        console.log("token", token);
+        setToken(token);
+    } else {
+        Router.push('/cart');
+    }
+}
+
+  console.log("checkoutTokenId ", token);
   const handleClick = async () => {
-    const checkoutTokenId = await commerce.checkout.generateToken(cart.id, {
-      type: "cart",
-    });
-    console.log("checkoutTokenId ", checkoutTokenId);
+    // const checkoutTokenId = await commerce.checkout.generateToken(cart.id, {
+    //   type: "cart",
+    // });
+    // console.log("checkoutTokenId ", checkoutTokenId);
     const session = await fetch("/api/checkout_session", {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -163,12 +210,12 @@ const Checkout = () => {
                         </label>
                       </li>
 
-                
+{/*                 
                       <li className='col-md-6'>
                         <button type='submit' className='button-chk' onClick={handleBilling}>
                           Submit
                         </button>
-                      </li>
+                      </li> */}
 
                       {/* <!-- CREATE AN ACCOUNT --> */}
                       <li className='col-md-6'>
@@ -296,11 +343,11 @@ const Checkout = () => {
                       </li>
 
                       {/* <!-- PHONE --> */}
-                      <li className='col-md-6'>
+                      {/* <li className='col-md-6'>
                         <button type='submit' className='button-chk' onClick={handleShipping}>
                           SUBMIT
                         </button>
-                      </li>
+                      </li> */}
                     </ul>
                   </form>
                 </div>
@@ -366,22 +413,14 @@ const Checkout = () => {
                           </div>
                         </li>
                       </ul>
-<<<<<<< HEAD
-                    
-                      <a className='button-order' onClick={placeOrder}> 
-											 {/* onClick={handleCaptureCheckout}> */}
-                        PLACE ORDER
-                      </a>{" "}
-                      {/* </Link> */}
-=======
                       <button className='button-order' onClick={handleClick}>
                         PLACE ORDER
                       </button>
+                      <StripeContainer amount={subtotal} checkoutTokenId={token}/>
                       {/* <a href='#.' className='button-order'>
                         PLACE ORDER
 
                       </a>{" "} */}
->>>>>>> origin/feature/stripe_checkout
                     </div>
                   </div>
                 </div>
@@ -393,3 +432,4 @@ const Checkout = () => {
     </div>
   );
 };
+export default Checkout;

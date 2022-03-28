@@ -12,7 +12,7 @@ const Cart = () => {
   }
   const handleCheckout = (e) => {
     e.preventDefault()
-    router.push("/checkout1")
+    router.push("/checkout")
   }
  
 // const cart = useSelector((state) => state.cart);

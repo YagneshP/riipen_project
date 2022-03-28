@@ -1,13 +1,11 @@
-import Checkout from "../components/Checkout";
-import ElementForm from "../components/PaymentCheckout/ElementForm";
+import Checkout from "../components/Checkout/index";
 
-const Layout = () => {
+const checkout = () => {
   return (
-    <div className='content'>
+    <div className="content">
       <Checkout />
-      {/* <ElementForm stripe={stripePromise} /> */}
     </div>
   );
 };
 
-export default Layout;
+export default checkout;
