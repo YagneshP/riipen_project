@@ -114,6 +114,7 @@ p {
       padding: 12px 16px ;
       letter-spacing: 2px;
     }
+<<<<<<< HEAD
     
     
   }
@@ -143,6 +144,27 @@ p {
       float: left;
       border-right: 0px;
       margin: 0px;
+=======
+    .cartform {
+      background: #eeeeee;
+      padding: 50px;
+      display: inline-block;
+      width: 100%;
+      input {
+        width: 70%;
+        float: left;
+        border-right: 0px;
+        margin: 0px;
+      }
+      button.btn {
+        width: 30%;
+        height: 44px;
+        float: left;
+        font-size: 14px;
+        font-weight: bold;
+        z-index: 1;
+      }
+>>>>>>> origin/feature/form-hooks
     }
     button.btn {
       width: 30%;

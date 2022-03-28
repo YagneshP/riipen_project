@@ -2,6 +2,7 @@ import Image from "next/image";
 
 const About = () => {
   return (
+		<div className="aboutstyle">
 		<div className="about">
 			<div className="history">
 				<h1>A BRIEF HISTORY</h1>
@@ -74,7 +75,7 @@ const About = () => {
 							<div className="avatar">
 								{" "}
 								<Image
-									className="our-team-s"
+									className="our-team-images"
 									src="https://via.placeholder.com/268"
 									alt="Team Member"
 									width="268px"
@@ -127,6 +128,7 @@ const About = () => {
 					</div>
 				</div>
 			</section>
+		</div>
 		</div>
   );
 };

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const ShippingMethod = () => {
   return (
-    <div id="shipping-method-page">
+    <div id="privacy-shipping">
       <div id="wrap">
         <div id="content">
           <section className="history-block padding-top-100 padding-bottom-100">
@@ -15,7 +15,7 @@ const ShippingMethod = () => {
                     </div>
                     <br />
 
-                    <div className="col-lg-7">
+                    <div className="container-fluid">
                       <p>
                         {" "}
                         <div className="title"> Shipping </div>

@@ -1,3 +1,4 @@
+// my part
 
 import Router from "next/router";
 import { useEffect,useState } from "react";
@@ -165,12 +166,10 @@ export default function Checkout() {
                 {/* <!-- ESTIMATE SHIPPING & TAX --> */}
                 <div className='col-sm-7'>
                   <h6>BILLING DETAILS</h6>
-                  <form>
-                    <ul className='row'>
-                      {/* <!-- Name --> */}
-                      <li className='col-md-6'>
+                  <form onSubmit={handleSubmit(onSubmit)}>
+                    <ul className="row">
+                      <li className="col-md-6">
                         <label>
-                          {" "}
                           *FIRST NAME
                           <input
                             type='text'
@@ -181,10 +180,8 @@ export default function Checkout() {
                           />
                         </label>
                       </li>
-                      {/* <!-- LAST NAME --> */}
-                      <li className='col-md-6'>
+                      <li className="col-md-6">
                         <label>
-                          {" "}
                           *LAST NAME
                           <input
                             type='text'
@@ -199,7 +196,7 @@ export default function Checkout() {
                       <li className='col-md-6'>
                         {/* <!-- ADDRESS --> */}
                         <label>
-                          *ADDRESS
+                          *POSTAL CODE
                           <input
                             type='text'
                             name='address'
@@ -209,10 +206,9 @@ export default function Checkout() {
                           />
                         </label>
                       </li>
-                      {/* <!-- TOWN/CITY --> */}
-                      <li className='col-md-6'>
+                      <li className="col-md-6">
                         <label>
-                          *TOWN/CITY
+                          *CITY
                           <input
                             type='text'
                             name='town'
@@ -221,11 +217,8 @@ export default function Checkout() {
                           />
                         </label>
                       </li>
-
-                      {/* <!-- COUNTRY --> */}
-                      <li className='col-md-6'>
+                      <li className="col-md-6">
                         <label>
-                          {" "}
                           COUNTRY
                           <Select
                             type='text'
@@ -266,11 +259,8 @@ export default function Checkout() {
                           </Select>
                         </label>
                       </li>
-
-                      {/* <!-- EMAIL ADDRESS --> */}
-                      <li className='col-md-6'>
+                      <li className="col-md-6">
                         <label>
-                          {" "}
                           *EMAIL ADDRESS
                           <input
                             type='text'
@@ -280,8 +270,7 @@ export default function Checkout() {
                           />
                         </label>
                       </li>
-                      {/* <!-- PHONE --> */}
-                      <li className='col-md-6'>
+                      <li className="col-md-6">
                         <label>
                           {" "}
                           *POSTAL CODE
@@ -316,9 +305,9 @@ export default function Checkout() {
                       <li className='col-md-6'>
                         <div className='checkbox margin-0 margin-top-20'>
                           <input
-                            id='checkbox1'
-                            className='styled'
-                            type='checkbox'
+                            id="checkbox1"
+                            className="styled"
+                            type="checkbox"
                           />
                           <label htmlFor='checkbox1' >
                             Ship to a different address
@@ -327,15 +316,11 @@ export default function Checkout() {
                       </li>
                     </ul>
                   </form>
-
-                  {/* <!-- SHIPPING info --> */}
-                  <h6 className='margin-top-50'>SHIPPING info</h6>
-                  <form>
-                    <ul className='row'>
-                      {/* <!-- Name --> */}
-                      <li className='col-md-6'>
+                  <h6 className="margin-top-50">SHIPPING info</h6>
+                  <form onSubmit={handleSubmit(onSubmit)}>
+                    <ul className="row">
+                      <li className="col-md-6">
                         <label>
-                          {" "}
                           *FIRST NAME
                           <input
                             type='text'
@@ -345,10 +330,8 @@ export default function Checkout() {
                           />
                         </label>
                       </li>
-                      {/* <!-- LAST NAME --> */}
-                      <li className='col-md-6'>
+                      <li className="col-md-6">
                         <label>
-                          {" "}
                           *LAST NAME
                           <input
                             type='text'
@@ -362,7 +345,7 @@ export default function Checkout() {
                       <li className='col-md-6'>
                         {/* <!-- ADDRESS --> */}
                         <label>
-                          *ADDRESS
+                          *POSTAL CODE
                           <input
                             type='text'
                             name='address'
@@ -371,10 +354,9 @@ export default function Checkout() {
                           />
                         </label>
                       </li>
-                      {/* <!-- TOWN/CITY --> */}
-                      <li className='col-md-6'>
+                      <li className="col-md-6">
                         <label>
-                          *TOWN/CITY
+                          *CITY
                           <input
                             type='text'
                             name='town'
@@ -383,11 +365,8 @@ export default function Checkout() {
                           />
                         </label>
                       </li>
-
-                      {/* <!-- COUNTRY --> */}
-                      <li className='col-md-6'>
+                      <li className="col-md-6">
                         <label>
-                          {" "}
                           COUNTRY
                           <Select
                             type='text'
@@ -432,7 +411,6 @@ export default function Checkout() {
                       {/* <!-- EMAIL ADDRESS --> */}
                       <li className='col-md-6'>
                         <label>
-                          {" "}
                           *EMAIL ADDRESS
                           <input
                             type='text'
@@ -454,10 +432,8 @@ export default function Checkout() {
                           />
                         </label>
                       </li>
-                      {/* <!-- PHONE --> */}
-                      <li className='col-md-6'>
+                      <li className="col-md-6">
                         <label>
-                          {" "}
                           *PHONE
                           <input
                             type='text'
@@ -478,9 +454,7 @@ export default function Checkout() {
                     </ul>
                   </form>
                 </div>
-
-                {/* <!-- SUB TOTAL --> */}
-                <div className='col-sm-5'>
+                <div className="col-sm-5">
                   <h6>YOUR ORDER</h6>
                   <div className='order-place'>
                     <div className='order-detail'>
@@ -498,44 +472,30 @@ export default function Checkout() {
                     </p>
 
                     </div>
-                    <div className='pay-meth'>
+                    <div className="pay-meth">
                       <ul>
                         <li>
-                          <div className='radio'>
-                            <input
-                              type='radio'
-                              name='radio1'
-                              id='radio3'
-                              value='option3'
-                            />
-                            <label htmlFor='radio3'> Credit/Debit </label>
+                          <div className="radio">
+                            <input type="radio" name="radio1" />
+                            <label htmlFor="radio3"> Credit/Debit </label>
                           </div>
                         </li>
                         <li>
-                          <div className='radio'>
-                            <input
-                              type='radio'
-                              name='radio1'
-                              id='radio4'
-                              value='option4'
-                            />
-                            <label htmlFor='radio4'> PAYPAL </label>
+                          <div className="radio">
+                            <input type="radio" name="radio1" />
+                            <label htmlFor="radio4"> PAYPAL </label>
                           </div>
                         </li>
                         <li>
-                          <div className='checkbox'>
+                          <div className="checkbox">
                             <input
-                              id='checkbox3-4'
-                              className='styled'
-                              type='checkbox'
+                              id="checkbox3-4"
+                              className="styled"
+                              type="checkbox"
                             />
-                            <label htmlFor='checkbox3-4'>
-                              {" "}
-                              I’VE READ AND ACCEPT THE{" "}
-                              <span className='color'>
-                                {" "}
-                                TERMS & CONDITIONS{" "}
-                              </span>{" "}
+                            <label htmlFor="checkbox3-4">
+                              I’VE READ AND ACCEPT THE
+                              <span className="color">TERMS & CONDITIONS</span>
                             </label>
                           </div>
                         </li>
