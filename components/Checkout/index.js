@@ -12,12 +12,13 @@ import {PaymentValue} from '../../pages/stripe/PaymentValue';
 export default function Checkout() {
 	// const [token, setToken] = useState();
 	const { line_items, subtotal } = useCart();
-	
+	console.log("line",line_items);
+  const cartId= commerce.cart.id();
+	console.log("cartid",commerce.cart.id());
 
 	//Billing Form data
 	const [bfirstName, setbFirstName] = useState('');
   const [blastName, setbLastName] = useState();
-	const [ bcompany, setbCompany] = useState('');
 	const [ addressb, setAddressb] = useState('');
 	const [ bcity, setbCity] = useState('');
 	const [ bcountry, setbCountry] = useState('');
@@ -28,7 +29,6 @@ export default function Checkout() {
 //Shipping Form data
 	const [sfirstName, setsFirstName] = useState('');
 	const [slastName, setsLastName] = useState();
-	const [ scompany, setsCompany] = useState('');
 	const [ saddress, setsAddress] = useState('');
 	const [ scity, setsCity] = useState('');
 	const [ scountry, setsCountry] = useState('');
@@ -36,64 +36,91 @@ export default function Checkout() {
 	const [ sphone, setsPhone] = useState('');
 	const [ spostal, setsPostal] = useState('');
 
+  const [token, setToken] = useState();
+  const [order,setOrder] = useState({});
+   
+	useEffect(() => {
+      generateCheckoutToken();
+   
+  }, []);
 
-	const handleBilling = async()=>{
-		const billingData = {
-      first: bfirstName,
-      last: blastName,
-			address: addressb,
-			city: bcity,
-			country: bcountry,
-			postal: bpostal,
-			phone: bphone
-    };
-
-  const JSONdata = JSON.stringify(billingData);
-  console.log("billing",JSONdata);
-  return axios.post("api/checkoutForm", {
-      data: billingData
-    })
-    .then((response) => {
-      console.log(response);
-    });
-	Router.push('/captureOrder');
+	const generateCheckoutToken = async () => {
+    if (cartId) {
+      const token = await commerce.checkout.generateToken(cartId, {
+        type: 'cart',
+      });
+			console.log("token",token);
+      setToken(token);
+    } else {
+      Router.push('/cart');
+    }
 	}
-	
-	const handleShipping = async()=>{
-		const shippingData = {
-      first: sfirstName,
-      last: slastName,
-			address: saddress,
-			city: scity,
-			country: scountry,
-			postal: spostal,
-			phone: sphone
-    };
 
-    const JSONdata = JSON.stringify(shippingData);
-		console.log("shipping",JSONdata);
-		
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSONdata,
-    };
+		const handleCaptureCheckout = async () => {
+			const orderData = {
+				line_items: token.live.line_items,
+				customer: {
+					firstname: bfirstName,
+					lastname: blastName,
+          email: bemail
+				},
+        shipping: {
+          name: `${sfirstName} + ${slastName}`,
+          street: saddress,
+          town_city: scity,
+          // county_state: 'US-CA',
+          postal_zip_code: spostal,
+          country: scountry
+        },
+        fulfillment: {
+          shipping_method: 'ship_7RyWOwmK5nEa2V'
+        },
+        billing: {
+          name: `${bfirstName} + ${blastName}`,
+          street: addressb,
+          town_city: bcity,
+          // county_state: 'US-CA',
+          postal_zip_code: bpostal,
+          country:bcountry
+        },
+        payment: {
+          gateway: 'test_gateway',
+          card: {
+            number:  4242424242424242,
+            expiry_month: 12,
+            expiry_year: 34,
+            cvc: 123,
+            postal_zip_code: 'L6X 0S1',
+          },
+        },
+      //   payment: {
+      //     gateway: 'stripe',
+      //     stripe: {
+      //       payment_method_id: paymentMethodResponse.paymentMethod.id,
+      //     },
+			// }
+      }
+    
+			console.log("orderData", orderData);
+			console.log("token id", token.id);
+      
+      try {
+        const orderPlaced = await commerce.checkout.capture(
+          token.id,
+          orderData
+        );
+        setOrder(orderPlaced);
+        console.log("order",order);
+        console.log("orderPlaced",orderPlaced);
+        // dispatch({ type: ORDER_SET, payload: order });
+        // localStorage.setItem('order_receipt', JSON.stringify(order));
+        // await refreshCart();
+        Router.push('/confirmation');
+      } catch (err) {
+        console.log("error");
+      }
+  };
 
-		const result = await axios.post('/api/checkoutForm', JSONdata);
-    // Send the form data to our forms API  and get a response.
-    // const response = await fetch('/api/checkoutForm', options);
-
-    // const result = await response.json();
-		console.log("result", result.data);
-    alert(`name: ${result.data}`);
-
-
-	}
-	const placeOrder = () => {
-		Router.push('/stripe');
-	}
 
 	return (
     <div id='content'>
@@ -219,11 +246,11 @@ export default function Checkout() {
                       </li>
 
                 
-                      <li className='col-md-6'>
+                      {/* <li className='col-md-6'>
                         <button type='submit' className='button-chk' onClick={handleBilling}>
                           Submit
                         </button>
-                      </li>
+                      </li> */}
 
                       {/* <!-- CREATE AN ACCOUNT --> */}
                       <li className='col-md-6'>
@@ -350,12 +377,12 @@ export default function Checkout() {
                         </label>
                       </li>
 
-                      {/* <!-- PHONE --> */}
-                      <li className='col-md-6'>
+                      
+                      {/* <li className='col-md-6'>
                         <button type='submit' className='button-chk' onClick={handleShipping}>
                           SUBMIT
                         </button>
-                      </li>
+                      </li> */}
                     </ul>
                   </form>
                 </div>
@@ -422,8 +449,8 @@ export default function Checkout() {
                         </li>
                       </ul>
                     
-                      <a className='button-order' onClick={placeOrder}> 
-											 {/* onClick={handleCaptureCheckout}> */}
+                      <a className='button-order'  
+											 onClick={handleCaptureCheckout}>
                         PLACE ORDER
                       </a>{" "}
                       {/* </Link> */}
