@@ -1,101 +1,46 @@
-// import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
-import Router from "next/router";
-// import { Router } from 'next/router';
-import axios from 'axios';
-import { useContext, useEffect,useState } from "react";
+// import { useCart } from "../context/Cart";
+import getStripe from "../../lib/stripe";
 import { useCart } from "../../context/Cart";
 import { commerce } from "../../lib/commerce";
-import {GrandTotal} from '../../pages/cart/GrandTotal';
-import {PaymentValue} from '../../pages/checkout1/PaymentValue';
 
-export default function Checkout() {
-	// const [token, setToken] = useState();
-	const { line_items, subtotal } = useCart();
-	
-
-	//Billing Form data
-	const [bfirstName, setbFirstName] = useState('');
-  const [blastName, setbLastName] = useState();
-	const [ bcompany, setbCompany] = useState('');
-	const [ addressb, setAddressb] = useState('');
-	const [ bcity, setbCity] = useState('');
-	const [ bcountry, setbCountry] = useState('');
-	const [ bemail, setbEmail] = useState('');
-	const [ bphone, setbPhone] = useState('');
-	const [ bpostal, setbPostal] = useState('');
-
-//Shipping Form data
-	const [sfirstName, setsFirstName] = useState('');
-	const [slastName, setsLastName] = useState();
-	const [ scompany, setsCompany] = useState('');
-	const [ saddress, setsAddress] = useState('');
-	const [ scity, setsCity] = useState('');
-	const [ scountry, setsCountry] = useState('');
-	const [ semail, setsEmail] = useState('');
-	const [ sphone, setsPhone] = useState('');
-	const [ spostal, setsPostal] = useState('');
-
-
-	const handleBilling = async()=>{
-		const billingData = {
-      first: bfirstName,
-      last: blastName,
-			address: addressb,
-			city: bcity,
-			country: bcountry,
-			postal: bpostal,
-			phone: bphone
-    };
-
-  const JSONdata = JSON.stringify(billingData);
-  console.log("billing",JSONdata);
-  return axios.post("api/checkoutForm", {
-      data: billingData
-    })
-    .then((response) => {
-      console.log(response);
+const Checkout = () => {
+  const cart = useCart();
+  const handleClick = async () => {
+    const checkoutTokenId = await commerce.checkout.generateToken(cart.id, {
+      type: "cart",
     });
-	Router.push('/captureOrder');
-	}
-	
-	const handleShipping = async()=>{
-		const shippingData = {
-      first: sfirstName,
-      last: slastName,
-			address: saddress,
-			city: scity,
-			country: scountry,
-			postal: spostal,
-			phone: sphone
-    };
+    console.log("checkoutTokenId ", checkoutTokenId);
+    const session = await fetch("/api/checkout_session", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(checkoutTokenId),
+    })
+      .then((res) => res.json())
+      .catch((err) => console.log("err", err));
+    const stripe = await getStripe();
 
-    const JSONdata = JSON.stringify(shippingData);
-		console.log("shipping",JSONdata);
-		
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSONdata,
-    };
-
-		const result = await axios.post('/api/checkoutForm', JSONdata);
-    // Send the form data to our forms API  and get a response.
-    // const response = await fetch('/api/checkoutForm', options);
-
-    // const result = await response.json();
-		console.log("result", result.data);
-    alert(`name: ${result.data}`);
-
-
-	}
-	const placeOrder = () => {
-		Router.push('/stripe');
-	}
-
-	return (
+    // console.log("session", session);
+    const { error } = await stripe.redirectToCheckout({
+      // Make the id field from the Checkout Session creation API response
+      // available to this file, so you can provide it as parameter here
+      // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
+      sessionId: session.id,
+    });
+    console.log("response", session);
+    // const order = await commerce.checkout.capture(checkoutTokenId.id, {
+    //   ...session,
+    //   // Include Stripe payment method ID:
+    //   payment: {
+    //     gateway: "stripe",
+    //     stripe: {
+    //       payment_method_id: session?.payment_intent?.id,
+    //     },
+    //   },
+    // });
+    // console.log("order", order);
+    console.warn(error.message);
+  };
+  return (
     <div id='content'>
       {/* <!--======= PAGES INNER =========--> */}
       <section className='chart-page padding-top-100 padding-bottom-100'>
@@ -421,12 +366,22 @@ export default function Checkout() {
                           </div>
                         </li>
                       </ul>
+<<<<<<< HEAD
                     
                       <a className='button-order' onClick={placeOrder}> 
 											 {/* onClick={handleCaptureCheckout}> */}
                         PLACE ORDER
                       </a>{" "}
                       {/* </Link> */}
+=======
+                      <button className='button-order' onClick={handleClick}>
+                        PLACE ORDER
+                      </button>
+                      {/* <a href='#.' className='button-order'>
+                        PLACE ORDER
+
+                      </a>{" "} */}
+>>>>>>> origin/feature/stripe_checkout
                     </div>
                   </div>
                 </div>
