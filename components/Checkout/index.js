@@ -23,27 +23,27 @@ export default function Checkout() {
  
 
 	//Billing Form data
-	const [bfirstName, setbFirstName] = useState('');
-  const [blastName, setbLastName] = useState();
-	const [ addressb, setAddressb] = useState('');
-	const [ bcity, setbCity] = useState('');
-	const [ bcountry, setbCountry] = useState('');
-  const [bprovince, setbProvince] = useState('');
-	const [ bemail, setbEmail] = useState('');
-	const [ bphone, setbPhone] = useState('');
-	const [ bpostal, setbPostal] = useState('');
+	// const [bfirstName, setbFirstName] = useState('');
+  // const [blastName, setbLastName] = useState();
+	// const [ addressb, setAddressb] = useState('');
+	// const [ bcity, setbCity] = useState('');
+	// const [ bcountry, setbCountry] = useState('');
+  // const [bprovince, setbProvince] = useState('');
+	// const [ bemail, setbEmail] = useState('');
+	// const [ bphone, setbPhone] = useState('');
+	// const [ bpostal, setbPostal] = useState('');
 
 //Shipping Form data
-	const [sfirstName, setsFirstName] = useState('');
-	const [slastName, setsLastName] = useState();
-	const [ saddress, setsAddress] = useState('');
-	const [ scity, setsCity] = useState('');
-  const [scountry, setsCountry] = useState('');
-  const [shippingOption, setShippingOption] = useState({});
-	const [sprovince, setsProvince] = useState('');
-	const [ semail, setsEmail] = useState('');
-	const [ sphone, setsPhone] = useState('');
-	const [ spostal, setsPostal] = useState('');
+	// const [sfirstName, setsFirstName] = useState('');
+	// const [slastName, setsLastName] = useState();
+	// const [ saddress, setsAddress] = useState('');
+	// const [ scity, setsCity] = useState('');
+  // const [scountry, setsCountry] = useState('');
+  // const [shippingOption, setShippingOption] = useState({});
+	// const [sprovince, setsProvince] = useState('');
+	// const [ semail, setsEmail] = useState('');
+	// const [ sphone, setsPhone] = useState('');
+	// const [ spostal, setsPostal] = useState('');
 
   // Shipping and fulfillment data
   const [shippingCountries, setShippingCountries] = useState({});
@@ -67,33 +67,55 @@ export default function Checkout() {
       Router.push('/cart');
     }
 	}
-  console.log("ttoookkkeeen", token);
+
+  const [formData, setFormData] = useState({
+    firstName:"",
+    lastName:"",
+    address:'',
+    city:'',
+    country:'',
+    province:'',
+    postal:'',
+    phone:'',
+    email:''
+  });
+  const onSubmit = (data) => 
+  { setFormData(data);
+    // console.log("data1",data);
+    handleCaptureCheckout();
+  }
+
+  console.log("data2", formData);
 		const handleCaptureCheckout = async () => {
+      console.log("fordata country", formData.country);
+      console.log("fordata province", formData.province);
+      const provcountry = `${formData.country}-${formData.province}`;
+      console.log(" province country", provcountry);
 			const orderData = {
 				line_items: token.live.line_items,
 				customer: {
-					firstname: bfirstName,
-					lastname: blastName,
-          email: bemail
+					firstname: formData.firstName,
+					lastname: formData.lastName,
+          email: formData.email
 				},
         shipping: {
-          name: `${sfirstName} ${slastName}`,
-          street: saddress,
-          town_city: scity,
-          county_state: sprovince,
-          postal_zip_code: spostal,
-          country: scountry
+          name: `${formData.firstName} ${formData.lastName}`,
+          street: formData.address,
+          town_city: formData.city,
+          county_state: provcountry,
+          postal_zip_code: formData.postal,
+          country: formData.country
         },
         fulfillment: {
           shipping_method: 'ship_7RyWOwmK5nEa2V'
         },
         billing: {
-          name: `${bfirstName} ${blastName}`,
-          street: addressb,
-          town_city: bcity,
-          county_state: bprovince,
-          postal_zip_code: bpostal,
-          country:bcountry
+          name: `${formData.firstName} ${formData.lastName}`,
+          street: formData.address,
+          town_city: formData.city,
+          county_state: provcountry,
+          postal_zip_code: formData.postal,
+          country: formData.country
         },
         payment: {
           gateway: 'test_gateway',
@@ -105,12 +127,12 @@ export default function Checkout() {
             postal_zip_code: 'L6X 0S1',
           },
         },
-      //   payment: {
-      //     gateway: 'stripe',
-      //     stripe: {
-      //       payment_method_id: paymentMethodResponse.paymentMethod.id,
-      //     },
-			// }
+        // payment: {
+        //   gateway: 'stripe',
+        //   stripe: {
+        //     payment_method_id: paymentMethodResponse.paymentMethod.id,
+        //   },
+			  // }
       }
     
 			console.log("orderData", orderData);
@@ -129,18 +151,21 @@ export default function Checkout() {
       } catch (err) {
         console.log("error");
       }
+      // console.log("formdata3", formData)
   };
 
   const handleShippingCountryChange = (e) => {
+    console.log("hiiiiii");
     const currentValue = e.target.value;
-    setsCountry(e.target.value);
-    setbCountry(e.target.value);
+    console.log("country value",currentValue);
+    setValue("country",e.target.value);
     fetchSubdivisions(currentValue);
   };
 
   const fetchShippingCountries = async () => {
     const countries = await commerce.services.localeListCountries(
     );
+    // console.log("countries1", countries.countries);
     setShippingCountries(countries.countries);
   };
 
@@ -149,22 +174,15 @@ export default function Checkout() {
     const subdivisions = await commerce.services.localeListSubdivisions(
       countryCode
     );
-    console.log("subdivisions",subdivisions.subdivisions )
+    console.log("subdivisions",subdivisions.subdivisions);
     setShippingSubdivisions(subdivisions.subdivisions);
   };
+
   const handleSubdivisionChange = (e) => {
-    const currentValue = e.target.value;
-    setsProvince(currentValue);
-    setbProvince(currentValue);
+    // const currentValue = e.target.value;
+    setValue("province",e.target.value);
   };
 
-  const [formData, updateFormData] = useState({
-    firstName:''
-  });
-	const onSubmit = (data) => 
-  { updateFormData(data);
-    console.log("data",data.firstName);
-  }
 
   return (
     <div>
@@ -216,24 +234,46 @@ export default function Checkout() {
                             onChange={e => setValue("city", e.target.value)}
                           />
                         </label>
-                        <li className="col-md-6">
+                      </li>
+                      <li className="col-md-6">
                         <label>
                           COUNTRY
-                          <input
+                          <select
+                          
+                            {...register("country", { required: true })}
+                            fullWidth
+                            // value={formData.country}
+                            onChange={handleShippingCountryChange}
+                            // onChange={e => setValue("country",e.target.value)}
+                          > 
+                          {Object.keys(shippingCountries).map((index) => (
+                              <option value={index} key={index}>
+                                {shippingCountries[index]}
+                              </option>
+                            ))}
+                            </select>
+                          {/* <input
                             type="text"
                             {...register("country", { required: true })}
                             onChange={e => setValue("country", e.target.value)}
-                          />
+                          /> */}
                         </label>
                       </li>
-                      li className="col-md-6">
+                      <li className="col-md-6">
                         <label>
                           *STATE/PROVINCE
-                          <input
-                            type="text"
-                            {...register("country", { required: true })}
-                            onChange={e => setValue("province", e.target.value)}
-                          />
+                          <select
+                            {...register("province", { required: true })}
+                            fullWidth
+                            // value={formData.country}
+                            onChange={handleSubdivisionChange}
+                          > 
+                          {Object.keys(shippingSubdivisions).map((index) => (
+                              <option value={index} key={index}>
+                                {shippingSubdivisions[index]}
+                              </option>
+                            ))}
+                            </select>
                         </label>
                       </li>
                       <li className="col-md-6">
@@ -285,7 +325,7 @@ export default function Checkout() {
                       </li>
                     </ul>
                   </form>
-                  <h6 className="margin-top-50">SHIPPING info</h6>
+                  {/* <h6 className="margin-top-50">SHIPPING info</h6>
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <ul className="row">
                       <li className="col-md-6">
@@ -320,16 +360,6 @@ export default function Checkout() {
                       </li>
                       <li className="col-md-6">
                         <label>
-                          *POSTAL CODE
-                          <input
-                            type="text"
-                            {...register("bill-postcode", { required: true })}
-                            onChange={e => setValue("bill-postcode", e.target.value)}
-                          />
-                        </label>
-                      </li>
-                      <li className="col-md-6">
-                        <label>
                           *CITY
                           <input
                             type="text"
@@ -347,12 +377,24 @@ export default function Checkout() {
                             onChange={e => setValue("bill-country", e.target.value)}
                           />
                         </label>
+                      </li>
+                      <li className="col-md-6">
                         <label>
                           STATE/PROVINCE
                           <input
                             type="text"
                             {...register("bill-province", { required: true })}
                             onChange={e => setValue("bill-province", e.target.value)}
+                          />
+                        </label>
+                      </li>
+                      <li className="col-md-6">
+                        <label>
+                          *POSTAL CODE
+                          <input
+                            type="text"
+                            {...register("bill-postcode", { required: true })}
+                            onChange={e => setValue("bill-postcode", e.target.value)}
                           />
                         </label>
                       </li>
@@ -382,7 +424,7 @@ export default function Checkout() {
                         </button>
                       </li> 
                     </ul>
-                  </form>
+                  </form> */}
                 </div>
                 <div className="col-sm-5">
                   <h6>YOUR ORDER</h6>
