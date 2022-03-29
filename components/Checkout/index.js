@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useCart } from "../../context/Cart";
 import BillingInfoForm from "./BillingInfoForm";
 import OrderDetail from "./OrderDetail";
@@ -6,6 +7,11 @@ import ShippingInfoForm from "./ShippingInfoForm";
 
 const Checkout = () => {
   const { line_items, subtotal } = useCart();
+  const [userInfo, setUserInfo] = useState(null);
+  const handleFormInput = (data) => {
+    setUserInfo(data);
+  };
+  console.log("userInfo", userInfo);
   return (
     <div id='content'>
       <section className='chart-page padding-top-100 padding-bottom-100'>
