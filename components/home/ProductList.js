@@ -1,6 +1,6 @@
 import ProductListItem from "./ProductListItem";
 
-const ProductList = () => {
+const ProductList = ({ products }) => {
   const mockData = [
     {
       id: 1,
@@ -51,9 +51,34 @@ const ProductList = () => {
     )
   });
 
+  const mappedItems2 = products.map((item) => {
+    console.log(item);
+    return (
+      <ProductListItem
+        key={item.id}
+        itemName={item.name}
+        itemDesc={item.price.formatted_with_symbol}
+        image={item.image.url}
+      />
+    )
+  });
+
+  // if (!products) {
+  //   return null;
+  // }
+
+  // return (
+  //   <>
+  //     {products.map((item) => (
+  //       <ProductItem key={item.id} {...item} />
+  //     ))}
+  //   </>
+  // );
+
   return ( 
     <div className="new-arrival-products">
-      {mappedItems}
+      {/* {mappedItems} */}
+      {mappedItems2}
     </div>
    );
 }
