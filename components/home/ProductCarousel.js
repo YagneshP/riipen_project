@@ -4,45 +4,6 @@ import 'react-multi-carousel/lib/styles.css'
 import ProductListItem from "./ProductListItem";
 
 const ProductCarousel = ({ products }) => {
-  const mockData = [
-    {
-      id: 1,
-      itemName: "Chanel",
-      itemDesc: "Placeholder text. Item description goes here for new arrivals",
-      image: "https://placeimg.com/360/360/any/grayscale"
-    },
-    {
-      id: 2,
-      itemName: "YSL",
-      itemDesc: "Placeholder text. Item description goes here for new arrivals",
-      image: "https://placeimg.com/360/360/any/grayscale"
-    },
-    {
-      id: 3,
-      itemName: "Armani",
-      itemDesc: "Placeholder text. Item description goes here for new arrivals",
-      image: "https://placeimg.com/360/360/any/grayscale"
-    },
-    {
-      id: 4,
-      itemName: "Hugo Boss",
-      itemDesc: "Placeholder text. Item description goes here for new arrivals",
-      image: "https://placeimg.com/360/360/any/grayscale"
-    },
-    {
-      id: 5,
-      itemName: "Gucci",
-      itemDesc: "Placeholder text. Item description goes here for new arrivals",
-      image: "https://placeimg.com/360/360/any/grayscale"
-    },
-    {
-      id: 6,
-      itemName: "Dior",
-      itemDesc: "Placeholder text. Item description goes here for new arrivals",
-      image: "https://placeimg.com/360/360/any/grayscale"
-    }
-  ];
-
   const [activeItemIndex, setActiveItemIndex] = useState(0);
   
   const chevronWidth = 40;
@@ -70,21 +31,7 @@ const ProductCarousel = ({ products }) => {
     }
   };
 
-  const mappedItems = mockData.map((item) => {
-    return (
-      <div key={item.id} style={{ "margin": "1rem" }}>
-        <ProductListItem
-          key={item.id}
-          itemName={item.itemName}
-          itemDesc={item.itemDesc}
-          image={item.image}
-        />
-      </div>
-    )
-  });
-
-  const mappedItems2 = products.map((item) => {
-    // console.log(item);
+  const mappedItems = products.map((item) => {
     return (
       <ProductListItem
         key={item.id}
@@ -95,9 +42,9 @@ const ProductCarousel = ({ products }) => {
     )
   });
 
-  // if (!products) {
-  //   return null;
-  // }
+  if (!products) {
+    return null;
+  }
 
   return ( 
     <div className="product-carousel" style={{ wrapperStyle }}>
@@ -113,7 +60,7 @@ const ProductCarousel = ({ products }) => {
         responsive={responsive}
         infinite={true}
       >
-        {mappedItems2}
+        {mappedItems}
       </Carousel>
     </div>
    );
