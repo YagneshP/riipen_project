@@ -52,12 +52,12 @@ const ProductList = ({ products }) => {
   });
 
   const mappedItems2 = products.map((item) => {
-    console.log(item);
+    // console.log(item);
     return (
       <ProductListItem
         key={item.id}
-        itemName={item.name}
-        itemDesc={item.price.formatted_with_symbol}
+        itemName={item.price.formatted_with_symbol}
+        itemDesc={item.name}
         image={item.image.url}
       />
     )
@@ -66,14 +66,6 @@ const ProductList = ({ products }) => {
   // if (!products) {
   //   return null;
   // }
-
-  // return (
-  //   <>
-  //     {products.map((item) => (
-  //       <ProductItem key={item.id} {...item} />
-  //     ))}
-  //   </>
-  // );
 
   return ( 
     <div className="new-arrival-products">

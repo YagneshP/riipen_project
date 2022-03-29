@@ -9,8 +9,8 @@ const ProductListItem = ({ itemName, itemDesc, image }) => {
         width="360px"
         height="360px"
       />
-      <a>{itemName}</a>
       <p>{itemDesc}</p>
+      <a>{itemName}</a>
     </div>
    );
 }

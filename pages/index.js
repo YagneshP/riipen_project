@@ -32,7 +32,7 @@ export default function Home({ products }) {
         title="Popular Products"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula. Sed feugiat, tellus vel tristique posuere, diam"
       />
-      <ProductCarousel />
+      <ProductCarousel products={products} />
     </div>
   );
 }

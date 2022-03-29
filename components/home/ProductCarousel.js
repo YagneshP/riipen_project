@@ -3,7 +3,7 @@ import Carousel from "react-multi-carousel";
 import 'react-multi-carousel/lib/styles.css'
 import ProductListItem from "./ProductListItem";
 
-const ProductCarousel = () => {
+const ProductCarousel = ({ products }) => {
   const mockData = [
     {
       id: 1,
@@ -83,6 +83,22 @@ const ProductCarousel = () => {
     )
   });
 
+  const mappedItems2 = products.map((item) => {
+    // console.log(item);
+    return (
+      <ProductListItem
+        key={item.id}
+        itemName={item.price.formatted_with_symbol}
+        itemDesc={item.name}
+        image={item.image.url}
+      />
+    )
+  });
+
+  // if (!products) {
+  //   return null;
+  // }
+
   return ( 
     <div className="product-carousel" style={{ wrapperStyle }}>
       <Carousel
@@ -97,7 +113,7 @@ const ProductCarousel = () => {
         responsive={responsive}
         infinite={true}
       >
-        {mappedItems}
+        {mappedItems2}
       </Carousel>
     </div>
    );
