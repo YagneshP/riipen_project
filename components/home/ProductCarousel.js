@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useState } from "react";
 import Carousel from "react-multi-carousel";
 import 'react-multi-carousel/lib/styles.css'
@@ -32,13 +33,18 @@ const ProductCarousel = ({ products }) => {
   };
 
   const mappedItems = products.map((item) => {
+    console.log(item);
     return (
-      <ProductListItem
-        key={item.id}
-        itemName={item.price.formatted_with_symbol}
-        itemDesc={item.name}
-        image={item.image.url}
-      />
+      <Link key={item.id} href="/product" passHref>
+        <a>
+          <ProductListItem
+            key={item.id}
+            itemName={item.price.formatted_with_symbol}
+            itemDesc={item.name}
+            image={item.image.url}
+          />
+        </a>
+      </Link>
     )
   });
 
