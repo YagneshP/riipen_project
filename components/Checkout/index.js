@@ -5,10 +5,12 @@ import Router from "next/router";
 import { useEffect,useState } from "react";
 import { useCart } from "../../context/Cart";
 import { commerce } from "../../lib/commerce";
-import {GrandTotal} from '../../pages/cart/GrandTotal';
+import GrandTotal from '../../pages/cart/GrandTotal';
 import {PaymentValue} from '../../pages/stripe/PaymentValue';
 import { MenuItem, Select } from '@material-ui/core';
 import { useForm } from "react-hook-form";
+import {handleShippingCountryChange, fetchShippingCountries,fetchSubdivisions, handleSubdivisionChange} from './helperFuncs'
+import helperFuncs from "./helperFuncs";
 
 
 export default function Checkout() {
@@ -19,31 +21,6 @@ export default function Checkout() {
 	console.log("line",line_items);
   const cartId= commerce.cart.id();
 	console.log("cartid",commerce.cart.id());
-
- 
-
-	//Billing Form data
-	// const [bfirstName, setbFirstName] = useState('');
-  // const [blastName, setbLastName] = useState();
-	// const [ addressb, setAddressb] = useState('');
-	// const [ bcity, setbCity] = useState('');
-	// const [ bcountry, setbCountry] = useState('');
-  // const [bprovince, setbProvince] = useState('');
-	// const [ bemail, setbEmail] = useState('');
-	// const [ bphone, setbPhone] = useState('');
-	// const [ bpostal, setbPostal] = useState('');
-
-//Shipping Form data
-	// const [sfirstName, setsFirstName] = useState('');
-	// const [slastName, setsLastName] = useState();
-	// const [ saddress, setsAddress] = useState('');
-	// const [ scity, setsCity] = useState('');
-  // const [scountry, setsCountry] = useState('');
-  // const [shippingOption, setShippingOption] = useState({});
-	// const [sprovince, setsProvince] = useState('');
-	// const [ semail, setsEmail] = useState('');
-	// const [ sphone, setsPhone] = useState('');
-	// const [ spostal, setsPostal] = useState('');
 
   // Shipping and fulfillment data
   const [shippingCountries, setShippingCountries] = useState({});
@@ -62,60 +39,45 @@ export default function Checkout() {
       });
 			console.log("token",token);
       setToken(token);
-      fetchShippingCountries(token.id);
+      fetchShippingCountries();
     } else {
       Router.push('/cart');
     }
 	}
 
-  const [formData, setFormData] = useState({
-    firstName:"",
-    lastName:"",
-    address:'',
-    city:'',
-    country:'',
-    province:'',
-    postal:'',
-    phone:'',
-    email:''
-  });
-  const onSubmit = (data) => 
-  { setFormData(data);
-    // console.log("data1",data);
-    handleCaptureCheckout();
-  }
 
-  console.log("data2", formData);
-		const handleCaptureCheckout = async () => {
-      console.log("fordata country", formData.country);
-      console.log("fordata province", formData.province);
-      const provcountry = `${formData.country}-${formData.province}`;
+  const onSubmit = async (data,) => 
+  {   
+      console.log("fordata country", data.country);
+      console.log("fordata province", data.province);
+  
+      const provcountry = `${data.country}-${data.province}`;
       console.log(" province country", provcountry);
 			const orderData = {
 				line_items: token.live.line_items,
 				customer: {
-					firstname: formData.firstName,
-					lastname: formData.lastName,
-          email: formData.email
+					firstname: data.firstName,
+					lastname: data.lastName,
+          email: data.email
 				},
         shipping: {
-          name: `${formData.firstName} ${formData.lastName}`,
-          street: formData.address,
-          town_city: formData.city,
+          name: `${data.firstName} ${data.lastName}`,
+          street: data.address,
+          town_city: data.city,
           county_state: provcountry,
-          postal_zip_code: formData.postal,
-          country: formData.country
+          postal_zip_code: data.postal,
+          country: data.country
         },
         fulfillment: {
           shipping_method: 'ship_7RyWOwmK5nEa2V'
         },
         billing: {
-          name: `${formData.firstName} ${formData.lastName}`,
-          street: formData.address,
-          town_city: formData.city,
+          name: `${data.firstName} ${data.lastName}`,
+          street: data.address,
+          town_city: data.city,
           county_state: provcountry,
-          postal_zip_code: formData.postal,
-          country: formData.country
+          postal_zip_code: data.postal,
+          country: data.country
         },
         payment: {
           gateway: 'test_gateway',
@@ -134,9 +96,6 @@ export default function Checkout() {
         //   },
 			  // }
       }
-    
-			console.log("orderData", orderData);
-			console.log("token id", token.id);
       
       try {
         const orderPlaced = await commerce.checkout.capture(
@@ -151,40 +110,42 @@ export default function Checkout() {
       } catch (err) {
         console.log("error");
       }
-      // console.log("formdata3", formData)
+      console.log("data3", data)
   };
 
-  const handleShippingCountryChange = (e) => {
-    console.log("hiiiiii");
-    const currentValue = e.target.value;
-    console.log("country value",currentValue);
-    setValue("country",e.target.value);
-    fetchSubdivisions(currentValue);
-  };
+  // const handleShippingCountryChange = (e) => {
+  //   console.log("hiiiiii");
+  //   const currentValue = e.target.value;
+  //   console.log("country value",currentValue);
+  //   setValue("country",e.target.value);
+  //   fetchSubdivisions(currentValue);
+  // };
 
-  const fetchShippingCountries = async () => {
-    const countries = await commerce.services.localeListCountries(
-    );
-    // console.log("countries1", countries.countries);
-    setShippingCountries(countries.countries);
-  };
+  // const fetchShippingCountries = async () => {
+  //   const countries = await commerce.services.localeListCountries(
+  //   );
+  //   // console.log("countries1", countries.countries);
+  //   setShippingCountries(countries.countries);
+  // };
 
   
-  const fetchSubdivisions = async (countryCode) => {
-    const subdivisions = await commerce.services.localeListSubdivisions(
-      countryCode
-    );
-    console.log("subdivisions",subdivisions.subdivisions);
-    setShippingSubdivisions(subdivisions.subdivisions);
-  };
-
-  const handleSubdivisionChange = (e) => {
-    // const currentValue = e.target.value;
-    setValue("province",e.target.value);
-  };
+  // const fetchSubdivisions = async (countryCode) => {
+  //   const subdivisions = await commerce.services.localeListSubdivisions(
+  //     countryCode
+  //   );
+  
+  // //   console.log("subdivisions",subdivisions.subdivisions);
+  //   setShippingSubdivisions(subdivisions.subdivisions);
+  // // };
+  //   }
+  // const handleSubdivisionChange = (e) => {
+  //   // const currentValue = e.target.value;
+  //   setValue("province",e.target.value);
+  // };
 
 
   return (
+   
     <div>
       <section >
         <div className="container">
@@ -242,7 +203,7 @@ export default function Checkout() {
                           
                             {...register("country", { required: true })}
                             fullWidth
-                            // value={formData.country}
+                            // value={data.country}
                             onChange={handleShippingCountryChange}
                             // onChange={e => setValue("country",e.target.value)}
                           > 
@@ -265,7 +226,7 @@ export default function Checkout() {
                           <select
                             {...register("province", { required: true })}
                             fullWidth
-                            // value={formData.country}
+                            // value={data.country}
                             onChange={handleSubdivisionChange}
                           > 
                           {Object.keys(shippingSubdivisions).map((index) => (
@@ -430,19 +391,19 @@ export default function Checkout() {
                   <h6>YOUR ORDER</h6>
                   <div className="order-place">
                     <div className="order-detail">
-                      <p>
-                        WOOD CHAIR <span>$598 </span>
-                      </p>
-                      <p>
-                        STOOL <span>$199 </span>
-                      </p>
-                      <p>
-                        WOOD SPOON <span> $139</span>
-                      </p>
-
-                      <p className="all-total">
-                        TOTAL COST <span> $998</span>
-                      </p>
+                      {line_items.map((item) => (
+                        // item.name
+                      <GrandTotal
+                        key={item.id}
+                        id={item.id}
+                        name={item.name}
+                        line_total={item.line_total.formatted_with_symbol}
+                      />
+										))}
+                      
+                      <p className='all-total'>
+                      TOTAL COST <span> {subtotal.formatted_with_symbol}</span>
+                    </p>
                     </div>
                     <div className="pay-meth">
                       <ul>
