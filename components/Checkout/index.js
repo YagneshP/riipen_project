@@ -21,7 +21,7 @@ const Checkout = () => {
               <div className='row'>
                 <div className='col-sm-7'>
                   <h6>BILLING DETAILS</h6>
-                  <BillingInfoForm />
+                  <BillingInfoForm handleFormInput={handleFormInput} />
                   <h6 className='margin-top-50'>SHIPPING info</h6>
                   <ShippingInfoForm />
                 </div>
