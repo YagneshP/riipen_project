@@ -8,8 +8,8 @@ const ProductList = ({ products }) => {
         <a>
           <ProductListItem
             key={item.id}
-            itemName={item.price.formatted_with_symbol}
-            itemDesc={item.name}
+            itemPrice={item.price.formatted_with_symbol}
+            itemName={item.name}
             image={item.image.url}
           />
         </a>
