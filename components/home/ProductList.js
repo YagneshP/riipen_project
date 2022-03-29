@@ -4,7 +4,7 @@ import ProductListItem from "./ProductListItem";
 const ProductList = ({ products }) => {
   const mappedItems = products.slice(0, 6).map((item) => {
     return (
-      <Link key={item.id} href="/product" passHref>
+      <Link key={item.id} href={`/product/${item.permalink}`} passHref>
         <a>
           <ProductListItem
             key={item.id}

@@ -35,7 +35,7 @@ const ProductCarousel = ({ products }) => {
   const mappedItems = products.map((item) => {
     console.log(item);
     return (
-      <Link key={item.id} href="/product" passHref>
+      <Link key={item.id} href={`/product/${item.permalink}`} passHref>
         <a>
           <ProductListItem
             key={item.id}
