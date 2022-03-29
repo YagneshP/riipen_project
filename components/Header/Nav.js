@@ -3,8 +3,10 @@ import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import Link from "next/link";
 import { useSelector } from "react-redux";
-import { motion } from "framer-motion";
 import { useState } from "react";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
 const Nav = () => {
   // Selecting cart from global state
@@ -16,44 +18,92 @@ const Nav = () => {
   };
   console.log("getItemsCount", getItemsCount());
 
+  // MaterialUI dropdown menu config
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
     <ul className="nav">
       <li>
         <Link href="/">Home</Link>
       </li>
-      <motion.div
-        className="menu-item"
-        onHoverStart={toggleHoverMenu}
-        onHoverEnd={toggleHoverMenu}
+
+      <li>
+        <Link href="/product">About Us</Link>
+      </li>
+
+      <li>
+        <Link href="/product" passHref>
+          Store
+        </Link>
+      </li>
+
+      <div
+        aria-controls={open ? "basic-menu" : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? "true" : undefined}
+        onClick={handleClick}
+        // onMouseOver={handleClick}
       >
-        <Link href="/product">Store</Link>
-        <motion.div
-          className="sub-menu"
-          initial="exit"
-          animate={isHover ? "enter" : "exit"}
-          variants={subMenuAnimate}
-        >
-          <ul className="sub-menu-container">
-            <li>
-              <Link href="/product" className="sub-menu-item">
-                Men&apos;s Frangrances
-              </Link>
-            </li>
-            <li>
-              <Link href="#" className="sub-menu-item">
-                Women&apos;s Frangrances
-              </Link>
-            </li>
-          </ul>
-        </motion.div>
-      </motion.div>
-      <li>
-        <Link href="/about">About Us</Link>
-      </li>
-      <li>
-        <Link href="/contact">Contact</Link>
-      </li>
+        <li>
+          <Link href="#" passHref>
+            <a
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "10px",
+                textDecoration: "none",
+              }}
+            >
+              Categories <ArrowDropDownIcon />
+            </a>
+          </Link>
+        </li>
+      </div>
+
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          onMouseLeave: handleClose,
+        }}
+      >
+        <MenuItem onClick={handleClose}>
+          <Link href="/categories/men" className="sub-menu-item">
+            <a
+              style={{
+                textDecoration: "none",
+                color: "grey",
+                fontSize: "1.4rem"
+              }}
+            >
+              Men&apos;s Frangrances
+            </a>
+          </Link>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <Link href="/categories/women" className="sub-menu-item">
+            <a
+              style={{
+                textDecoration: "none",
+                color: "grey",
+                fontSize: "1.4rem"
+              }}
+            >
+              Women&apos;s Frangrances
+            </a>
+          </Link>
+        </MenuItem>
+      </Menu>
       <li>
         <Link href="/account" passHref>
           <a>
