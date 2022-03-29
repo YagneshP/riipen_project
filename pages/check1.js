@@ -1,109 +1,48 @@
-// my current change
-// import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { Router } from 'next/router';
-import { useContext, useEffect,useState } from "react";
-// import { useCartActions } from "../context/Cart";
-import { useCart } from "../context/Cart";
-// import { CartStateContext } from '../context/Cart';
-import { commerce } from "../lib/commerce";
-import {GrandTotal} from './cart/GrandTotal';
-//  const { setCart } = useCartActions();
-// import Commerce from '@chec/commerce.js';
+//incoming change
 
-// const commerce = new Commerce('pk_test_41232e4fdaec2a10e57e771251a71f8d758f37750ae7d');
-export default function Checkout1() {
-	const [token, setToken] = useState();
-  const [order,setOrder] = useState({});
-	const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-	 const { line_items, subtotal } = useCart();
-   console.log("line",line_items);
-	const cartId= commerce.cart.id();
-	console.log("cartid",commerce.cart.id());
-	
-	useEffect(() => {
-      generateCheckoutToken();
-   
-  }, []);
+// import { useCart } from "../context/Cart";
+import getStripe from "../../lib/stripe";
+import { useCart } from "../../context/Cart";
+import { commerce } from "../../lib/commerce";
 
-	const generateCheckoutToken = async () => {
-    if (cartId) {
-      const token = await commerce.checkout.generateToken(cartId, {
-        type: 'cart',
-      });
-			console.log("token",token);
-      setToken(token);
-    } else {
-      Router.push('/cart');
-    }
-	}
-		const handleCaptureCheckout = async () => {
-			const orderData = {
-				line_items: token.live.line_items,
-				customer: {
-					firstname: firstName,
-					lastname: lastName,
-          email: 'john.doe@example.com'
-				},
-        shipping: {
-          name: 'John Doe',
-          street: '123 Fake St',
-          town_city: 'San Francisco',
-          county_state: 'US-CA',
-          postal_zip_code: '94103',
-          country: 'US'
-        },
-        fulfillment: {
-          shipping_method: 'ship_7RyWOwmK5nEa2V'
-        },
-        billing: {
-          name: 'John Doe',
-          street: '234 Fake St',
-          town_city: 'San Francisco',
-          county_state: 'US-CA',
-          postal_zip_code: '94103',
-          country: 'US'
-        },
-        payment: {
-          gateway: 'test_gateway',
-          card: {
-            number:  4242424242424242,
-            expiry_month: 12,
-            expiry_year: 34,
-            cvc: 123,
-            postal_zip_code: 'L6X 0S1',
-          },
-        },
-      //   payment: {
-      //     gateway: 'stripe',
-      //     stripe: {
-      //       payment_method_id: paymentMethodResponse.paymentMethod.id,
-      //     },
-			// }
-      }
-    
-			console.log("orderData", orderData);
-			console.log("token id", token.id);
-      
-      try {
-        const orderPlaced = await commerce.checkout.capture(
-          token.id,
-          orderData
-        );
-        setOrder(orderPlaced);
-        console.log("orderPlaced",orderPlaced);
-        // dispatch({ type: ORDER_SET, payload: order });
-        // localStorage.setItem('order_receipt', JSON.stringify(order));
-        // await refreshCart();
-        // Router.push('/confirmation');
-      } catch (err) {
-        console.log("error");
-      }
+const Checkout = () => {
+  const cart = useCart();
+  const handleClick = async () => {
+    const checkoutTokenId = await commerce.checkout.generateToken(cart.id, {
+      type: "cart",
+    });
+    console.log("checkoutTokenId ", checkoutTokenId);
+    const session = await fetch("/api/checkout_session", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(checkoutTokenId),
+    })
+      .then((res) => res.json())
+      .catch((err) => console.log("err", err));
+    const stripe = await getStripe();
+
+    // console.log("session", session);
+    const { error } = await stripe.redirectToCheckout({
+      // Make the id field from the Checkout Session creation API response
+      // available to this file, so you can provide it as parameter here
+      // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
+      sessionId: session.id,
+    });
+    console.log("response", session);
+    // const order = await commerce.checkout.capture(checkoutTokenId.id, {
+    //   ...session,
+    //   // Include Stripe payment method ID:
+    //   payment: {
+    //     gateway: "stripe",
+    //     stripe: {
+    //       payment_method_id: session?.payment_intent?.id,
+    //     },
+    //   },
+    // });
+    // console.log("order", order);
+    console.warn(error.message);
   };
-
-
-	return (
+  return (
     <div id='content'>
       {/* <!--======= PAGES INNER =========--> */}
       <section className='chart-page padding-top-100 padding-bottom-100'>
@@ -426,11 +365,13 @@ export default function Checkout1() {
                           </div>
                         </li>
                       </ul>
-                    
-                      <a className='button-order' onClick={handleCaptureCheckout}>
+                      <button className='button-order' onClick={handleClick}>
                         PLACE ORDER
-                      </a>{" "}
-                      {/* </Link> */}
+                      </button>
+                      {/* <a href='#.' className='button-order'>
+                        PLACE ORDER
+
+                      </a>{" "} */}
                     </div>
                   </div>
                 </div>
