@@ -9,8 +9,7 @@ import GrandTotal from '../../pages/cart/GrandTotal';
 import {PaymentValue} from '../../pages/stripe/PaymentValue';
 import { MenuItem, Select } from '@material-ui/core';
 import { useForm } from "react-hook-form";
-import {handleShippingCountryChange, fetchShippingCountries,fetchSubdivisions, handleSubdivisionChange} from './helperFuncs'
-import helperFuncs from "./helperFuncs";
+import { Phone } from "@mui/icons-material";
 
 
 export default function Checkout() {
@@ -46,13 +45,40 @@ export default function Checkout() {
 	}
 
 
-  const onSubmit = async (data,) => 
+  const onSubmit = async (data) => 
   {   
       console.log("fordata country", data.country);
       console.log("fordata province", data.province);
-  
-      const provcountry = `${data.country}-${data.province}`;
-      console.log(" province country", provcountry);
+      console.log("fcheck", data.shippingCheck);
+      console.log("fcheck FN", data.shipFirstName);
+      console.log("fcheck LN", data.shipLastName);
+      let shippingData= {};
+      if(data.shippingCheck){
+        shippingData = {
+          firstName: data.shipFirstName,
+          lastName : data.shipLastName,
+          address : data.shipAddress,
+          city : data.shipCity,
+          country:data.shipCountry,
+          province:data.shipProvince,
+          email:data.shipEmail,
+          postal:data.shipPostal
+        }
+      }
+      else {
+        shippingData = {
+          firstName: data.firstName,
+          lastName : data.lastName,
+          address : data.address,
+          city : data.city,
+          country:data.country,
+          province:data.province,
+          email:data.email,
+          postal:data.postal
+        }
+      }
+      console.log("shipping data first name", shippingData);
+
 			const orderData = {
 				line_items: token.live.line_items,
 				customer: {
@@ -61,12 +87,12 @@ export default function Checkout() {
           email: data.email
 				},
         shipping: {
-          name: `${data.firstName} ${data.lastName}`,
-          street: data.address,
-          town_city: data.city,
-          county_state: provcountry,
-          postal_zip_code: data.postal,
-          country: data.country
+          name: `${shippingData.firstName} ${shippingData.lastName}`,
+          street: shippingData.address,
+          town_city: shippingData.city,
+          county_state: `${shippingData.country}-${shippingData.province}`,
+          postal_zip_code: shippingData.postal,
+          country: shippingData.country
         },
         fulfillment: {
           shipping_method: 'ship_7RyWOwmK5nEa2V'
@@ -75,7 +101,7 @@ export default function Checkout() {
           name: `${data.firstName} ${data.lastName}`,
           street: data.address,
           town_city: data.city,
-          county_state: provcountry,
+          county_state: `${data.country}-${data.province}`,
           postal_zip_code: data.postal,
           country: data.country
         },
@@ -104,44 +130,39 @@ export default function Checkout() {
         );
         setOrder(orderPlaced);
         console.log("orderPlaced",orderPlaced);
-        // localStorage.setItem('order_receipt', JSON.stringify(order));
-        // await refreshCart();
+
         Router.push('/confirmation');
       } catch (err) {
         console.log("error");
       }
-      console.log("data3", data)
+    
   };
 
-  // const handleShippingCountryChange = (e) => {
-  //   console.log("hiiiiii");
-  //   const currentValue = e.target.value;
-  //   console.log("country value",currentValue);
-  //   setValue("country",e.target.value);
-  //   fetchSubdivisions(currentValue);
-  // };
+  const handleShippingCountryChange = (e) => {
+    console.log("hiiiiii");
+    const currentValue = e.target.value;
+    console.log("country value",currentValue);
+    setValue("country",e.target.value);
+    fetchSubdivisions(currentValue);
+  };
 
-  // const fetchShippingCountries = async () => {
-  //   const countries = await commerce.services.localeListCountries(
-  //   );
-  //   // console.log("countries1", countries.countries);
-  //   setShippingCountries(countries.countries);
-  // };
+  const fetchShippingCountries = async () => {
+    const countries = await commerce.services.localeListCountries(
+    );
+    setShippingCountries(countries.countries);
+  };
 
   
-  // const fetchSubdivisions = async (countryCode) => {
-  //   const subdivisions = await commerce.services.localeListSubdivisions(
-  //     countryCode
-  //   );
-  
-  // //   console.log("subdivisions",subdivisions.subdivisions);
-  //   setShippingSubdivisions(subdivisions.subdivisions);
-  // // };
-  //   }
-  // const handleSubdivisionChange = (e) => {
-  //   // const currentValue = e.target.value;
-  //   setValue("province",e.target.value);
-  // };
+  const fetchSubdivisions = async (countryCode) => {
+    const subdivisions = await commerce.services.localeListSubdivisions(
+      countryCode
+    );
+    setShippingSubdivisions(subdivisions.subdivisions);
+  }
+
+    const handleSubdivisionChange = (e) => 
+      setValue("province",e.target.value);
+
 
 
   return (
@@ -199,42 +220,34 @@ export default function Checkout() {
                       <li className="col-md-6">
                         <label>
                           COUNTRY
-                          <select
+                          <Select
                           
                             {...register("country", { required: true })}
                             fullWidth
-                            // value={data.country}
                             onChange={handleShippingCountryChange}
-                            // onChange={e => setValue("country",e.target.value)}
                           > 
                           {Object.keys(shippingCountries).map((index) => (
-                              <option value={index} key={index}>
+                              <MenuItem value={index} key={index}>
                                 {shippingCountries[index]}
-                              </option>
+                              </MenuItem>
                             ))}
-                            </select>
-                          {/* <input
-                            type="text"
-                            {...register("country", { required: true })}
-                            onChange={e => setValue("country", e.target.value)}
-                          /> */}
+                            </Select>
                         </label>
                       </li>
                       <li className="col-md-6">
                         <label>
                           *STATE/PROVINCE
-                          <select
+                          <Select
                             {...register("province", { required: true })}
                             fullWidth
-                            // value={data.country}
                             onChange={handleSubdivisionChange}
                           > 
                           {Object.keys(shippingSubdivisions).map((index) => (
-                              <option value={index} key={index}>
+                              <MenuItem value={index} key={index}>
                                 {shippingSubdivisions[index]}
-                              </option>
+                              </MenuItem>
                             ))}
-                            </select>
+                            </Select>
                         </label>
                       </li>
                       <li className="col-md-6">
@@ -257,45 +270,36 @@ export default function Checkout() {
                           />
                         </label>
                       </li>
-                      <li className="col-md-6">
-                        <label>
-                          *PHONE
-                          <input
-                            type="text"
-                            {...register("phone", { required: true })}
-                            onChange={e => setValue("phone", e.target.value)}
-                          />
-                        </label>
-                      </li>
-                      <li className="col-md-6">
+                      
+                      {/* <li className="col-md-6">
                         <button type="submit" className="button-chk">
                           Submit
                         </button>
-                      </li>
+                      </li> */}
                       <li className="col-md-6">
                         <div className="checkbox margin-0 margin-top-20">
-                          <input
-                            id="checkbox1"
-                            className="styled"
+                        <input
                             type="checkbox"
+                            {...register('shippingCheck')}
+                            value={true} 
                           />
                           <label htmlFor="checkbox1">
-                            Ship to a different address
+                            Ship to a different address 
                           </label>
                         </div>
                       </li>
-                    </ul>
-                  </form>
-                  {/* <h6 className="margin-top-50">SHIPPING info</h6>
-                  <form onSubmit={handleSubmit(onSubmit)}>
-                    <ul className="row">
+                    {/* </ul> */}
+                  {/* </form> */}
+                  <h6 className="margin-top-50">SHIPPING info</h6>
+                  {/* <form onSubmit={handleSubmit(onSubmit)}> */}
+                    {/* <ul className="row"> */}
                       <li className="col-md-6">
                         <label>
                           *FIRST NAME
                           <input
                             type="text"
-                            {...register("bill-firstName", { required: true })}
-                            onChange={e => setValue("bill-firstName", e.target.value)}
+                            {...register("shipFirstName", { required: true })}
+                            onChange={e => setValue("shipFirstName", e.target.value)}
                           />
                         </label>
                       </li>
@@ -304,8 +308,8 @@ export default function Checkout() {
                           *LAST NAME
                           <input
                             type="text"
-                            {...register("bill-lastName", { required: true })}
-                            onChange={e => setValue("bill-lastName", e.target.value)}
+                            {...register("shipLastName", { required: true })}
+                            onChange={e => setValue("shipLastName", e.target.value)}
                           />
                         </label>
                       </li>
@@ -314,8 +318,8 @@ export default function Checkout() {
                           *ADDRESS
                           <input
                             type="text"
-                            {...register("bill-address", { required: true })}
-                            onChange={e => setValue("bill-address", e.target.value)}
+                            {...register("shipAddress", { required: true })}
+                            onChange={e => setValue("shipAddress", e.target.value)}
                           />
                         </label>
                       </li>
@@ -324,8 +328,8 @@ export default function Checkout() {
                           *CITY
                           <input
                             type="text"
-                            {...register("bill-city", { required: true })}
-                            onChange={e => setValue("bill-city", e.target.value)}
+                            {...register("shipCity", { required: true })}
+                            onChange={e => setValue("shipCity", e.target.value)}
                           />
                         </label>
                       </li>
@@ -334,8 +338,8 @@ export default function Checkout() {
                           COUNTRY
                           <input
                             type="text"
-                            {...register("bill-country", { required: true })}
-                            onChange={e => setValue("bill-country", e.target.value)}
+                            {...register("shipCountry", { required: true })}
+                            onChange={e => setValue("shipCountry", e.target.value)}
                           />
                         </label>
                       </li>
@@ -344,8 +348,8 @@ export default function Checkout() {
                           STATE/PROVINCE
                           <input
                             type="text"
-                            {...register("bill-province", { required: true })}
-                            onChange={e => setValue("bill-province", e.target.value)}
+                            {...register("shipProvince", { required: true })}
+                            onChange={e => setValue("shipProvince", e.target.value)}
                           />
                         </label>
                       </li>
@@ -354,8 +358,8 @@ export default function Checkout() {
                           *POSTAL CODE
                           <input
                             type="text"
-                            {...register("bill-postcode", { required: true })}
-                            onChange={e => setValue("bill-postcode", e.target.value)}
+                            {...register("shipPostal", { required: true })}
+                            onChange={e => setValue("shipPostal", e.target.value)}
                           />
                         </label>
                       </li>
@@ -364,35 +368,25 @@ export default function Checkout() {
                           *EMAIL ADDRESS
                           <input
                             type="text"
-                            {...register("bill-email", { required: true })}
-                            onChange={e => setValue("bill-email", e.target.value)}
+                            {...register("shipEmail", { required: true })}
+                            onChange={e => setValue("shipEmail", e.target.value)}
                           />
                         </label>
                       </li>
-                      <li className="col-md-6">
-                        <label>
-                          *PHONE
-                          <input
-                            type="text"
-                            {...register("bill-phone", { required: true })}
-                            onChange={e => setValue("bill-phone", e.target.value)}
-                          />
-                        </label>
-                      </li>
+                    
                       <li className="col-md-6">
                         <button type="submit" className=" button-chk">
                           SUBMIT
                         </button>
                       </li> 
                     </ul>
-                  </form> */}
+                  </form>
                 </div>
                 <div className="col-sm-5">
                   <h6>YOUR ORDER</h6>
                   <div className="order-place">
                     <div className="order-detail">
                       {line_items.map((item) => (
-                        // item.name
                       <GrandTotal
                         key={item.id}
                         id={item.id}
