@@ -22,18 +22,16 @@ export default function Search({products}) {
   
   return (
     <div className='about'>
-      {/* <h1 id="search"> Search</h1><p></p> */}
       <center><div style={{"width":"30%"}}>
         <TextField
           id="outlined-basic"
           onChange={inputHandler}
           variant="outlined"
-          color="secondary"
           size="normal"
           focused
           fullWidth
           label="Search"
-          placeholder="search"
+          placeholder="Search Product"
         />
       </div></center>
       <List input={inputText} products={products}/>
