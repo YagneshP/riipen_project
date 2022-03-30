@@ -80,7 +80,7 @@ const Cart = () => {
                 {/* <!-- DISCOUNT CODE --> */}
                 <div className='col-md-7'>
                   <h6>DISCOUNT CODE</h6>
-                  <form>
+                  <form className="cartform">
                     <input
                       type='text'
                       placeholder='ENTER YOUR CODE IF YOU HAVE ONE'

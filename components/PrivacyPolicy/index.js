@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const PrivacyPolicy = () => {
   return (
-    <div id="privacy-policy-page">
+    <div id="privacy-shipping">
       <div id="wrap">
         <div id="content">
           <section className="history-block padding-top-100 padding-bottom-100">
@@ -15,7 +15,7 @@ const PrivacyPolicy = () => {
                     </div>
                     <br />
 
-                    <div className="col-lg-7">
+                    <div className="container-fluid">
                       <p>
                         Our Privacy Policy was last updated on March 2022. This
                         Privacy Policy describes Our policies and procedures on

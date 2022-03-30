@@ -2,8 +2,18 @@ import Head from "next/head";
 import FeatureMessage from "../components/home/FeatureMessage";
 import ProductCarousel from "../components/home/ProductCarousel";
 import ProductList from "../components/home/ProductList";
+import { commerce } from "../lib/commerce";
 
-export default function Home() {
+export async function getStaticProps() {
+  const { data: products } = await commerce.products.list();
+  return {
+    props: {
+      products,
+    },
+  };
+}
+
+export default function Home({ products }) {
   return (
     <div>
       <Head>
@@ -16,13 +26,13 @@ export default function Home() {
         title="New Arrivals"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula. Sed feugiat, tellus vel tristique posuere, diam"
       />
-      <ProductList />
+      <ProductList products={products} />
 
       <FeatureMessage
         title="Popular Products"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula. Sed feugiat, tellus vel tristique posuere, diam"
       />
-      <ProductCarousel />
+      <ProductCarousel products={products} />
     </div>
   );
 }

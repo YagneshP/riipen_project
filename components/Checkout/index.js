@@ -73,24 +73,18 @@ const generateCheckoutToken = async () => {
     console.warn(error.message);
   };
   return (
-    <div id='content'>
-      {/* <!--======= PAGES INNER =========--> */}
-      <section className='chart-page padding-top-100 padding-bottom-100'>
-        <div className='container'>
-          {/* <!-- Payments Steps --> */}
-          <div className='shopping-cart'>
-            {/* <!-- SHOPPING INFORMATION --> */}
-            <div className='cart-ship-info'>
-              <div className='row'>
-                {/* <!-- ESTIMATE SHIPPING & TAX --> */}
-                <div className='col-sm-7'>
+    <div id="content">
+      <section className="chart-page padding-top-100 padding-bottom-100">
+        <div className="container">
+          <div className="shopping-cart">
+            <div className="cart-ship-info">
+              <div className="row">
+                <div className="col-sm-7">
                   <h6>BILLING DETAILS</h6>
                   <form>
-                    <ul className='row'>
-                      {/* <!-- Name --> */}
-                      <li className='col-md-6'>
+                    <ul className="row">
+                      <li className="col-md-6">
                         <label>
-                          {" "}
                           *FIRST NAME
                           <input
                             type='text'
@@ -101,10 +95,8 @@ const generateCheckoutToken = async () => {
                           />
                         </label>
                       </li>
-                      {/* <!-- LAST NAME --> */}
-                      <li className='col-md-6'>
+                      <li className="col-md-6">
                         <label>
-                          {" "}
                           *LAST NAME
                           <input
                             type='text'
@@ -129,8 +121,7 @@ const generateCheckoutToken = async () => {
                           />
                         </label>
                       </li>
-                      {/* <!-- TOWN/CITY --> */}
-                      <li className='col-md-6'>
+                      <li className="col-md-6">
                         <label>
                           *TOWN/CITY
                           <input
@@ -141,11 +132,8 @@ const generateCheckoutToken = async () => {
                           />
                         </label>
                       </li>
-
-                      {/* <!-- COUNTRY --> */}
-                      <li className='col-md-6'>
+                      <li className="col-md-6">
                         <label>
-                          {" "}
                           COUNTRY
                           <input
                             type='text'
@@ -155,11 +143,8 @@ const generateCheckoutToken = async () => {
                           />
                         </label>
                       </li>
-
-                      {/* <!-- EMAIL ADDRESS --> */}
-                      <li className='col-md-6'>
+                      <li className="col-md-6">
                         <label>
-                          {" "}
                           *EMAIL ADDRESS
                           <input
                             type='text'
@@ -169,8 +154,7 @@ const generateCheckoutToken = async () => {
                           />
                         </label>
                       </li>
-                      {/* <!-- PHONE --> */}
-                      <li className='col-md-6'>
+                      <li className="col-md-6">
                         <label>
                           {" "}
                           *POSTAL CODE
@@ -206,9 +190,9 @@ const generateCheckoutToken = async () => {
                       <li className='col-md-6'>
                         <div className='checkbox margin-0 margin-top-20'>
                           <input
-                            id='checkbox1'
-                            className='styled'
-                            type='checkbox'
+                            id="checkbox1"
+                            className="styled"
+                            type="checkbox"
                           />
                           <label htmlFor='checkbox1' >
                             Ship to a different address
@@ -217,15 +201,11 @@ const generateCheckoutToken = async () => {
                       </li>
                     </ul>
                   </form>
-
-                  {/* <!-- SHIPPING info --> */}
-                  <h6 className='margin-top-50'>SHIPPING info</h6>
+                  <h6 className="margin-top-50">SHIPPING info</h6>
                   <form>
-                    <ul className='row'>
-                      {/* <!-- Name --> */}
-                      <li className='col-md-6'>
+                    <ul className="row">
+                      <li className="col-md-6">
                         <label>
-                          {" "}
                           *FIRST NAME
                           <input
                             type='text'
@@ -235,10 +215,8 @@ const generateCheckoutToken = async () => {
                           />
                         </label>
                       </li>
-                      {/* <!-- LAST NAME --> */}
-                      <li className='col-md-6'>
+                      <li className="col-md-6">
                         <label>
-                          {" "}
                           *LAST NAME
                           <input
                             type='text'
@@ -261,8 +239,7 @@ const generateCheckoutToken = async () => {
                           />
                         </label>
                       </li>
-                      {/* <!-- TOWN/CITY --> */}
-                      <li className='col-md-6'>
+                      <li className="col-md-6">
                         <label>
                           *TOWN/CITY
                           <input
@@ -273,11 +250,8 @@ const generateCheckoutToken = async () => {
                           />
                         </label>
                       </li>
-
-                      {/* <!-- COUNTRY --> */}
-                      <li className='col-md-6'>
+                      <li className="col-md-6">
                         <label>
-                          {" "}
                           COUNTRY
                           <input
                             type='text'
@@ -287,11 +261,8 @@ const generateCheckoutToken = async () => {
                           />
                         </label>
                       </li>
-
-                      {/* <!-- EMAIL ADDRESS --> */}
-                      <li className='col-md-6'>
+                      <li className="col-md-6">
                         <label>
-                          {" "}
                           *EMAIL ADDRESS
                           <input
                             type='text'
@@ -313,10 +284,8 @@ const generateCheckoutToken = async () => {
                           />
                         </label>
                       </li>
-                      {/* <!-- PHONE --> */}
-                      <li className='col-md-6'>
+                      <li className="col-md-6">
                         <label>
-                          {" "}
                           *PHONE
                           <input
                             type='text'
@@ -336,64 +305,48 @@ const generateCheckoutToken = async () => {
                     </ul>
                   </form>
                 </div>
-
-                {/* <!-- SUB TOTAL --> */}
-                <div className='col-sm-5'>
+                <div className="col-sm-5">
                   <h6>YOUR ORDER</h6>
-                  <div className='order-place'>
-                    <div className='order-detail'>
-                    {/* {line_items.map((item) => (
-                      <GrandTotal
-                        key={item.id}
-                        id={item.id}
-                        name={item.name}
-                        line_total={item.line_total.formatted_with_symbol}
-                      />
-										))} */}
-                      
-                      <p className='all-total'>
-                      TOTAL COST <span> {subtotal.formatted_with_symbol}</span>
-                    </p>
+                  <div className="order-place">
+                    <div className="order-detail">
+                      <p>
+                        WOOD CHAIR <span>$598 </span>
+                      </p>
+                      <p>
+                        STOOL <span>$199 </span>
+                      </p>
+                      <p>
+                        WOOD SPOON <span> $139</span>
+                      </p>
 
+                      <p className="all-total">
+                        TOTAL COST <span> $998</span>
+                      </p>
                     </div>
-                    <div className='pay-meth'>
+                    <div className="pay-meth">
                       <ul>
                         <li>
-                          <div className='radio'>
-                            <input
-                              type='radio'
-                              name='radio1'
-                              id='radio3'
-                              value='option3'
-                            />
-                            <label htmlFor='radio3'> Credit/Debit </label>
+                          <div className="radio">
+                            <input type="radio" name="radio1" />
+                            <label htmlFor="radio3"> Credit/Debit </label>
                           </div>
                         </li>
                         <li>
-                          <div className='radio'>
-                            <input
-                              type='radio'
-                              name='radio1'
-                              id='radio4'
-                              value='option4'
-                            />
-                            <label htmlFor='radio4'> PAYPAL </label>
+                          <div className="radio">
+                            <input type="radio" name="radio1" />
+                            <label htmlFor="radio4"> PAYPAL </label>
                           </div>
                         </li>
                         <li>
-                          <div className='checkbox'>
+                          <div className="checkbox">
                             <input
-                              id='checkbox3-4'
-                              className='styled'
-                              type='checkbox'
+                              id="checkbox3-4"
+                              className="styled"
+                              type="checkbox"
                             />
-                            <label htmlFor='checkbox3-4'>
-                              {" "}
-                              I’VE READ AND ACCEPT THE{" "}
-                              <span className='color'>
-                                {" "}
-                                TERMS & CONDITIONS{" "}
-                              </span>{" "}
+                            <label htmlFor="checkbox3-4">
+                              I’VE READ AND ACCEPT THE
+                              <span className="color">TERMS & CONDITIONS</span>
                             </label>
                           </div>
                         </li>

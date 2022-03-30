@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const ProductListItem = ({ itemName, itemDesc, image }) => {
+const ProductListItem = ({ itemName, itemPrice, image }) => {
   return ( 
     <div className="new-arrival-product">
       <Image 
@@ -9,8 +9,8 @@ const ProductListItem = ({ itemName, itemDesc, image }) => {
         width="360px"
         height="360px"
       />
-      <a>{itemName}</a>
-      <p>{itemDesc}</p>
+      <p className="item-name">{itemName}</p>
+      <p className="item-price">{itemPrice}</p>
     </div>
    );
 }
