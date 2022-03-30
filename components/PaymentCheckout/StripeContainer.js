@@ -13,7 +13,7 @@ export default function StripeContainer(props) {
           }
       };
 	return (
-		<Elements stripe={stripePromise} option={options} >
+		<Elements stripe={stripePromise} options={options} >
         <CheckoutForm amount={props.amount} checkoutTokenId={props.checkoutTokenId}/>
       </Elements>
 	)

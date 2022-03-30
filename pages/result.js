@@ -57,18 +57,17 @@ function Result() {
                 postal_zip_code: '94103',
                 country: 'US'
             },
-        payment: {
-          gateway: 'stripe',
-          // card: {
-          //   number: "4242 4242 4242 4242",
-          //   token: "tok_1IJ5Nn2eZvKYlo2CqceJkfue",
-          //   nonce: 293074902374234,
-          // },
-          card: {
-            token: data.payment_intent.id
-          }
-        },
-         pay_what_you_want: '149.99'
+            payment: {
+              gateway: 'test_gateway',
+              
+              card: {
+                number: '4242424242424242',
+                expiry_month: '02',
+                expiry_year: '24',
+                cvc: '123',
+                postal_zip_code: '94107',
+              },
+            }
       })
       .then((res) => console.log(res))
       .catch((err) => console.log("Error at capture order", err));

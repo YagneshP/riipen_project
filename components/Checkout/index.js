@@ -53,10 +53,7 @@ const generateCheckoutToken = async () => {
 
   console.log("checkoutTokenId ", token);
   const handleClick = async () => {
-    // const checkoutTokenId = await commerce.checkout.generateToken(cart.id, {
-    //   type: "cart",
-    // });
-    // console.log("checkoutTokenId ", checkoutTokenId);
+    
     const session = await fetch("/api/checkout_session", {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -66,25 +63,13 @@ const generateCheckoutToken = async () => {
       .catch((err) => console.log("err", err));
     const stripe = await getStripe();
 
-    // console.log("session", session);
+    
     const { error } = await stripe.redirectToCheckout({
-      // Make the id field from the Checkout Session creation API response
-      // available to this file, so you can provide it as parameter here
-      // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
+      
       sessionId: session.id,
     });
     console.log("response", session);
-    // const order = await commerce.checkout.capture(checkoutTokenId.id, {
-    //   ...session,
-    //   // Include Stripe payment method ID:
-    //   payment: {
-    //     gateway: "stripe",
-    //     stripe: {
-    //       payment_method_id: session?.payment_intent?.id,
-    //     },
-    //   },
-    // });
-    // console.log("order", order);
+    
     console.warn(error.message);
   };
   return (
@@ -413,10 +398,8 @@ const generateCheckoutToken = async () => {
                           </div>
                         </li>
                       </ul>
-                      <button className='button-order' onClick={handleClick}>
-                        PLACE ORDER
-                      </button>
-                      <StripeContainer amount={subtotal} checkoutTokenId={token}/>
+                     
+                      <StripeContainer amount={subtotal} checkoutTokenId={token} />
                       {/* <a href='#.' className='button-order'>
                         PLACE ORDER
 
