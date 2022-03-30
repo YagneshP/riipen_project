@@ -52,7 +52,7 @@ const Nav = () => {
       </li>
 
       <li>
-        <Link href="/search#search" passHref>
+        <Link href="/product#search" passHref>
           <a>
             <SearchOutlinedIcon fontSize="large" />
           </a>

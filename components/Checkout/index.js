@@ -130,7 +130,6 @@ export default function Checkout() {
         );
         setOrder(orderPlaced);
         console.log("orderPlaced",orderPlaced);
-
         Router.push('/confirmation');
       } catch (err) {
         console.log("error");

@@ -3,14 +3,14 @@
 import ProductItem from '../Product/ProductItem';
 
 const List = (props) => {
+
+	console.log("props prods", props.products);
+	const filteredData = props.products.filter((el) => {
 	
-	const {products} = props.products;
-	const filteredData = products.filter((el) => {
-		//if no input the return the original
 		if (props.input === '') {
 				return el.id;
 		}
-		//return the item which contains the user input
+
 		else {
 			return el.name.toLowerCase().includes(props.input);
 			//other search options
