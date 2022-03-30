@@ -1,10 +1,12 @@
 /* eslint-disable */
 
+import { FiCornerDownLeft } from 'react-icons/fi';
 import ProductItem from '../Product/ProductItem';
 
 const List = (props) => {
 
 	console.log("props prods", props.products);
+	console.log("props img....", props.products[0].image);
 	const filteredData = props.products.filter((el) => {
 	
 		if (props.input === '') {
@@ -15,15 +17,15 @@ const List = (props) => {
 			return el.name.toLowerCase().includes(props.input);
 			//other search options
 			// return ( el.brand.toLowerCase().includes(props.input)||
-			// 					el.name.toLowerCase().includes(props.input)||
 			// 					el.category.toLowerCase()===props.input);
 		}
 })
+console.log("filtereddata", filteredData[0].image.url);
 
 	return (
 		<>
 			<section className="products">
-				<h1> Fragrances</h1>
+				<h1> Fragrances</h1><hr/>
 				<div className="new-arrival-products">
 
 					{filteredData.map(product => (

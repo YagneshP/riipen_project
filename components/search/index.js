@@ -13,6 +13,7 @@ import { commerce } from "../../lib/commerce";
 // }
 export default function Search({products}) {
   console.log("products1", products);
+  console.log("products anme", products[0].image.url);
   
   const [inputText, setInputText] = useState("");
   let inputHandler = (e) => {
