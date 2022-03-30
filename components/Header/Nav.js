@@ -2,17 +2,13 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import Link from "next/link";
-import { useSelector } from "react-redux";
+import { useCart } from "../../context/Cart";
 
 const Nav = () => {
-  // Selecting cart from global state
-  const cart = useSelector((state) => state.cart);
-
-  // Getting the count of items
-  const getItemsCount = () => {
-    return cart.reduce((accumulator, item) => accumulator + item.quantity, 0);
-  };
-  console.log("getItemsCount", getItemsCount());
+  
+  const { total_items } = useCart();
+  console.log("line", total_items);
+  
   return (
     <ul className="nav">
       <li>
@@ -48,7 +44,7 @@ const Nav = () => {
             <ShoppingCartOutlinedIcon fontSize="large" />
           </a>
         </Link>
-        {getItemsCount() === 0 ? "" : getItemsCount()}
+          {total_items === 0 ? "" : total_items} 
       </li>
 
       <li>

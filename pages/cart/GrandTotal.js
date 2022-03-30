@@ -1,4 +1,4 @@
-const GrandTotal = ({ name, line_total }) => {
+const GrandTotal = ({ name, quantity,line_total }) => {
   return (
     <p>
       {name} <span>{line_total} </span>
