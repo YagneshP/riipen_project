@@ -8,10 +8,19 @@ const Cart = () => {
   const { line_items, subtotal } = useCart();
   const handleContinueShopping = (e) => {
     e.preventDefault()
+<<<<<<< HEAD
     router.push("/product")
   }
   const handleCheckout = (e) => {
     e.preventDefault()
+=======
+    router.push("/products")
+  }
+  const handleCheckout = (e) => {
+    e.preventDefault()
+ 
+    
+>>>>>>> origin/payment
     router.push("/checkout")
   }
 

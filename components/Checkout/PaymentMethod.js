@@ -1,6 +1,6 @@
 import React from "react";
-
-function PaymentMethod() {
+import StripeContainer from "../PaymentCheckout/StripeContainer";
+function PaymentMethod(props) {
   return (
     <div className='pay-meth'>
       <ul>
@@ -26,9 +26,10 @@ function PaymentMethod() {
           </div>
         </li>
       </ul>
-      <a href='#.' className='button-order pull-right margin-top-30'>
+      <StripeContainer amount={props.amount} checkoutTokenId={props.checkoutTokenId}  userInfo={props.userInfo}/>
+      {/* <a href='#.' className='button-order pull-right margin-top-30'>
         PLACE ORDER
-      </a>
+      </a> */}
     </div>
   );
 }

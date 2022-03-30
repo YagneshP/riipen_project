@@ -4,18 +4,28 @@
   align-items: center;
   gap: 1rem;
   
-  a {
+  p {
+    font-family: $body-font;
+    color: #6F6F6F;
+    font-size: $s-size;
+  }
+
+  .item-name {
+    margin-top: 3rem;
+    font-size: 1.6rem;
+  }
+
+  .item-price {
     text-transform: uppercase;
     color: $dark-text;
     font-size: 1.8rem;
     font-weight: 700;
     font-family: $header-font;
     letter-spacing: 2px;
+    margin-bottom: 3rem;
   }
-  
-  p {
-    font-family: $body-font;
-    color: #6F6F6F;
-    font-size: $s-size;
-  }
+}
+
+.new-arrival-products a {
+  text-decoration: none;
 }
