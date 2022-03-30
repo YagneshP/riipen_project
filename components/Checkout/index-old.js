@@ -142,10 +142,11 @@ export default function Checkout() {
         console.log("error");
       }
     
+  
   };
 
   const handleShippingCountryChange = (e) => {
-    console.log("hiiiiii");
+
     const currentValue = e.target.value;
     console.log("country value",currentValue);
     setValue("country",e.target.value);
