@@ -1,6 +1,6 @@
 import React from "react";
 
-function ShippingInfoForm() {
+export default function ShippingInfoForm() {
   return (
     <form>
       <ul className='row'>
@@ -62,4 +62,4 @@ function ShippingInfoForm() {
   );
 }
 
-export default ShippingInfoForm;
+// export default ShippingInfoForm;

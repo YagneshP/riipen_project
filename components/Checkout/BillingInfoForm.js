@@ -1,14 +1,21 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-function BillingInfoForm({ handleFormInput }) {
+// export default function BillingInfoForm({ handleFormInput }) {
+  export default function BillingInfoForm() {
+  
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
+
+  const onSubmit =  (data) => {
+    console.log(watch(['first_name','last_name','address','town','country','country_state','phone','email','postal']));
+  }
   return (
-    <form onSubmit={handleSubmit(handleFormInput)}>
+    // <form onSubmit={handleSubmit(handleFormInput)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <ul className='row'>
         <li className='col-md-6'>
           <label>
@@ -20,12 +27,6 @@ function BillingInfoForm({ handleFormInput }) {
           <label>
             *LAST NAME
             <input {...register("last_name")} />
-          </label>
-        </li>
-        <li className='col-md-6'>
-          <label>
-            COMPANY NAME
-            <input {...register("company")} />
           </label>
         </li>
         <li className='col-md-6'>
@@ -48,8 +49,20 @@ function BillingInfoForm({ handleFormInput }) {
         </li>
         <li className='col-md-6'>
           <label>
-            *EMAIL ADDRESS
+            *STATE/PROVINCE
             <input {...register("country_state")} />
+          </label>
+        </li>
+        <li className='col-md-6'>
+          <label>
+            *PHONE
+            <input {...register("phone_number")} />
+          </label>
+        </li>
+        <li className='col-md-6'>
+          <label>
+            *EMAIL ADDRESS
+            <input {...register("email")} />
           </label>
         </li>
         <li className='col-md-6'>
@@ -74,4 +87,4 @@ function BillingInfoForm({ handleFormInput }) {
   );
 }
 
-export default BillingInfoForm;
+// export default BillingInfoForm;

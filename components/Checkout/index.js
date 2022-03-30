@@ -9,6 +9,7 @@ const Checkout = () => {
   const { line_items, subtotal } = useCart();
   const [userInfo, setUserInfo] = useState(null);
   const handleFormInput = (data) => {
+    console.log("data", data)
     setUserInfo(data);
   };
   console.log("userInfo", userInfo);
@@ -41,3 +42,4 @@ const Checkout = () => {
   );
 };
 
+export default Checkout;
