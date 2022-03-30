@@ -18,20 +18,20 @@ function ShippingInfoForm() {
         </li>
         <li className='col-md-6'>
           <label>
-            COMPANY NAME
-            <input type='text' name='company' />
-          </label>
-        </li>
-        <li className='col-md-6'>
-          <label>
-            *ADDRESS
+          *ADDRESS
             <input type='text' name='address' />
           </label>
         </li>
         <li className='col-md-6'>
           <label>
-            *TOWN/CITY
-            <input type='text' name='town' />
+          *POSTAL CODE
+            <input type='text' name='postcode' />
+          </label>
+        </li>
+        <li className='col-md-6'>
+          <label>
+            *CITY
+            <input type='text' name='city' />
           </label>
         </li>
         <li className='col-md-6'>

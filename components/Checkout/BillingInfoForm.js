@@ -9,64 +9,67 @@ function BillingInfoForm({ handleFormInput }) {
   } = useForm();
   return (
     <form onSubmit={handleSubmit(handleFormInput)}>
-      <ul className='row'>
-        <li className='col-md-6'>
+      <ul className="row">
+        <li className="col-md-6">
           <label>
             *FIRST NAME
-            <input {...register("first_name")} />
+            <input
+              type="text"
+              {...register("first_name", { required: true })}
+            />
           </label>
         </li>
-        <li className='col-md-6'>
+        <li className="col-md-6">
           <label>
             *LAST NAME
-            <input {...register("last_name")} />
+            <input type="text" {...register("last_name", { required: true })} />
           </label>
         </li>
-        <li className='col-md-6'>
-          <label>
-            COMPANY NAME
-            <input {...register("company")} />
-          </label>
-        </li>
-        <li className='col-md-6'>
+        <li className="col-md-6">
           <label>
             *ADDRESS
-            <input {...register("address")} />
+            <input type="text" {...register("address", { required: true })} />
           </label>
         </li>
-        <li className='col-md-6'>
+        <li className="col-md-6">
           <label>
-            *TOWN/CITY
-            <input {...register("town")} />
+            *POSTAL CODE
+            <input type="text" {...register("postcode", { required: true })} />
           </label>
         </li>
-        <li className='col-md-6'>
+        <li className="col-md-6">
+          <label>
+            *CITY
+            <input type="text" {...register("city", { required: true })} />
+          </label>
+        </li>
+        <li className="col-md-6">
           <label>
             COUNTRY
-            <input {...register("country")} />
+            <input type="text" {...register("country", { required: true })} />
           </label>
         </li>
-        <li className='col-md-6'>
+        <li className="col-md-6">
           <label>
             *EMAIL ADDRESS
-            <input {...register("country_state")} />
+            <input type="text" {...register("email", { required: true })} />
           </label>
         </li>
-        <li className='col-md-6'>
+        <li className="col-md-6">
           <label>
             *PHONE
-            <input {...register("phone_number")} />
+            <input type="text" {...register("phone", { required: true })} />
           </label>
         </li>
-        <li className='col-md-6'>
-          <button type='submit' className='button-chk'>
+        <li className="col-md-6">
+          <button type="submit" className="button-chk">
             Continue
           </button>
         </li>
-        <li className='col-md-6'>
-          <div className='checkbox margin-0 margin-top-20'>
-            <input id='checkbox1' className='styled' type='checkbox' />
-            <label htmlFor='checkbox1'>Ship to a different address</label>
+        <li className="col-md-6">
+          <div className="checkbox margin-0 margin-top-20">
+            <input id="checkbox1" className="styled" type="checkbox" />
+            <label htmlFor="checkbox1">Ship to a different address</label>
           </div>
         </li>
       </ul>
