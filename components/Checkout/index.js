@@ -1,5 +1,4 @@
 
-//my upper part, tofiq form part
 
 import Router from "next/router";
 import { useEffect,useState } from "react";
@@ -10,16 +9,18 @@ import {PaymentValue} from '../../pages/stripe/PaymentValue';
 import { MenuItem, Select } from '@material-ui/core';
 import { useForm } from "react-hook-form";
 import { Phone } from "@mui/icons-material";
+import { useCartActions } from "../../context/Cart";
 
 
 export default function Checkout() {
   const { register, handleSubmit, setValue, setError } = useForm();
 	const [token, setToken] = useState();
   const [order, setOrder] = useState();
-	const { line_items, subtotal } = useCart();
+	let { line_items, subtotal,total_items } = useCart();
 	console.log("line",line_items);
   const cartId= commerce.cart.id();
 	console.log("cartid",commerce.cart.id());
+  const { setCart } = useCartActions();
 
   // Shipping and fulfillment data
   const [shippingCountries, setShippingCountries] = useState({});
@@ -130,6 +131,12 @@ export default function Checkout() {
         );
         setOrder(orderPlaced);
         console.log("orderPlaced",orderPlaced);
+        commerce.cart.empty().then((response) => 
+        {
+          console.log(response);
+          setCart(response.cart);
+        })
+       
         Router.push('/confirmation');
       } catch (err) {
         console.log("error");
