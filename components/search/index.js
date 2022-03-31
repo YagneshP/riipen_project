@@ -11,32 +11,30 @@ import { commerce } from "../../lib/commerce";
 //     },
 //   };
 // }
-export default function Search({products}) {
-  console.log("products1", products);
-  console.log("products anme", products[0].image.url);
-  
+export default function Search({ products }) {
   const [inputText, setInputText] = useState("");
   let inputHandler = (e) => {
     let lowerCase = e.target.value.toLowerCase();
     setInputText(lowerCase);
   };
-  
+
   return (
     <div className='about'>
-      <center><div style={{"width":"30%"}}>
-        <TextField
-          id="outlined-basic"
-          onChange={inputHandler}
-          variant="outlined"
-          size="normal"
-          focused
-          fullWidth
-          label="Search"
-          placeholder="Search Product"
-        />
-      </div></center>
-      <List input={inputText} products={products}/>
+      <center>
+        <div style={{ width: "30%" }}>
+          <TextField
+            id='outlined-basic'
+            onChange={inputHandler}
+            variant='outlined'
+            size='normal'
+            focused
+            fullWidth
+            label='Search'
+            placeholder='Search Product'
+          />
+        </div>
+      </center>
+      <List input={inputText} products={products} />
     </div>
   );
 }
-
