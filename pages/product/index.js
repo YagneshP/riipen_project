@@ -1,7 +1,7 @@
 import ProductItem from "../../components/Product/ProductItem";
 import ProductsList from "../../components/Product/ProductsList";
 import { commerce } from "../../lib/commerce";
-import Search from "../../components/Search";
+import Search from "../../components/search";
 
 export async function getStaticProps() {
   const { data: products } = await commerce.products.list();
@@ -17,7 +17,7 @@ const ProductsContent = ({ products }) => {
     <>
       <section className='products'>
         <span id='search'>
-          <Search products={products}/>
+          <Search products={products} />
         </span>
         {/* <h1> Fragrances</h1> */}
         {/* <div className='new-arrival-products'>
