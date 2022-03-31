@@ -75,7 +75,7 @@ const PaymentValue = () => {
              id="radio3"
              value="option3"
            />
-           <label for="radio3"> Credit/Debit </label>
+           <label htmlFor="radio3"> Credit/Debit </label>
          </div>
        </li>
        <li>
@@ -86,7 +86,7 @@ const PaymentValue = () => {
              id="radio4"
              value="option4"
            />
-           <label for="radio4"> PAYPAL </label>
+           <label htmlFor="radio4"> PAYPAL </label>
          </div>
        </li>
        <li>
@@ -96,7 +96,7 @@ const PaymentValue = () => {
              className="styled"
              type="checkbox"
            />
-           <label for="checkbox3-4">
+           <label htmlFor="checkbox3-4">
              {" "}
              I’VE READ AND ACCEPT THE{" "}
              <span className="color">
