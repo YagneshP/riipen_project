@@ -124,7 +124,7 @@ const router = useRouter();
         <form onSubmit={handleSubmit}>
           <fieldset >
             <label >Card detail</label>
-            <div class="cardElement">
+            <div className="cardElement">
               <CardElement options={cardElementOptions} />
             </div>
           </fieldset>
