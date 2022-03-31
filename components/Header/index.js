@@ -7,14 +7,14 @@ const Header = () => {
   const [isDesktop, setDesktop] = useState(false);
 
   useEffect(() => {
-    if (window.innerWidth > 797) {
+    if (window.innerWidth > 842) {
       setDesktop(true);
     } else {
       setDesktop(false);
     }
 
     const updateMedia = () => {
-      if (window.innerWidth > 797) {
+      if (window.innerWidth > 842) {
         setDesktop(true);
       } else {
         setDesktop(false);
