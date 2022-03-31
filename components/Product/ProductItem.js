@@ -23,7 +23,7 @@ const ProductItem = ({
 
       <span className='brand'>{brand}</span>
       <p>{name}</p>
-      <span>{price.formatted_with_code}</span>
+      <span>{price.formatted_with_symbol}</span>
     </div>
   );
 };
