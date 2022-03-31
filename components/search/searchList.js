@@ -18,7 +18,7 @@ const List = (props) => {
         <h1> Fragrances</h1>
         <hr />
         <div className='new-arrival-products'>
-          {filteredData.map((product) => (
+          {filteredData?.map((product) => (
             <ProductItem
               key={product.id}
               id={product.id}
