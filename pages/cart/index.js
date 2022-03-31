@@ -4,12 +4,27 @@ import { useRouter } from "next/router";
 import { useCart } from "../../context/Cart";
 import Link from "next/link";
 const Cart = () => {
-  const router = useRouter();
+  const router = useRouter()
   const { line_items, subtotal } = useCart();
-  const handleClick = (e) => {
-    e.preventDefault();
-    router.push("/products-content");
-  };
+  const handleContinueShopping = (e) => {
+    e.preventDefault()
+    router.push("/products")
+  }
+  const handleCheckout = (e) => {
+    e.preventDefault()
+ 
+    
+    router.push("/checkout")
+  }
+ 
+// const cart = useSelector((state) => state.cart);
+
+  // const getTotalPrice = () => {
+  //   return cart.reduce(
+  //     (accumulator, item) => accumulator + item.quantity * item.price,
+  //     0
+  //   );
+  // };
   return (
     <div>
       <main>
@@ -78,12 +93,14 @@ const Cart = () => {
                   </form>
                   <div className='coupn-btn'>
                     {" "}
-                    <a onClick={handleClick} className='btn shop_action'>
+                    <a onClick={handleContinueShopping} className='btn shop_action'>
                       continue shopping
                     </a>{" "}
-                    <Link href='/checkout'>
-                      <a className='btn shop_action'>Checkout</a>
-                    </Link>
+                    {/* <Link href='/checkout'> */}
+                    <a onClick={handleCheckout} className='btn shop_action'>
+                      checkout
+                    </a>
+                    {/* </Link> */}
                   </div>
                 </div>
                 <div className='col-md-5'>
@@ -109,6 +126,7 @@ const Cart = () => {
               </div>
             </div>
           </div>
+   
         </section>
       </main>
     </div>

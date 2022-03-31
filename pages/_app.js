@@ -6,7 +6,10 @@ import "bootstrap/dist/css/bootstrap.css";
 import { Provider } from "react-redux";
 import store from "../redux/store";
 import { CartProvider } from "../context/Cart";
+import { Elements } from "@stripe/react-stripe-js";
+import getStripe from "../lib/stripe";
 
+const stripePromise = getStripe();
 function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
@@ -14,7 +17,9 @@ function MyApp({ Component, pageProps }) {
         <AuthProvider>
           <CartProvider>
             <Layout>
-              <Component {...pageProps} />
+              <Elements stripe={stripePromise}>
+                <Component {...pageProps} />
+              </Elements>
             </Layout>
           </CartProvider>
         </AuthProvider>

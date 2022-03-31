@@ -1,6 +1,7 @@
-import Checkout from "../components/Checkout";
+import Checkout from "../components/Checkout/index";
 
-const Layout = () => {
+const checkout = () => {
+  
   return (
     <div className="content">
       <Checkout />
@@ -8,4 +9,4 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+export default checkout;

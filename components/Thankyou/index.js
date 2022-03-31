@@ -1,4 +1,4 @@
-const Thankyou = () => {
+const Thankyou = (props) => {
   return (
     <div>
       <section className="contact padding-top-100 padding-bottom-100">
@@ -10,8 +10,7 @@ const Thankyou = () => {
                 Here is your order number for reference:
                 <hr />
                 <hr />
-                Order-id: <br />
-                Order-detail: <br />
+                Order-id:{props.order} <br />
                 <hr />
               </h4>
               <br />

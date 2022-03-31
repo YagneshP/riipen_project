@@ -7,6 +7,7 @@ const CartDispatchContext = createContext(null);
 //cart intialState
 
 const cartInitialState = {
+  id: "",
   total_items: 0,
   total_unique_items: 0,
   subtotal: {},
