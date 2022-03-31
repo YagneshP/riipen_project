@@ -3,7 +3,16 @@ import ProductsList from "../../components/Product/ProductsList";
 import { commerce } from "../../lib/commerce";
 import Search from "../../components/search";
 
-export async function getStaticProps() {
+// export async function getStaticProps() {
+//   const { data: products } = await commerce.products.list();
+//   return {
+//     props: {
+//       products,
+//     },
+//   };
+// }
+
+export async function getServerSideProps() {
   const { data: products } = await commerce.products.list();
   return {
     props: {
