@@ -3,21 +3,24 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { commerce } from "../../lib/commerce";
+import { useCartActions } from "../../context/Cart";
 
 export default function CheckoutForm(props) {
   console.log("props",props);
   console.log("props.userInfo", props.userInfo);
   console.log("props.shippingInfo", props.shippingInfo);
+  const { setCart } = useCartActions();
 const router = useRouter();
     const {
       first_name:first_name,
       last_name:last_name,
       email:email,
-      address:street,
+      address:address,
       town:town,
       country:country,
       state:province,
-      phone:phone
+      phone:phone,
+      postal:postal
       } = props.userInfo;
 
        const name = first_name + " " + last_name;
@@ -33,7 +36,7 @@ const router = useRouter();
       province:ship_province,
       postal:ship_postal
       } = props.shippingInfo;
-      console.log("shipping postal", ship_postal);
+    
       const ship_name = ship_first_name + " " + ship_last_name;
   const [success, setSuccess] = useState(false)
   const stripe = useStripe()
@@ -92,9 +95,9 @@ const router = useRouter();
                 ship_name,
                 ship_address,
                 ship_town,
-                county_state: 'US-CA',
-                postal,
-                country: 'US'
+                ship_province,
+                ship_postal,
+                ship_country
               },
               fulfillment: {
                 shipping_method: 'ship_7RyWOwmK5nEa2V'
@@ -103,9 +106,9 @@ const router = useRouter();
                 name,
                 address,
                 town,
-                county_state: 'US-CA',
+                province,
                 postal,
-                country: 'US'
+                country
               },
               payment: {
                 gateway: 'test_gateway',
@@ -120,7 +123,12 @@ const router = useRouter();
               }
 
             })
-            .then((res) => {console.log("final order",res)
+            .then((res) => {console.log("final order",res);
+            commerce.cart.empty().then((response) => 
+            {
+              console.log(response);
+              setCart(response.cart);
+            })
             router.push({
               pathname: '/thankyou',
               query: { order: res.id}

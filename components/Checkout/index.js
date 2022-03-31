@@ -40,9 +40,20 @@ const Checkout = () => {
   const [userInfo, setUserInfo] = useState({});
   const [shippingInfo, setShippingInfo] = useState({});
   let flag = false;
+   const [check,setCheck] = useState();
+  const getCheckeboxValue = (event) => {
+     const value = event.target.checked;
+    console.log("check",value);
+    setCheck(value);
+    // return event.target.checked;
+    
+}
+  // console.log("checkship",checkship);
   const handleFormInput = (data) => {
+    
     setUserInfo(data);
-    if (!data.checkShip) {
+
+    if (!check) {
       flag = true;
       setShippingInfo(data);
     };
@@ -51,6 +62,7 @@ const Checkout = () => {
   console.log("userInfo", userInfo);
 
   const handleShippingFormInput = (data) => {
+  
     if (!flag) {
       setShippingInfo(data);
     }
@@ -69,9 +81,22 @@ const Checkout = () => {
                   <BillingInfoForm handleFormInput={handleFormInput} />
                 </div>
                 {/* { flag && */}
+                
+                  {/* <div className='checkbox margin-0 margin-top-20'> */}
+                  <div>
+                    <input
+                      type="checkbox"
+                      name='checkShip'
+                      value={false} 
+                      onChange={(e)=> getCheckeboxValue(e)}
+                    />
+                    <label htmlFor='checkbox1'>Ship to a different address</label>
+                  </div>
+             
                 <div className='col-sm-7'>
                   <h6 className='margin-top-50'>SHIPPING info</h6>
-                  <ShippingInfoForm handleShippingFormInput={handleShippingFormInput}/>
+                  <BillingInfoForm handleFormInput={handleShippingFormInput} />
+                  {/* <ShippingInfoForm handleShippingFormInput={handleShippingFormInput}/> */}
                 </div>
                 {/* } */}
                 <div className='col-sm-5'>

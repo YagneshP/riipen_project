@@ -1,5 +1,7 @@
-import React from "react";
+import {React,useEffect,useState} from "react";
 import { useForm} from "react-hook-form";
+import { commerce } from "../../lib/commerce";
+import { MenuItem, Select } from '@material-ui/core';
 
 export default function ShippingInfoForm({handleShippingFormInput}) {
   const {
@@ -10,8 +12,28 @@ export default function ShippingInfoForm({handleShippingFormInput}) {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(watch());
+  const [shippingCountries, setShippingCountries] = useState({});
+  const [shippingSubdivisions, setShippingSubdivisions] = useState({});
+
+  useEffect(() => {
+    fetchShippingCountries();
+  }, []);
+
+  const fetchShippingCountries = async () => {
+    const countries = await commerce.services.localeListCountries(
+    );
+    setShippingCountries(countries.countries);
+  };
+  console.log("ship",shippingCountries);
+
+  const handleShippingCountryChange = (e) => {
+    fetchSubdivisions(e.target.value);
+  };
+  const fetchSubdivisions = async (countryCode) => {
+    const subdivisions = await commerce.services.localeListSubdivisions(
+      countryCode
+    );
+    setShippingSubdivisions(subdivisions.subdivisions);
   }
 
   return (
@@ -44,13 +66,34 @@ export default function ShippingInfoForm({handleShippingFormInput}) {
         <li className="col-md-6">
           <label>
             COUNTRY
-            <input type="text" {...register("country")} />
+            <Select
+                          
+              {...register("country", { required: true })}
+              fullWidth
+              onChange={handleShippingCountryChange}
+            > 
+              {Object.keys(shippingCountries).map((index) => (
+                <MenuItem value={index} key={index}>
+                  {shippingCountries[index]}
+                </MenuItem>
+              ))}
+            </Select>
           </label>
         </li>
         <li className="col-md-6">
           <label>
-            STATE/PROVINCE
-            <input type="text" {...register("province")} />
+            *STATE/PROVINCE
+            <Select
+              {...register("province", { required: true })}
+              onChange={e => setValue("province", e.target.value)}
+              fullWidth
+            > 
+              {Object.keys(shippingSubdivisions).map((index) => (
+                <MenuItem value={index} key={index}>
+                  {shippingSubdivisions[index]}
+                </MenuItem>
+              ))}
+            </Select>
           </label>
         </li>
         <li className='col-md-6'>
