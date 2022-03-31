@@ -1,21 +1,18 @@
 import React from "react";
-import { useForm } from "react-hook-form";
-// export default function BillingInfoForm({ handleFormInput }) {
-  export default function BillingInfoForm() {
-  
+import { useForm} from "react-hook-form";
+
+export default function BillingInfoForm({handleFormInput}) {
   const {
     register,
     handleSubmit,
+    setValue,
     watch,
     formState: { errors },
   } = useForm();
 
-  const onSubmit =  (data) => {
-    console.log(watch(['first_name','last_name','address','town','country','country_state','phone','email','postal']));
-  }
   return (
-    // <form onSubmit={handleSubmit(handleFormInput)}>
-    <form onSubmit={handleSubmit(onSubmit)}>
+
+    <form onSubmit={handleSubmit(handleFormInput)}>
       <ul className='row'>
         <li className='col-md-6'>
           <label>
@@ -41,22 +38,22 @@ import { useForm } from "react-hook-form";
             <input {...register("town")} />
           </label>
         </li>
-        <li className='col-md-6'>
+        <li className="col-md-6">
           <label>
             COUNTRY
-            <input {...register("country")} />
+            <input type="text" {...register("country")} />
+          </label>
+        </li>
+        <li className="col-md-6">
+          <label>
+            STATE/PROVINCE
+            <input type="text" {...register("province", { required: true })} />
           </label>
         </li>
         <li className='col-md-6'>
           <label>
-            *STATE/PROVINCE
-            <input {...register("country_state")} />
-          </label>
-        </li>
-        <li className='col-md-6'>
-          <label>
-            *PHONE
-            <input {...register("phone_number")} />
+            *POSTAL CODE
+            <input {...register("postal")} />
           </label>
         </li>
         <li className='col-md-6'>
@@ -68,7 +65,7 @@ import { useForm } from "react-hook-form";
         <li className='col-md-6'>
           <label>
             *PHONE
-            <input {...register("phone_number")} />
+            <input {...register("phone")} />
           </label>
         </li>
         <li className='col-md-6'>
@@ -78,7 +75,11 @@ import { useForm } from "react-hook-form";
         </li>
         <li className='col-md-6'>
           <div className='checkbox margin-0 margin-top-20'>
-            <input id='checkbox1' className='styled' type='checkbox' />
+            <input
+              type="checkbox"
+              {...register('checkShip')}
+              value={false} 
+            />
             <label htmlFor='checkbox1'>Ship to a different address</label>
           </div>
         </li>
@@ -87,4 +88,3 @@ import { useForm } from "react-hook-form";
   );
 }
 
-// export default BillingInfoForm;

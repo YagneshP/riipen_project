@@ -5,16 +5,36 @@ import { useEffect, useState } from 'react';
 import { commerce } from "../../lib/commerce";
 
 export default function CheckoutForm(props) {
+  console.log("props",props);
+  console.log("props.userInfo", props.userInfo);
+  console.log("props.shippingInfo", props.shippingInfo);
 const router = useRouter();
-    const {first_name:firstname, 
-      last_name:lastname ,
-      email:email ,
-       address:street,
-       town:town_city,
-       country} = props.userInfo
-       const name = firstname + " " + lastname;
+    const {
+      first_name:first_name,
+      last_name:last_name,
+      email:email,
+      address:street,
+      town:town,
+      country:country,
+      state:province,
+      phone:phone
+      } = props.userInfo;
 
- 
+       const name = first_name + " " + last_name;
+       console.log("name",name);
+
+ const {
+      first_name:ship_first_name,
+      last_name:ship_last_name,
+      email: ship_email,
+      address:ship_address,
+      town:ship_town,
+      country:ship_country,
+      province:ship_province,
+      postal:ship_postal
+      } = props.shippingInfo;
+      console.log("shipping postal", ship_postal);
+      const ship_name = ship_first_name + " " + ship_last_name;
   const [success, setSuccess] = useState(false)
   const stripe = useStripe()
   const elements = useElements()
@@ -64,16 +84,16 @@ const router = useRouter();
               line_items: props.checkoutTokenId.line_items,
 
               customer: {
-                firstname,
-                lastname,
+                first_name,
+                last_name,
                 email
               },
               shipping: {
-                name,
-                street,
-                town_city,
+                ship_name,
+                ship_address,
+                ship_town,
                 county_state: 'US-CA',
-                postal_zip_code: '94103',
+                postal,
                 country: 'US'
               },
               fulfillment: {
@@ -81,10 +101,10 @@ const router = useRouter();
               },
               billing: {
                 name,
-                street,
-                town_city,
+                address,
+                town,
                 county_state: 'US-CA',
-                postal_zip_code: '94103',
+                postal,
                 country: 'US'
               },
               payment: {

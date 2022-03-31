@@ -14,7 +14,7 @@ export default function StripeContainer(props) {
       };
 	return (
 		<Elements stripe={stripePromise} options={options} >
-        <CheckoutForm amount={props.amount} checkoutTokenId={props.checkoutTokenId} userInfo={props.userInfo}/>
+        <CheckoutForm amount={props.amount} checkoutTokenId={props.checkoutTokenId} userInfo={props.userInfo} shippingInfo={props.shippingInfo}/>
       </Elements>
 	)
 }

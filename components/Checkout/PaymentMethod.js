@@ -26,7 +26,7 @@ function PaymentMethod(props) {
           </div>
         </li>
       </ul>
-      <StripeContainer amount={props.amount} checkoutTokenId={props.checkoutTokenId}  userInfo={props.userInfo}/>
+      <StripeContainer amount={props.amount} checkoutTokenId={props.checkoutTokenId}  userInfo={props.userInfo} shippingInfo={props.shippingInfo}/>
       {/* <a href='#.' className='button-order pull-right margin-top-30'>
         PLACE ORDER
       </a> */}

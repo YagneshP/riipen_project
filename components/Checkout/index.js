@@ -1,4 +1,4 @@
-// import { useCart } from "../context/Cart";
+
 import getStripe from "../../lib/stripe";
 import { useCart } from "../../context/Cart";
 import { commerce } from "../../lib/commerce";
@@ -7,6 +7,7 @@ import BillingInfoForm from "./BillingInfoForm";
 import OrderDetail from "./OrderDetail";
 import PaymentMethod from "./PaymentMethod";
 import ShippingInfoForm from "./ShippingInfoForm";
+import Router from "next/router";
 
 const Checkout = () => {
   const cart = useCart();
@@ -19,7 +20,6 @@ const Checkout = () => {
 
   useEffect(() => {
     generateCheckoutToken();
-
   }, []);
 
   const generateCheckoutToken = async () => {
@@ -38,11 +38,25 @@ const Checkout = () => {
  
 
   const [userInfo, setUserInfo] = useState({});
+  const [shippingInfo, setShippingInfo] = useState({});
+  let flag = false;
   const handleFormInput = (data) => {
-    console.log("data", data)
     setUserInfo(data);
-  };
+    if (!data.checkShip) {
+      flag = true;
+      setShippingInfo(data);
+    };
+  } 
+
   console.log("userInfo", userInfo);
+
+  const handleShippingFormInput = (data) => {
+    if (!flag) {
+      setShippingInfo(data);
+    }
+  };
+  console.log("shipInfo", shippingInfo);
+
   return (
     <div id='content'>
       <section className='chart-page padding-top-100 padding-bottom-100'>
@@ -53,14 +67,18 @@ const Checkout = () => {
                 <div className='col-sm-7'>
                   <h6>BILLING DETAILS</h6>
                   <BillingInfoForm handleFormInput={handleFormInput} />
-                  <h6 className='margin-top-50'>SHIPPING info</h6>
-                  <ShippingInfoForm />
                 </div>
+                {/* { flag && */}
+                <div className='col-sm-7'>
+                  <h6 className='margin-top-50'>SHIPPING info</h6>
+                  <ShippingInfoForm handleShippingFormInput={handleShippingFormInput}/>
+                </div>
+                {/* } */}
                 <div className='col-sm-5'>
                   <h6>YOUR ORDER</h6>
                   <div className='order-place'>
                     <OrderDetail line_items={line_items} subtotal={subtotal} />
-                    <PaymentMethod amount={subtotal} checkoutTokenId={token} userInfo={userInfo}/>
+                    <PaymentMethod amount={subtotal} checkoutTokenId={token} userInfo={userInfo} shippingInfo={shippingInfo}/>
 
                   </div>
                 </div>
