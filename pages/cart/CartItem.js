@@ -18,6 +18,7 @@ const CartItem = ({ id, name, brand, price, quantity, image, line_total }) => {
     });
     setCart(response.cart);
   };
+
   const decrementQuantity = async () => {
     let response =
       quantity > 1

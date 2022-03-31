@@ -1,4 +1,5 @@
 import Image from "next/image";
+import  Router  from "next/router";
 import { useState } from "react";
 import { FiFacebook } from "react-icons/fi";
 import { FiTwitter } from "react-icons/fi";
@@ -39,8 +40,10 @@ const Product = ({ product }) => {
   const { setCart } = useCartActions();
   const addItemToCart = async () => {
     alert("item added to cart");
+    console.log("qty", quantity);
     const { cart: payload } = await commerce.cart.add(product.id, quantity);
     setCart(payload);
+    Router.push("/cart");
   };
 
   return (

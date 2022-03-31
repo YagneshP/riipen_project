@@ -7,17 +7,18 @@ import { useState } from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import { useCart } from "../../context/Cart";
 
 const Nav = () => {
   // Selecting cart from global state
   const cart = useSelector((state) => state.cart);
-
+  
   // Getting the count of items
   const getItemsCount = () => {
     return cart.reduce((accumulator, item) => accumulator + item.quantity, 0);
   };
   console.log("getItemsCount", getItemsCount());
-
+  
   // MaterialUI dropdown menu config
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -27,7 +28,10 @@ const Nav = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+  
+  const { total_items } = useCart();
+  console.log("line", total_items);
+  
   return (
     <ul className="nav">
       <li>
@@ -117,11 +121,11 @@ const Nav = () => {
             <ShoppingCartOutlinedIcon fontSize="large" />
           </a>
         </Link>
-        {getItemsCount() === 0 ? "" : getItemsCount()}
+          {total_items === 0 ? "" : total_items} 
       </li>
 
       <li>
-        <Link href="/search#search" passHref>
+        <Link href="/product#search" passHref>
           <a>
             <SearchOutlinedIcon fontSize="large" />
           </a>

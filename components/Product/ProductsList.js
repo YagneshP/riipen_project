@@ -2,6 +2,7 @@ import ProductItem from "./ProductItem";
 import React from "react";
 
 const ProductsList = ({ products }) => {
+  console.log("products", products);
   if (!products) {
     return null;
   }
