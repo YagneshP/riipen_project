@@ -7,8 +7,6 @@ export default function BillingInfoForm({handleFormInput}) {
   const {
     register,
     handleSubmit,
-    setValue,
-    watch,
     formState: { errors },
   } = useForm();
 
@@ -24,11 +22,11 @@ export default function BillingInfoForm({handleFormInput}) {
     );
     setShippingCountries(countries.countries);
   };
-  console.log("ship",shippingCountries);
 
   const handleShippingCountryChange = (e) => {
     fetchSubdivisions(e.target.value);
   };
+
   const fetchSubdivisions = async (countryCode) => {
     const subdivisions = await commerce.services.localeListSubdivisions(
       countryCode
@@ -68,7 +66,6 @@ export default function BillingInfoForm({handleFormInput}) {
           <label>
             COUNTRY
             <Select
-                          
               {...register("country", { required: true })}
               fullWidth
               onChange={handleShippingCountryChange}
@@ -114,21 +111,13 @@ export default function BillingInfoForm({handleFormInput}) {
             <input {...register("phone")} />
           </label>
         </li>
+
         <li className='col-md-6'>
+        <label className="control-label"></label>
           <button type='submit' className='button-chk'>
             Continue
           </button>
         </li>
-        {/* <li className='col-md-6'>
-          <div className='checkbox margin-0 margin-top-20'>
-            <input
-              type="checkbox"
-              {...register('checkShip')}
-              value={false} 
-            />
-            <label htmlFor='checkbox1'>Ship to a different address</label>
-          </div>
-        </li> */}
       </ul>
     </form>
   );

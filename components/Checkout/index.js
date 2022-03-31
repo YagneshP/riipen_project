@@ -6,15 +6,13 @@ import { useContext, useEffect, useState } from "react";
 import BillingInfoForm from "./BillingInfoForm";
 import OrderDetail from "./OrderDetail";
 import PaymentMethod from "./PaymentMethod";
-import ShippingInfoForm from "./ShippingInfoForm";
 import Router from "next/router";
+import { Checkbox } from '@material-ui/core';
 
 const Checkout = () => {
   const cart = useCart();
   const { line_items, subtotal } = useCart();
-  console.log("line", line_items);
   const cartId = commerce.cart.id();
-  console.log("cartid", commerce.cart.id());
   const [token, setToken] = useState();
   
 
@@ -27,28 +25,21 @@ const Checkout = () => {
       const token = await commerce.checkout.generateToken(cartId, {
         type: 'cart',
       });
-      console.log("token", token);
+
       setToken(token);
     } else {
       Router.push('/cart');
     }
   }
 
-  console.log("checkoutTokenId ", token);
- 
-
   const [userInfo, setUserInfo] = useState({});
   const [shippingInfo, setShippingInfo] = useState({});
   let flag = false;
-   const [check,setCheck] = useState();
+  const [check,setCheck] = useState();
   const getCheckeboxValue = (event) => {
-     const value = event.target.checked;
-    console.log("check",value);
-    setCheck(value);
-    // return event.target.checked;
-    
-}
-  // console.log("checkship",checkship);
+    setCheck(event.target.checked);
+  }
+
   const handleFormInput = (data) => {
     
     setUserInfo(data);
@@ -59,15 +50,11 @@ const Checkout = () => {
     };
   } 
 
-  console.log("userInfo", userInfo);
-
   const handleShippingFormInput = (data) => {
-  
-    if (!flag) {
+    if (!flag)
       setShippingInfo(data);
-    }
   };
-  console.log("shipInfo", shippingInfo);
+  
 
   return (
     <div id='content'>
@@ -80,25 +67,22 @@ const Checkout = () => {
                   <h6>BILLING DETAILS</h6>
                   <BillingInfoForm handleFormInput={handleFormInput} />
                 </div>
-                {/* { flag && */}
-                
-                  {/* <div className='checkbox margin-0 margin-top-20'> */}
-                  <div>
-                    <input
-                      type="checkbox"
-                      name='checkShip'
-                      value={false} 
-                      onChange={(e)=> getCheckeboxValue(e)}
-                    />
-                    <label htmlFor='checkbox1'>Ship to a different address</label>
+                <label htmlFor='checkbox1'>
+                  <Checkbox
+                    name='checkbox1'
+                    value={false} 
+                    onChange={(e)=> getCheckeboxValue(e)}
+                  />
+                  Ship to a different address</label>
+                 
+                {check ?
+                  <div className='col-sm-7'>
+                    <h6 className='margin-top-50'>SHIPPING info</h6>
+                    <BillingInfoForm handleFormInput={handleShippingFormInput} />
                   </div>
-             
-                <div className='col-sm-7'>
-                  <h6 className='margin-top-50'>SHIPPING info</h6>
-                  <BillingInfoForm handleFormInput={handleShippingFormInput} />
-                  {/* <ShippingInfoForm handleShippingFormInput={handleShippingFormInput}/> */}
-                </div>
-                {/* } */}
+                  : null 
+                }
+                
                 <div className='col-sm-5'>
                   <h6>YOUR ORDER</h6>
                   <div className='order-place'>
@@ -115,4 +99,5 @@ const Checkout = () => {
     </div>
   );
 };
+
 export default Checkout;
