@@ -1,4 +1,5 @@
 import ProductItem from "../Product/ProductItem";
+import ProductsList from "../Product/ProductsList";
 
 const List = (props) => {
   const filteredData = props.products?.filter((el) => {
@@ -18,7 +19,7 @@ const List = (props) => {
         <h1> Fragrances</h1>
         <hr />
         <div className='new-arrival-products'>
-          {filteredData?.map((product) => (
+          {/* {filteredData?.map((product) => (
             <ProductItem
               key={product.id}
               id={product.id}
@@ -29,7 +30,8 @@ const List = (props) => {
               name={product.name}
               brand={product.name}
             />
-          ))}
+          ))} */}
+          {filteredData && <ProductsList products={filteredData} />}
         </div>
       </section>
     </>
