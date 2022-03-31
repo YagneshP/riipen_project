@@ -7,11 +7,11 @@ import { useState } from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import { useCart } from "../../context/Cart";
 
 const Nav = () => {
   
   const { total_items } = useCart();
-  console.log("line", total_items);
 
   // MaterialUI dropdown menu config
   const [anchorEl, setAnchorEl] = useState(null);
@@ -22,7 +22,6 @@ const Nav = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
   return (
     <ul className="nav">
       <li>

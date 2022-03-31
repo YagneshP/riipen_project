@@ -1,9 +1,9 @@
-import Search from "../components/Search";
+import Search from "../components/search";
 
 const Layout = () => {
   return (
-    <div className="content">
-      <Search/>
+    <div className='content'>
+      <Search />
     </div>
   );
 };

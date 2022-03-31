@@ -1,4 +1,3 @@
-
 import getStripe from "../../lib/stripe";
 import { useCart } from "../../context/Cart";
 import { commerce } from "../../lib/commerce";
@@ -99,5 +98,4 @@ const Checkout = () => {
     </div>
   );
 };
-
 export default Checkout;

@@ -1,7 +1,13 @@
-import { useStripe, useElements, PaymentElement, CardElement, ElementsConsumer } from '@stripe/react-stripe-js';
-import axios from 'axios';
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import {
+  useStripe,
+  useElements,
+  PaymentElement,
+  CardElement,
+  ElementsConsumer,
+} from "@stripe/react-stripe-js";
+import axios from "axios";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { commerce } from "../../lib/commerce";
 import { useCartActions } from "../../context/Cart";
 
@@ -44,27 +50,26 @@ export default function CheckoutForm(props) {
       base: {
         color: "#666",
         fontSize: "20px",
-
       },
       invalid: {
         color: "#fa755a",
         fontSize: "fa755a",
-      }
-    }
-  }
+      },
+    },
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    if (props.amount === 0) {
+
+    if (props.amount == 0) {
       alert("Plese select some !");
       return;
     }
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
-      card: elements.getElement(CardElement)
-    })
-   
+      card: elements.getElement(CardElement),
+    });
+
     if (!error) {
       try {
         const { id } = paymentMethod
@@ -95,7 +100,7 @@ export default function CheckoutForm(props) {
               },
 
               fulfillment: {
-                shipping_method: 'ship_7RyWOwmK5nEa2V'
+                shipping_method: "ship_7RyWOwmK5nEa2V",
               },
 
               billing: {
@@ -108,17 +113,16 @@ export default function CheckoutForm(props) {
               },
 
               payment: {
-                gateway: 'test_gateway',
+                gateway: "test_gateway",
 
                 card: {
-                  number: '4242424242424242',
-                  expiry_month: '02',
-                  expiry_year: '24',
-                  cvc: '123',
-                  postal_zip_code: '94107',
+                  number: "4242424242424242",
+                  expiry_month: "02",
+                  expiry_year: "24",
+                  cvc: "123",
+                  postal_zip_code: "94107",
                 },
-              }
-
+              },
             })
             .then((res) => {console.log("final order",res);
             commerce.cart.empty().then((response) => 
@@ -131,20 +135,17 @@ export default function CheckoutForm(props) {
           })
             })
             .catch((err) => console.log("Error at capture order", err));
-
         }
-
       } catch (error) {
-        console.log("Error", error)
+        console.log("Error", error);
       }
     } else {
-      console.log(error.message)
+      console.log(error.message);
     }
-  }
+  };
   return (
     <>
-
-      {!success ?
+      {!success ? (
         <form onSubmit={handleSubmit}>
           <fieldset >
             <label >Card detail</label>
@@ -154,13 +155,9 @@ export default function CheckoutForm(props) {
           </fieldset>
           <button className='button-order'>Payment</button>
         </form>
-        :
-        <div>
-
-        </div>
-      }
-
-
+      ) : (
+        <div></div>
+      )}
     </>
-  )
-};
+  );
+}

@@ -31,7 +31,6 @@ export async function getStaticProps({ params }) {
 }
 
 const CategoryPage = ({ products, slug }) => {
-  console.log("Products", products);
   return (
     <section className='products'>
       <h1>{`${slug}'s Fragnance`}</h1>
