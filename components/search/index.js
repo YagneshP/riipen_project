@@ -1,16 +1,7 @@
 import { React, useState } from "react";
 import TextField from "@mui/material/TextField";
 import List from "./searchList";
-import { commerce } from "../../lib/commerce";
 
-// export async function getStaticProps() {
-//   const { data: products } = await commerce.products.list();
-//   return {
-//     props: {
-//       products,
-//     },
-//   };
-// }
 export default function Search({ products }) {
   const [inputText, setInputText] = useState("");
   let inputHandler = (e) => {

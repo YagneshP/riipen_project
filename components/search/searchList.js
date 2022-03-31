@@ -1,7 +1,7 @@
 import ProductItem from "../Product/ProductItem";
 
 const List = (props) => {
-  const filteredData = props.products.filter((el) => {
+  const filteredData = props.products?.filter((el) => {
     if (props.input === "") {
       return el.id;
     } else {
